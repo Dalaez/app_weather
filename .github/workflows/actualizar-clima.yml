@@ -1,0 +1,44 @@
+name: Actualizar Datos Climáticos
+
+# Permisos para que la Action pueda escribir en el repo
+permissions:
+  contents: write
+
+on:
+  push: # Se ejecuta cuando subes código
+    branches: [ "main" ]
+  schedule: # Se ejecuta en un horario
+    # Ejecuta cada día a las 6:00 UTC (8:00 en España en verano)
+    - cron: '0 8 * * *'
+  workflow_dispatch: # Botón para ejecutarlo manualmente
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # Usa un servidor Linux de GitHub
+
+    steps:
+      - name: 1. Checkout (Descargar el código)
+        uses: actions/checkout@v4
+
+      - name: 2. Configurar Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: 3. Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: 4. Ejecutar script para registrar clima
+        env:
+          # Aquí inyectamos el secreto
+          OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
+        run: python read_weather.py
+
+      - name: 5. Guardar cambios (Commit & Push)
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add weather_data.csv
+          # Comprueba si hay cambios antes de hacer commit
+          git diff --staged --quiet || git commit -m "Actualización automática de datos climáticos 🤖"
+          git push
