@@ -4,3 +4,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-20T08:13:38.280096,Madrid,15.84,15.88,14.59,16.68,92,6.69,muy nuboso
 2025-10-20T06:29:45.480038,Madrid,15.95,16,15.53,16.68,92,6.17,llovizna ligera
 2025-10-20T08:25:24.457150,Madrid,16.7,16.7,16.13,17.68,87,6.17,algo de nubes
+2025-10-21T08:26:14.317338,Madrid,14.62,14.51,14.13,15.68,91,6.69,nubes
