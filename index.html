@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis del Clima en Madrid</title>
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 90vh;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        /* Damos un tamaño al contenedor del gráfico */
+        #chart-container {
+            width: 80%;
+            max-width: 900px;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+
+    <h1>Análisis Histórico del Clima en Madrid</h1>
+    <p>Datos actualizados automáticamente cada día.</p>
+    
+    <div id="chart-container">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+        // La URL de nuestro archivo de datos en el repositorio
+        // ¡IMPORTANTE! Asegúrate de que esta ruta sea correcta.
+        // Si tu CSV está en la raíz del repo, esta es la ruta.
+        const CSV_URL = 'datos_climaticos.csv';
+
+        // Usamos PapaParse para cargar y procesar el archivo CSV
+        Papa.parse(CSV_URL, {
+            download: true, // Le decimos que descargue el archivo de la URL
+            header: true,   // Le decimos que la primera fila son las cabeceras
+            dynamicTyping: true, // Intenta convertir números y booleanos automáticamente
+            skipEmptyLines: true,
+            
+            // 'results' contiene los datos parseados
+            complete: function(results) {
+                console.log("Datos CSV cargados:", results.data); // Para depurar en la consola del navegador
+                
+                // Ahora, preparamos los datos para Chart.js
+                const etiquetas = [];     // Eje X (las fechas)
+                const temperaturas = [];  // Eje Y (los datos de temperatura)
+                
+                // Iteramos sobre cada fila de datos que PapaParse nos ha dado
+                results.data.forEach(fila => {
+                    // Formateamos la fecha para que sea más legible
+                    const fecha = new Date(fila.fecha_hora);
+                    etiquetas.push(fecha.toLocaleString('es-ES', { 
+                        day: 'numeric', 
+                        month: 'short', 
+                        hour: '2-digit', 
+                        minute: '2-digit' 
+                    }));
+                    
+                    // Añadimos el dato de temperatura
+                    temperaturas.push(fila.temperatura_c);
+                });
+
+                // ¡Llamamos a la función para dibujar el gráfico!
+                dibujarGrafico(etiquetas, temperaturas);
+            }
+        });
+
+        function dibujarGrafico(etiquetas, datosTemperatura) {
+            // Obtenemos el "lienzo" (canvas) del HTML
+            const ctx = document.getElementById('myChart').getContext('2d');
+            
+            // Creamos un nuevo gráfico de tipo 'line'
+            const myChart = new Chart(ctx, {
+                type: 'line', // Tipo de gráfico
+                data: {
+                    labels: etiquetas, // Nuestros datos del Eje X
+                    datasets: [{
+                        label: 'Temperatura (°C)',
+                        data: datosTemperatura, // Nuestros datos del Eje Y
+                        borderColor: 'rgb(75, 192, 192)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.1 // Suaviza la línea
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Evolución de la Temperatura en Madrid'
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            display: true,
+                            title: {
+                                display: true,
+                                text: 'Fecha y Hora'
+                            }
+                        },
+                        y: {
+                            display: true,
+                            title: {
+                                display: true,
+                                text: 'Temperatura (°C)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
