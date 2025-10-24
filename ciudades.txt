@@ -1,0 +1,164 @@
+A Coruña
+Albacete
+Alicante
+Almería
+Ávila
+Badajoz
+Barcelona
+Bilbao
+Burgos
+Cáceres
+Cádiz
+Castelló de la Plana
+Ceuta
+Ciudad Real
+Córdoba
+Cuenca
+Girona
+Granada
+Guadalajara
+Huelva
+Huesca
+Jaén
+León
+Lleida
+Logroño
+Lugo
+Madrid
+Málaga
+Melilla
+Mérida
+Murcia
+Ourense
+Oviedo
+Palencia
+Palma
+Pamplona
+Pontevedra
+Salamanca
+San Sebastián
+Santa Cruz de Tenerife
+Santander
+Segovia
+Sevilla
+Soria
+Tarragona
+Teruel
+Toledo
+Valencia
+Valladolid
+Vitoria-Gasteiz
+Zamora
+Zaragoza
+Amsterdam
+Andorra la Vella
+Athens
+Berlin
+Bern
+Bratislava
+Brussels
+Bucharest
+Budapest
+Copenhagen
+Dublin
+Helsinki
+Istanbul
+Kyiv
+Lisbon
+Ljubljana
+London
+Luxembourg
+Monaco
+Moscow
+Nicosia
+Oslo
+Paris
+Prague
+Reykjavik
+Riga
+Rome
+San Marino
+Sarajevo
+Skopje
+Sofia
+Stockholm
+Tallinn
+Tirana
+Vaduz
+Valletta
+Vatican City
+Vienna
+Vilnius
+Warsaw
+Zagreb
+Ankara
+Manchester
+Munich
+Milan
+Lyon
+Hamburg
+Bangkok
+Beijing
+Damascus
+Dhaka
+Hanoi
+Hong Kong
+Islamabad
+Jakarta
+Jerusalem
+Kabul
+Kathmandu
+Kuala Lumpur
+Manila
+Mumbai
+New Delhi
+Pyongyang
+Riyadh
+Seoul
+Shanghai
+Singapore
+Taipei
+Tashkent
+Tehran
+Tokyo
+Ulaanbaatar
+Sydney
+Melbourne
+Wellington
+Auckland
+Buenos Aires
+Bogota
+Brasilia
+Caracas
+Havana
+Kingston
+La Paz
+Lima
+Mexico City
+Montevideo
+New York
+Los Angeles
+Chicago
+Houston
+Toronto
+Vancouver
+Ottawa
+Panama City
+Quito
+San Jose
+Santiago
+Sao Paulo
+Washington DC
+Abuja
+Accra
+Algiers
+Cairo
+Cape Town
+Casablanca
+Dakar
+Johannesburg
+Lagos
+Nairobi
+Rabat
+Tripoli
+Tunis
