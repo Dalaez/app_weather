@@ -38,7 +38,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          git add weather_data.csv
+          git add .
           # Comprueba si hay cambios antes de hacer commit
           git diff --staged --quiet || git commit -m "Actualización automática de datos climáticos 🤖"
           git push
