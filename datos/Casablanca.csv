@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion
 2025-10-24T06:07:13.953609,Casablanca,20.12,20.54,20.12,20.12,90,2.67,cielo claro
 2025-10-24T06:15:29.451780,Casablanca,20.12,20.54,20.12,20.12,90,2.67,cielo claro
+2025-10-24T08:25:03.259765,Casablanca,20.96,21.41,20.74,22.12,88,2.06,muy nuboso

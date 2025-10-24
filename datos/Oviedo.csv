@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion
 2025-10-24T06:07:00.388201,Oviedo,7.73,7.73,7.53,11.2,85,0.89,algo de nubes
 2025-10-24T06:15:22.431821,Oviedo,7.73,7.73,7.53,11.2,84,0.45,algo de nubes
+2025-10-24T08:24:49.831820,Oviedo,8.69,8.69,8.64,12.2,78,0.45,nubes dispersas

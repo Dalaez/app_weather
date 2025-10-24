@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion
 2025-10-24T06:07:14.171911,Johannesburg,21.06,20.11,19.3,21.58,34,1,cielo claro
 2025-10-24T06:15:29.561318,Johannesburg,21.06,20.11,19.3,21.58,34,1,cielo claro
+2025-10-24T08:25:03.492253,Johannesburg,25.08,24.43,24.43,25.51,30,1.03,cielo claro

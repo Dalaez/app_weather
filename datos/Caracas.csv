@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion
 2025-10-24T06:07:11.233061,Caracas,20.94,21.36,20.94,22.88,87,1.88,lluvia de gran intensidad
 2025-10-24T06:15:28.108298,Caracas,20.94,21.36,20.94,22.88,87,1.88,lluvia de gran intensidad
+2025-10-24T08:25:00.555863,Caracas,25.75,26.84,25.75,25.75,94,2.16,nubes

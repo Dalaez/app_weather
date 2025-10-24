@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion
 2025-10-24T06:07:05.964800,Sofia,15.44,14.71,14.83,15.44,64,3.09,muy nuboso
 2025-10-24T06:15:25.301607,Sofia,15.44,14.71,14.83,15.44,64,3.09,muy nuboso
+2025-10-24T08:24:55.253513,Sofia,14.88,14.02,13.83,14.88,61,2.06,nubes

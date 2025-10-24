@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion
 2025-10-24T06:07:06.868338,Vilnius,11.78,11.42,11.49,12.31,92,5.14,muy nuboso
 2025-10-24T06:15:25.808945,Vilnius,11.78,11.42,11.49,12.31,92,5.14,muy nuboso
+2025-10-24T08:24:56.124672,Vilnius,11.89,11.46,10.85,12.49,89,5.66,llovizna ligera

@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion
 2025-10-24T06:07:13.509777,Accra,24.92,25.77,24.92,24.92,88,3.01,nubes
 2025-10-24T06:15:29.228455,Accra,24.92,25.77,24.92,24.92,88,3.01,nubes
+2025-10-24T08:25:02.829010,Accra,26.09,26.09,26.09,26.09,80,3.5,nubes

@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion
 2025-10-24T06:07:09.203178,Mumbai,33.99,40.16,31.94,33.99,55,5.66,humo
 2025-10-24T06:15:27.024120,Mumbai,33.99,40.16,31.94,33.99,55,5.66,humo
+2025-10-24T08:24:58.476308,Mumbai,32.99,37.79,31.94,32.99,55,4.12,humo

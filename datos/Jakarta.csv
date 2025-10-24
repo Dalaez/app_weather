@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion
 2025-10-24T06:07:08.571524,Jakarta,31.55,36.61,31.16,32.05,62,5.14,nubes dispersas
 2025-10-24T06:15:26.691400,Jakarta,32.13,37.07,31.61,32.95,59,5.14,nubes dispersas
+2025-10-24T08:24:57.849613,Jakarta,25.05,26.07,25.05,26.96,94,6.69,lluvia moderada

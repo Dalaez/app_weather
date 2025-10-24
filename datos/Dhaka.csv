@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion
 2025-10-24T06:07:08.137688,Dhaka,31.99,34.59,31.99,31.99,51,0,niebla
 2025-10-24T06:15:26.480508,Dhaka,31.99,34.59,31.99,31.99,51,1.54,niebla
+2025-10-24T08:24:57.424075,Dhaka,32.99,35.18,32.99,32.99,46,2.57,niebla
