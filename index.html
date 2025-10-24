@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Análisis del Clima en Madrid</title>
+    <title>Dashboard Climático Global</title>
     
     <style>
         body {
@@ -11,23 +11,32 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            min-height: 90vh;
             background-color: #f4f7f6;
             color: #333;
+            padding-top: 20px;
         }
         h1 {
             color: #2c3e50;
         }
-        /* Damos un tamaño al contenedor del gráfico */
+        #controls {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
         #chart-container {
-            width: 80%;
-            max-width: 900px;
+            width: 90%;
+            max-width: 1000px; /* Más ancho para ver mejor los datos */
             margin-top: 20px;
             padding: 20px;
             background-color: #ffffff;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        select {
+            font-size: 16px;
+            padding: 5px;
         }
     </style>
 
@@ -37,104 +46,166 @@
 </head>
 <body>
 
-    <h1>Análisis Histórico del Clima en Madrid</h1>
-    <p>Datos actualizados automáticamente cada día.</p>
+    <h1>Dashboard Climático Global</h1>
+    
+    <div id="controls">
+        <label for="city-select">Selecciona una ciudad:</label>
+        <select id="city-select">
+            <option value="">Cargando ciudades...</option>
+        </select>
+    </div>
     
     <div id="chart-container">
         <canvas id="myChart"></canvas>
     </div>
 
     <script>
-        // La URL de nuestro archivo de datos en el repositorio
-        // ¡IMPORTANTE! Asegúrate de que esta ruta sea correcta.
-        // Si tu CSV está en la raíz del repo, esta es la ruta.
-        const CSV_URL = 'weather_data.csv';
+        // --- Configuración ---
+        const CITIES_LIST_URL = 'ciudades.txt';
+        const DATA_FOLDER_URL = 'datos/';
+        const citySelector = document.getElementById('city-select');
+        const ctx = document.getElementById('myChart').getContext('2d');
+        let myChart; // Variable global para el gráfico
 
-        // Usamos PapaParse para cargar y procesar el archivo CSV
-        Papa.parse(CSV_URL, {
-            download: true, // Le decimos que descargue el archivo de la URL
-            header: true,   // Le decimos que la primera fila son las cabeceras
-            dynamicTyping: true, // Intenta convertir números y booleanos automáticamente
-            skipEmptyLines: true,
-            
-            // 'results' contiene los datos parseados
-            complete: function(results) {
-                console.log("Datos CSV cargados:", results.data); // Para depurar en la consola del navegador
+        /**
+         * 1. Cargar la lista de ciudades (ciudades.txt)
+         */
+        async function cargarListaCiudades() {
+            try {
+                const response = await fetch(CITIES_LIST_URL);
+                const text = await response.text();
                 
-                // Ahora, preparamos los datos para Chart.js
-                const etiquetas = [];     // Eje X (las fechas)
-                const temperaturas = [];  // Eje Y (los datos de temperatura)
+                const ciudades = text.split('\n')
+                                     .map(city => city.trim()) // Limpiar espacios
+                                     .filter(city => city.length > 0); // Quitar líneas vacías
                 
-                // Iteramos sobre cada fila de datos que PapaParse nos ha dado
-                results.data.forEach(fila => {
-                    // Formateamos la fecha para que sea más legible
-                    const fecha = new Date(fila.fecha_hora);
-                    etiquetas.push(fecha.toLocaleString('es-ES', { 
-                        day: 'numeric', 
-                        month: 'short', 
-                        hour: '2-digit', 
-                        minute: '2-digit' 
-                    }));
-                    
-                    // Añadimos el dato de temperatura
-                    temperaturas.push(fila.temperatura_c);
+                // Limpiamos el desplegable
+                citySelector.innerHTML = ''; 
+                
+                // Añadimos cada ciudad como una opción
+                ciudades.forEach(ciudad => {
+                    const option = document.createElement('option');
+                    option.value = ciudad;
+                    option.textContent = ciudad;
+                    citySelector.appendChild(option);
                 });
-
-                // ¡Llamamos a la función para dibujar el gráfico!
-                dibujarGrafico(etiquetas, temperaturas);
+                
+                // Una vez cargadas, cargamos los datos de la primera ciudad
+                cargarYDibujarDatos(ciudades[0]);
+                
+            } catch (error) {
+                console.error("Error al cargar la lista de ciudades:", error);
+                citySelector.innerHTML = '<option value="">Error al cargar</option>';
             }
-        });
+        }
 
-        function dibujarGrafico(etiquetas, datosTemperatura) {
-            // Obtenemos el "lienzo" (canvas) del HTML
-            const ctx = document.getElementById('myChart').getContext('2d');
-            
-            // Creamos un nuevo gráfico de tipo 'line'
-            const myChart = new Chart(ctx, {
-                type: 'line', // Tipo de gráfico
+        /**
+         * 2. Cargar el CSV de una ciudad y dibujar el gráfico
+         */
+        function cargarYDibujarDatos(ciudad) {
+            if (!ciudad) return;
+
+            // Construimos la URL del fichero CSV (ej: datos/León.csv)
+            const nombreFichero = ciudad.replace(/ /g, '_') + '.csv';
+            const csvUrl = DATA_FOLDER_URL + nombreFichero;
+
+            console.log(`Cargando datos desde: ${csvUrl}`);
+
+            Papa.parse(csvUrl, {
+                download: true,
+                header: true,
+                dynamicTyping: true,
+                skipEmptyLines: true,
+                
+                complete: function(results) {
+                    console.log("Datos CSV cargados:", results.data);
+                    
+                    const etiquetas = [];
+                    const temperaturas = [];
+                    const sensaciones = []; // ¡Vamos a añadir una segunda línea!
+
+                    results.data.forEach(fila => {
+                        const fecha = new Date(fila.fecha_hora);
+                        etiquetas.push(fecha.toLocaleString('es-ES', { 
+                            day: 'numeric', month: 'short', hour: '2-digit' 
+                        }));
+                        
+                        temperaturas.push(fila.temperatura_c);
+                        sensaciones.push(fila.sensacion_c); // Nuevo dato
+                    });
+
+                    // Dibujar el gráfico con estos datos
+                    dibujarGrafico(ciudad, etiquetas, temperaturas, sensaciones);
+                },
+                error: function(err, file) {
+                    console.error("Error al parsear el CSV:", err);
+                    // Si hay un error (ej. el bot aún no ha creado el fichero)
+                    // limpiamos el gráfico anterior.
+                    if (myChart) myChart.destroy(); 
+                }
+            });
+        }
+
+        /**
+         * 3. Función de dibujado de Chart.js
+         */
+        function dibujarGrafico(ciudad, etiquetas, temps, sensaciones) {
+            // Destruir el gráfico anterior si existe
+            if (myChart) {
+                myChart.destroy();
+            }
+
+            myChart = new Chart(ctx, {
+                type: 'line',
                 data: {
-                    labels: etiquetas, // Nuestros datos del Eje X
-                    datasets: [{
-                        label: 'Temperatura (°C)',
-                        data: datosTemperatura, // Nuestros datos del Eje Y
-                        borderColor: 'rgb(75, 192, 192)',
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderWidth: 2,
-                        fill: true,
-                        tension: 0.1 // Suaviza la línea
-                    }]
+                    labels: etiquetas,
+                    datasets: [
+                        {
+                            label: 'Temperatura (°C)',
+                            data: temps,
+                            borderColor: 'rgb(255, 99, 132)',
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            fill: true,
+                            tension: 0.1
+                        },
+                        {
+                            label: 'Sensación Térmica (°C)',
+                            data: sensaciones,
+                            borderColor: 'rgb(54, 162, 235)',
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            fill: false, // La segunda línea sin relleno
+                            tension: 0.1
+                        }
+                    ]
                 },
                 options: {
                     responsive: true,
                     plugins: {
                         title: {
                             display: true,
-                            text: 'Evolución de la Temperatura en Madrid'
-                        },
-                        tooltip: {
-                            mode: 'index',
-                            intersect: false
+                            text: `Evolución del Clima en ${ciudad}`,
+                            font: { size: 18 }
                         }
                     },
                     scales: {
-                        x: {
-                            display: true,
-                            title: {
-                                display: true,
-                                text: 'Fecha y Hora'
-                            }
-                        },
                         y: {
-                            display: true,
-                            title: {
-                                display: true,
-                                text: 'Temperatura (°C)'
-                            }
+                            beginAtZero: false // No empezar en 0, mejor para temps
                         }
                     }
                 }
             });
         }
+
+        // --- INICIO DE LA APLICACIÓN ---
+
+        // 1. Cargar la lista de ciudades al abrir la página
+        cargarListaCiudades();
+
+        // 2. Añadir el "listener" para que reaccione a los cambios del usuario
+        citySelector.addEventListener('change', (e) => {
+            cargarYDibujarDatos(e.target.value);
+        });
+
     </script>
 
 </body>
