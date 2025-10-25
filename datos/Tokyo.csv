@@ -6,3 +6,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T14:45:06.742654,Tokyo,13.25,13.06,12.55,13.79,93,4.12,lluvia ligera
 2025-10-25T14:56:18.782716,Tokyo,13.25,13.06,12.55,13.79,93,4.12,lluvia de gran intensidad
 2025-10-25T15:12:25.229106,Tokyo,13.25,13.06,12.55,13.79,93,4.12,niebla
+2025-10-25T15:19:12.629383,Tokyo,13.25,13.06,12.55,13.79,93,4.12,niebla

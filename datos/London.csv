@@ -6,3 +6,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T14:45:02.902297,London,11.11,10.05,9.98,12.27,68,6.69,muy nuboso
 2025-10-25T14:56:13.600770,London,10.96,9.89,9.98,12.27,68,6.69,muy nuboso
 2025-10-25T15:12:21.563074,London,10.64,9.51,9.95,11.25,67,6.17,algo de nubes
+2025-10-25T15:19:05.194329,London,10.64,9.51,9.95,11.25,67,6.17,algo de nubes

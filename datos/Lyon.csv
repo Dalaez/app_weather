@@ -6,3 +6,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T14:45:04.979718,Arrondissement de Lyon,9.37,9.37,8.34,9.72,89,0.89,lluvia de gran intensidad
 2025-10-25T14:56:16.375153,Arrondissement de Lyon,8.56,6.9,8.34,9.42,91,2.81,lluvia de gran intensidad
 2025-10-25T15:12:23.521544,Arrondissement de Lyon,8,6.23,7.78,8.86,92,2.81,lluvia moderada
+2025-10-25T15:19:09.214686,Arrondissement de Lyon,8,6.23,7.78,8.86,92,2.81,lluvia moderada

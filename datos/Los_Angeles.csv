@@ -6,3 +6,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T14:45:07.848987,Los Angeles,16.26,16.27,14.95,17.73,89,0,niebla
 2025-10-25T14:56:20.352680,Los Angeles,16.25,16.25,14.95,17.73,89,1.54,niebla
 2025-10-25T15:12:26.401454,Los Angeles,16.23,16.23,14.84,17.89,89,3.6,niebla
+2025-10-25T15:19:15.014000,Los Angeles,16.23,16.23,14.84,17.89,89,3.6,niebla

@@ -6,3 +6,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T14:45:04.849315,Munich,8.12,6.47,7.92,9.52,87,2.68,nubes
 2025-10-25T14:56:16.173043,Munich,8.09,5.06,7.55,9.52,87,5.36,nubes
 2025-10-25T15:12:23.391402,Munich,8.3,6.39,7.55,9.52,86,3.13,nubes
+2025-10-25T15:19:08.914178,Munich,8.3,5.15,7.55,9.58,85,5.81,nubes
