@@ -4,3 +4,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-24T08:24:55.573989,Tirana,20.49,20.06,20.49,20.49,56,1.54,nubes dispersas
 2025-10-25T08:21:18.137880,Tirana,15.49,14.84,15.49,15.49,67,2.57,algo de nubes
 2025-10-25T14:45:04.143403,Tirana,20.49,19.72,20.49,20.49,43,3.09,muy nuboso
+2025-10-25T14:56:15.208863,Tirana,20.49,19.72,20.49,20.49,43,1.54,nubes dispersas

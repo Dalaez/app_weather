@@ -4,3 +4,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-24T08:25:01.754643,Toronto,6.19,-0.01,5.53,6.84,87,15.65,nubes
 2025-10-25T08:21:27.703006,Toronto,4.89,3.18,3.6,5.4,85,2.06,cielo claro
 2025-10-25T14:45:08.039621,Toronto,8.19,6.63,7.4,9.06,81,2.57,nubes
+2025-10-25T14:56:20.628871,Toronto,8.72,7.89,7.66,9.62,79,1.79,muy nuboso

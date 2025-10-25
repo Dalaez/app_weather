@@ -4,3 +4,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-24T08:24:54.389442,Paris,7.29,4.14,6.81,8.43,88,5.14,cielo claro
 2025-10-25T08:21:16.298292,Paris,10.83,10.14,9.65,11.77,83,5.66,muy nuboso
 2025-10-25T14:45:03.399133,Paris,14.42,13.69,13.38,15.08,68,5.66,muy nuboso
+2025-10-25T14:56:14.167078,Paris,14.15,13.45,12.34,14.52,70,5.14,nubes dispersas

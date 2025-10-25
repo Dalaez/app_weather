@@ -4,3 +4,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-24T08:24:59.767814,Sydney,17.47,17.1,17.06,18.27,70,7.2,nubes dispersas
 2025-10-25T08:21:24.720211,Sydney,21,20.75,20.39,22.61,61,5.14,nubes
 2025-10-25T14:45:06.874443,Sydney,16.14,15.64,14.57,16.93,70,1.98,muy nuboso
+2025-10-25T14:56:18.971560,Sydney,15.97,15.48,14.64,17.41,71,1.98,muy nuboso
