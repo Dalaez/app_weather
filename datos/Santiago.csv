@@ -5,3 +5,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T08:21:28.698199,Santiago,10.35,9.24,10.03,11.51,69,0.89,nubes dispersas
 2025-10-25T14:45:08.423060,Santiago,16.12,15.17,14.53,16.34,53,2.06,cielo claro
 2025-10-25T14:56:21.174443,Santiago,16.43,15.51,14.53,16.9,53,2.06,cielo claro
+2025-10-25T15:12:26.994858,Santiago,16.63,15.71,15.53,16.9,52,3.09,cielo claro

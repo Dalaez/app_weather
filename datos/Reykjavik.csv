@@ -5,3 +5,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T08:21:16.631428,Reykjavik,-2.19,-6.22,-2.19,-2.19,69,3.09,muy nuboso
 2025-10-25T14:45:03.530806,Reykjavik,0.81,-2.6,0.81,1.05,60,3.09,nevada ligera
 2025-10-25T14:56:14.349154,Reykjavik,0.81,-2.6,0.81,1.05,60,3.09,nevada ligera
+2025-10-25T15:12:22.092462,Reykjavik,1.05,-2.99,1.05,1.05,53,4,nevada ligera

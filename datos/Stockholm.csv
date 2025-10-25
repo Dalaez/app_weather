@@ -5,3 +5,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T08:21:17.807707,Stockholm,8.99,8.45,8.86,9.47,98,1.54,muy nuboso
 2025-10-25T14:45:03.999674,Stockholm,9.81,9.81,8.99,10.06,94,0,muy nuboso
 2025-10-25T14:56:15.015475,Stockholm,9.81,9.81,8.99,10.06,94,0,muy nuboso
+2025-10-25T15:12:22.572262,Stockholm,9.63,9.63,8.99,10.03,94,0,lluvia ligera

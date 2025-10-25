@@ -5,3 +5,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T08:21:13.794136,Bucharest,12.13,11.1,12.01,13.05,65,3.13,cielo claro
 2025-10-25T14:45:02.295967,Bucharest,16.4,15.32,16.01,16.59,47,4.63,lluvia muy fuerte
 2025-10-25T14:56:12.732941,Bucharest,15.63,14.66,15,16.16,54,4.92,cielo claro
+2025-10-25T15:12:20.951929,Bucharest,15.08,14.11,13.94,16.05,56,4.92,cielo claro

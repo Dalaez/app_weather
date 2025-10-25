@@ -5,3 +5,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T08:21:24.883607,Melbourne,24.5,24.76,23.35,25.54,67,7.72,cielo claro
 2025-10-25T14:45:06.958939,Melbourne,26.94,28.01,26.14,27.79,60,7.72,nubes dispersas
 2025-10-25T14:56:19.070830,Melbourne,27.04,28.13,26.14,27.81,60,7.72,nubes dispersas
+2025-10-25T15:12:25.430794,Melbourne,27.1,28.21,26.14,27.81,60,8.23,algo de nubes

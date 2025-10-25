@@ -5,3 +5,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T08:21:25.877690,Caracas,26.26,26.26,26.26,26.26,82,1.38,nubes
 2025-10-25T14:45:07.341771,Caracas,27.07,28.56,26.49,28.67,65,2.68,algo de nubes
 2025-10-25T14:56:19.618088,Caracas,27.3,28.73,26.49,28.67,63,2.57,algo de nubes
+2025-10-25T15:12:25.871482,Caracas,27.05,28.45,27.05,28.43,64,1.79,muy nuboso
