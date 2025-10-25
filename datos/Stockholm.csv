@@ -2,3 +2,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-24T06:07:06.072161,Stockholm,10.55,10.14,9.54,10.86,95,5.66,cielo claro
 2025-10-24T06:15:25.359365,Stockholm,10.55,10.14,9.54,10.86,95,5.66,cielo claro
 2025-10-24T08:24:55.363409,Stockholm,9.91,7.07,8.99,10.59,98,6.17,nubes
+2025-10-25T08:21:17.807707,Stockholm,8.99,8.45,8.86,9.47,98,1.54,muy nuboso

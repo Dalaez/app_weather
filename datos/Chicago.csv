@@ -2,3 +2,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-24T06:07:12.201519,Chicago,5.06,2.91,3.4,5.58,75,2.57,cielo claro
 2025-10-24T06:15:28.609981,Chicago,5.06,2.91,3.4,5.58,76,2.57,cielo claro
 2025-10-24T08:25:01.505327,Chicago,4.05,4.05,2.88,4.46,78,0.45,cielo claro
+2025-10-25T08:21:27.368688,Chicago,4.04,2.8,3.14,5.09,87,1.54,cielo claro

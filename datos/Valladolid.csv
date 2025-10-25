@@ -2,3 +2,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-24T06:07:02.213044,Valladolid,7.59,6.97,5.97,8.38,79,1.44,muy nuboso
 2025-10-24T06:15:23.349614,Valladolid,7.59,6.97,5.97,8.38,79,1.44,muy nuboso
 2025-10-24T08:24:51.581663,Valladolid,9.15,9.15,7.64,10.61,80,0.82,nubes
+2025-10-25T08:21:11.931521,Valladolid,12.62,12.03,11.84,12.83,80,3.7,lluvia moderada

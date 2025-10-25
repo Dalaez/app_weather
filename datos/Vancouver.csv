@@ -2,3 +2,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-24T06:07:12.520125,Vancouver,13.62,13.02,12.21,14.53,76,7.2,nubes
 2025-10-24T06:15:28.763828,Vancouver,13.58,13,12.21,14.05,77,7.2,nubes
 2025-10-24T08:25:01.857240,Vancouver,13.43,12.81,11.82,14.53,76,8.23,nubes
+2025-10-25T08:21:27.868104,Vancouver,7.67,5.35,6.82,8.49,94,3.6,nubes dispersas

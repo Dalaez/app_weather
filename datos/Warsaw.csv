@@ -2,3 +2,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-24T06:07:06.972753,Warsaw,10.81,10.45,9.94,12.02,96,4.63,lluvia ligera
 2025-10-24T06:15:25.863540,Warsaw,10.71,10.34,9.94,12.02,96,4.63,lluvia ligera
 2025-10-24T08:24:56.231290,Warsaw,10.14,9.77,9.39,11.47,98,3.6,lluvia moderada
+2025-10-25T08:21:19.145217,Warsaw,8.14,5.66,6.79,9.39,81,4.12,cielo claro

@@ -2,3 +2,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-24T06:07:10.909836,Buenos Aires,20.53,21.01,19.91,21.11,91,1.54,tormenta con lluvia ligera
 2025-10-24T06:15:27.935615,Buenos Aires,20.54,21.03,19.96,21.11,91,1.54,tormenta con lluvia ligera
 2025-10-24T08:25:00.212463,Buenos Aires,20.89,21.38,19.96,21.58,90,7.2,tormenta
+2025-10-25T08:21:25.376120,Buenos Aires,19.39,19.84,17.78,19.85,94,3.09,lluvia moderada

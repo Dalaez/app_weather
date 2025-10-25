@@ -2,3 +2,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-24T06:06:59.371555,Lleida,8.3,6.12,8.11,8.3,78,3.6,cielo claro
 2025-10-24T06:15:21.925538,Lleida,8.3,6.12,8.11,8.3,78,3.6,cielo claro
 2025-10-24T08:24:48.838637,Lleida,11.08,10.2,11.08,12.11,75,3.09,cielo claro
+2025-10-25T08:21:07.634500,Lleida,13.3,12.85,13.3,15.11,83,0,nubes dispersas
