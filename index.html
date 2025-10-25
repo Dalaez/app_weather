@@ -51,6 +51,10 @@
             flex-wrap: wrap;
             padding: 20px;
             margin-bottom: 20px;
+            
+            /* [CAMBIO] Arreglo para el bug de superposición */
+            position: relative;
+            z-index: 10;
         }
         
         #city-select-container { width: 400px; }
@@ -443,8 +447,8 @@
                 cityDataSets[ciudad] = {};
 
                 filteredData.forEach(row => {
-                    const label = row.fecha_hora.toLocaleString('es-ES', { 
-                        day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' 
+                        const label = row.fecha_hora.toLocaleString('es-ES', { 
+                        day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', timeZoneName: 'short'
                     });
                     allLabels.add(label);
                     cityDataSets[ciudad][label] = row[currentMetric.key];
