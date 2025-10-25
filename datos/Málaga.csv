@@ -7,3 +7,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T14:56:09.599203,Málaga,26.3,26.3,24.6,28.43,61,0.45,muy nuboso
 2025-10-25T15:12:18.640821,Málaga,26.33,26.33,23.49,28.43,63,0.89,muy nuboso
 2025-10-25T15:18:59.513824,Málaga,26.33,26.33,23.49,28.43,63,0.89,muy nuboso
+2025-10-25T15:29:44.814853,Málaga,25.19,25.54,22.94,28.43,68,3.6,algo de nubes
