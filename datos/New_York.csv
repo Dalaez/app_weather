@@ -4,3 +4,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-24T08:25:01.290254,New York,9.07,6.37,6.84,9.97,71,5.14,cielo claro
 2025-10-25T08:21:27.038865,New York,9.38,7.03,6.57,10.55,69,4.47,cielo claro
 2025-10-25T14:45:07.784641,New York,12.17,10.96,10.88,13.34,58,6.17,algo de nubes
+2025-10-25T14:56:20.257122,New York,12.22,11.01,10.97,13.5,58,6.17,algo de nubes

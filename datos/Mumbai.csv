@@ -4,3 +4,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-24T08:24:58.476308,Mumbai,32.99,37.79,31.94,32.99,55,4.12,humo
 2025-10-25T08:21:22.664284,Mumbai,30.99,35.33,30.94,30.99,62,6.17,niebla
 2025-10-25T14:45:06.033798,Mumbai,28.99,33.47,28.99,28.99,74,3.09,niebla
+2025-10-25T14:56:17.835970,Mumbai,28.99,33.47,28.99,28.99,74,3.09,niebla

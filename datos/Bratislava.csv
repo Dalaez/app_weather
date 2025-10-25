@@ -4,3 +4,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-24T08:24:52.561362,Bratislava,11.68,10.73,11.46,12.01,70,9.26,nubes dispersas
 2025-10-25T08:21:13.454754,Bratislava,8.7,8.7,7.81,9.3,72,1.03,cielo claro
 2025-10-25T14:45:02.152221,Bratislava,13.43,12.45,13.09,13.81,62,5.14,cielo claro
+2025-10-25T14:56:12.551507,Bratislava,13.06,12.09,12.54,13.81,64,5.14,cielo claro
