@@ -1,2 +1,5 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion
 2025-10-24T06:07:08.249119,Hanoi,22,22.11,22,22,71,4.15,nubes
+2025-10-24T06:15:26.536231,Hanoi,22,22.11,22,22,71,4.15,nubes
+2025-10-24T08:24:57.528849,Hanoi,22,21.9,22,22,63,3.67,nubes
+2025-10-25T08:21:21.145511,Hanoi,25,25.07,25,25,58,2.44,nubes dispersas

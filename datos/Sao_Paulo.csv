@@ -1,2 +1,5 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion
 2025-10-24T06:07:13.183644,São Paulo,14.49,14.19,14.49,15.2,84,4.63,muy nuboso
+2025-10-24T06:15:29.070364,São Paulo,14.49,14.19,14.49,15.2,84,4.63,muy nuboso
+2025-10-24T08:25:02.500277,São Paulo,14.3,14.08,12.94,14.49,88,3.6,algo de nubes
+2025-10-25T08:21:28.869678,São Paulo,15.61,15.47,15.25,16.2,86,5.14,cielo claro

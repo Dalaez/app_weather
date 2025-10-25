@@ -1,2 +1,5 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion
 2025-10-24T06:07:00.153024,Murcia,14.12,13.55,14.12,14.12,75,1.99,cielo claro
+2025-10-24T06:15:22.314507,Murcia,14.12,13.55,14.12,14.12,75,1.99,cielo claro
+2025-10-24T08:24:49.618646,Murcia,17.12,16.64,17.12,20.33,67,0.91,nubes dispersas
+2025-10-25T08:21:08.863878,Murcia,15.12,14.49,15.12,18.11,69,0.74,nubes

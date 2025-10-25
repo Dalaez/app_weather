@@ -1,2 +1,5 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion
 2025-10-24T06:07:03.546966,Budapest,9.82,6.51,8.95,11.29,91,7.72,nubes
+2025-10-24T06:15:24.029950,Budapest,9.82,6.51,8.95,11.29,91,7.72,nubes
+2025-10-24T08:24:52.889355,Budapest,10.86,10.22,10.46,12.29,85,10.29,lluvia ligera
+2025-10-25T08:21:13.968602,Budapest,10.36,9.31,10.01,11.57,71,2.68,muy nuboso

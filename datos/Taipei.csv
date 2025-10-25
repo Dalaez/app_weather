@@ -1,2 +1,5 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion
 2025-10-24T06:07:09.947061,Taipei,23.89,23.95,23.36,24.07,62,4.63,muy nuboso
+2025-10-24T06:15:27.430624,Taipei,23.89,23.98,23.36,24.07,63,4.63,muy nuboso
+2025-10-24T08:24:59.226092,Taipei,23.47,23.49,22.81,24.07,62,4.63,llovizna ligera
+2025-10-25T08:21:23.873452,Taipei,24.89,25.05,23.91,25.93,62,3.13,llovizna ligera

@@ -1,2 +1,5 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion
 2025-10-24T06:06:58.927675,Province of Huelva,16.74,16.92,16.74,16.74,94,1.96,algo de nubes
+2025-10-24T06:15:21.700082,Province of Huelva,16.74,16.92,16.74,16.74,94,1.96,algo de nubes
+2025-10-24T08:24:48.402857,Province of Huelva,18.88,19.04,18.88,18.88,85,1.74,algo de nubes
+2025-10-25T08:21:06.950329,Province of Huelva,18.32,18.43,18.32,18.32,85,1.24,muy nuboso

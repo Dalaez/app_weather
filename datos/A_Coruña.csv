@@ -1,2 +1,5 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion
 2025-10-24T06:06:56.821003,A Coruña,11.36,10.82,10.28,11.61,87,3.09,cielo claro
+2025-10-24T06:15:20.606676,A Coruña,11.17,10.67,9.58,11.61,89,3.09,cielo claro
+2025-10-24T08:24:46.331769,A Coruña,11.67,11.22,9.58,12.16,89,3.09,cielo claro
+2025-10-25T08:21:03.739526,A Coruña,13.37,13.19,12.5,14.09,93,2.06,muy nuboso

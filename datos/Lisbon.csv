@@ -1,2 +1,5 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion
 2025-10-24T06:07:04.191698,Lisbon,20.38,20.59,19.24,21.15,81,3.58,nubes
+2025-10-24T06:15:24.368565,Lisbon,20.38,20.59,19.24,21.15,81,3.58,nubes
+2025-10-24T08:24:53.524974,Lisbon,20.4,20.72,19.24,20.87,85,3.09,muy nuboso
+2025-10-25T08:21:14.959755,Lisbon,19.69,20.04,18.69,20.41,89,4.63,niebla

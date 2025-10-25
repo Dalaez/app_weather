@@ -1,2 +1,5 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion
 2025-10-24T06:06:58.378155,Córdoba,23.64,23.94,23.2,24.47,72,5.66,nubes dispersas
+2025-10-24T06:15:21.423275,Córdoba,23.64,23.94,23.2,24.47,72,5.66,nubes dispersas
+2025-10-24T08:24:47.849901,Córdoba,21.59,21.84,21.25,22.46,78,2.57,muy nuboso
+2025-10-25T08:21:06.111098,Córdoba,14.69,14.15,14.02,14.86,74,11.32,muy nuboso

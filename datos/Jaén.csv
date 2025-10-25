@@ -1,2 +1,5 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion
 2025-10-24T06:06:59.154125,Jaen,13.76,13.44,13.76,13.76,86,1.26,cielo claro
+2025-10-24T06:15:21.817223,Jaen,13.76,13.44,13.76,13.76,86,1.26,cielo claro
+2025-10-24T08:24:48.622818,Jaen,16.72,16.41,16.72,16.72,75,1.06,algo de nubes
+2025-10-25T08:21:07.298902,Jaen,16.51,15.78,16.51,16.51,60,0.36,nubes

@@ -1,2 +1,5 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion
 2025-10-24T06:07:13.740472,Cairo,22.42,22.88,21.9,22.42,83,1.03,nubes dispersas
+2025-10-24T06:15:29.333619,Cairo,22.42,22.88,21.9,22.42,83,1.03,nubes dispersas
+2025-10-24T08:25:03.051502,Cairo,25.42,25.71,25.23,25.42,65,2.06,algo de nubes
+2025-10-25T08:21:29.703807,Cairo,29.42,28.51,29.12,29.42,34,1.03,cielo claro

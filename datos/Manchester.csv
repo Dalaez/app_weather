@@ -1,2 +1,5 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion
 2025-10-24T06:07:07.289974,Manchester,6.07,4.11,5.08,7.41,90,2.57,lluvia moderada
+2025-10-24T06:15:26.029341,Manchester,6.06,4.1,5.08,7.41,90,2.57,lluvia moderada
+2025-10-24T08:24:56.556328,Manchester,6.49,6.49,5.64,7.41,91,0.45,lluvia moderada
+2025-10-25T08:21:19.655424,Manchester,8.42,6.9,7.64,9.13,79,2.57,muy nuboso

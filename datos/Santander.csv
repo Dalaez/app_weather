@@ -1,2 +1,5 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion
 2025-10-24T06:07:01.293926,Santander,13.03,12.16,11.62,13.03,68,5.14,algo de nubes
+2025-10-24T06:15:22.896397,Santander,13.03,12.16,11.62,13.03,68,5.14,algo de nubes
+2025-10-24T08:24:50.714469,Santander,13.42,12.54,12,13.59,66,4.63,algo de nubes
+2025-10-25T08:21:10.581533,Santander,14.98,14.44,13.11,15.26,73,4.12,cielo claro

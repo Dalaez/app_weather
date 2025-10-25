@@ -1,2 +1,5 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion
 2025-10-24T06:07:02.667070,Amsterdam,9.98,5.73,9.37,10.56,74,12.35,nubes dispersas
+2025-10-24T06:15:23.574770,Amsterdam,9.98,5.73,9.37,10.56,74,12.35,nubes dispersas
+2025-10-24T08:24:52.027354,Amsterdam,10.46,9.44,9.93,11.11,72,11.83,nubes dispersas
+2025-10-25T08:21:12.619050,Amsterdam,10.27,9.65,9.37,11.66,88,6.69,lluvia y llovizna ligera

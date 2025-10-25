@@ -1,2 +1,5 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion
 2025-10-24T06:06:57.261833,Ávila,10.09,9.11,10.09,10.09,75,0.76,nubes
+2025-10-24T06:15:20.844115,Ávila,10.09,9.11,10.09,10.09,75,0.76,nubes
+2025-10-24T08:24:46.764987,Ávila,11.18,10.26,11.18,11.18,73,0.82,nubes
+2025-10-25T08:21:04.410895,Ávila,12.18,11.59,12.18,12.18,82,0.41,nubes

@@ -1,2 +1,5 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion
 2025-10-24T06:07:09.100835,Manila,32.85,39.85,31.68,34,64,4.12,nubes dispersas
+2025-10-24T06:15:26.973463,Manila,32.85,39.85,31.68,34,64,4.12,nubes dispersas
+2025-10-24T08:24:58.372519,Manila,30.2,36.05,30,30.62,72,3.09,muy nuboso
+2025-10-25T08:21:22.491486,Manila,30.27,37.27,30.07,32,78,4.47,muy nuboso

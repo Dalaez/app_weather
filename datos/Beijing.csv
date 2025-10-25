@@ -1,2 +1,5 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion
 2025-10-24T06:07:07.926375,Beijing,12.94,11.31,12.94,12.94,39,2.96,cielo claro
+2025-10-24T06:15:26.360846,Beijing,12.94,11.31,12.94,12.94,39,2.96,cielo claro
+2025-10-24T08:24:57.209450,Beijing,12.94,11.44,12.94,12.94,44,2.99,algo de nubes
+2025-10-25T08:21:20.644636,Beijing,15.94,14.71,15.94,15.94,43,1.97,nubes

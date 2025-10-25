@@ -1,2 +1,5 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion
 2025-10-24T06:07:03.430118,Bucharest,11.5,11.03,9.01,12.22,89,2.57,bruma
+2025-10-24T06:15:23.974391,Bucharest,9.01,7.6,9.01,9.05,93,2.57,bruma
+2025-10-24T08:24:52.783408,Bucharest,16.03,15.73,14.01,16.03,78,0.51,lluvia muy fuerte
+2025-10-25T08:21:13.794136,Bucharest,12.13,11.1,12.01,13.05,65,3.13,cielo claro
