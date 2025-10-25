@@ -3,3 +3,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-24T06:15:21.363855,Ciudad Real,16.69,16.79,16.03,16.75,91,2.24,muy nuboso
 2025-10-24T08:24:47.747384,Ciudad Real,17.84,17.93,17.03,17.86,86,2.24,nubes
 2025-10-25T08:21:05.935473,Ciudad Real,16.82,16.86,16.73,17.73,88,2.24,nubes
+2025-10-25T14:44:58.989039,Ciudad Real,25.11,25.01,24.5,26.03,51,3.58,algo de nubes

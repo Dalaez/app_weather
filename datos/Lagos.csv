@@ -3,3 +3,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-24T06:15:29.613178,Lagos,24.61,25.58,24.61,24.61,94,1.07,lluvia ligera
 2025-10-24T08:25:03.595657,Lagos,27.8,31.6,27.8,27.8,80,1.87,nubes
 2025-10-25T08:21:30.537826,Lagos,28.12,31.77,28.12,28.12,76,2.07,nubes dispersas
+2025-10-25T14:45:09.141713,Lagos,29.29,33.37,29.29,29.29,70,2.51,lluvia ligera

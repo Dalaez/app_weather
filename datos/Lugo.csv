@@ -3,3 +3,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-24T06:15:22.038016,Lugo,3.84,2.85,3.84,4.15,99,1.34,muy nuboso
 2025-10-24T08:24:49.060258,Lugo,4.95,4.11,4.15,4.95,95,1.34,muy nuboso
 2025-10-25T08:21:08.017115,Lugo,8.28,6.99,8.28,10.27,92,2.24,nubes
+2025-10-25T14:44:59.912350,Lugo,11.06,10.31,11.06,11.93,80,4.02,nubes

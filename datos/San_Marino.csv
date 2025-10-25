@@ -3,3 +3,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-24T06:15:25.119519,San Marino,13.99,13.14,10.39,15.35,65,0.45,cielo claro
 2025-10-24T08:24:54.930972,San Marino,16.53,15.83,15.71,17.65,61,5.66,cielo claro
 2025-10-25T08:21:17.141122,San Marino,16.6,16.01,16.42,17.57,65,3.13,algo de nubes
+2025-10-25T14:45:03.730690,San Marino,19.39,18.77,19.24,19.79,53,5.66,nubes dispersas

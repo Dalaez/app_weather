@@ -3,3 +3,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-24T06:15:24.247088,Istanbul,19.53,19.44,19.53,19.68,73,5.66,nubes dispersas
 2025-10-24T08:24:53.314888,Istanbul,19.53,19.44,19.53,19.68,73,5.14,muy nuboso
 2025-10-25T08:21:14.625673,Istanbul,17.31,16.98,17.31,17.68,72,5.14,lluvia ligera
+2025-10-25T14:45:02.640619,Istanbul,17.31,16.45,17.31,17.68,52,4.12,cielo claro

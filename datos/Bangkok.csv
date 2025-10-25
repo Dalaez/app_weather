@@ -3,3 +3,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-24T06:15:26.304375,Bangkok,31.59,33.85,30.94,32.17,51,3.6,muy nuboso
 2025-10-24T08:24:57.102422,Bangkok,31.65,36.56,30.94,32.16,61,3.13,nubes
 2025-10-25T08:21:20.480337,Bangkok,32.28,35.67,30.94,32.72,53,3.09,nubes
+2025-10-25T14:45:05.106198,Bangkok,28.94,32.97,27.17,28.94,72,2.29,nubes

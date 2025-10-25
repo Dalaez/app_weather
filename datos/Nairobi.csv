@@ -3,3 +3,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-24T06:15:29.667856,Nairobi,19.44,19.32,19.44,19.44,72,2.46,lluvia ligera
 2025-10-24T08:25:03.698267,Nairobi,22.71,22.5,22.71,22.71,56,3.08,lluvia ligera
 2025-10-25T08:21:30.703348,Nairobi,22.67,22.45,22.67,22.67,56,3.3,nubes
+2025-10-25T14:45:09.204549,Nairobi,22.93,22.66,21.62,22.93,53,7.72,muy nuboso

@@ -3,3 +3,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-24T06:15:20.785184,Almeria,15.74,14.6,15.74,15.74,47,2.22,cielo claro
 2025-10-24T08:24:46.653032,Almeria,18.97,17.97,18.97,18.97,40,1.46,cielo claro
 2025-10-25T08:21:04.239519,Almeria,18.66,17.42,18.66,18.66,32,0.98,nubes
+2025-10-25T14:44:58.288650,Almeria,25.18,24.48,25.18,25.18,28,2.46,nubes

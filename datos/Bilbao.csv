@@ -3,3 +3,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-24T06:15:21.004163,Bilbao,8.15,3.5,7.56,9.92,74,11.18,algo de nubes
 2025-10-24T08:24:47.089664,Bilbao,10.21,9.27,9.71,12.7,76,2.06,cielo claro
 2025-10-25T08:21:04.912004,Bilbao,12.45,11.94,12.01,14.59,84,1.79,cielo claro
+2025-10-25T14:44:58.560725,Bilbao,17.01,16.28,16.46,17.92,58,5.81,muy nuboso

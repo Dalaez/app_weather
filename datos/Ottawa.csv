@@ -3,3 +3,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-24T06:15:28.813993,Ottawa,4.89,3.33,3.39,5.42,88,1.91,muy nuboso
 2025-10-24T08:25:01.962965,Ottawa,4.86,3.47,3.96,5.02,77,1.76,nubes
 2025-10-25T08:21:28.032855,Ottawa,5.65,5.65,4.51,6.1,77,0.45,nubes
+2025-10-25T14:45:08.168269,Ottawa,5.99,3.31,5.24,6.74,83,3.6,muy nuboso

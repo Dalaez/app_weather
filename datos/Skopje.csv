@@ -3,3 +3,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-24T06:15:25.238550,Skopje,14.82,14.81,14.82,14.82,94,2.06,lluvia ligera
 2025-10-24T08:24:55.144132,Skopje,18.82,18.77,18.82,18.82,77,2.06,nubes dispersas
 2025-10-25T08:21:17.474858,Skopje,10.82,9.94,10.82,10.82,76,1.03,cielo claro
+2025-10-25T14:45:03.858671,Skopje,17.82,17.09,17.82,17.82,55,1.03,muy nuboso
