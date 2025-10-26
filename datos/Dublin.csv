@@ -5,3 +5,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-26T09:28:32.027621,Mountjoy,8.02,4.67,6.99,9.04,85,6.17,lluvia ligera,53.3498,-6.2603
 2025-10-26T09:45:14.211033,Mountjoy,7.95,4.58,6.99,9.04,86,6.17,lluvia ligera,53.3498,-6.2603
 2025-10-26T10:05:52.067483,Mountjoy,7.8,4.39,6.99,8.67,87,6.17,lluvia ligera,53.3498,-6.2603
+2025-10-26T10:15:41.647964,Mountjoy,7.82,5.02,6.99,8.67,87,4.63,muy nuboso,53.3498,-6.2603

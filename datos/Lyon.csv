@@ -5,3 +5,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-26T09:29:15.747109,Vieux Lyon,10.08,9.18,9.06,10.57,78,2.06,cielo claro,45.764,4.8357
 2025-10-26T09:45:55.269289,Lyon,10.92,9.97,9.62,11.15,73,2.57,nubes dispersas,45.764,4.8357
 2025-10-26T10:06:34.532767,Vieux Lyon,10.88,9.9,9.62,11.82,72,2.57,nubes dispersas,45.764,4.8357
+2025-10-26T10:16:22.699434,Lyon,10.99,9.95,9.62,11.82,69,5.66,algo de nubes,45.764,4.8357

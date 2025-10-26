@@ -5,3 +5,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-26T09:28:39.547809,London,7.8,4.58,6.7,8.92,77,5.66,cielo claro,51.5072,-0.1276
 2025-10-26T09:45:21.237650,London,8.39,5.32,7.51,9.47,75,5.66,algo de nubes,51.5072,-0.1276
 2025-10-26T10:05:59.333308,London,9.12,6.24,7.97,10.07,73,5.66,algo de nubes,51.5072,-0.1276
+2025-10-26T10:15:48.672358,London,9.06,6.17,7.97,9.51,73,5.66,algo de nubes,51.5072,-0.1276

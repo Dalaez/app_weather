@@ -5,3 +5,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-26T09:28:35.798101,Pushcha-Vodytsya,11.3,10.29,11.3,11.3,69,0.45,nubes,50.4501,30.5234
 2025-10-26T09:45:17.725874,Pushcha-Vodytsya,11.86,10.85,11.86,11.86,67,1.79,nubes,50.4501,30.5234
 2025-10-26T10:05:55.699595,Pushcha-Vodytsya,12.41,11.4,12.41,12.41,65,0.89,nubes,50.4501,30.5234
+2025-10-26T10:15:45.153270,Pushcha-Vodytsya,12.41,11.38,12.41,12.41,64,0.45,nubes,50.4501,30.5234
