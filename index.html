@@ -629,7 +629,14 @@
                         if (!cityOption) { return; }
                         const currentValues = choicesInstance.getValue(true); 
                         if (!currentValues.includes(cityOption.value) && currentValues.length < 5) {
-                            choicesInstance.setChoiceByValue([...currentValues, cityOption.value]); 
+                            const newValues = [...currentValues, cityOption.value];
+                            choicesInstance.setChoiceByValue(newValues); 
+                            
+                            // --- INICIO DE CORRECCIÓN DE BUG ---
+                            // Llamar a updateDashboard() manualmente, ya que setChoiceByValue
+                            // no siempre dispara el evento 'change' de forma fiable.
+                            updateDashboard();
+                            // --- FIN DE CORRECCIÓN DE BUG ---
                         }
                     });
                     mapMarkers[city.ciudad] = marker;
