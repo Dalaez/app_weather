@@ -4,3 +4,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-26T09:15:03.706385,Pamplona,10.95,10.09,10.95,11.3,76,3.58,nubes dispersas,42.8125,-1.6458
 2025-10-26T09:27:58.251127,Pamplona,10.95,10.24,10.95,11.85,82,3.6,nubes dispersas,42.8125,-1.6458
 2025-10-26T09:44:42.543797,Pamplona,9.95,7.89,9.95,11.85,87,4.12,muy nuboso,42.8125,-1.6458
+2025-10-26T10:05:19.347263,Primer Ensanche,9.95,7.89,9.95,12.41,87,4.12,muy nuboso,42.8125,-1.6458
