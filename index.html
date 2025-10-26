@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Climático Global (v2.3.2 - Final)</title>
+    <title>Dashboard Climático Global (v2.3.3 - Corregido)</title>
     
+    <!-- Librerías JS y CSS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Necesitamos el adaptador de fecha para Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/styles/choices.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/scripts/choices.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
     <style>
-        /* --- CSS (Sin cambios respecto a tu v2.3.1) --- */
+        /* --- CSS (Sin cambios) --- */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #d6e0ea 100%); color: #2c3e50; margin: 0; padding: 20px; }
         h1 { color: #1a2533; text-align: center; text-shadow: 1px 1px 2px rgba(0,0,0,0.05); }
@@ -21,10 +24,16 @@
         #map-container { width: 100%; height: 450px; border-radius: 12px; margin-bottom: 20px; z-index: 5; background: #fff; box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1); border: 1px solid rgba(255, 255, 255, 0.18); }
         #controls-container, #chart-container, .kpi-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); border-radius: 12px; box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1); border: 1px solid rgba(255, 255, 255, 0.18); }
         #controls-container { display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; padding: 20px; margin-bottom: 20px; position: relative; z-index: 10; }
-        #city-select-container { width: 400px; } .choices__inner { border-radius: 8px; } fieldset { border: none; padding: 0; margin: 0; } fieldset legend { font-weight: bold; padding: 0; margin-bottom: 8px; text-align: center; width: 100%; }
+        #city-select-container { min-width: 300px; max-width: 400px; } .choices__inner { border-radius: 8px; } fieldset { border: none; padding: 0; margin: 0; } fieldset legend { font-weight: bold; padding: 0; margin-bottom: 8px; text-align: center; width: 100%; }
         .selector-group { display: flex; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); } .selector-group input { opacity: 0; position: fixed; width: 0; } .selector-group label, .time-btn { background-color: #fff; border: none; padding: 8px 14px; cursor: pointer; color: #555; font-size: 14px; font-weight: 600; transition: all 0.2s ease; border-right: 1px solid #eee; } .selector-group label:last-of-type, .time-btn:last-of-type { border-right: none; } .selector-group input:not(:checked) + label:hover, .time-btn:not(.active):hover { background-color: #f4f4f4; color: #000; } .selector-group input:checked + label, .time-btn.active { color: white; background-image: linear-gradient(to right, #4363d8, #6a82e0); box-shadow: 0 2px 8px rgba(67, 99, 216, 0.3); transform: scale(1.05); }
-        #kpi-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 20px; } .kpi-card { padding: 20px; border-left: 6px solid; transition: transform 0.2s ease, box-shadow 0.2s ease; } .kpi-card:hover { transform: translateY(-5px); box-shadow: 0 12px 32px 0 rgba(31, 38, 135, 0.15); } .kpi-card h3 { margin: 0 0 12px 0; color: #2c3e50; font-size: 1.25em; } .kpi-card p { margin: 5px 0; font-size: 1em; } .kpi-card .kpi-temp { font-weight: 700; font-size: 1.8em; color: #e74c3c; margin-bottom: 12px; } .kpi-hist { font-size: 0.9em; color: #555; display: flex; flex-direction: column; gap: 5px; border-top: 1px solid #eee; padding-top: 10px; margin-top: 10px; } .kpi-hist-item { display: flex; justify-content: space-between; } .kpi-hist-item .date { color: #7f8c8d; font-size: 0.9em; padding-left: 5px; }
-        #chart-container { width: 100%; padding: 20px; box-sizing: border-box; min-height: 500px; position: relative; } #myChart { position: absolute; top: 0; left: 0; width: 100%; height: 100%; padding: 20px; box-sizing: border-box; }
+        #kpi-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 20px; } .kpi-card { padding: 20px; border-left: 6px solid; transition: transform 0.2s ease, box-shadow 0.2s ease; } .kpi-card:hover { transform: translateY(-5px); box-shadow: 0 12px 32px 0 rgba(31, 38, 135, 0.15); } .kpi-card h3 { margin: 0 0 12px 0; color: #2c3e50; font-size: 1.25em; } .kpi-card p { margin: 5px 0; font-size: 1em; } .kpi-card .kpi-main { font-weight: 700; font-size: 1.8em; color: #333; margin-bottom: 12px; } .kpi-card .kpi-main span { font-size: 0.7em; font-weight: 400; color: #555; } .kpi-hist { font-size: 0.9em; color: #555; display: flex; flex-direction: column; gap: 5px; border-top: 1px solid #eee; padding-top: 10px; margin-top: 10px; } .kpi-hist-item { display: flex; justify-content: space-between; } .kpi-hist-item .date { color: #7f8c8d; font-size: 0.9em; padding-left: 5px; }
+        #chart-container { width: 100%; padding: 20px; box-sizing: border-box; min-height: 500px; position: relative; } #myChart { /* El canvas se gestiona por Chart.js, no necesita position absolute */ }
+        
+        /* Estilos para el popup del mapa */
+        .leaflet-popup-content-wrapper { border-radius: 8px; }
+        .leaflet-popup-content { font-family: 'Inter', sans-serif; }
+        .popup-title { font-weight: bold; font-size: 1.1em; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-bottom: 5px; }
+        .popup-temp { font-size: 1.3em; font-weight: 600; }
     </style>
 </head>
 <body>
@@ -92,71 +101,170 @@
         
         let myChart;
         let choicesInstance;
-        let allDataCache = {};
-        let currentTimeRange = 'all';
-        const COLOR_PALETTE = ['#e6194B', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4'];
+        let allDataCache = {}; // Caché para los datos CSV
+        let currentTimeRange = 'all'; // Rango de tiempo seleccionado
+        const COLOR_PALETTE = ['#e6194B', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4', '#42d4f4', '#f032e6', '#bfef45', '#fabed4'];
         
         let map;
-        let mapMarkers = {};
+        let mapMarkers = {}; // Almacena los marcadores del mapa por nombre de ciudad
+
+        // Definición de métricas para acceso fácil
+        const METRIC_MAP = {
+            'temp': { key: 'temperatura_c', label: 'Temperatura', unit: '°C' },
+            'humidity': { key: 'humedad_porc', label: 'Humedad', unit: '%' },
+            'wind': { key: 'viento_kmh', label: 'Viento', unit: 'km/h' }
+        };
 
         // --- Funciones de Carga de Datos ---
-        function calculateStats(records) { /* Sin cambios */ }
-        function loadCSV(ciudadQuery) { /* ciudadQuery es 'Madrid,ES' */
-            if (allDataCache[ciudadQuery]) { return Promise.resolve(allDataCache[ciudadQuery]); }
+
+        /**
+         * Calcula estadísticas (min/max y último registro) para un conjunto de datos.
+         * Asume que los registros ya tienen 'fecha_hora' como objeto Date.
+         */
+        function calculateStats(records) {
+            if (records.length === 0) return {};
+
+            const stats = {
+                temp: { min: { val: Infinity, date: null }, max: { val: -Infinity, date: null } },
+                humidity: { min: { val: Infinity, date: null }, max: { val: -Infinity, date: null } },
+                wind: { min: { val: Infinity, date: null }, max: { val: -Infinity, date: null } }
+            };
+
+            records.forEach(row => {
+                const date = row.fecha_hora;
+                
+                // Temperatura
+                if (row.temperatura_c < stats.temp.min.val) {
+                    stats.temp.min = { val: row.temperatura_c, date: date };
+                }
+                if (row.temperatura_c > stats.temp.max.val) {
+                    stats.temp.max = { val: row.temperatura_c, date: date };
+                }
+
+                // Humedad
+                if (row.humedad_porc < stats.humidity.min.val) {
+                    stats.humidity.min = { val: row.humedad_porc, date: date };
+                }
+                if (row.humedad_porc > stats.humidity.max.val) {
+                    stats.humidity.max = { val: row.humedad_porc, date: date };
+                }
+                
+                // Viento
+                if (row.viento_kmh < stats.wind.min.val) {
+                    stats.wind.min = { val: row.viento_kmh, date: date };
+                }
+                if (row.viento_kmh > stats.wind.max.val) {
+                    stats.wind.max = { val: row.viento_kmh, date: date };
+                }
+            });
+
+            // Añade el último registro
+            stats.latest = records[records.length - 1];
+            return stats;
+        }
+
+        /**
+         * Carga y parsea un fichero CSV para una ciudad.
+         * 'ciudadQuery' es el valor del selector, ej: 'Madrid,ES'
+         */
+        function loadCSV(ciudadQuery) {
+            // Usar caché si está disponible
+            if (allDataCache[ciudadQuery]) {
+                return Promise.resolve(allDataCache[ciudadQuery]);
+            }
             
             // [CORRECCIÓN] Usamos el nombre limpio para buscar el fichero CSV
             const nombreCiudadLimpio = ciudadQuery.split(',')[0];
-            const nombreFichero = nombreCiudadLimpio.replace(/ /g, '_') + '.csv';
+            // Asumimos que el script de Python reemplaza espacios con guiones bajos si es necesario
+            const nombreFichero = nombreCiudadLimpio.replace(/ /g, '_') + '.csv'; 
             const csvUrl = DATA_FOLDER_URL + nombreFichero;
             
             return new Promise((resolve, reject) => {
                 Papa.parse(csvUrl, {
-                    download: true, header: true, dynamicTyping: true, skipEmptyLines: true,
+                    download: true,
+                    header: true,
+                    dynamicTyping: true, // Intenta convertir números
+                    skipEmptyLines: true,
                     complete: (results) => {
-                        const records = results.data;
-                        if (records.length === 0) { allDataCache[ciudadQuery] = { records: [], stats: {} }; resolve(allDataCache[ciudadQuery]); return; }
+                        // [CRÍTICO] Convertir fechas a objetos Date
+                        const records = results.data.map(row => ({
+                            ...row,
+                            fecha_hora: new Date(row.fecha_hora) // Convertir string a Date
+                        })).sort((a, b) => a.fecha_hora - b.fecha_hora); // Ordenar por fecha
+                        
+                        if (records.length === 0) {
+                            console.warn(`No se encontraron registros en ${csvUrl}`);
+                            allDataCache[ciudadQuery] = { records: [], stats: {} };
+                            resolve(allDataCache[ciudadQuery]);
+                            return;
+                        }
+                        
                         const stats = calculateStats(records);
                         allDataCache[ciudadQuery] = { records, stats }; // Guardamos en caché usando 'Madrid,ES' como clave
                         resolve(allDataCache[ciudadQuery]);
                     },
-                    error: (err) => { console.error(`Error cargando ${csvUrl}:`, err); reject(err); }
+                    error: (err) => {
+                        console.error(`Error cargando ${csvUrl}:`, err);
+                        reject(err);
+                    }
                 });
             });
         }
-        async function loadDataForCities(ciudadesQuery) { /* ciudadesQuery es ['Madrid,ES', 'León,ES'] */
-            const promises = ciudadesQuery.map(ciudadQuery => loadCSV(ciudadQuery)); // Pasamos 'Madrid,ES'
+
+        /**
+         * Carga los datos para todas las ciudades seleccionadas.
+         * 'ciudadesQuery' es un array, ej: ['Madrid,ES', 'León,ES']
+         */
+        async function loadDataForCities(ciudadesQuery) {
+            const promises = ciudadesQuery.map(ciudadQuery => loadCSV(ciudadQuery));
             try {
                 const datasets = await Promise.all(promises);
                 const cityDataMap = {};
+                
                 ciudadesQuery.forEach((ciudadQuery, index) => { 
                     // [CORRECCIÓN] Usamos el nombre limpio como clave del mapa de datos
                     cityDataMap[ciudadQuery.split(',')[0]] = datasets[index]; 
                 });
+                
                 return cityDataMap; // Devuelve {'Madrid': {...}, 'León': {...}}
-            } catch (error) { console.error("Fallo al cargar uno o más datasets:", error); kpiContainer.innerHTML = "<p>Error al cargar los datos.</p>"; return null; }
+            } catch (error) {
+                console.error("Fallo al cargar uno o más datasets:", error);
+                kpiContainer.innerHTML = `<p style="color: red; grid-column: 1 / -1;">Error al cargar los datos de una o más ciudades. Verifica que los ficheros CSV existen en la carpeta 'datos/'.</p>`;
+                return null;
+            }
         }
 
         // --- Funciones de UI ---
+
+        /**
+         * Función principal que actualiza todo el dashboard.
+         */
         async function updateDashboard() { 
             const selectedCitiesValues = choicesInstance.getValue(true); // Devuelve ['Madrid,ES', 'León,ES']
-            // [CORRECCIÓN] Asegurarse de que el radio button está seleccionado antes de leer value
+            
             const checkedMetricRadio = document.querySelector('input[name="metric"]:checked');
-            const selectedMetric = checkedMetricRadio ? checkedMetricRadio.value : 'temp'; // Valor por defecto si no hay nada chequeado
-
-            console.log("updateDashboard - Selected Values:", selectedCitiesValues); // DEBUG
-            console.log("updateDashboard - Selected Metric:", selectedMetric); // DEBUG
-
+            const selectedMetric = checkedMetricRadio ? checkedMetricRadio.value : 'temp'; // Valor por defecto 'temp'
 
             if (selectedCitiesValues.length === 0) { 
-                kpiContainer.innerHTML = "<p>Selecciona ciudades.</p>"; 
+                kpiContainer.innerHTML = "<p>Selecciona una o más ciudades para ver los datos.</p>"; 
                 if (myChart) myChart.destroy(); 
                 highlightMapMarkers([]); 
                 return; 
             }
             
+            // Mostrar un estado de carga
+            kpiContainer.innerHTML = "<p>Cargando datos...</p>";
+            if (myChart) {
+                 myChart.data.datasets = [];
+                 myChart.data.labels = [];
+                 myChart.update();
+            }
+
             const cityDataMap = await loadDataForCities(selectedCitiesValues); // Devuelve {'Madrid': {...}, 'León': {...}}
+            
             if (!cityDataMap) {
                 console.error("No se pudieron cargar los datos para las ciudades seleccionadas.");
+                // Mensaje de error ya puesto por loadDataForCities
                 return;
             }
 
@@ -166,122 +274,323 @@
             updateChart(cityDataMap, selectedMetric); 
             highlightMapMarkers(selectedCitiesClean); 
         }
-        function updateKPIs(cityDataMap, selectedMetric) { /* Sin cambios */ }
-        function updateChart(cityDataMap, metric) { 
-            console.log("updateChart called with metric:", metric); // DEBUG
-            if (myChart) { myChart.destroy(); }
-            
-            const metricMap = {
-                'temp': { key: 'temperatura_c', label: 'Temperatura (°C)' },
-                'humidity': { key: 'humedad_porc', label: 'Humedad (%)' },
-                'wind': { key: 'viento_kmh', label: 'Viento (km/h)' }
-            };
-            const currentMetric = metricMap[metric];
-            console.log("currentMetric object:", currentMetric); // DEBUG
 
+        /**
+         * Actualiza las tarjetas de KPI.
+         */
+        function updateKPIs(cityDataMap, selectedMetric) {
+            kpiContainer.innerHTML = ""; // Limpiar KPIs anteriores
+            const metricInfo = METRIC_MAP[selectedMetric];
+
+            Object.keys(cityDataMap).forEach((ciudad, index) => {
+                const data = cityDataMap[ciudad];
+                if (!data || !data.stats || !data.stats.latest) {
+                    kpiContainer.innerHTML += `<div class="kpi-card" style="border-left-color: #ccc;"><h3>${ciudad}</h3><p>No hay datos recientes.</p></div>`;
+                    return;
+                }
+
+                const stats = data.stats;
+                const latest = stats.latest;
+                const metricStats = stats[selectedMetric]; // ej: stats['temp']
+                
+                const card = document.createElement('div');
+                card.className = 'kpi-card';
+                card.style.borderLeftColor = COLOR_PALETTE[index % COLOR_PALETTE.length];
+                
+                // Formatear fechas
+                const latestDate = latest.fecha_hora.toLocaleString('es-ES', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+                const minDate = metricStats.min.date ? metricStats.min.date.toLocaleDateString('es-ES') : 'N/A';
+                const maxDate = metricStats.max.date ? metricStats.max.date.toLocaleDateString('es-ES') : 'N/A';
+
+                card.innerHTML = `
+                    <h3>${ciudad}</h3>
+                    <p class="kpi-main">${latest[metricInfo.key].toFixed(1)} ${metricInfo.unit} <span>(${latestDate})</span></p>
+                    <p>Sensación: ${latest.sensacion_c.toFixed(1)}°C</p>
+                    <p>Humedad: ${latest.humedad_porc}%</p>
+                    <p>Viento: ${latest.viento_kmh.toFixed(1)} km/h</p>
+                    <div class="kpi-hist">
+                        <strong>Histórico (${metricInfo.label}):</strong>
+                        <div class="kpi-hist-item">
+                            <span>Max: ${metricStats.max.val > -Infinity ? metricStats.max.val.toFixed(1) : '-'} ${metricInfo.unit}</span>
+                            <span class="date">(${maxDate})</span>
+                        </div>
+                        <div class="kpi-hist-item">
+                            <span>Min: ${metricStats.min.val < Infinity ? metricStats.min.val.toFixed(1) : '-'} ${metricInfo.unit}</span>
+                            <span class="date">(${minDate})</span>
+                        </div>
+                    </div>
+                `;
+                kpiContainer.appendChild(card);
+            });
+        }
+
+        /**
+         * Actualiza el gráfico de historial.
+         */
+        function updateChart(cityDataMap, metric) { 
+            if (myChart) {
+                myChart.destroy();
+            }
+            
+            const currentMetric = METRIC_MAP[metric];
             if (!currentMetric) {
-                console.error("ERROR: Métrica inválida en updateChart. Valor recibido:", metric);
+                console.error("ERROR: Métrica inválida en updateChart:", metric);
                 return; 
             }
             
             const now = new Date();
-            let startDate = new Date(0); 
-            if (currentTimeRange !== 'all') { /* ... */ }
+            let startDate = new Date(0); // Fecha de inicio por defecto (1970)
+            
+            if (currentTimeRange !== 'all') {
+                startDate = new Date(now.getTime() - (Number(currentTimeRange) * 24 * 60 * 60 * 1000));
+            }
 
             const datasets = [];
-            let allLabels = new Set();
-            let cityDataSets = {};
             
-            Object.keys(cityDataMap).forEach((ciudad) => {
+            Object.keys(cityDataMap).forEach((ciudad, index) => {
                 const data = cityDataMap[ciudad];
-                if (!data || !data.records || data.records.length === 0) { // Comprobación más robusta
-                    console.warn(`No hay datos o 'records' no existe para la ciudad: ${ciudad}`);
+                if (!data || !data.records || data.records.length === 0) {
+                    console.warn(`No hay datos para el gráfico de: ${ciudad}`);
                     return; 
                 }
-                const filteredData = data.records.filter(row => row.fecha_hora instanceof Date && row.fecha_hora >= startDate); // Asegurarse que fecha_hora es Date
-                cityDataSets[ciudad] = {};
+                
+                // Filtrar datos por rango de tiempo Y asegurarse que el valor existe
+                const filteredData = data.records
+                    .filter(row => row.fecha_hora >= startDate && row[currentMetric.key] !== null && row[currentMetric.key] !== undefined)
+                    .map(row => ({
+                        x: row.fecha_hora, // Chart.js usará esto como timestamp
+                        y: row[currentMetric.key] // El valor de la métrica
+                    }));
 
-                filteredData.forEach((row, rowIndex) => { 
-                    try {
-                        // [CORRECCIÓN] Comprobar si row[currentMetric.key] existe y es un número
-                        const value = row[currentMetric.key];
-                        if (value === undefined || value === null || isNaN(value)) {
-                            console.warn(`Valor inválido (${value}) para ${currentMetric.key} en la fila ${rowIndex} de ${ciudad}. Se usará null.`);
-                             // No añadir etiqueta si el valor es inválido, para evitar huecos innecesarios si la fila entera es mala
-                        } else {
-                            const label = row.fecha_hora.toLocaleString('es-ES', { 
-                                day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', timeZoneName: 'short'
-                            });
-                             allLabels.add(label);
-                             cityDataSets[ciudad][label] = value;
+                if (filteredData.length > 0) {
+                    datasets.push({
+                        label: ciudad,
+                        data: filteredData,
+                        borderColor: COLOR_PALETTE[index % COLOR_PALETTE.length],
+                        backgroundColor: COLOR_PALETTE[index % COLOR_PALETTE.length] + '80', // Con transparencia
+                        tension: 0.1,
+                        fill: false,
+                        pointRadius: 2,
+                        pointHoverRadius: 5
+                    });
+                }
+            });
+            
+            // Solo crear el gráfico si hay datos
+            if (datasets.length > 0) {
+                myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        datasets: datasets
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                type: 'time', // Eje X de tipo 'time'
+                                time: {
+                                    unit: 'day',
+                                    tooltipFormat: 'dd MMM yyyy, HH:mm', // Formato del tooltip
+                                    displayFormats: {
+                                        hour: 'HH:mm',
+                                        day: 'dd MMM',
+                                        month: 'MMM yyyy'
+                                    }
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Fecha y Hora'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: currentMetric.label + ' (' + currentMetric.unit + ')'
+                                },
+                                beginAtZero: (metric === 'humidity') // Empezar en 0 solo para humedad
+                            }
+                        },
+                        plugins: {
+                            tooltip: {
+                                mode: 'index',
+                                intersect: false,
+                            },
+                            legend: {
+                                position: 'top',
+                            }
+                        },
+                        interaction: {
+                            mode: 'nearest',
+                            axis: 'x',
+                            intersect: false
                         }
-                    } catch (e) {
-                         console.error(`Error procesando fila ${rowIndex} para ${ciudad}:`, e, row);
                     }
                 });
-            });
-
-            const sortedLabels = Array.from(allLabels).sort(/* ... */);
-            Object.keys(cityDataSets).forEach((ciudad, index) => { /* ... */ });
-            // [CORRECCIÓN] Solo intentar crear el gráfico si hay datos
-             if (datasets.length > 0 && sortedLabels.length > 0) {
-                 myChart = new Chart(ctx, { /* ... */ });
-             } else {
-                 console.warn("No hay datos válidos para mostrar en el gráfico después de filtrar.");
-                 // Opcional: Limpiar el canvas o mostrar un mensaje
-                 ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-                 ctx.fillText("No hay datos disponibles para la selección actual.", 10, 50);
-             }
+            } else {
+                console.warn("No hay datos válidos para mostrar en el gráfico después de filtrar.");
+                // Limpiar el canvas y mostrar mensaje
+                ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+                ctx.font = "16px Inter";
+                ctx.fillStyle = "#555";
+                ctx.textAlign = "center";
+                ctx.fillText("No hay datos disponibles para la selección actual.", ctx.canvas.width / 2, 50);
+            }
         }
         
-        // --- Funciones del Mapa (Sin cambios) ---
-        async function initMap() { /* ... */ }
-        function highlightMapMarkers(selectedCitiesClean) { /* ... */ }
-        function getTempColor(temp) { /* ... */ }
+        // --- Funciones del Mapa ---
+
+        /**
+         * Inicializa el mapa de Leaflet.
+         */
+        async function initMap() {
+            try {
+                map = L.map('map-container').setView([20, 0], 2); // Vista global
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
+
+                const response = await fetch(MAP_DATA_URL);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const locations = await response.json();
+                
+                locations.forEach(city => {
+                    const color = getTempColor(city.temp);
+                    const marker = L.circleMarker([city.lat, city.lon], {
+                        radius: 8,
+                        color: '#FFFFFF',
+                        weight: 2,
+                        fillColor: color,
+                        fillOpacity: 0.8,
+                        opacity: 0.9
+                    }).addTo(map);
+                    
+                    marker.bindPopup(`
+                        <div class="popup-title">${city.ciudad}</div>
+                        <div class="popup-temp" style="color: ${color};">${city.temp.toFixed(1)}°C</div>
+                    `);
+
+                    // Guardar marcador usando el nombre limpio
+                    mapMarkers[city.ciudad] = marker;
+                });
+
+            } catch (error) {
+                console.error("Error al inicializar el mapa:", error);
+                document.getElementById('map-container').innerHTML = "<p style='color:red; padding: 20px;'>Error al cargar los datos del mapa.</p>";
+            }
+        }
+
+        /**
+         * Resalta los marcadores de las ciudades seleccionadas.
+         * 'selectedCitiesClean' es un array, ej: ['Madrid', 'León']
+         */
+        function highlightMapMarkers(selectedCitiesClean) {
+            Object.keys(mapMarkers).forEach(ciudad => {
+                const marker = mapMarkers[ciudad];
+                if (selectedCitiesClean.includes(ciudad)) {
+                    // Estilo resaltado
+                    marker.setStyle({
+                        weight: 4,
+                        radius: 10,
+                        fillOpacity: 1.0,
+                        opacity: 1.0
+                    });
+                    marker.bringToFront();
+                } else {
+                    // Estilo normal
+                    marker.setStyle({
+                        weight: 2,
+                        radius: 8,
+                        fillOpacity: 0.8,
+                        opacity: 0.9
+                    });
+                }
+            });
+        }
+
+        /**
+         * Devuelve un color basado en la temperatura.
+         */
+        function getTempColor(temp) {
+            if (temp < 0) return '#0033cc'; // Muy frío (azul oscuro)
+            if (temp < 10) return '#0099ff'; // Frío (azul claro)
+            if (temp < 20) return '#66cc66'; // Templado (verde)
+            if (temp < 30) return '#ffcc00'; // Cálido (amarillo)
+            return '#ff3300'; // Caliente (rojo)
+        }
 
         // --- Función de Inicialización ---
+
+        /**
+         * Inicializa la aplicación, carga la lista de ciudades y configura los listeners.
+         */
         async function init() {
-            choicesInstance = new Choices(citySelectorElement, { /* ... */ });
+            // 1. Inicializar Choices.js
+            choicesInstance = new Choices(citySelectorElement, {
+                allowHTML: false,
+                maxItemCount: 5,
+                removeItemButton: true,
+                placeholder: true,
+                placeholderValue: 'Escribe para buscar...',
+                searchResultLimit: 10,
+            });
 
             try {
+                // 2. Cargar lista de ciudades y el mapa en paralelo
                 const [ciudadesResponse, _] = await Promise.all([
                     fetch(CITIES_LIST_URL),
-                    initMap() 
+                    initMap() // initMap ya está definida
                 ]);
 
+                if (!ciudadesResponse.ok) throw new Error(`Error al cargar ${CITIES_LIST_URL}`);
+                
                 const text = await ciudadesResponse.text();
                 const ciudades = text.split('\n')
-                                     .map(line => line.trim().split(',')) 
-                                     .filter(parts => parts.length >= 2 && parts[0] && !parts[0].startsWith('#')) 
-                                     .map(parts => ({ 
-                                         value: `${parts[0]},${parts[1]}`, 
-                                         label: parts[0] 
-                                      }));
+                    .map(line => line.trim().split(',')) 
+                    .filter(parts => parts.length >= 2 && parts[0] && !parts[0].startsWith('#')) // Ignorar comentarios y líneas vacías
+                    .map(parts => ({ 
+                        value: `${parts[0]},${parts[1]}`, // Valor: "Ciudad,PAIS"
+                        label: parts[0]  // Etiqueta: "Ciudad"
+                    }));
                 
+                // 3. Poblar el selector de Choices
                 choicesInstance.setChoices(ciudades, 'value', 'label', false);
                 
-                // [CAMBIO] Seleccionamos por defecto usando el VALOR completo "Ciudad,PAIS"
+                // 4. Establecer selección por defecto
                 choicesInstance.setChoiceByValue(['Madrid,ES', 'León,ES']); 
                 
-                // Llamamos a updateDashboard DESPUÉS de setChoiceByValue
-                updateDashboard();
+                // 5. Cargar datos iniciales
+                await updateDashboard();
 
             } catch (error) {
                 console.error("Error al inicializar la aplicación:", error);
-                alert("No se pudo cargar la lista de ciudades o el mapa.");
+                // No usamos alert
+                kpiContainer.innerHTML = `<p style="color: red;"><b>Error fatal:</b> No se pudo cargar la lista de ciudades (${CITIES_LIST_URL}). La aplicación no puede continuar.</p>`;
             }
             
-            // Listeners
-            citySelectorElement.addEventListener('change', updateDashboard);
-            metricRadios.forEach(radio => radio.addEventListener('change', updateDashboard);
-            timeRangeButtons.forEach(button => { /* ... */ });
+            // 6. Configurar Listeners
+            citySelectorElement.addEventListener('change', async () => await updateDashboard());
+            
+            metricRadios.forEach(radio => radio.addEventListener('change', async () => await updateDashboard()));
+            
+            timeRangeButtons.forEach(button => {
+                button.addEventListener('click', async (e) => {
+                    e.preventDefault();
+                    // Quitar 'active' de todos
+                    timeRangeButtons.forEach(btn => btn.classList.remove('active'));
+                    // Añadir 'active' al clicado
+                    e.target.classList.add('active');
+                    // Actualizar rango global
+                    currentTimeRange = e.target.dataset.range;
+                    // Actualizar dashboard
+                    await updateDashboard();
+                });
+            });
         }
         
         // --- INICIO DE LA APLICACIÓN ---
-        init();
+        document.addEventListener('DOMContentLoaded', init);
         
-        // --- COPIA AQUÍ LAS FUNCIONES COMPLETAS ---
-        // calculateStats, updateKPIs, updateChart (la nueva), initMap, highlightMapMarkers, getTempColor
     </script>
 </body>
 </html>
