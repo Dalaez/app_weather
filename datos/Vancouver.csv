@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-26T08:50:21.924872,Vancouver,9.01,5.46,8.17,9.88,94,7.72,lluvia moderada,49.2827,-123.1207
 2025-10-26T09:02:14.095854,Vancouver,9.01,5.46,8.17,9.88,93,7.72,lluvia moderada,49.2827,-123.1207
+2025-10-26T09:17:10.308700,Vancouver,8.96,6.93,8.26,9.88,93,3.58,nubes,49.2827,-123.1207

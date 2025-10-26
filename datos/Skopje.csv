@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-26T08:49:10.007988,Skopje,10.89,10.18,10.89,10.89,82,0.51,llovizna,41.9981,21.4254
 2025-10-26T09:00:56.260778,Skopje,11.89,11.28,11.89,11.89,82,0.51,lluvia moderada,41.9981,21.4254
+2025-10-26T09:15:57.663812,Skopje,11.89,11.28,11.89,11.89,82,0.51,lluvia moderada,41.9981,21.4254

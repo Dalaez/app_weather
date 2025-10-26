@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-26T08:50:18.456076,Chicago,10.65,9.55,8.38,11.11,68,2.57,nubes,41.8781,-87.6298
 2025-10-26T09:02:10.396473,Chicago,10.85,9.79,8.97,11.11,69,2.24,nubes,41.8781,-87.6298
+2025-10-26T09:17:06.801695,Chicago,10.66,9.58,8.97,11.11,69,3.09,nubes,41.8781,-87.6298

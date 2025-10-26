@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-26T08:49:21.596380,Warsaw,10.79,10.07,9.8,12.17,82,5.14,nubes dispersas,52.2297,21.0122
 2025-10-26T09:01:08.719237,Warsaw,10.73,9.97,9.8,11.97,81,5.14,nubes dispersas,52.2297,21.0122
+2025-10-26T09:16:09.364160,Warsaw,10.79,10.04,9.8,11.97,81,5.14,muy nuboso,52.2297,21.0122

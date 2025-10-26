@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-26T08:48:23.587794,Segovia,7.99,6.36,7.99,7.99,85,2.61,nubes,40.9429,-4.1203
 2025-10-26T09:00:06.479072,Segovia,9.32,7.94,9.32,9.32,85,2.61,nubes,40.9429,-4.1203
+2025-10-26T09:15:10.740701,Segovia,8.96,7.51,8.96,8.96,84,2.61,nubes,40.9429,-4.1203

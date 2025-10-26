@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-26T08:47:39.400156,Almería,21.51,21.83,21.51,22.06,81,6.17,algo de nubes,36.834,-2.4637
 2025-10-26T08:59:19.142467,Almería,22.07,22.42,22.06,22.07,80,6.17,algo de nubes,36.834,-2.4637
+2025-10-26T09:14:26.159174,Almería,22.07,22.4,22.06,22.07,79,6.17,algo de nubes,36.834,-2.4637

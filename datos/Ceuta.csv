@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-26T08:47:49.871569,Ceuta,19.84,19.92,19.82,19.84,78,7.14,nubes,35.8883,-5.3068
 2025-10-26T08:59:30.355448,Ceuta,19.84,19.92,19.82,19.84,78,7.14,nubes,35.8883,-5.3068
+2025-10-26T09:14:36.722360,Ceuta,19.28,19.3,19.28,19.82,78,7.14,nubes,35.8883,-5.3068

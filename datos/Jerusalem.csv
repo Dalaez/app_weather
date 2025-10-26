@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-26T08:49:40.159178,Jerusalem,24.45,24,22.2,24.45,40,0.45,cielo claro,31.7683,35.2137
 2025-10-26T09:01:29.334843,Jerusalem,25.01,24.61,22.76,25.01,40,0.45,cielo claro,31.7683,35.2137
+2025-10-26T09:16:28.117826,Jerusalem,25.57,25.17,22.76,25.57,38,0.45,cielo claro,31.7683,35.2137

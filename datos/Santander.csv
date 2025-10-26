@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-26T08:48:22.425985,Santander,14.47,14.06,12.86,14.94,80,2.24,muy nuboso,43.4623,-3.8099
 2025-10-26T09:00:05.238653,Santander,14.47,14.06,12.86,14.94,80,2.06,muy nuboso,43.4623,-3.8099
+2025-10-26T09:15:09.570419,Santander,14.47,14.11,12.86,14.94,82,2.06,muy nuboso,43.4623,-3.8099

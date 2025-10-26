@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-26T08:48:43.312108,City of Brussels,6.73,2.67,6.08,7.66,85,7.2,muy nuboso,50.8503,4.3517
 2025-10-26T09:00:27.612144,Brussels,6.95,2.95,6.08,8.22,84,7.2,muy nuboso,50.8503,4.3517
+2025-10-26T09:15:30.712264,Brussels,7.5,3.83,6.81,8.77,84,6.69,muy nuboso,50.8503,4.3517

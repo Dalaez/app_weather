@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-26T08:48:34.035765,Zamora,9.34,6.76,9.34,9.34,69,5.01,nubes dispersas,41.5035,-5.7455
 2025-10-26T09:00:17.688875,Zamora,9.34,6.76,9.34,9.34,69,5.01,nubes dispersas,41.5035,-5.7455
+2025-10-26T09:15:21.341479,Zamora,9.52,6.99,9.52,9.52,77,5.01,nubes dispersas,41.5,-5.75

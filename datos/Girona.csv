@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-26T08:47:54.537327,Girona,11.26,10.9,11.19,12.05,94,0.51,muy nuboso,41.9794,2.8214
 2025-10-26T08:59:35.335624,Girona,11.26,10.9,11.19,12.05,94,0.51,muy nuboso,41.9794,2.8214
+2025-10-26T09:14:41.415859,Girona,11.58,11.25,11.18,12.04,94,0.51,muy nuboso,41.9831,2.8249

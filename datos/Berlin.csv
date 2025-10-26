@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-26T08:48:39.817883,Mitte,9.03,5.49,8.32,10.57,77,7.72,cielo claro,52.52,13.405
 2025-10-26T09:00:23.915283,Mitte,9.16,5.14,8.32,10.53,75,9.83,cielo claro,52.52,13.405
+2025-10-26T09:15:27.194577,Mitte,9.29,5.31,8.32,10.53,74,9.83,algo de nubes,52.52,13.405
