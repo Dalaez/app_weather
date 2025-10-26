@@ -2,3 +2,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-26T08:49:25.071487,Manchester,5.8,5.8,5.14,7.47,88,1.03,lluvia ligera,53.4839,-2.2446
 2025-10-26T09:01:12.476836,Manchester,6.5,6.5,5.48,8.03,89,1.03,lluvia ligera,53.4839,-2.2446
 2025-10-26T09:16:12.885660,Manchester,6.64,5.22,5.91,8.03,89,2.06,nubes,53.4839,-2.2446
+2025-10-26T09:29:11.995013,Manchester,6.95,5.58,6.19,8.03,88,2.06,nubes,53.4839,-2.2446
