@@ -1,164 +1,175 @@
-A Coruña,ES
-Albacete,ES
-Alicante,ES
-Almería,ES
-Ávila,ES
-Badajoz,ES
-Barcelona,ES
-Bilbao,ES
-Burgos,ES
-Cáceres,ES
-Cádiz,ES
-Castelló de la Plana,ES
-Ceuta,ES
-Ciudad Real,ES
-Córdoba,ES
-Cuenca,ES
-Girona,ES
-Granada,ES
-Guadalajara,ES
-Huelva,ES
-Huesca,ES
-Jaén,ES
-León,ES
-Lleida,ES
-Logroño,ES
-Lugo,ES
-Madrid,ES
-Málaga,ES
-Melilla,ES
-Mérida,ES
-Murcia,ES
-Ourense,ES
-Oviedo,ES
-Palencia,ES
-Palma,ES
-Pamplona,ES
-Pontevedra,ES
-Salamanca,ES
-San Sebastián,ES
-Santa Cruz de Tenerife,ES
-Santander,ES
-Segovia,ES
-Sevilla,ES
-Soria,ES
-Tarragona,ES
-Teruel,ES
-Toledo,ES
-Valencia,ES
-Valladolid,ES
-Vitoria-Gasteiz,ES
-Zamora,ES
-Zaragoza,ES
-Amsterdam,NL
-Andorra la Vella,AD
-Athens,GR
-Berlin,DE
-Bern,CH
-Bratislava,SK
-Brussels,BE
-Bucharest,RO
-Budapest,HU
-Copenhagen,DK
-Dublin,IE
-Helsinki,FI
-Istanbul,TR
-Kyiv,UA
-Lisbon,PT
-Ljubljana,SI
-London,GB
-Luxembourg,LU
-Monaco,MC
-Moscow,RU
-Nicosia,CY
-Oslo,NO
-Paris,FR
-Prague,CZ
-Reykjavik,IS
-Riga,LV
-Rome,IT
-San Marino,SM
-Sarajevo,BA
-Skopje,MK
-Sofia,BG
-Stockholm,SE
-Tallinn,EE
-Tirana,AL
-Vaduz,LI
-Valletta,MT
-Vatican City,VA
-Vienna,AT
-Vilnius,LT
-Warsaw,PL
-Zagreb,HR
-Ankara,TR
-Manchester,GB
-Munich,DE
-Milan,IT
-Lyon,FR
-Hamburg,DE
-Bangkok,TH
-Beijing,CN
-Damascus,SY
-Dhaka,BD
-Hanoi,VN
-Hong Kong,HK
-Islamabad,PK
-Jakarta,ID
-Jerusalem,IL
-Kabul,AF
-Kathmandu,NP
-Kuala Lumpur,MY
-Manila,PH
-Mumbai,IN
-New Delhi,IN
-Pyongyang,KP
-Riyadh,SA
-Seoul,KR
-Shanghai,CN
-Singapore,SG
-Taipei,TW
-Tashkent,UZ
-Tehran,IR
-Tokyo,JP
-Ulaanbaatar,MN
-Sydney,AU
-Melbourne,AU
-Wellington,NZ
-Auckland,NZ
-Buenos Aires,AR
-Bogota,CO
-Brasilia,BR
-Caracas,VE
-Havana,CU
-Kingston,JM
-La Paz,BO
-Lima,PE
-Mexico City,MX
-Montevideo,UY
-New York,US
-Los Angeles,US
-Chicago,US
-Houston,US
-Toronto,CA
-Vancouver,CA
-Ottawa,CA
-Panama City,PA
-Quito,EC
-San Jose,CR
-Santiago,CL
-Sao Paulo,BR
-Washington DC,US
-Abuja,NG
-Accra,GH
-Algiers,DZ
-Cairo,EG
-Cape Town,ZA
-Casablanca,MA
-Dakar,SN
-Johannesburg,ZA
-Lagos,NG
-Nairobi,KE
-Rabat,MA
-Tripoli,LY
-Tunis,TN
+# --- España ---
+A Coruña,ES,43.3623,-8.4115
+Albacete,ES,38.9944,-1.8584
+Alicante,ES,38.3452,-0.4810
+Almería,ES,36.8340,-2.4637
+Ávila,ES,40.6560,-4.6974
+Badajoz,ES,38.8787,-6.9707
+Barcelona,ES,41.3851,2.1734
+Bilbao,ES,43.2630,-2.9350
+Burgos,ES,42.3439,-3.6969
+Cáceres,ES,39.4731,-6.3711
+Cádiz,ES,36.5298,-6.2926
+Castelló de la Plana,ES,39.9864,-0.0375
+Ceuta,ES,35.8883,-5.3068
+Ciudad Real,ES,38.9863,-3.9213
+Córdoba,ES,37.8882,-4.7794
+Cuenca,ES,40.0704,-2.1374
+Girona,ES,41.9794,2.8214
+Granada,ES,37.1773,-3.5986
+Guadalajara,ES,40.6330,-3.1654
+Huelva,ES,37.2614,-6.9447
+Huesca,ES,42.1402,-0.4087
+Jaén,ES,37.7692,-3.7903
+León,ES,42.5984,-5.5719
+Lleida,ES,41.6176,0.6200
+Logroño,ES,42.4658,-2.4486
+Lugo,ES,43.0116,-7.5560
+Madrid,ES,40.4168,-3.7038
+Málaga,ES,36.7213,-4.4215
+Melilla,ES,35.2923,-2.9381
+Mérida,ES,38.9159,-6.3440
+Murcia,ES,37.9922,-1.1307
+Ourense,ES,42.3368,-7.8639
+Oviedo,ES,43.3614,-5.8448
+Palencia,ES,42.0095,-4.5241
+Palma,ES,39.5696,2.6502
+Pamplona,ES,42.8125,-1.6458
+Pontevedra,ES,42.4310,-8.6444
+Salamanca,ES,40.9688,-5.6639
+San Sebastián,ES,43.3183,-1.9812
+Santa Cruz de Tenerife,ES,28.4636,-16.2518
+Santander,ES,43.4623,-3.8099
+Segovia,ES,40.9429,-4.1203
+Sevilla,ES,37.3891,-5.9845
+Soria,ES,41.7636,-2.4676
+Tarragona,ES,41.1189,1.2445
+Teruel,ES,40.3456,-1.1065
+Toledo,ES,39.8628,-4.0273
+Valencia,ES,39.4699,-0.3763
+Valladolid,ES,41.6521,-4.7286
+Vitoria-Gasteiz,ES,42.8467,-2.6731
+Zamora,ES,41.5035,-5.7455
+Zaragoza,ES,41.6488,-0.8891
+
+# --- Europa ---
+Amsterdam,NL,52.3676,4.9041
+Andorra la Vella,AD,42.5063,1.5218
+Athens,GR,37.9838,23.7275
+Berlin,DE,52.5200,13.4050
+Bern,CH,46.9480,7.4474
+Bratislava,SK,48.1486,17.1077
+Brussels,BE,50.8503,4.3517
+Bucharest,RO,44.4268,26.1025
+Budapest,HU,47.4979,19.0402
+Copenhagen,DK,55.6761,12.5683
+Dublin,IE,53.3498,-6.2603
+Helsinki,FI,60.1699,24.9384
+Istanbul,TR,41.0082,28.9784
+Kyiv,UA,50.4501,30.5234
+Lisbon,PT,38.7223,-9.1393
+Ljubljana,SI,46.0569,14.5058
+London,GB,51.5072,-0.1276
+Luxembourg,LU,49.6116,6.1319
+Monaco,MC,43.7384,7.4246
+Moscow,RU,55.7558,37.6173
+Nicosia,CY,35.1856,33.3823
+Oslo,NO,59.9139,10.7522
+Paris,FR,48.8566,2.3522
+Prague,CZ,50.0755,14.4378
+Reykjavik,IS,64.1466,-21.9426
+Riga,LV,56.9496,24.1052
+Rome,IT,41.9028,12.4964
+San Marino,SM,43.9424,12.4578
+Sarajevo,BA,43.8563,18.4131
+Skopje,MK,41.9981,21.4254
+Sofia,BG,42.6977,23.3219
+Stockholm,SE,59.3293,18.0686
+Tallinn,EE,59.4370,24.7536
+Tirana,AL,41.3275,19.8187
+Vaduz,LI,47.1410,9.5215
+Valletta,MT,35.8989,14.5146
+Vatican City,VA,41.9029,12.4534
+Vienna,AT,48.2082,16.3738
+Vilnius,LT,54.6872,25.2797
+Warsaw,PL,52.2297,21.0122
+Zagreb,HR,45.8150,15.9819
+Ankara,TR,39.9334,32.8597
+Manchester,GB,53.4839,-2.2446
+Munich,DE,48.1351,11.5820
+Milan,IT,45.4642,9.1900
+Lyon,FR,45.7640,4.8357
+Hamburg,DE,53.5511,9.9937
+
+# --- Asia ---
+Bangkok,TH,13.7563,100.5018
+Beijing,CN,39.9042,116.4074
+Damascus,SY,33.5138,36.2765
+Dhaka,BD,23.8103,90.4125
+Hanoi,VN,21.0278,105.8342
+Hong Kong,HK,22.3193,114.1694
+Islamabad,PK,33.6844,73.0479
+Jakarta,ID,-6.2088,106.8456
+Jerusalem,IL,31.7683,35.2137
+Kabul,AF,34.5553,69.2075
+Kathmandu,NP,27.7172,85.3240
+Kuala Lumpur,MY,3.1390,101.6869
+Manila,PH,14.5995,120.9842
+Mumbai,IN,19.0760,72.8777
+New Delhi,IN,28.6139,77.2090
+Pyongyang,KP,39.0392,125.7625
+Riyadh,SA,24.7136,46.6753
+Seoul,KR,37.5665,126.9780
+Shanghai,CN,31.2304,121.4737
+Singapore,SG,1.3521,103.8198
+Taipei,TW,25.0330,121.5654
+Tashkent,UZ,41.2995,69.2401
+Tehran,IR,35.6892,51.3890
+Tokyo,JP,35.6762,139.6503
+Ulaanbaatar,MN,47.9180,106.9176
+
+# --- Oceanía ---
+Sydney,AU,-33.8688,151.2093
+Melbourne,AU,-37.8136,144.9631
+Wellington,NZ,-41.2865,174.7762
+Auckland,NZ,-36.8485,174.7633
+
+# --- América ---
+Buenos Aires,AR,-34.6037,-58.3816
+Bogota,CO,4.7110,-74.0721
+Brasilia,BR,-15.7942,-47.8825
+Caracas,VE,10.4806,-66.9036
+Havana,CU,23.1136,-82.3666
+Kingston,JM,17.9712,-76.7936
+La Paz,BO,-16.4897,-68.1193
+Lima,PE,-12.0464,-77.0428
+Mexico City,MX,19.4326,-99.1332
+Montevideo,UY,-34.9011,-56.1645
+New York,US,40.7128,-74.0060
+Los Angeles,US,34.0522,-118.2437
+Chicago,US,41.8781,-87.6298
+Houston,US,29.7604,-95.3698
+Toronto,CA,43.6532,-79.3832
+Vancouver,CA,49.2827,-123.1207
+Ottawa,CA,45.4215,-75.6972
+Panama City,PA,8.9824,-79.5199
+Quito,EC,-0.1807,-78.4678
+San Jose,CR,9.9281,-84.0907
+Santiago,CL,-33.4489,-70.6693
+Sao Paulo,BR,-23.5505,-46.6333
+Washington DC,US,38.9072,-77.0369
+
+# --- África ---
+Abuja,NG,9.0765,7.3986
+Accra,GH,5.6037,-0.1870
+Algiers,DZ,36.7762,3.0599
+Cairo,EG,30.0444,31.2357
+Cape Town,ZA,-33.9249,18.4241
+Casablanca,MA,33.5731,-7.5898
+Dakar,SN,14.7167,-17.4677
+Johannesburg,ZA,-26.2041,28.0473
+Lagos,NG,6.5244,3.3792
+Nairobi,KE,-1.2921,36.8219
+Rabat,MA,34.0209,-6.8417
+Tripoli,LY,32.8872,13.1913
+Tunis,TN,36.8065,10.1815

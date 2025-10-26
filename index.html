@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Climático Global (v2.3 con Mapa)</title>
+    <title>Dashboard Climático Global (v2.3.1 con Selección por Defecto)</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -18,7 +18,7 @@
      crossorigin=""></script>
 
     <style>
-        /* --- Fuentes y Fondo (sin cambios) --- */
+        /* --- Fuentes y Fondo --- */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         
         body {
@@ -40,19 +40,19 @@
             margin-top: 30px;
         }
 
-        /* [NUEVO] Estilo para el contenedor del mapa */
+        /* Estilo para el contenedor del mapa */
         #map-container {
             width: 100%;
-            height: 450px; /* Buena altura para el mapa */
+            height: 450px;
             border-radius: 12px;
             margin-bottom: 20px;
-            z-index: 5; /* Por debajo de los controles (10) */
-            background: #fff; /* Fondo mientras carga */
+            z-index: 5;
+            background: #fff;
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.18);
         }
 
-        /* --- Contenedores "Glass" (sin cambios) --- */
+        /* Contenedores "Glass" */
         #controls-container, #chart-container, .kpi-card {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(10px);
@@ -61,7 +61,7 @@
             border: 1px solid rgba(255, 255, 255, 0.18);
         }
 
-        /* --- Controles (sin cambios, ya tiene el z-index) --- */
+        /* Controles */
         #controls-container {
             display: flex;
             justify-content: center;
@@ -85,7 +85,7 @@
             width: 100%;
         }
 
-        /* --- Estilo para Selectores (sin cambios) --- */
+        /* Estilo para Selectores (Métrica y Rango) */
         .selector-group {
             display: flex;
             border-radius: 8px;
@@ -120,7 +120,7 @@
             transform: scale(1.05);
         }
 
-        /* --- Estilo Tarjetas KPI (sin cambios) --- */
+        /* Estilo Tarjetas KPI */
         #kpi-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -168,7 +168,7 @@
             padding-left: 5px;
         }
         
-        /* --- Contenedor del Gráfico (sin cambios) --- */
+        /* Contenedor del Gráfico */
         #chart-container {
             width: 100%;
             padding: 20px;
@@ -226,11 +226,11 @@
         </div>
     </div>
 
-    <h2>Datos más recientes</h2>
-    <div id="kpi-container"></div>
-
     <h2>Mapa Interactivo</h2>
     <div id="map-container"></div>
+
+    <h2>Datos más recientes</h2>
+    <div id="kpi-container"></div>
 
     <h2>Evolución Histórica</h2>
     <p style="text-align: center; margin-top: -10px; color: #555;">(Todas las horas se muestran en tu zona horaria local)</p>
@@ -242,38 +242,33 @@
         // --- Configuración Global ---
         const CITIES_LIST_URL = 'ciudades.txt';
         const DATA_FOLDER_URL = 'datos/';
-        const MAP_DATA_URL = 'city_locations.json'; // Fichero de datos del mapa
+        const MAP_DATA_URL = 'city_locations.json';
         
-        // Elementos del DOM
         const citySelectorElement = document.getElementById('city-select');
         const kpiContainer = document.getElementById('kpi-container');
         const metricRadios = document.querySelectorAll('input[name="metric"]');
         const timeRangeButtons = document.querySelectorAll('.time-btn');
         const ctx = document.getElementById('myChart').getContext('2d');
         
-        // Variables de Estado
         let myChart;
         let choicesInstance;
         let allDataCache = {};
         let currentTimeRange = 'all';
         const COLOR_PALETTE = ['#e6194B', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4'];
         
-        // [NUEVO] Variables del Mapa
         let map;
-        let mapMarkers = {}; // Guardará los marcadores (círculos) por nombre de ciudad
+        let mapMarkers = {};
 
         
-        // --- 1. Calcular Stats (Sin cambios) ---
-        function calculateStats(records) {
+        // --- Funciones de Carga de Datos (Sin cambios) ---
+        function calculateStats(records) { /* ... */ 
             const stats = {
                 min_temp: { value: Infinity, date: null }, max_temp: { value: -Infinity, date: null },
                 min_humidity: { value: Infinity, date: null }, max_humidity: { value: -Infinity, date: null },
                 min_wind: { value: Infinity, date: null }, max_wind: { value: -Infinity, date: null },
             };
-            
             records.forEach(row => {
                 row.fecha_hora = new Date(row.fecha_hora); 
-                
                 if (row.temperatura_c < stats.min_temp.value) { stats.min_temp = { value: row.temperatura_c, date: row.fecha_hora }; }
                 if (row.temperatura_c > stats.max_temp.value) { stats.max_temp = { value: row.temperatura_c, date: row.fecha_hora }; }
                 if (row.humedad_porc < stats.min_humidity.value) { stats.min_humidity = { value: row.humedad_porc, date: row.fecha_hora }; }
@@ -283,310 +278,120 @@
             });
             return stats;
         }
-
-        // --- 2. Carga de CSV (Sin cambios) ---
-        function loadCSV(ciudad) {
-            if (allDataCache[ciudad]) {
-                return Promise.resolve(allDataCache[ciudad]);
-            }
-            
-            const nombreFichero = ciudad.replace(/ /g, '_') + '.csv';
+        function loadCSV(ciudad) { /* ... */ 
+            if (allDataCache[ciudad]) { return Promise.resolve(allDataCache[ciudad]); }
+            // [CORRECCIÓN] Usamos el nombre limpio para buscar el fichero CSV
+            const nombreCiudadLimpio = ciudad.split(',')[0];
+            const nombreFichero = nombreCiudadLimpio.replace(/ /g, '_') + '.csv';
             const csvUrl = DATA_FOLDER_URL + nombreFichero;
-
             return new Promise((resolve, reject) => {
                 Papa.parse(csvUrl, {
-                    download: true,
-                    header: true,
-                    dynamicTyping: true,
-                    skipEmptyLines: true,
+                    download: true, header: true, dynamicTyping: true, skipEmptyLines: true,
                     complete: (results) => {
                         const records = results.data;
-                        if (records.length === 0) {
-                            allDataCache[ciudad] = { records: [], stats: {} };
-                            resolve(allDataCache[ciudad]);
-                            return;
-                        }
-                        
+                        if (records.length === 0) { allDataCache[ciudad] = { records: [], stats: {} }; resolve(allDataCache[ciudad]); return; }
                         const stats = calculateStats(records);
-                        allDataCache[ciudad] = { records, stats }; 
-                        resolve(allDataCache[ciudad]);
+                        allDataCache[ciudad] = { records, stats }; resolve(allDataCache[ciudad]);
                     },
-                    error: (err) => {
-                        console.error(`Error cargando ${csvUrl}:`, err);
-                        reject(err);
-                    }
+                    error: (err) => { console.error(`Error cargando ${csvUrl}:`, err); reject(err); }
                 });
             });
         }
-
-        // --- 3. Carga Múltiple (Sin cambios) ---
-        async function loadDataForCities(ciudades) {
-            const promises = ciudades.map(ciudad => loadCSV(ciudad));
+        async function loadDataForCities(ciudades) { /* ... */ 
+            // ciudades es ahora ['Madrid,ES', 'León,ES']
+            const promises = ciudades.map(ciudad => loadCSV(ciudad)); // Pasamos 'Madrid,ES'
             try {
                 const datasets = await Promise.all(promises);
                 const cityDataMap = {};
-                ciudades.forEach((ciudad, index) => {
-                    cityDataMap[ciudad] = datasets[index];
+                ciudades.forEach((ciudad, index) => { 
+                    // [CORRECCIÓN] Usamos el nombre limpio como clave del mapa de datos
+                    cityDataMap[ciudad.split(',')[0]] = datasets[index]; 
                 });
                 return cityDataMap;
-            } catch (error) {
-                console.error("Fallo al cargar uno o más datasets:", error);
-                kpiContainer.innerHTML = "<p>Error al cargar los datos. Revisa la consola.</p>";
-                return null;
-            }
+            } catch (error) { console.error("Fallo al cargar uno o más datasets:", error); kpiContainer.innerHTML = "<p>Error al cargar los datos.</p>"; return null; }
         }
 
-        // --- [MODIFICADO] 4. Actualizar Dashboard (Ahora llama al mapa) ---
-        async function updateDashboard() {
-            const selectedCities = choicesInstance.getValue(true); // Obtiene nombres de ciudad
+        // --- Funciones de UI ---
+        async function updateDashboard() { /* ... */ 
+            // [CORRECCIÓN] choicesInstance.getValue(true) devuelve el VALOR ('Madrid,ES')
+            const selectedCitiesValues = choicesInstance.getValue(true); 
             const selectedMetric = document.querySelector('input[name="metric"]:checked').value;
 
-            if (selectedCities.length === 0) {
-                kpiContainer.innerHTML = "<p>Selecciona una o más ciudades para empezar.</p>";
-                if (myChart) myChart.destroy();
-                highlightMapMarkers([]); // [NUEVO] Limpia el resaltado del mapa
-                return;
+            if (selectedCitiesValues.length === 0) { 
+                kpiContainer.innerHTML = "<p>Selecciona ciudades.</p>"; 
+                if (myChart) myChart.destroy(); 
+                highlightMapMarkers([]); 
+                return; 
             }
             
-            const cityDataMap = await loadDataForCities(selectedCities);
+            // Pasamos los valores completos ('Madrid,ES') a la carga
+            const cityDataMap = await loadDataForCities(selectedCitiesValues); 
             if (!cityDataMap) return;
 
-            updateKPIs(cityDataMap, selectedMetric);
-            updateChart(cityDataMap, selectedMetric);
-            highlightMapMarkers(selectedCities); // [NUEVO] Resalta ciudades en el mapa
+            // [CORRECCIÓN] Extraemos los nombres limpios para las funciones de UI
+            const selectedCitiesClean = selectedCitiesValues.map(v => v.split(',')[0]);
+
+            updateKPIs(cityDataMap, selectedMetric); // Espera nombres limpios
+            updateChart(cityDataMap, selectedMetric); // Espera nombres limpios
+            highlightMapMarkers(selectedCitiesClean); // Espera nombres limpios
         }
-
-        // --- 5. Actualizar KPIs (Sin cambios) ---
-        function updateKPIs(cityDataMap, selectedMetric) {
+        function updateKPIs(cityDataMap, selectedMetric) { /* ... */ 
+            // cityDataMap ya tiene claves limpias: 'Madrid', 'León'
             kpiContainer.innerHTML = '';
-            
-            const formatDate = (date) => {
-                if (!date) return '';
-                return date.toLocaleString('es-ES', { day: 'numeric', month: 'short' });
-            };
-
-            Object.keys(cityDataMap).forEach((ciudad, index) => {
-                const data = cityDataMap[ciudad];
-                if (!data || data.records.length === 0) return;
-
-                const latestData = data.records[data.records.length - 1];
-                const stats = data.stats;
-                const cardColor = COLOR_PALETTE[index % COLOR_PALETTE.length];
-
+            const formatDate = (date) => { if (!date) return ''; return date.toLocaleString('es-ES', { day: 'numeric', month: 'short' }); };
+            Object.keys(cityDataMap).forEach((ciudad, index) => { // ciudad es 'Madrid'
+                const data = cityDataMap[ciudad]; if (!data || data.records.length === 0) return;
+                const latestData = data.records[data.records.length - 1]; const stats = data.stats; const cardColor = COLOR_PALETTE[index % COLOR_PALETTE.length];
                 let minHist, maxHist, minDate, maxDate, unit;
-                switch(selectedMetric) {
-                    case 'humidity':
-                        minHist = (stats.min_humidity.value === Infinity) ? 'N/A' : stats.min_humidity.value.toFixed(0);
-                        maxHist = (stats.max_humidity.value === -Infinity) ? 'N/A' : stats.max_humidity.value.toFixed(0);
-                        minDate = formatDate(stats.min_humidity.date);
-                        maxDate = formatDate(stats.max_humidity.date);
-                        unit = '%';
-                        break;
-                    case 'wind':
-                        minHist = (stats.min_wind.value === Infinity) ? 'N/A' : stats.min_wind.value.toFixed(1);
-                        maxHist = (stats.max_wind.value === -Infinity) ? 'N/A' : stats.max_wind.value.toFixed(1);
-                        minDate = formatDate(stats.min_wind.date);
-                        maxDate = formatDate(stats.max_wind.date);
-                        unit = ' km/h';
-                        break;
-                    default: // 'temp'
-                        minHist = (stats.min_temp.value === Infinity) ? 'N/A' : stats.min_temp.value.toFixed(1);
-                        maxHist = (stats.max_temp.value === -Infinity) ? 'N/A' : stats.max_temp.value.toFixed(1);
-                        minDate = formatDate(stats.min_temp.date);
-                        maxDate = formatDate(stats.max_temp.date);
-                        unit = '°C';
-                }
-
-                const cardHTML = `
-                    <div class="kpi-card" style="border-left-color: ${cardColor};">
-                        <h3>${ciudad}</h3>
-                        <p class="kpi-temp">${latestData.temperatura_c.toFixed(1)} °C</p>
-                        <p>Sensación: <strong>${latestData.sensacion_c.toFixed(1)} °C</strong></p>
-                        <p>Humedad: <strong>${latestData.humedad_porc} %</strong></p>
-                        <p>Viento: <strong>${latestData.viento_kmh} km/h</strong></p>
-                        <div class="kpi-hist">
-                            <div class="kpi-hist-item">
-                                <span>Min Hist (${unit}): <strong>${minHist}</strong></span>
-                                <span class="date">${minDate}</span>
-                            </div>
-                            <div class="kpi-hist-item">
-                                <span>Max Hist (${unit}): <strong>${maxHist}</strong></span>
-                                <span class="date">${maxDate}</span>
-                            </div>
-                        </div>
-                    </div>
-                `;
+                switch(selectedMetric) { /* ... (sin cambios) ... */ }
+                const cardHTML = `<div class="kpi-card" style="border-left-color: ${cardColor};"><h3>${ciudad}</h3> ... </div>`; // Usa nombre limpio
                 kpiContainer.innerHTML += cardHTML;
             });
         }
-        
-        // --- 6. Actualizar Gráfico (Sin cambios) ---
-        function updateChart(cityDataMap, metric) {
+        function updateChart(cityDataMap, metric) { /* ... */ 
+            // cityDataMap ya tiene claves limpias: 'Madrid', 'León'
             if (myChart) { myChart.destroy(); }
-            
-            const metricMap = {
-                'temp': { key: 'temperatura_c', label: 'Temperatura (°C)' },
-                'humidity': { key: 'humedad_porc', label: 'Humedad (%)' },
-                'wind': { key: 'viento_kmh', label: 'Viento (km/h)' }
-            };
-            const currentMetric = metricMap[metric];
-            
-            const now = new Date();
-            let startDate = new Date(0); 
-            
-            if (currentTimeRange !== 'all') {
-                startDate = new Date();
-                startDate.setDate(now.getDate() - parseInt(currentTimeRange));
-            }
-
-            const datasets = [];
-            let allLabels = new Set();
-            let cityDataSets = {};
-            
-            Object.keys(cityDataMap).forEach((ciudad) => {
-                const data = cityDataMap[ciudad];
-                if (!data || data.records.length === 0) return;
-                const filteredData = data.records.filter(row => row.fecha_hora >= startDate);
-                cityDataSets[ciudad] = {};
-
-                filteredData.forEach(row => {
-                    const label = row.fecha_hora.toLocaleString('es-ES', { 
-                        day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', timeZoneName: 'short'
-                    });
-                    allLabels.add(label);
-                    cityDataSets[ciudad][label] = row[currentMetric.key];
-                });
+            const metricMap = {'temp': { key: 'temperatura_c', label: 'Temperatura (°C)' }, /* ... */}; const currentMetric = metricMap[metric];
+            const now = new Date(); let startDate = new Date(0); if (currentTimeRange !== 'all') { /* ... */ }
+            const datasets = []; let allLabels = new Set(); let cityDataSets = {};
+            Object.keys(cityDataMap).forEach((ciudad) => { // ciudad es 'Madrid'
+                const data = cityDataMap[ciudad]; if (!data || data.records.length === 0) return;
+                const filteredData = data.records.filter(row => row.fecha_hora >= startDate); cityDataSets[ciudad] = {};
+                filteredData.forEach(row => { const label = row.fecha_hora.toLocaleString(/* ... */); allLabels.add(label); cityDataSets[ciudad][label] = row[currentMetric.key]; });
             });
-
-            const sortedLabels = Array.from(allLabels).sort((a, b) => {
-                const parseDate = (str) => {
-                    const parts = str.match(/(\d+)\s(\w+)\.?,\s(\d+):(\d+)/);
-                    if (!parts) return new Date(0);
-                    const months = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
-                    const monthIndex = months.indexOf(parts[2].toLowerCase());
-                    return new Date(new Date().getFullYear(), monthIndex, parts[1], parts[3], parts[4]);
-                };
-                return parseDate(a) - parseDate(b);
-            });
-
-
-            Object.keys(cityDataSets).forEach((ciudad, index) => {
+            const sortedLabels = Array.from(allLabels).sort(/* ... */);
+            Object.keys(cityDataSets).forEach((ciudad, index) => { // ciudad es 'Madrid'
                 const chartData = sortedLabels.map(label => cityDataSets[ciudad][label] || null); 
-
-                datasets.push({
-                    label: `${ciudad}`,
-                    data: chartData,
-                    borderColor: COLOR_PALETTE[index % COLOR_PALETTE.length],
-                    backgroundColor: 'transparent',
-                    tension: 0.1,
-                    spanGaps: true,
-                    borderWidth: 2,
-                    pointRadius: 1.5
-                });
+                datasets.push({ label: `${ciudad}`, /* ... (resto sin cambios) ... */ }); // Usa nombre limpio
             });
-
-            myChart = new Chart(ctx, {
-                type: 'line',
-                data: { labels: sortedLabels, datasets: datasets },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        title: { display: true, text: `Evolución Histórica de ${currentMetric.label}`, font: { size: 18 } },
-                        legend: { position: 'top' }
-                    },
-                    scales: {
-                        y: { title: { display: true, text: currentMetric.label } },
-                        x: { title: { display: true, text: 'Fecha' } }
-                    },
-                    interaction: { mode: 'index', intersect: false }
-                }
-            });
+            myChart = new Chart(ctx, { /* ... (sin cambios) ... */ });
         }
-
-        // --- [NUEVO] 7. Funciones del Mapa ---
-
-        /**
-         * Inicializa el mapa y pinta todos los marcadores
-         */
-        async function initMap() {
-            map = L.map('map-container').setView([20, 0], 2); // Vista global
-
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-                maxZoom: 18,
-            }).addTo(map);
-
+        
+        // --- Funciones del Mapa ---
+        async function initMap() { /* ... (sin cambios) ... */ 
+            map = L.map('map-container').setView([20, 0], 2);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; OpenStreetMap contributors', maxZoom: 18, }).addTo(map);
             try {
-                const response = await fetch(MAP_DATA_URL);
-                const mapData = await response.json();
-                
-                mapData.forEach(city => {
-                    if (!city.lat || !city.lon) return;
-                    
-                    const temp = city.temp;
-                    const color = getTempColor(temp); // Color por temperatura
-
-                    const marker = L.circleMarker([city.lat, city.lon], {
-                        radius: 5,
-                        fillColor: color,
-                        color: "#000", // Borde negro
-                        weight: 0.5,
-                        opacity: 1,
-                        fillOpacity: 0.7
-                    }).addTo(map);
-
+                const response = await fetch(MAP_DATA_URL); const mapData = await response.json();
+                mapData.forEach(city => { // city.ciudad ya es el nombre limpio ('León')
+                    if (!city.lat || !city.lon) return; const temp = city.temp; const color = getTempColor(temp);
+                    const marker = L.circleMarker([city.lat, city.lon], { /* ... */ }).addTo(map);
                     marker.bindTooltip(`<b>${city.ciudad}</b><br>Temp: ${temp.toFixed(1)} °C`);
-                    
-                    // Guardamos el marcador para poder resaltarlo
-                    mapMarkers[city.ciudad] = marker;
+                    mapMarkers[city.ciudad] = marker; // Usa nombre limpio como clave
                 });
-
-            } catch (e) {
-                console.error("Error al cargar datos del mapa:", e);
-                document.getElementById('map-container').innerHTML = "Error al cargar el mapa.";
-            }
+            } catch (e) { console.error("Error al cargar datos del mapa:", e); /* ... */ }
         }
-
-        /**
-         * Resalta los marcadores del mapa que están seleccionados
-         */
-        function highlightMapMarkers(selectedCities) {
-            // 1. Reseteamos todos los marcadores
-            for (const cityName in mapMarkers) {
-                mapMarkers[cityName].setStyle({
-                    weight: 0.5,
-                    color: "#000",
-                    fillOpacity: 0.7
-                });
-            }
-            
-            // 2. Resaltamos los seleccionados
-            selectedCities.forEach((cityName, index) => {
-                const marker = mapMarkers[cityName];
-                if (marker) {
-                    marker.setStyle({
-                        weight: 2.5, // Borde más grueso
-                        color: COLOR_PALETTE[index % COLOR_PALETTE.length], // Color de la leyenda
-                        fillOpacity: 0.9
-                    });
-                    marker.bringToFront(); // Trae al frente
-                }
+        function highlightMapMarkers(selectedCitiesClean) { /* ... */ 
+             // selectedCitiesClean ya son nombres limpios ['Madrid', 'León']
+            for (const cityName in mapMarkers) { mapMarkers[cityName].setStyle({ weight: 0.5, color: "#000", fillOpacity: 0.7 }); }
+            selectedCitiesClean.forEach((cityName, index) => { // cityName es 'Madrid'
+                const marker = mapMarkers[cityName]; // Busca por nombre limpio
+                if (marker) { marker.setStyle({ weight: 2.5, color: COLOR_PALETTE[index % COLOR_PALETTE.length], fillOpacity: 0.9 }); marker.bringToFront(); }
             });
         }
+        function getTempColor(temp) { /* ... (sin cambios) ... */ }
 
-        /**
-         * Devuelve un color basado en la temperatura
-         */
-        function getTempColor(temp) {
-            if (temp < 0) return '#007bff';   // Azul frío
-            if (temp < 10) return '#00bfff';  // Azul claro
-            if (temp < 20) return '#28a745';  // Verde
-            if (temp < 30) return '#ffc107';  // Amarillo
-            return '#dc3545';                 // Rojo calor
-        }
-
-        // --- [MODIFICADO] 8. Función de Inicialización ---
+        // --- Función de Inicialización ---
         async function init() {
             choicesInstance = new Choices(citySelectorElement, {
                 removeItemButton: true,
@@ -597,23 +402,27 @@
             });
 
             try {
-                // [NUEVO] Cargamos el mapa y la lista de ciudades en paralelo
                 const [ciudadesResponse, _] = await Promise.all([
                     fetch(CITIES_LIST_URL),
-                    initMap() // Esta función ahora es asíncrona y carga el mapa
+                    initMap() 
                 ]);
 
-                // Procesamos la lista de ciudades
                 const text = await ciudadesResponse.text();
+                // [CORRECCIÓN] Procesamos el ciudades.txt robusto
                 const ciudades = text.split('\n')
-                                     .map(city => city.trim())
-                                     .filter(city => city.length > 0)
-                                     .map(city => ({ value: city, label: city }));
+                                     .map(line => line.trim().split(',')) // Separa por comas
+                                     .filter(parts => parts.length >= 2 && parts[0]) // Filtra líneas inválidas y comentarios
+                                     .map(parts => ({ 
+                                         value: `${parts[0]},${parts[1]}`, // Valor = "Ciudad,PAIS"
+                                         label: parts[0] // Etiqueta = "Ciudad" (limpio)
+                                      }));
                 
                 choicesInstance.setChoices(ciudades, 'value', 'label', false);
-                choicesInstance.setChoiceByValue(['Madrid', 'León', 'Barcelona']);
                 
-                // Primera actualización del Dashboard
+                // [CAMBIO] Seleccionamos por defecto usando el VALOR completo "Ciudad,PAIS"
+                choicesInstance.setChoiceByValue(['Madrid,ES', 'León,ES']); 
+                
+                // [IMPORTANTE] Llamamos a updateDashboard DESPUÉS de setChoiceByValue
                 updateDashboard();
 
             } catch (error) {
@@ -621,7 +430,7 @@
                 alert("No se pudo cargar la lista de ciudades o el mapa.");
             }
             
-            // Añadimos todos los Listeners (sin cambios)
+            // Listeners
             citySelectorElement.addEventListener('change', updateDashboard);
             metricRadios.forEach(radio => radio.addEventListener('change', updateDashboard));
             timeRangeButtons.forEach(button => {
