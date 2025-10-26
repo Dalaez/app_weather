@@ -9,3 +9,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:19:07.157467,Sofia,15.44,14.32,14.83,15.44,49,2.57,muy nuboso
 2025-10-25T15:29:50.104890,Sofia,15.44,14.35,14.83,15.44,50,2.57,muy nuboso
 2025-10-26T07:41:32.257628,Sofia,8.83,8.83,8.83,8.83,93,1.03,lluvia moderada,42.6975,23.3242
+2025-10-26T07:52:49.872523,Sofia,8.83,8.83,8.83,8.83,93,1.03,nubes,42.6975,23.3242

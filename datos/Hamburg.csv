@@ -9,3 +9,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:19:09.326779,Hamburg,9.91,6.77,9.05,10.55,96,7.2,lluvia ligera
 2025-10-25T15:29:51.626705,Hamburg,9.91,6.77,9.6,10.55,96,7.2,muy nuboso
 2025-10-26T07:41:52.214778,Hamburg,5.05,-0.28,4.33,6.27,92,9.77,chubasco de ligera intensidad,53.55,10
+2025-10-26T07:53:09.829172,Hamburg,5.05,-0.28,4.33,6.27,92,9.77,chubasco de ligera intensidad,53.55,10

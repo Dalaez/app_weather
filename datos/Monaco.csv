@@ -9,3 +9,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:19:05.448487,Monaco,21.47,20.82,19.88,22.6,44,9.26,cielo claro
 2025-10-25T15:29:48.965583,Monaco,20.54,19.88,19.88,22.05,47,8.75,cielo claro
 2025-10-26T07:41:17.269897,Monaco,15.88,14.78,15.88,16.9,48,4.12,cielo claro,43.7314,7.419
+2025-10-26T07:52:34.902271,Monaco,15.9,14.8,15.88,17.45,48,4.12,cielo claro,43.7314,7.419

@@ -9,3 +9,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:19:08.076652,Vienna,13.16,12.28,11.47,14.05,67,3.6,lluvia moderada
 2025-10-25T15:29:50.769677,Vienna,12.03,11.22,10.36,13.49,74,3.6,lluvia moderada
 2025-10-26T07:41:40.984462,Vienna,9.94,8.39,8.75,11,76,3.09,cielo claro,48.2085,16.3721
+2025-10-26T07:52:58.620348,Vienna,10.92,10,8.96,11.56,74,3.09,cielo claro,48.2085,16.3721

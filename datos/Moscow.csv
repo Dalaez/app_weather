@@ -9,3 +9,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:19:05.574899,Moscow,9.76,6.83,9.1,10.29,62,6.34,nubes dispersas
 2025-10-25T15:29:49.062591,Moscow,10.31,9.02,9.65,10.37,62,6.34,nubes dispersas
 2025-10-26T07:41:18.516658,Moscow,7.53,4.26,6.88,7.59,69,5.59,nubes,55.7522,37.6156
+2025-10-26T07:52:36.130762,Moscow,7.53,4.26,6.88,7.59,68,5.59,nubes,55.7522,37.6156

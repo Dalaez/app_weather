@@ -9,3 +9,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:19:07.669145,Vaduz,9.04,9.04,8.12,9.22,91,0.61,lluvia ligera
 2025-10-25T15:29:50.481329,Vaduz,8.53,8.53,8.12,9.2,91,0.61,nubes
 2025-10-26T07:41:37.233821,Vaduz,6.68,5.8,5.9,7,92,1.55,lluvia ligera,47.1415,9.5215
+2025-10-26T07:52:54.867036,Vaduz,6.68,5.8,5.9,7,92,1.55,nubes,47.1415,9.5215

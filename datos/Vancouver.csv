@@ -9,3 +9,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:19:15.549982,Vancouver,7.51,3.83,6.53,9.01,92,6.71,nubes
 2025-10-25T15:29:55.821681,Vancouver,7.67,4.41,6.53,9.05,90,5.66,lluvia ligera
 2025-10-26T07:42:48.266630,Vancouver,8.42,4.56,7.38,9.65,95,8.23,chubasco de ligera intensidad,49.2497,-123.1193
+2025-10-26T07:54:06.014377,Vancouver,8.3,4.4,7.38,9.57,95,8.23,chubasco de ligera intensidad,49.2497,-123.1193

@@ -9,3 +9,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:19:16.377037,São Paulo,27.13,27.54,26.36,27.94,50,3.13,nubes dispersas
 2025-10-25T15:29:56.377039,São Paulo,27.07,27.24,26.75,28.45,46,3.09,cielo claro
 2025-10-26T07:42:55.721007,São Paulo,20.05,19.99,20.05,20.25,72,1.54,cielo claro,-23.5475,-46.6361
+2025-10-26T07:54:13.505582,São Paulo,19.49,19.37,19.49,20.2,72,1.54,cielo claro,-23.5475,-46.6361

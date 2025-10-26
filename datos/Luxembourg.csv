@@ -9,3 +9,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:19:05.328961,Luxembourg Province,9.1,6.34,9.1,9.1,87,5.31,nubes
 2025-10-25T15:29:48.871903,Luxembourg Province,9.1,6.34,9.1,9.1,87,5.31,nubes
 2025-10-26T07:41:16.005931,Luxembourg Province,3.55,-0.95,3.55,3.55,92,6.02,nubes,50,5.5
+2025-10-26T07:52:33.644091,Luxembourg Province,4.1,-0.26,4.1,4.1,92,6.02,nubes,50,5.5

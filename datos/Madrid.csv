@@ -9,3 +9,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:18:59.390349,Madrid,18.64,18.2,16.51,19.81,63,7.2,nubes dispersas
 2025-10-25T15:29:44.719736,Madrid,18.76,18.21,17.53,19.68,58,5.14,muy nuboso
 2025-10-26T07:40:22.337755,Madrid,10.65,10.02,10.12,11.13,86,3.13,nubes,40.4165,-3.7026
+2025-10-26T07:51:39.905187,Madrid,10.77,10.15,10.12,11.13,86,2.24,muy nuboso,40.4165,-3.7026

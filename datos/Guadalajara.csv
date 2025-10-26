@@ -9,3 +9,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:18:58.262022,Guadalajara,18.87,19.11,18.87,18.87,88,0,niebla
 2025-10-25T15:29:43.965814,Guadalajara,18.87,19.11,18.87,18.87,88,0,niebla
 2025-10-26T07:40:12.358742,Guadalajara,13.87,13.61,13.87,13.87,88,0,cielo claro,20.6667,-103.3333
+2025-10-26T07:51:29.882621,Guadalajara,15.54,15,15.54,15.54,71,0.94,nubes,20.6667,-103.3333

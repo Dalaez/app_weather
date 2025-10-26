@@ -9,3 +9,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:19:16.111793,San Jose,13.79,13.5,12.92,15,87,5.14,nubes
 2025-10-25T15:29:56.193249,San Jose,13.79,13.47,12.92,15.28,86,5.14,nubes
 2025-10-26T07:42:53.245971,San Jose,13.1,12.66,11.53,14.91,84,1.54,algo de nubes,37.3394,-121.895
+2025-10-26T07:54:11.003353,San Jose,12.98,12.53,11.53,14.86,84,1.54,algo de nubes,37.3394,-121.895

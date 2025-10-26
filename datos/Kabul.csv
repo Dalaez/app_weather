@@ -9,3 +9,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:19:10.700935,Kabul,15.3,13.49,15.3,15.3,23,2.38,cielo claro
 2025-10-25T15:29:52.559542,Kabul,15.3,13.49,15.3,15.3,23,2.38,cielo claro
 2025-10-26T07:42:04.686280,Kabul,18.81,17.35,18.81,18.81,23,1.8,cielo claro,34.5,69.4167
+2025-10-26T07:53:22.328932,Kabul,18.81,17.35,18.81,18.81,23,1.8,cielo claro,34.5,69.4167

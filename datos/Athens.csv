@@ -9,3 +9,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:19:03.265814,Athens,23.82,23.54,22.96,24.81,49,3.6,cielo claro
 2025-10-25T15:29:47.407453,Athens,23.37,23.07,22.78,24.65,50,3.13,cielo claro
 2025-10-26T07:40:57.302218,Athens,21.59,21.53,20.61,22.43,66,4.47,cielo claro,37.9795,23.7162
+2025-10-26T07:52:14.939347,Athens,21.83,21.77,20.74,22.93,65,5.36,cielo claro,37.9795,23.7162

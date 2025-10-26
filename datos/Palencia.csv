@@ -9,3 +9,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:19:00.334910,Palencia,10.95,10.01,10.95,10.95,73,5.22,nubes
 2025-10-25T15:29:45.377528,Palencia,10.94,10,10.94,10.94,73,5.22,nubes
 2025-10-26T07:40:31.092074,Palencia,6.6,4.84,6.6,6.6,77,2.45,nubes dispersas,42.4167,-4.5
+2025-10-26T07:51:48.659214,Palencia,6.79,5.06,6.79,6.79,76,2.45,nubes dispersas,42.4167,-4.5

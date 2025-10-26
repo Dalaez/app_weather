@@ -9,3 +9,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:19:01.621735,Seville,29.02,29.69,27.93,30.06,50,3.6,cielo claro
 2025-10-25T15:29:46.262843,Seville,28.94,29.7,27.93,30.06,51,4.47,cielo claro
 2025-10-26T07:40:42.328695,Seville,19.7,19.95,18.88,20.56,85,2.24,nubes,37.3824,-5.9761
+2025-10-26T07:51:59.924264,Seville,19.7,19.95,18.88,20.56,85,4.47,nubes,37.3824,-5.9761

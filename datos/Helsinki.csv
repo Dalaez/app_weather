@@ -9,3 +9,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:19:04.475348,Helsinki,10.02,9.64,9.87,10.59,98,9.39,niebla
 2025-10-25T15:29:48.280092,Helsinki,10.08,9.7,9.87,10.59,98,9.39,niebla
 2025-10-26T07:41:08.529276,Helsinki,10.1,9.72,9.42,10.59,98,8.05,niebla,60.1695,24.9355
+2025-10-26T07:52:26.151020,Helsinki,10.1,9.72,9.42,10.59,98,8.05,lluvia ligera,60.1695,24.9355

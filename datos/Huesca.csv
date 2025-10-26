@@ -9,3 +9,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:18:58.522796,Huesca,16.38,15.95,16.38,16.38,72,3.09,nubes dispersas
 2025-10-25T15:29:44.154119,Huesca,17.38,16.92,17.38,17.38,67,4.12,algo de nubes
 2025-10-26T07:40:14.832296,Huesca,10.38,9.33,10.38,10.38,71,5.66,cielo claro,42.1362,-0.4087
+2025-10-26T07:51:32.409905,Huesca,9.38,6.76,9.38,9.38,76,5.14,cielo claro,42.1362,-0.4087

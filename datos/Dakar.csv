@@ -9,3 +9,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:19:17.483424,Dakar,31.25,38.25,31.25,31.25,76,2.24,cielo claro
 2025-10-25T15:29:57.129376,Dakar,31.25,38.25,31.25,32.07,76,3.09,algo de nubes
 2025-10-26T07:43:05.724387,Dakar,27.92,32.99,27.92,28.07,87,3.09,algo de nubes,14.6937,-17.4441
+2025-10-26T07:54:23.497356,Dakar,27.92,32.99,27.92,28.07,87,3.09,algo de nubes,14.6937,-17.4441

@@ -9,3 +9,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:19:14.141098,Kingston,28.19,32.58,27.88,28.53,80,1.03,lluvia ligera
 2025-10-25T15:29:54.906604,Kingston,28.19,32.75,27.88,28.98,81,1.03,lluvia ligera
 2025-10-26T07:42:35.821778,Kingston,24.55,25.52,24.55,24.55,94,0.45,lluvia ligera,17.997,-76.7936
+2025-10-26T07:53:53.529228,Kingston,24.55,25.52,24.55,24.55,94,0.45,lluvia ligera,17.997,-76.7936

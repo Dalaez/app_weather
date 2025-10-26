@@ -9,3 +9,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:18:59.928212,Murcia,27.12,26.28,27.12,28.11,24,3.27,muy nuboso
 2025-10-25T15:29:45.092435,Murcia,27.12,26.28,27.12,28.11,24,3.27,muy nuboso
 2025-10-26T07:40:27.323451,Murcia,16.12,16.24,16.12,17.55,94,1.85,nubes,38,-1.5
+2025-10-26T07:51:44.922062,Murcia,17.12,17.34,17.12,17.55,94,1.85,nubes,38,-1.5

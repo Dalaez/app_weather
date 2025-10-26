@@ -9,3 +9,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:19:03.537169,Bern,9.2,7.83,8.47,10.94,67,2.57,lluvia ligera
 2025-10-25T15:29:47.598040,Bern,9.06,7.31,8.47,10.94,63,3.13,lluvia moderada
 2025-10-26T07:40:59.800614,Bern,6.35,2.96,5.7,7.98,68,5.14,muy nuboso,46.9481,7.4474
+2025-10-26T07:52:17.422716,Bern,6.35,2.96,5.7,7.98,68,5.14,muy nuboso,46.9481,7.4474
