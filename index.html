@@ -107,6 +107,7 @@
         
         let map;
         let mapMarkers = {}; // Almacena los marcadores del mapa por nombre de ciudad
+        let cityOptionsList = []; // <-- AÑADIDO: Lista global de opciones de ciudad
 
         // Definición de métricas para acceso fácil
         const METRIC_MAP = {
@@ -470,6 +471,28 @@
                         <div class="popup-temp" style="color: ${color};">${city.temp.toFixed(1)}°C</div>
                     `);
 
+                    // --- INICIO DE LA MEJORA 1: Clic para añadir ---
+                    marker.on('click', () => {
+                        // city.ciudad es el nombre limpio, ej: "León"
+                        // Buscamos la opción completa (ej: "León,ES") en la lista global
+                        const cityOption = cityOptionsList.find(opt => opt.label === city.ciudad);
+                        
+                        if (!cityOption) {
+                            console.warn(`No se encontró la opción para ${city.ciudad} en cityOptionsList.`);
+                            return;
+                        }
+
+                        const currentValues = choicesInstance.getValue(true); // Obtener valores actuales
+                        
+                        // Añadir solo si no está ya y si no hemos llegado al límite de 5
+                        if (!currentValues.includes(cityOption.value) && currentValues.length < 5) {
+                            const newValues = [...currentValues, cityOption.value];
+                            // Esto disparará el evento 'change' y actualizará el dashboard
+                            choicesInstance.setChoiceByValue(newValues); 
+                        }
+                    });
+                    // --- FIN DE LA MEJORA 1 ---
+
                     // Guardar marcador usando el nombre limpio
                     mapMarkers[city.ciudad] = marker;
                 });
@@ -488,22 +511,28 @@
             Object.keys(mapMarkers).forEach(ciudad => {
                 const marker = mapMarkers[ciudad];
                 if (selectedCitiesClean.includes(ciudad)) {
+                    // --- INICIO DE LA MEJORA 2: Borde negro ---
                     // Estilo resaltado
                     marker.setStyle({
-                        weight: 4,
+                        weight: 3, // Un poco más grueso
                         radius: 10,
                         fillOpacity: 1.0,
-                        opacity: 1.0
+                        opacity: 1.0,
+                        color: '#000000' // Borde negro
                     });
+                    // --- FIN DE LA MEJORA 2 ---
                     marker.bringToFront();
                 } else {
+                    // --- INICIO DE LA MEJORA 2: Borde blanco ---
                     // Estilo normal
                     marker.setStyle({
                         weight: 2,
                         radius: 8,
                         fillOpacity: 0.8,
-                        opacity: 0.9
+                        opacity: 0.9,
+                        color: '#FFFFFF' // Borde blanco (original)
                     });
+                    // --- FIN DE LA MEJORA 2 ---
                 }
             });
         }
@@ -537,11 +566,20 @@
 
             try {
                 // 2. Cargar lista de ciudades y el mapa en paralelo
+                /* [ELIMINADO]
                 const [ciudadesResponse, _] = await Promise.all([
                     fetch(CITIES_LIST_URL),
                     initMap() // initMap ya está definida
                 ]);
 
+                if (!ciudadesResponse.ok) throw new Error(`Error al cargar ${CITIES_LIST_URL}`);
+                
+                const text = await ciudadesResponse.text();
+                */
+                
+                // --- INICIO DE CAMBIO ESTRUCTURAL (MEJORA 1) ---
+                // 2. Cargar lista de ciudades PRIMERO
+                const ciudadesResponse = await fetch(CITIES_LIST_URL);
                 if (!ciudadesResponse.ok) throw new Error(`Error al cargar ${CITIES_LIST_URL}`);
                 
                 const text = await ciudadesResponse.text();
@@ -553,13 +591,20 @@
                         label: parts[0]  // Etiqueta: "Ciudad"
                     }));
                 
-                // 3. Poblar el selector de Choices
+                // 3. Guardar en la lista global para que el mapa la use
+                cityOptionsList = ciudades;
+
+                // 4. Ahora inicializar el mapa
+                await initMap(); 
+                // --- FIN DE CAMBIO ESTRUCTURAL (MEJORA 1) ---
+                
+                // 5. Poblar el selector de Choices
                 choicesInstance.setChoices(ciudades, 'value', 'label', false);
                 
-                // 4. Establecer selección por defecto
+                // 6. Establecer selección por defecto
                 choicesInstance.setChoiceByValue(['Madrid,ES', 'León,ES']); 
                 
-                // 5. Cargar datos iniciales
+                // 7. Cargar datos iniciales
                 await updateDashboard();
 
             } catch (error) {
@@ -594,3 +639,5 @@
     </script>
 </body>
 </html>
+
+
