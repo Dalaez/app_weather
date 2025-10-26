@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Climático Global (v2.4.0 - Super Cards)</title>
+    <title>Dashboard Climático Global (v2.6.0 - Dark Mode)</title>
     
     <!-- Librerías JS y CSS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
@@ -13,14 +13,24 @@
     <script src="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/scripts/choices.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-
-    <!-- NUEVO: Feather Icons para las "Super-Cards" -->
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
     <style>
-        /* --- CSS (Modificado para Super-Cards) --- */
+        /* --- CSS (Modificado para Super-Cards, Spinner y Dark Mode) --- */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #d6e0ea 100%); color: #2c3e50; margin: 0; padding: 20px; }
+        
+        /* --- Transiciones --- */
+        body, #controls-container, #chart-container, .kpi-card, .selector-group label, .time-btn {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: linear-gradient(135deg, #f5f7fa 0%, #d6e0ea 100%); 
+            color: #2c3e50; 
+            margin: 0; 
+            padding: 20px; 
+        }
         h1 { color: #1a2533; text-align: center; text-shadow: 1px 1px 2px rgba(0,0,0,0.05); }
         h2 { color: #34495e; border-bottom: 2px solid #bdc3c7; padding-bottom: 5px; margin-top: 30px; }
         #map-container { width: 100%; height: 450px; border-radius: 12px; margin-bottom: 20px; z-index: 5; background: #fff; box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1); border: 1px solid rgba(255, 255, 255, 0.18); }
@@ -33,15 +43,7 @@
         .kpi-card { padding: 20px; border-left: 6px solid; transition: transform 0.2s ease, box-shadow 0.2s ease; } 
         .kpi-card:hover { transform: translateY(-5px); box-shadow: 0 12px 32px 0 rgba(31, 38, 135, 0.15); } 
         .kpi-card h3 { margin: 0 0 12px 0; color: #2c3e50; font-size: 1.25em; } 
-        
-        /* MODIFICADO: Añadido flex para alinear iconos */
-        .kpi-card p { 
-            margin: 8px 0; /* Aumentado margen para mejor espaciado */
-            font-size: 1em; 
-            display: flex;
-            align-items: center;
-        } 
-        
+        .kpi-card p { margin: 8px 0; font-size: 1em; display: flex; align-items: center; } 
         .kpi-card .kpi-main { font-weight: 700; font-size: 1.8em; color: #333; margin-bottom: 12px; } 
         .kpi-card .kpi-main span { font-size: 0.7em; font-weight: 400; color: #555; } 
         .kpi-hist { font-size: 0.9em; color: #555; display: flex; flex-direction: column; gap: 5px; border-top: 1px solid #eee; padding-top: 10px; margin-top: 10px; } 
@@ -49,39 +51,161 @@
         .kpi-hist-item .date { color: #7f8c8d; font-size: 0.9em; padding-left: 5px; }
         
         #chart-container { width: 100%; padding: 20px; box-sizing: border-box; min-height: 500px; position: relative; } 
-        #myChart { /* El canvas se gestiona por Chart.js, no necesita position absolute */ }
         
-        /* Estilos para el popup del mapa */
+        /* Popup del mapa */
         .leaflet-popup-content-wrapper { border-radius: 8px; }
         .leaflet-popup-content { font-family: 'Inter', sans-serif; }
         .popup-title { font-weight: bold; font-size: 1.1em; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-bottom: 5px; }
         .popup-temp { font-size: 1.3em; font-weight: 600; }
 
-        /* --- NUEVO: CSS para Super-Cards (Iconos y Sparklines) --- */
-        .kpi-icon, .kpi-icon-main {
-            width: 1em; /* Ajusta el tamaño al texto */
-            height: 1em;
-            margin-right: 8px;
-            vertical-align: -0.125em; /* Alinear con el texto */
-            stroke-width: 2.5;
-            color: #555; /* Color base del icono */
+        /* Super-Cards */
+        .kpi-icon, .kpi-icon-main { width: 1em; height: 1em; margin-right: 8px; vertical-align: -0.125em; stroke-width: 2.5; color: #555; }
+        .kpi-icon-main { width: 1.2em; height: 1.2em; margin-right: 10px; color: #333; }
+        .sparkline-container { width: 100%; height: 50px; margin: 15px 0 10px 0; }
+        
+        /* Loading Spinner */
+        #loading-spinner {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(4px);
+            display: none; justify-content: center; align-items: center; z-index: 1000;
         }
-        .kpi-icon-main {
-            width: 1.2em; /* Un poco más grande para el KPI principal */
-            height: 1.2em;
-            margin-right: 10px;
-            color: #333; /* Color más oscuro para el principal */
+        .spinner {
+            width: 50px; height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #4363d8;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
         }
-        .sparkline-container {
-            width: 100%;
-            height: 50px; /* Altura fija para el mini-gráfico */
-            margin: 15px 0 10px 0;
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        /* --- NUEVO: Botón Dark Mode --- */
+        #dark-mode-toggle-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
         }
-        /* --- FIN NUEVO CSS --- */
+        #dark-mode-toggle {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        #dark-mode-toggle:hover {
+            background: #f4f4f4;
+            transform: scale(1.1);
+        }
+        #dark-mode-toggle i {
+            color: #555;
+            transition: color 0.3s ease;
+        }
+
+        /* --- NUEVO: Reglas de Dark Mode --- */
+        body.dark-mode {
+            background: #1a2533;
+            color: #f5f7fa;
+        }
+        body.dark-mode h1 { color: #f5f7fa; }
+        body.dark-mode h2 { color: #9ab, #ecf0f1; border-bottom-color: #34495e; }
+        body.dark-mode #map-container { background: #111; border-color: #34495e; }
+        body.dark-mode #controls-container, 
+        body.dark-mode #chart-container, 
+        body.dark-mode .kpi-card {
+            background: rgba(44, 62, 80, 0.85); /* #2c3e50 con opacidad */
+            border-color: rgba(93, 109, 126, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Controles */
+        body.dark-mode .selector-group label, 
+        body.dark-mode .time-btn {
+            background-color: #34495e;
+            color: #bdc3c7;
+            border-right: 1px solid #2c3e50;
+        }
+        body.dark-mode .selector-group input:not(:checked) + label:hover, 
+        body.dark-mode .time-btn:not(.active):hover {
+            background-color: #4a6582;
+            color: #fff;
+        }
+        body.dark-mode .selector-group input:checked + label, 
+        body.dark-mode .time-btn.active {
+            background-image: linear-gradient(to right, #4e73e0, #6a82e0);
+            box-shadow: 0 2px 8px rgba(78, 115, 224, 0.3);
+        }
+        
+        /* Choices.js */
+        body.dark-mode .choices__inner {
+            background-color: #34495e;
+            border-color: #5d6d7e;
+            color: #f5f7fa;
+        }
+        body.dark-mode .choices__list--dropdown,
+        body.dark-mode .choices__list[aria-expanded] {
+            background-color: #34495e;
+            border-color: #5d6d7e;
+        }
+        body.dark-mode .choices__item--choice {
+            color: #f5f7fa;
+        }
+        body.dark-mode .choices__item--choice.is-highlighted {
+            background-color: #4a6582;
+        }
+
+        /* Tarjetas KPI */
+        body.dark-mode .kpi-card h3 { color: #ecf0f1; }
+        body.dark-mode .kpi-card .kpi-main { color: #f5f7fa; }
+        body.dark-mode .kpi-card .kpi-main span { color: #bdc3c7; }
+        body.dark-mode .kpi-card p { color: #bdc3c7; }
+        body.dark-mode .kpi-icon, 
+        body.dark-mode .kpi-icon-main { color: #bdc3c7; }
+        body.dark-mode .kpi-hist { color: #bdc3c7; border-top-color: #34495e; }
+        body.dark-mode .kpi-hist-item .date { color: #95a5a6; }
+        
+        /* Popup Mapa */
+        body.dark-mode .leaflet-popup-content-wrapper {
+            background-color: #2c3e50;
+            color: #f5f7fa;
+        }
+        body.dark-mode .leaflet-popup-content { color: #f5f7fa; }
+        body.dark-mode .leaflet-popup-tip { background-color: #2c3e50; }
+        body.dark-mode .popup-title { border-bottom-color: #34495e; }
+        
+        /* Spinner */
+        body.dark-mode #loading-spinner {
+            background: rgba(26, 37, 51, 0.7); /* #1a2533 con opacidad */
+        }
+        body.dark-mode .spinner {
+            border: 5px solid #34495e;
+            border-top: 5px solid #4e73e0;
+        }
+        
+        /* Botón Dark Mode */
+        body.dark-mode #dark-mode-toggle {
+            background: #2c3e50;
+            border-color: #34495e;
+        }
+        body.dark-mode #dark-mode-toggle:hover {
+            background: #34495e;
+        }
+        body.dark-mode #dark-mode-toggle i {
+            color: #f5f7fa;
+        }
 
     </style>
 </head>
 <body>
+
+    <div id="loading-spinner">
+        <div class="spinner"></div>
+    </div>
 
     <h1>Dashboard Climático Global</h1>
 
@@ -92,6 +216,7 @@
         </div>
         
         <div id="metric-select">
+            <!-- ... (inputs de métrica) ... -->
             <fieldset>
                 <legend>Métrica</legend>
                 <div class="selector-group">
@@ -106,6 +231,7 @@
         </div>
 
         <div id="time-range-select">
+            <!-- ... (botones de rango) ... -->
             <fieldset>
                 <legend>Rango</legend>
                 <div class="selector-group">
@@ -118,13 +244,21 @@
                 </div>
             </fieldset>
         </div>
-    </div>
 
-    <h2>Mapa Interactivo</h2>
-    <div id="map-container"></div>
+        <!-- NUEVO: Botón Dark Mode -->
+        <div id="dark-mode-toggle-container">
+            <button id="dark-mode-toggle" aria-label="Toggle Dark Mode">
+                <!-- El icono se rellenará con JS (moon o sun) -->
+                <i data-feather="moon" id="dark-mode-icon"></i>
+            </button>
+        </div>
+    </div>
 
     <h2>Datos más recientes</h2>
     <div id="kpi-container"></div>
+
+    <h2>Mapa Interactivo</h2>
+    <div id="map-container"></div>
 
     <h2>Evolución Histórica</h2>
     <p style="text-align: center; margin-top: -10px; color: #555;">(Todas las horas se muestran en tu zona horaria local)</p>
@@ -143,6 +277,8 @@
         const metricRadios = document.querySelectorAll('input[name="metric"]');
         const timeRangeButtons = document.querySelectorAll('.time-btn');
         const ctx = document.getElementById('myChart').getContext('2d');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        const darkModeToggle = document.getElementById('dark-mode-toggle'); // <-- NUEVO
         
         let myChart;
         let choicesInstance;
@@ -153,8 +289,8 @@
         let map;
         let mapMarkers = {}; 
         let cityOptionsList = []; 
+        let lightTileLayer, darkTileLayer; // <-- NUEVO: Para Dark Mode del mapa
 
-        // MODIFICADO: Definición de métricas con iconos
         const METRIC_MAP = {
             'temp': { key: 'temperatura_c', label: 'Temperatura', unit: '°C', icon: 'thermometer' },
             'humidity': { key: 'humedad_porc', label: 'Humedad', unit: '%', icon: 'droplet' },
@@ -162,108 +298,63 @@
         };
 
         // --- Funciones de Carga de Datos ---
-
-        /**
-         * Calcula estadísticas (min/max y último registro) para un conjunto de datos.
-         */
+        // ... (calculateStats, loadCSV, loadDataForCities no cambian) ...
         function calculateStats(records) {
             if (records.length === 0) return {};
-
             const stats = {
                 temp: { min: { val: Infinity, date: null }, max: { val: -Infinity, date: null } },
                 humidity: { min: { val: Infinity, date: null }, max: { val: -Infinity, date: null } },
                 wind: { min: { val: Infinity, date: null }, max: { val: -Infinity, date: null } }
             };
-
             records.forEach(row => {
                 const date = row.fecha_hora;
-                
-                // Temperatura
-                if (row.temperatura_c < stats.temp.min.val) {
-                    stats.temp.min = { val: row.temperatura_c, date: date };
-                }
-                if (row.temperatura_c > stats.temp.max.val) {
-                    stats.temp.max = { val: row.temperatura_c, date: date };
-                }
-
-                // Humedad
-                if (row.humedad_porc < stats.humidity.min.val) {
-                    stats.humidity.min = { val: row.humedad_porc, date: date };
-                }
-                if (row.humedad_porc > stats.humidity.max.val) {
-                    stats.humidity.max = { val: row.humedad_porc, date: date };
-                }
-                
-                // Viento
-                if (row.viento_kmh < stats.wind.min.val) {
-                    stats.wind.min = { val: row.viento_kmh, date: date };
-                }
-                if (row.viento_kmh > stats.wind.max.val) {
-                    stats.wind.max = { val: row.viento_kmh, date: date };
-                }
+                if (row.temperatura_c < stats.temp.min.val) { stats.temp.min = { val: row.temperatura_c, date: date }; }
+                if (row.temperatura_c > stats.temp.max.val) { stats.temp.max = { val: row.temperatura_c, date: date }; }
+                if (row.humedad_porc < stats.humidity.min.val) { stats.humidity.min = { val: row.humedad_porc, date: date }; }
+                if (row.humedad_porc > stats.humidity.max.val) { stats.humidity.max = { val: row.humedad_porc, date: date }; }
+                if (row.viento_kmh < stats.wind.min.val) { stats.wind.min = { val: row.viento_kmh, date: date }; }
+                if (row.viento_kmh > stats.wind.max.val) { stats.wind.max = { val: row.viento_kmh, date: date }; }
             });
-
             stats.latest = records[records.length - 1];
             return stats;
         }
-
-        /**
-         * Carga y parsea un fichero CSV para una ciudad.
-         */
         function loadCSV(ciudadQuery) {
             if (allDataCache[ciudadQuery]) {
                 return Promise.resolve(allDataCache[ciudadQuery]);
             }
-            
             const nombreCiudadLimpio = ciudadQuery.split(',')[0];
             const nombreFichero = nombreCiudadLimpio.replace(/ /g, '_') + '.csv'; 
             const csvUrl = DATA_FOLDER_URL + nombreFichero;
-            
             return new Promise((resolve, reject) => {
                 Papa.parse(csvUrl, {
-                    download: true,
-                    header: true,
-                    dynamicTyping: true, 
-                    skipEmptyLines: true,
+                    download: true, header: true, dynamicTyping: true, skipEmptyLines: true,
                     complete: (results) => {
                         const records = results.data.map(row => ({
-                            ...row,
-                            fecha_hora: new Date(row.fecha_hora) 
+                            ...row, fecha_hora: new Date(row.fecha_hora) 
                         })).sort((a, b) => a.fecha_hora - b.fecha_hora); 
-                        
                         if (records.length === 0) {
                             console.warn(`No se encontraron registros en ${csvUrl}`);
                             allDataCache[ciudadQuery] = { records: [], stats: {} };
                             resolve(allDataCache[ciudadQuery]);
                             return;
                         }
-                        
                         const stats = calculateStats(records);
                         allDataCache[ciudadQuery] = { records, stats }; 
                         resolve(allDataCache[ciudadQuery]);
                     },
-                    error: (err) => {
-                        console.error(`Error cargando ${csvUrl}:`, err);
-                        reject(err);
-                    }
+                    error: (err) => { console.error(`Error cargando ${csvUrl}:`, err); reject(err); }
                 });
             });
         }
-
-        /**
-         * Carga los datos para todas las ciudades seleccionadas.
-         */
         async function loadDataForCities(ciudadesQuery) {
             const promises = ciudadesQuery.map(ciudadQuery => loadCSV(ciudadQuery));
             try {
                 const datasets = await Promise.all(promises);
                 const cityDataMap = {};
-                
                 ciudadesQuery.forEach((ciudadQuery, index) => { 
                     cityDataMap[ciudadQuery.split(',')[0]] = datasets[index]; 
                 });
-                
-                return cityDataMap; // Devuelve {'Madrid': {...}, 'León': {...}}
+                return cityDataMap;
             } catch (error) {
                 console.error("Fallo al cargar uno o más datasets:", error);
                 kpiContainer.innerHTML = `<p style="color: red; grid-column: 1 / -1;">Error al cargar los datos de una o más ciudades. Verifica que los ficheros CSV existen en la carpeta 'datos/'.</p>`;
@@ -272,13 +363,37 @@
         }
 
         // --- Funciones de UI ---
+        
+        // ... (animateCountUp no cambia) ...
+        function animateCountUp(element, end, duration = 800, decimals = 1) {
+            let startTime = null;
+            const start = 0; 
+            if (isNaN(end) || !isFinite(end)) {
+                element.textContent = (0).toFixed(decimals);
+                return;
+            }
+            function step(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const progress = Math.min((timestamp - startTime) / duration, 1);
+                const easedProgress = progress * (2 - progress); 
+                let currentValue = start + (end * easedProgress);
+                element.textContent = currentValue.toFixed(decimals); 
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    element.textContent = end.toFixed(decimals);
+                }
+            }
+            requestAnimationFrame(step);
+        }
 
         /**
-         * Función principal que actualiza todo el dashboard.
+         * MODIFICADO: Función principal que actualiza todo el dashboard.
          */
         async function updateDashboard() { 
+            loadingSpinner.style.display = 'flex'; 
+
             const selectedCitiesValues = choicesInstance.getValue(true); 
-            
             const checkedMetricRadio = document.querySelector('input[name="metric"]:checked');
             const selectedMetric = checkedMetricRadio ? checkedMetricRadio.value : 'temp'; 
 
@@ -286,35 +401,40 @@
                 kpiContainer.innerHTML = "<p>Selecciona una o más ciudades para ver los datos.</p>"; 
                 if (myChart) myChart.destroy(); 
                 highlightMapMarkers([]); 
+                loadingSpinner.style.display = 'none'; 
                 return; 
             }
             
-            kpiContainer.innerHTML = "<p>Cargando datos...</p>";
+            kpiContainer.innerHTML = ""; 
             if (myChart) {
                  myChart.data.datasets = [];
                  myChart.data.labels = [];
                  myChart.update();
             }
 
+            // OBTENER DATOS (puede usar caché)
             const cityDataMap = await loadDataForCities(selectedCitiesValues); 
             
             if (!cityDataMap) {
                 console.error("No se pudieron cargar los datos para las ciudades seleccionadas.");
+                loadingSpinner.style.display = 'none'; 
                 return;
             }
 
-            const selectedCitiesClean = selectedCitiesValues.map(v => v.split(',')[0]); // ['Madrid', 'León']
+            const selectedCitiesClean = selectedCitiesValues.map(v => v.split(',')[0]);
 
             updateKPIs(cityDataMap, selectedMetric); 
             updateChart(cityDataMap, selectedMetric); 
             highlightMapMarkers(selectedCitiesClean); 
+
+            loadingSpinner.style.display = 'none'; 
         }
 
         /**
-         * MODIFICADO: Actualiza las tarjetas de KPI (Ahora "Super-Cards").
+         * MODIFICADO: Actualiza las tarjetas de KPI.
          */
         function updateKPIs(cityDataMap, selectedMetric) {
-            kpiContainer.innerHTML = ""; // Limpiar KPIs anteriores
+            kpiContainer.innerHTML = ""; 
             const metricInfo = METRIC_MAP[selectedMetric];
 
             Object.keys(cityDataMap).forEach((ciudad, index) => {
@@ -323,52 +443,36 @@
                     kpiContainer.innerHTML += `<div class="kpi-card" style="border-left-color: #ccc;"><h3>${ciudad}</h3><p>No hay datos recientes.</p></div>`;
                     return;
                 }
-
                 const stats = data.stats;
                 const latest = stats.latest;
-                const metricStats = stats[selectedMetric]; // ej: stats['temp']
-                
+                const metricStats = stats[selectedMetric]; 
                 const card = document.createElement('div');
                 card.className = 'kpi-card';
                 card.style.borderLeftColor = COLOR_PALETTE[index % COLOR_PALETTE.length];
-                
-                // Formatear fechas
                 const latestDate = latest.fecha_hora.toLocaleString('es-ES', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
                 const minDate = metricStats.min.date ? metricStats.min.date.toLocaleDateString('es-ES') : 'N/A';
                 const maxDate = metricStats.max.date ? metricStats.max.date.toLocaleDateString('es-ES') : 'N/A';
-
-                // --- NUEVO: Preparar datos para Sparkline (últimos 7 días) ---
                 const now = new Date();
                 const sevenDaysAgo = new Date(now.getTime() - (7 * 24 * 60 * 60 * 1000));
-                
                 const sparklineData = data.records
                     .filter(row => row.fecha_hora >= sevenDaysAgo && row[metricInfo.key] !== null && row[metricInfo.key] !== undefined)
-                    .map(row => ({
-                        x: row.fecha_hora,
-                        y: row[metricInfo.key]
-                    }));
-                
-                // ID único para el canvas del sparkline
+                    .map(row => ({ x: row.fecha_hora, y: row[metricInfo.key] }));
                 const sparkCanvasId = `spark-${ciudad.replace(/ /g, '_')}-${selectedMetric}`;
-                // --- FIN NUEVO SPARKLINE DATA ---
+                const kpiMainId = `kpi-main-${ciudad.replace(/ /g, '_')}-${selectedMetric}`;
 
-                // MODIFICADO: HTML de la tarjeta con iconos y canvas para sparkline
                 card.innerHTML = `
                     <h3>${ciudad}</h3>
                     <p class="kpi-main">
                         <i data-feather="${metricInfo.icon}" class="kpi-icon-main"></i>
-                        ${latest[metricInfo.key].toFixed(1)} ${metricInfo.unit} 
+                        <span id="${kpiMainId}">${(0).toFixed(1)}</span> ${metricInfo.unit} 
                         <span>(${latestDate})</span>
                     </p>
                     <p><i data-feather="thermometer" class="kpi-icon"></i> Sensación: ${latest.sensacion_c.toFixed(1)}°C</p>
                     <p><i data-feather="droplet" class="kpi-icon"></i> Humedad: ${latest.humedad_porc}%</p>
                     <p><i data-feather="wind" class="kpi-icon"></i> Viento: ${latest.viento_kmh.toFixed(1)} km/h</p>
-                    
-                    <!-- NUEVO: Contenedor y Canvas para Sparkline -->
                     <div class="sparkline-container">
                         <canvas id="${sparkCanvasId}"></canvas>
                     </div>
-
                     <div class="kpi-hist">
                         <strong>Histórico (${metricInfo.label}):</strong>
                         <div class="kpi-hist-item">
@@ -383,155 +487,101 @@
                 `;
                 kpiContainer.appendChild(card);
 
-                // --- NUEVO: Renderizar el Sparkline ---
-                if (sparklineData.length > 1) { // Necesitamos al menos 2 puntos para una línea
+                const kpiElement = document.getElementById(kpiMainId);
+                if (kpiElement) {
+                    animateCountUp(kpiElement, latest[metricInfo.key], 800, 1);
+                }
+
+                if (sparklineData.length > 1) {
                     const sparkCtx = document.getElementById(sparkCanvasId).getContext('2d');
-                    
                     new Chart(sparkCtx, {
                         type: 'line',
                         data: {
                             datasets: [{
                                 data: sparklineData,
                                 borderColor: COLOR_PALETTE[index % COLOR_PALETTE.length],
-                                borderWidth: 2,
-                                pointRadius: 0, // Sin puntos
-                                fill: false,
-                                tension: 0.1
+                                borderWidth: 2, pointRadius: 0, fill: false, tension: 0.1
                             }]
                         },
                         options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            scales: {
-                                x: { display: false, type: 'time' },
-                                y: { display: false }
-                            },
-                            plugins: {
-                                legend: { display: false },
-                                tooltip: { enabled: false }
-                            },
-                            interaction: {
-                                intersect: false,
-                                mode: 'index',
-                            }
+                            responsive: true, maintainAspectRatio: false,
+                            scales: { x: { display: false, type: 'time' }, y: { display: false } },
+                            plugins: { legend: { display: false }, tooltip: { enabled: false } },
+                            interaction: { intersect: false, mode: 'index' }
                         }
                     });
                 }
-                // --- FIN NUEVO RENDER SPARKLINE ---
             });
 
-            // --- NUEVO: Activar Feather Icons ---
-            // Llamar a replace() DESPUÉS de que todo el HTML se haya añadido al DOM
             feather.replace();
-            // --- FIN NUEVO FEATHER ---
         }
 
         /**
-         * Actualiza el gráfico de historial.
+         * MODIFICADO: Actualiza el gráfico de historial (sensible a Dark Mode).
          */
         function updateChart(cityDataMap, metric) { 
-            if (myChart) {
-                myChart.destroy();
-            }
-            
+            if (myChart) { myChart.destroy(); }
             const currentMetric = METRIC_MAP[metric];
-            if (!currentMetric) {
-                console.error("ERROR: Métrica inválida en updateChart:", metric);
-                return; 
-            }
+            if (!currentMetric) { console.error("ERROR: Métrica inválida:", metric); return; }
+            
+            // --- NUEVO: Lógica para Dark Mode en Gráfico ---
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            const gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.1)';
+            const textColor = isDarkMode ? '#f5f7fa' : '#2c3e50';
+            // --- FIN NUEVO ---
             
             const now = new Date();
             let startDate = new Date(0); 
-            
             if (currentTimeRange !== 'all') {
                 startDate = new Date(now.getTime() - (Number(currentTimeRange) * 24 * 60 * 60 * 1000));
             }
-
             const datasets = [];
-            
             Object.keys(cityDataMap).forEach((ciudad, index) => {
                 const data = cityDataMap[ciudad];
-                if (!data || !data.records || data.records.length === 0) {
-                    console.warn(`No hay datos para el gráfico de: ${ciudad}`);
-                    return; 
-                }
-                
+                if (!data || !data.records || data.records.length === 0) { return; }
                 const filteredData = data.records
                     .filter(row => row.fecha_hora >= startDate && row[currentMetric.key] !== null && row[currentMetric.key] !== undefined)
-                    .map(row => ({
-                        x: row.fecha_hora, 
-                        y: row[currentMetric.key] 
-                    }));
-
+                    .map(row => ({ x: row.fecha_hora, y: row[currentMetric.key] }));
                 if (filteredData.length > 0) {
                     datasets.push({
-                        label: ciudad,
-                        data: filteredData,
+                        label: ciudad, data: filteredData,
                         borderColor: COLOR_PALETTE[index % COLOR_PALETTE.length],
                         backgroundColor: COLOR_PALETTE[index % COLOR_PALETTE.length] + '80', 
-                        tension: 0.1,
-                        fill: false,
-                        pointRadius: 2,
-                        pointHoverRadius: 5
+                        tension: 0.1, fill: false, pointRadius: 2, pointHoverRadius: 5
                     });
                 }
             });
-            
             if (datasets.length > 0) {
                 myChart = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        datasets: datasets
-                    },
+                    type: 'line', data: { datasets: datasets },
                     options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
+                        responsive: true, maintainAspectRatio: false,
                         scales: {
                             x: {
                                 type: 'time', 
-                                time: {
-                                    unit: 'day',
-                                    tooltipFormat: 'dd MMM yyyy, HH:mm', 
-                                    displayFormats: {
-                                        hour: 'HH:mm',
-                                        day: 'dd MMM',
-                                        month: 'MMM yyyy'
-                                    }
-                                },
-                                title: {
-                                    display: true,
-                                    text: 'Fecha y Hora'
-                                }
+                                time: { unit: 'day', tooltipFormat: 'dd MMM yyyy, HH:mm', displayFormats: { hour: 'HH:mm', day: 'dd MMM', month: 'MMM yyyy' } },
+                                title: { display: true, text: 'Fecha y Hora', color: textColor }, // MODIFICADO
+                                ticks: { color: textColor }, // MODIFICADO
+                                grid: { color: gridColor } // MODIFICADO
                             },
                             y: {
-                                title: {
-                                    display: true,
-                                    text: currentMetric.label + ' (' + currentMetric.unit + ')'
-                                },
+                                title: { display: true, text: currentMetric.label + ' (' + currentMetric.unit + ')', color: textColor }, // MODIFICADO
+                                ticks: { color: textColor }, // MODIFICADO
+                                grid: { color: gridColor }, // MODIFICADO
                                 beginAtZero: (metric === 'humidity') 
                             }
                         },
-                        plugins: {
-                            tooltip: {
-                                mode: 'index',
-                                intersect: false,
-                            },
-                            legend: {
-                                position: 'top',
-                            }
+                        plugins: { 
+                            tooltip: { mode: 'index', intersect: false }, 
+                            legend: { position: 'top', labels: { color: textColor } } // MODIFICADO
                         },
-                        interaction: {
-                            mode: 'nearest',
-                            axis: 'x',
-                            intersect: false
-                        }
+                        interaction: { mode: 'nearest', axis: 'x', intersect: false }
                     }
                 });
             } else {
-                console.warn("No hay datos válidos para mostrar en el gráfico después de filtrar.");
                 ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-                ctx.font = "16px Inter";
-                ctx.fillStyle = "#555";
+                ctx.font = "16px Inter"; 
+                ctx.fillStyle = textColor; // MODIFICADO
                 ctx.textAlign = "center";
                 ctx.fillText("No hay datos disponibles para la selección actual.", ctx.canvas.width / 2, 50);
             }
@@ -540,14 +590,28 @@
         // --- Funciones del Mapa ---
 
         /**
-         * Inicializa el mapa de Leaflet.
+         * MODIFICADO: Inicializa el mapa de Leaflet (sensible a Dark Mode).
          */
         async function initMap() {
             try {
                 map = L.map('map-container').setView([20, 0], 2); 
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                
+                // --- NUEVO: Definir ambas capas de tiles ---
+                lightTileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                }).addTo(map);
+                });
+                
+                darkTileLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+                });
+                
+                // Añadir la capa correcta según el modo actual
+                if (document.body.classList.contains('dark-mode')) {
+                    darkTileLayer.addTo(map);
+                } else {
+                    lightTileLayer.addTo(map);
+                }
+                // --- FIN NUEVO ---
 
                 const response = await fetch(MAP_DATA_URL);
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -556,74 +620,38 @@
                 locations.forEach(city => {
                     const color = getTempColor(city.temp);
                     const marker = L.circleMarker([city.lat, city.lon], {
-                        radius: 8,
-                        color: '#FFFFFF',
-                        weight: 2,
-                        fillColor: color,
-                        fillOpacity: 0.8,
-                        opacity: 0.9
+                        radius: 8, color: '#FFFFFF', weight: 2,
+                        fillColor: color, fillOpacity: 0.8, opacity: 0.9
                     }).addTo(map);
-                    
-                    marker.bindPopup(`
-                        <div class="popup-title">${city.ciudad}</div>
-                        <div class="popup-temp" style="color: ${color};">${city.temp.toFixed(1)}°C</div>
-                    `);
-
+                    marker.bindPopup(`<div class="popup-title">${city.ciudad}</div><div class="popup-temp" style="color: ${color};">${city.temp.toFixed(1)}°C</div>`);
                     marker.on('click', () => {
                         const cityOption = cityOptionsList.find(opt => opt.label === city.ciudad);
-                        
-                        if (!cityOption) {
-                            console.warn(`No se encontró la opción para ${city.ciudad} en cityOptionsList.`);
-                            return;
-                        }
-
+                        if (!cityOption) { return; }
                         const currentValues = choicesInstance.getValue(true); 
-                        
                         if (!currentValues.includes(cityOption.value) && currentValues.length < 5) {
-                            const newValues = [...currentValues, cityOption.value];
-                            choicesInstance.setChoiceByValue(newValues); 
+                            choicesInstance.setChoiceByValue([...currentValues, cityOption.value]); 
                         }
                     });
-
                     mapMarkers[city.ciudad] = marker;
                 });
-
             } catch (error) {
                 console.error("Error al inicializar el mapa:", error);
                 document.getElementById('map-container').innerHTML = "<p style='color:red; padding: 20px;'>Error al cargar los datos del mapa.</p>";
             }
         }
-
-        /**
-         * Resalta los marcadores de las ciudades seleccionadas.
-         */
+        
+        // ... (highlightMapMarkers, getTempColor no cambian) ...
         function highlightMapMarkers(selectedCitiesClean) {
             Object.keys(mapMarkers).forEach(ciudad => {
                 const marker = mapMarkers[ciudad];
                 if (selectedCitiesClean.includes(ciudad)) {
-                    marker.setStyle({
-                        weight: 3, 
-                        radius: 10,
-                        fillOpacity: 1.0,
-                        opacity: 1.0,
-                        color: '#000000' // Borde negro
-                    });
+                    marker.setStyle({ weight: 3, radius: 10, fillOpacity: 1.0, opacity: 1.0, color: '#000000' });
                     marker.bringToFront();
                 } else {
-                    marker.setStyle({
-                        weight: 2,
-                        radius: 8,
-                        fillOpacity: 0.8,
-                        opacity: 0.9,
-                        color: '#FFFFFF' // Borde blanco (original)
-                    });
+                    marker.setStyle({ weight: 2, radius: 8, fillOpacity: 0.8, opacity: 0.9, color: '#FFFFFF' });
                 }
             });
         }
-
-        /**
-         * Devuelve un color basado en la temperatura.
-         */
         function getTempColor(temp) {
             if (temp < 0) return '#0033cc'; 
             if (temp < 10) return '#0099ff'; 
@@ -632,61 +660,107 @@
             return '#ff3300'; 
         }
 
+        // --- NUEVO: Funciones de Dark Mode ---
+        
+        /**
+         * Activa o desactiva el Dark Mode.
+         */
+        function toggleDarkMode() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+            const isDarkMode = body.classList.contains('dark-mode');
+            
+            // 1. Guardar preferencia
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+
+            // 2. Cambiar icono
+            document.getElementById('dark-mode-icon').setAttribute('data-feather', isDarkMode ? 'sun' : 'moon');
+            feather.replace(); // Actualizar el icono
+
+            // 3. Cambiar tiles del mapa
+            updateMapTiles(isDarkMode);
+
+            // 4. Redibujar el gráfico con nuevos colores
+            // Re-leemos la métrica y los datos de la caché para solo redibujar el gráfico
+            const checkedMetricRadio = document.querySelector('input[name="metric"]:checked');
+            const selectedMetric = checkedMetricRadio ? checkedMetricRadio.value : 'temp';
+            const selectedCitiesValues = choicesInstance.getValue(true);
+            
+            if (selectedCitiesValues.length > 0) {
+                 const cityDataMap = {};
+                 selectedCitiesValues.forEach(val => {
+                     if (allDataCache[val]) { // Asegurarse que los datos están en caché
+                         cityDataMap[val.split(',')[0]] = allDataCache[val];
+                     }
+                 });
+                 updateChart(cityDataMap, selectedMetric); // Solo actualiza el gráfico
+            }
+        }
+
+        /**
+         * Actualiza las capas del mapa (tiles) según el modo.
+         */
+        function updateMapTiles(isDarkMode) {
+            if (!map || !lightTileLayer || !darkTileLayer) return; // Asegurarse que el mapa esté listo
+            if (isDarkMode) {
+                if (map.hasLayer(lightTileLayer)) map.removeLayer(lightTileLayer);
+                if (!map.hasLayer(darkTileLayer)) map.addLayer(darkTileLayer);
+            } else {
+                if (map.hasLayer(darkTileLayer)) map.removeLayer(darkTileLayer);
+                if (!map.hasLayer(lightTileLayer)) map.addLayer(lightTileLayer);
+            }
+        }
+        // --- FIN NUEVO ---
+
+
         // --- Función de Inicialización ---
 
         /**
-         * Inicializa la aplicación, carga la lista de ciudades y configura los listeners.
+         * MODIFICADO: Inicializa la aplicación (sensible a Dark Mode).
          */
         async function init() {
-            // 1. Inicializar Choices.js
-            choicesInstance = new Choices(citySelectorElement, {
-                allowHTML: false,
-                maxItemCount: 5,
-                removeItemButton: true,
-                placeholder: true,
-                placeholderValue: 'Escribe para buscar...',
-                searchResultLimit: 10,
-            });
+            // --- NUEVO: Dark Mode Check ---
+            // Debe ir ANTES de initMap() y updateDashboard()
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                document.getElementById('dark-mode-icon').setAttribute('data-feather', 'sun');
+            } else {
+                document.getElementById('dark-mode-icon').setAttribute('data-feather', 'moon');
+            }
+            feather.replace(); // Renderizar el icono inicial del toggle
+            // --- FIN NUEVO ---
 
+            choicesInstance = new Choices(citySelectorElement, {
+                allowHTML: false, maxItemCount: 5, removeItemButton: true,
+                placeholder: true, placeholderValue: 'Escribe para buscar...', searchResultLimit: 10,
+            });
+            
             try {
-                // 2. Cargar lista de ciudades PRIMERO
                 const ciudadesResponse = await fetch(CITIES_LIST_URL);
                 if (!ciudadesResponse.ok) throw new Error(`Error al cargar ${CITIES_LIST_URL}`);
-                
                 const text = await ciudadesResponse.text();
                 const ciudades = text.split('\n')
                     .map(line => line.trim().split(',')) 
                     .filter(parts => parts.length >= 2 && parts[0] && !parts[0].startsWith('#'))
-                    .map(parts => ({ 
-                        value: `${parts[0]},${parts[1]}`, // Valor: "Ciudad,PAIS"
-                        label: parts[0]  // Etiqueta: "Ciudad"
-                    }));
-                
-                // 3. Guardar en la lista global para que el mapa la use
+                    .map(parts => ({ value: `${parts[0]},${parts[1]}`, label: parts[0] }));
                 cityOptionsList = ciudades;
-
-                // 4. Ahora inicializar el mapa
-                await initMap(); 
                 
-                // 5. Poblar el selector de Choices
+                await initMap(); // initMap AHORA depende de la clase del body
+                
                 choicesInstance.setChoices(ciudades, 'value', 'label', false);
-                
-                // 6. Establecer selección por defecto
                 choicesInstance.setChoiceByValue(['Madrid,ES', 'León,ES']); 
                 
-                // 7. Cargar datos iniciales
-                await updateDashboard();
-
+                await updateDashboard(); // updateDashboard AHORA depende de la clase del body
+            
             } catch (error) {
                 console.error("Error al inicializar la aplicación:", error);
                 kpiContainer.innerHTML = `<p style="color: red;"><b>Error fatal:</b> No se pudo cargar la lista de ciudades (${CITIES_LIST_URL}). La aplicación no puede continuar.</p>`;
+                loadingSpinner.style.display = 'none'; 
             }
             
-            // 8. Configurar Listeners
+            // Configurar Listeners
             citySelectorElement.addEventListener('change', async () => await updateDashboard());
-            
             metricRadios.forEach(radio => radio.addEventListener('change', async () => await updateDashboard()));
-            
             timeRangeButtons.forEach(button => {
                 button.addEventListener('click', async (e) => {
                     e.preventDefault();
@@ -696,6 +770,9 @@
                     await updateDashboard();
                 });
             });
+            
+            // --- NUEVO: Listener para Dark Mode ---
+            darkModeToggle.addEventListener('click', toggleDarkMode);
         }
         
         // --- INICIO DE LA APLICACIÓN ---
