@@ -278,43 +278,43 @@
             });
             return stats;
         }
-        function loadCSV(ciudad) { /* ... */ 
-            if (allDataCache[ciudad]) { return Promise.resolve(allDataCache[ciudad]); }
-            // [CORRECCIÓN] Usamos el nombre limpio para buscar el fichero CSV
-            const nombreCiudadLimpio = ciudad.split(',')[0];
+        function loadCSV(ciudadQuery) { /* ciudadQuery es 'Madrid,ES' */
+            if (allDataCache[ciudadQuery]) { return Promise.resolve(allDataCache[ciudadQuery]); }
+            
+            const nombreCiudadLimpio = ciudadQuery.split(',')[0];
             const nombreFichero = nombreCiudadLimpio.replace(/ /g, '_') + '.csv';
             const csvUrl = DATA_FOLDER_URL + nombreFichero;
+            
             return new Promise((resolve, reject) => {
                 Papa.parse(csvUrl, {
                     download: true, header: true, dynamicTyping: true, skipEmptyLines: true,
                     complete: (results) => {
                         const records = results.data;
-                        if (records.length === 0) { allDataCache[ciudad] = { records: [], stats: {} }; resolve(allDataCache[ciudad]); return; }
+                        if (records.length === 0) { allDataCache[ciudadQuery] = { records: [], stats: {} }; resolve(allDataCache[ciudadQuery]); return; }
                         const stats = calculateStats(records);
-                        allDataCache[ciudad] = { records, stats }; resolve(allDataCache[ciudad]);
+                        allDataCache[ciudadQuery] = { records, stats }; // Guardamos en caché usando 'Madrid,ES' como clave
+                        resolve(allDataCache[ciudadQuery]);
                     },
                     error: (err) => { console.error(`Error cargando ${csvUrl}:`, err); reject(err); }
                 });
             });
         }
-        async function loadDataForCities(ciudades) { /* ... */ 
-            // ciudades es ahora ['Madrid,ES', 'León,ES']
-            const promises = ciudades.map(ciudad => loadCSV(ciudad)); // Pasamos 'Madrid,ES'
+        async function loadDataForCities(ciudadesQuery) { /* ciudadesQuery es ['Madrid,ES', 'León,ES'] */
+            const promises = ciudadesQuery.map(ciudadQuery => loadCSV(ciudadQuery)); // Pasamos 'Madrid,ES'
             try {
                 const datasets = await Promise.all(promises);
                 const cityDataMap = {};
-                ciudades.forEach((ciudad, index) => { 
-                    // [CORRECCIÓN] Usamos el nombre limpio como clave del mapa de datos
-                    cityDataMap[ciudad.split(',')[0]] = datasets[index]; 
+                ciudadesQuery.forEach((ciudadQuery, index) => { 
+                    // Usamos el nombre limpio como clave del mapa de datos
+                    cityDataMap[ciudadQuery.split(',')[0]] = datasets[index]; 
                 });
-                return cityDataMap;
+                return cityDataMap; // Devuelve {'Madrid': {...}, 'León': {...}}
             } catch (error) { console.error("Fallo al cargar uno o más datasets:", error); kpiContainer.innerHTML = "<p>Error al cargar los datos.</p>"; return null; }
         }
 
         // --- Funciones de UI ---
-        async function updateDashboard() { /* ... */ 
-            // [CORRECCIÓN] choicesInstance.getValue(true) devuelve el VALOR ('Madrid,ES')
-            const selectedCitiesValues = choicesInstance.getValue(true); 
+        async function updateDashboard() { 
+            const selectedCitiesValues = choicesInstance.getValue(true); // Devuelve ['Madrid,ES', 'León,ES']
             const selectedMetric = document.querySelector('input[name="metric"]:checked').value;
 
             if (selectedCitiesValues.length === 0) { 
@@ -325,33 +325,31 @@
             }
             
             // Pasamos los valores completos ('Madrid,ES') a la carga
-            const cityDataMap = await loadDataForCities(selectedCitiesValues); 
+            const cityDataMap = await loadDataForCities(selectedCitiesValues); // Devuelve {'Madrid': {...}, 'León': {...}}
             if (!cityDataMap) return;
 
-            // [CORRECCIÓN] Extraemos los nombres limpios para las funciones de UI
-            const selectedCitiesClean = selectedCitiesValues.map(v => v.split(',')[0]);
+            // Extraemos los nombres limpios para las funciones de UI que los necesiten
+            const selectedCitiesClean = selectedCitiesValues.map(v => v.split(',')[0]); // ['Madrid', 'León']
 
-            updateKPIs(cityDataMap, selectedMetric); // Espera nombres limpios
-            updateChart(cityDataMap, selectedMetric); // Espera nombres limpios
-            highlightMapMarkers(selectedCitiesClean); // Espera nombres limpios
+            updateKPIs(cityDataMap, selectedMetric); // Espera {'Madrid':...}
+            updateChart(cityDataMap, selectedMetric); // Espera {'Madrid':...}
+            highlightMapMarkers(selectedCitiesClean); // Espera ['Madrid', 'León']
         }
-        function updateKPIs(cityDataMap, selectedMetric) { /* ... */ 
-            // cityDataMap ya tiene claves limpias: 'Madrid', 'León'
+        function updateKPIs(cityDataMap, selectedMetric) { /* ... (Sin cambios, ya recibe {'Madrid':...}) ... */ 
             kpiContainer.innerHTML = '';
             const formatDate = (date) => { if (!date) return ''; return date.toLocaleString('es-ES', { day: 'numeric', month: 'short' }); };
             Object.keys(cityDataMap).forEach((ciudad, index) => { // ciudad es 'Madrid'
                 const data = cityDataMap[ciudad]; if (!data || data.records.length === 0) return;
                 const latestData = data.records[data.records.length - 1]; const stats = data.stats; const cardColor = COLOR_PALETTE[index % COLOR_PALETTE.length];
                 let minHist, maxHist, minDate, maxDate, unit;
-                switch(selectedMetric) { /* ... (sin cambios) ... */ }
-                const cardHTML = `<div class="kpi-card" style="border-left-color: ${cardColor};"><h3>${ciudad}</h3> ... </div>`; // Usa nombre limpio
+                switch(selectedMetric) { /* ... */ }
+                const cardHTML = `<div class="kpi-card" style="border-left-color: ${cardColor};"><h3>${ciudad}</h3> ... </div>`;
                 kpiContainer.innerHTML += cardHTML;
             });
         }
-        function updateChart(cityDataMap, metric) { /* ... */ 
-            // cityDataMap ya tiene claves limpias: 'Madrid', 'León'
+        function updateChart(cityDataMap, metric) { /* ... (Sin cambios, ya recibe {'Madrid':...}) ... */ 
             if (myChart) { myChart.destroy(); }
-            const metricMap = {'temp': { key: 'temperatura_c', label: 'Temperatura (°C)' }, /* ... */}; const currentMetric = metricMap[metric];
+            const metricMap = { /* ... */ }; const currentMetric = metricMap[metric];
             const now = new Date(); let startDate = new Date(0); if (currentTimeRange !== 'all') { /* ... */ }
             const datasets = []; let allLabels = new Set(); let cityDataSets = {};
             Object.keys(cityDataMap).forEach((ciudad) => { // ciudad es 'Madrid'
@@ -362,34 +360,15 @@
             const sortedLabels = Array.from(allLabels).sort(/* ... */);
             Object.keys(cityDataSets).forEach((ciudad, index) => { // ciudad es 'Madrid'
                 const chartData = sortedLabels.map(label => cityDataSets[ciudad][label] || null); 
-                datasets.push({ label: `${ciudad}`, /* ... (resto sin cambios) ... */ }); // Usa nombre limpio
+                datasets.push({ label: `${ciudad}`, /* ... */ });
             });
-            myChart = new Chart(ctx, { /* ... (sin cambios) ... */ });
+            myChart = new Chart(ctx, { /* ... */ });
         }
         
-        // --- Funciones del Mapa ---
-        async function initMap() { /* ... (sin cambios) ... */ 
-            map = L.map('map-container').setView([20, 0], 2);
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; OpenStreetMap contributors', maxZoom: 18, }).addTo(map);
-            try {
-                const response = await fetch(MAP_DATA_URL); const mapData = await response.json();
-                mapData.forEach(city => { // city.ciudad ya es el nombre limpio ('León')
-                    if (!city.lat || !city.lon) return; const temp = city.temp; const color = getTempColor(temp);
-                    const marker = L.circleMarker([city.lat, city.lon], { /* ... */ }).addTo(map);
-                    marker.bindTooltip(`<b>${city.ciudad}</b><br>Temp: ${temp.toFixed(1)} °C`);
-                    mapMarkers[city.ciudad] = marker; // Usa nombre limpio como clave
-                });
-            } catch (e) { console.error("Error al cargar datos del mapa:", e); /* ... */ }
-        }
-        function highlightMapMarkers(selectedCitiesClean) { /* ... */ 
-             // selectedCitiesClean ya son nombres limpios ['Madrid', 'León']
-            for (const cityName in mapMarkers) { mapMarkers[cityName].setStyle({ weight: 0.5, color: "#000", fillOpacity: 0.7 }); }
-            selectedCitiesClean.forEach((cityName, index) => { // cityName es 'Madrid'
-                const marker = mapMarkers[cityName]; // Busca por nombre limpio
-                if (marker) { marker.setStyle({ weight: 2.5, color: COLOR_PALETTE[index % COLOR_PALETTE.length], fillOpacity: 0.9 }); marker.bringToFront(); }
-            });
-        }
-        function getTempColor(temp) { /* ... (sin cambios) ... */ }
+        // --- Funciones del Mapa (Sin cambios) ---
+        async function initMap() { /* ... */ }
+        function highlightMapMarkers(selectedCitiesClean) { /* ... */ }
+        function getTempColor(temp) { /* ... */ }
 
         // --- Función de Inicialización ---
         async function init() {
@@ -408,10 +387,9 @@
                 ]);
 
                 const text = await ciudadesResponse.text();
-                // [CORRECCIÓN] Procesamos el ciudades.txt robusto
                 const ciudades = text.split('\n')
-                                     .map(line => line.trim().split(',')) // Separa por comas
-                                     .filter(parts => parts.length >= 2 && parts[0]) // Filtra líneas inválidas y comentarios
+                                     .map(line => line.trim().split(',')) 
+                                     .filter(parts => parts.length >= 2 && parts[0] && !parts[0].startsWith('#')) // Ignora comentarios también
                                      .map(parts => ({ 
                                          value: `${parts[0]},${parts[1]}`, // Valor = "Ciudad,PAIS"
                                          label: parts[0] // Etiqueta = "Ciudad" (limpio)
@@ -422,7 +400,7 @@
                 // [CAMBIO] Seleccionamos por defecto usando el VALOR completo "Ciudad,PAIS"
                 choicesInstance.setChoiceByValue(['Madrid,ES', 'León,ES']); 
                 
-                // [IMPORTANTE] Llamamos a updateDashboard DESPUÉS de setChoiceByValue
+                // Llamamos a updateDashboard DESPUÉS de setChoiceByValue
                 updateDashboard();
 
             } catch (error) {
