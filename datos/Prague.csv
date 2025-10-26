@@ -8,3 +8,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:12:22.029023,Prague,11.31,10.3,10.67,12.2,69,8.75,algo de nubes
 2025-10-25T15:19:06.124195,Prague,11.31,10.3,10.67,12.2,69,8.75,algo de nubes
 2025-10-25T15:29:49.435428,Prague,11.09,10.08,10.16,12.2,70,8.75,muy nuboso
+2025-10-26T07:41:23.495406,Prague,9.7,6.64,8.45,10.82,81,6.69,muy nuboso,50.088,14.4208

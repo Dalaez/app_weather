@@ -8,3 +8,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:12:25.430794,Melbourne,27.1,28.21,26.14,27.81,60,8.23,algo de nubes
 2025-10-25T15:19:13.073451,Melbourne,27.1,28.21,26.14,27.81,60,8.23,algo de nubes
 2025-10-25T15:29:54.158457,Melbourne,27.31,28.48,26.14,28.36,60,8.23,algo de nubes
+2025-10-26T07:42:25.840836,Melbourne,25.66,26.32,25.02,26.14,78,7.72,muy nuboso,28.0836,-80.6081

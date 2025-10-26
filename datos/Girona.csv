@@ -8,3 +8,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:12:17.880535,Girona,20.1,19.81,18.4,20.38,63,1.03,cielo claro
 2025-10-25T15:18:57.999491,Girona,20.1,19.81,18.4,20.38,63,1.03,cielo claro
 2025-10-25T15:29:43.781695,Girona,19.84,19.55,18.93,20.38,64,1.03,algo de nubes
+2025-10-26T07:40:09.850218,Girona,11.01,10.57,10.62,12.6,92,2.06,muy nuboso,41.9831,2.8249

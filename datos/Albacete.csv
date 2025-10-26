@@ -8,3 +8,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:12:16.832510,Albacete,27.45,26.71,27.45,27.45,30,7.2,cielo claro
 2025-10-25T15:18:55.966958,Albacete,27.45,26.71,27.45,27.45,30,7.2,cielo claro
 2025-10-25T15:29:42.331014,Albacete,27.45,26.71,27.45,27.45,30,6.69,cielo claro
+2025-10-26T07:39:51.112927,Albacete,13.45,12.86,13.45,13.45,77,0.51,algo de nubes,38.8333,-2

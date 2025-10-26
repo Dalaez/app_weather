@@ -8,3 +8,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:12:20.878849,Brussels,10.61,9.92,9.84,11.47,84,6.69,algo de nubes
 2025-10-25T15:19:03.810051,Brussels,10.61,9.92,9.84,11.47,84,6.69,algo de nubes
 2025-10-25T15:29:47.791408,Brussels,10.52,9.82,9.84,11.47,84,6.69,lluvia moderada
+2025-10-26T07:41:02.306781,Brussels,5.78,1.45,5.14,6.54,87,7.2,muy nuboso,50.8504,4.3488

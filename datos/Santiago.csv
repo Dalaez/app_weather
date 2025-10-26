@@ -8,3 +8,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:12:26.994858,Santiago,16.63,15.71,15.53,16.9,52,3.09,cielo claro
 2025-10-25T15:19:16.235778,Santiago,16.63,15.71,15.53,16.9,52,3.09,cielo claro
 2025-10-25T15:29:56.286061,Santiago,17.12,16.19,15.95,17.45,50,3.09,cielo claro
+2025-10-26T07:42:54.494029,Santiago,12.28,11.05,11.14,14.42,57,0.89,cielo claro,-33.4569,-70.6483

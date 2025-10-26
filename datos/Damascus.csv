@@ -8,3 +8,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:12:23.802084,Damascus,25.42,25.3,25.42,25.42,49,3.07,cielo claro
 2025-10-25T15:19:09.739806,Damascus,25.42,25.3,25.42,25.42,49,3.07,cielo claro
 2025-10-25T15:29:51.904990,Damascus,25.42,25.3,25.42,25.42,49,3.07,cielo claro
+2025-10-26T07:41:55.945968,Damascus,18.42,17.49,18.42,18.42,45,1.63,cielo claro,33.5102,36.2913

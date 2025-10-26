@@ -8,3 +8,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:12:27.666580,Johannesburg,27.01,26.47,26.04,28.23,31,0.45,cielo claro
 2025-10-25T15:19:17.610343,Johannesburg,27.01,26.47,26.04,28.23,31,0.45,cielo claro
 2025-10-25T15:29:57.217688,Johannesburg,27.16,26.44,26.02,28.36,28,1.03,cielo claro
+2025-10-26T07:43:06.976483,Johannesburg,25.62,25.15,24.3,26.2,35,0.51,nubes dispersas,-26.2023,28.0436
