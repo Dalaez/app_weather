@@ -8,3 +8,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:12:18.427305,Logroño,13.72,13.29,13.72,13.72,82,2.06,lluvia ligera
 2025-10-25T15:18:59.107292,Logroño,13.72,13.29,13.72,13.72,82,2.06,lluvia ligera
 2025-10-25T15:29:44.531978,Logroño,13.72,13.45,13.72,13.72,88,0.51,lluvia ligera
+2025-10-26T07:40:19.817752,Logroño,9.72,8.12,9.72,9.72,81,3.09,nubes,42.4667,-2.45

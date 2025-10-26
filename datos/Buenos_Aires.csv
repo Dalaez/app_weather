@@ -8,3 +8,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:12:25.679057,Buenos Aires,14.54,14.11,13.34,14.97,79,5.66,nubes
 2025-10-25T15:19:13.472847,Buenos Aires,14.63,14.19,13.84,14.97,78,5.66,nubes
 2025-10-25T15:29:54.444458,Buenos Aires,14.64,14.22,13.84,14.97,79,5.66,nubes
+2025-10-26T07:42:29.596962,Buenos Aires,10.78,10.24,8.33,11.58,89,1.03,cielo claro,-34.6132,-58.3772

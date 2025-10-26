@@ -8,3 +8,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:12:21.092975,Copenhagen,8.94,4.98,8.19,8.94,93,9.26,lluvia ligera
 2025-10-25T15:19:04.214482,Copenhagen,8.94,4.98,8.19,8.94,93,9.26,lluvia ligera
 2025-10-25T15:29:48.086243,Copenhagen,8.94,4.98,8.19,8.94,93,9.26,muy nuboso
+2025-10-26T07:41:06.021327,Copenhagen,7.94,3.93,7.19,7.94,81,8.23,nubes,55.6759,12.5655

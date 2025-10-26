@@ -8,3 +8,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:12:18.708854,Melilla,28.21,28,28.21,28.21,42,3.6,cielo claro
 2025-10-25T15:18:59.641856,Melilla,28.21,28,28.21,28.21,42,3.6,cielo claro
 2025-10-25T15:29:44.909366,Melilla,28.21,28,28.21,28.21,42,4.63,cielo claro
+2025-10-26T07:40:24.839984,Melilla,22.21,22.26,22.21,22.21,68,6.17,algo de nubes,35.2937,-2.9383

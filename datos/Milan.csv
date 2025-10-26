@@ -8,3 +8,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:12:23.457985,Milan,15.79,15.25,15.37,16.66,70,1.54,cielo claro
 2025-10-25T15:19:09.065015,Milan,15.79,15.25,15.37,16.66,70,1.54,cielo claro
 2025-10-25T15:29:51.434866,Milan,15.39,14.84,14.81,15.84,71,1.54,cielo claro
+2025-10-26T07:41:49.707358,Milan,8.88,7.45,8.82,9.99,86,2.57,cielo claro,45.4643,9.1895

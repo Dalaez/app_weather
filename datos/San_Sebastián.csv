@@ -8,3 +8,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:12:19.403171,San Sebastian,16.84,16.22,16.16,17.91,63,4.12,muy nuboso
 2025-10-25T15:19:01.079776,San Sebastian,16.84,16.22,16.16,17.91,63,4.12,muy nuboso
 2025-10-25T15:29:45.857531,San Sebastian,16.7,16.1,16.16,17.31,64,5.14,muy nuboso
+2025-10-26T07:40:37.346506,San Sebastian,12.26,11.79,11.72,12.87,86,3.13,nubes,43.3128,-1.975

@@ -8,3 +8,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:12:17.743248,Córdoba,18.48,17.32,18.44,19.58,36,11.32,cielo claro
 2025-10-25T15:18:57.727909,Córdoba,19.58,18.27,18.44,19.58,26,8,nubes
 2025-10-25T15:29:43.593841,Córdoba,20.8,19.67,20.13,21.9,28,9.77,cielo claro
+2025-10-26T07:40:07.342169,Córdoba,13.75,12.43,7.47,13.75,48,4.63,cielo claro,-31.4135,-64.1811

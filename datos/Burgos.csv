@@ -8,3 +8,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:12:17.326339,Burgos,10.81,10.17,10.23,10.81,85,2.06,nubes
 2025-10-25T15:18:56.903739,Burgos,10.81,10.17,10.23,10.81,85,2.06,nubes
 2025-10-25T15:29:43.001295,Burgos,10.81,10.19,10.23,10.81,86,2.57,lluvia ligera
+2025-10-26T07:39:59.863518,Burgos,6.92,5.12,6.23,7.36,89,2.57,muy nuboso,42.3394,-3.7079

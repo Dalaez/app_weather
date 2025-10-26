@@ -8,3 +8,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:12:25.165163,Tehran,23.73,22.55,23.73,23.99,15,6.17,algo de nubes
 2025-10-25T15:19:12.487252,Tehran,23.73,22.55,23.73,23.99,15,6.17,algo de nubes
 2025-10-25T15:29:53.781330,Tehran,22.62,21.36,22.62,22.99,16,3.09,algo de nubes
+2025-10-26T07:42:20.869701,Tehran,23.73,22.52,23.73,23.99,14,4.12,algo de nubes,35.6944,51.4215

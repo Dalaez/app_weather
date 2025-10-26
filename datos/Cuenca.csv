@@ -8,3 +8,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-25T15:12:17.811557,Cuenca,17.81,17.24,17.81,17.81,61,2.15,muy nuboso
 2025-10-25T15:18:57.855748,Cuenca,17.81,17.24,17.81,17.81,61,2.15,muy nuboso
 2025-10-25T15:29:43.684411,Cuenca,19.07,18.29,19.07,19.07,48,1.54,muy nuboso
+2025-10-26T07:40:08.590682,Cuenca,13.4,13.2,13.4,13.4,92,0.4,nubes,-2.8833,-78.9833
