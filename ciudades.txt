@@ -1,164 +1,164 @@
-A Coruña
-Albacete
-Alicante
-Almería
-Ávila
-Badajoz
-Barcelona
-Bilbao
-Burgos
-Cáceres
-Cádiz
-Castelló de la Plana
-Ceuta
-Ciudad Real
-Córdoba
-Cuenca
-Girona
-Granada
-Guadalajara
-Huelva
-Huesca
-Jaén
-León
-Lleida
-Logroño
-Lugo
-Madrid
-Málaga
-Melilla
-Mérida
-Murcia
-Ourense
-Oviedo
-Palencia
-Palma
-Pamplona
-Pontevedra
-Salamanca
-San Sebastián
-Santa Cruz de Tenerife
-Santander
-Segovia
-Sevilla
-Soria
-Tarragona
-Teruel
-Toledo
-Valencia
-Valladolid
-Vitoria-Gasteiz
-Zamora
-Zaragoza
-Amsterdam
-Andorra la Vella
-Athens
-Berlin
-Bern
-Bratislava
-Brussels
-Bucharest
-Budapest
-Copenhagen
-Dublin
-Helsinki
-Istanbul
-Kyiv
-Lisbon
-Ljubljana
-London
-Luxembourg
-Monaco
-Moscow
-Nicosia
-Oslo
-Paris
-Prague
-Reykjavik
-Riga
-Rome
-San Marino
-Sarajevo
-Skopje
-Sofia
-Stockholm
-Tallinn
-Tirana
-Vaduz
-Valletta
-Vatican City
-Vienna
-Vilnius
-Warsaw
-Zagreb
-Ankara
-Manchester
-Munich
-Milan
-Lyon
-Hamburg
-Bangkok
-Beijing
-Damascus
-Dhaka
-Hanoi
-Hong Kong
-Islamabad
-Jakarta
-Jerusalem
-Kabul
-Kathmandu
-Kuala Lumpur
-Manila
-Mumbai
-New Delhi
-Pyongyang
-Riyadh
-Seoul
-Shanghai
-Singapore
-Taipei
-Tashkent
-Tehran
-Tokyo
-Ulaanbaatar
-Sydney
-Melbourne
-Wellington
-Auckland
-Buenos Aires
-Bogota
-Brasilia
-Caracas
-Havana
-Kingston
-La Paz
-Lima
-Mexico City
-Montevideo
-New York
-Los Angeles
-Chicago
-Houston
-Toronto
-Vancouver
-Ottawa
-Panama City
-Quito
-San Jose
-Santiago
-Sao Paulo
-Washington DC
-Abuja
-Accra
-Algiers
-Cairo
-Cape Town
-Casablanca
-Dakar
-Johannesburg
-Lagos
-Nairobi
-Rabat
-Tripoli
-Tunis
+A Coruña,ES
+Albacete,ES
+Alicante,ES
+Almería,ES
+Ávila,ES
+Badajoz,ES
+Barcelona,ES
+Bilbao,ES
+Burgos,ES
+Cáceres,ES
+Cádiz,ES
+Castelló de la Plana,ES
+Ceuta,ES
+Ciudad Real,ES
+Córdoba,ES
+Cuenca,ES
+Girona,ES
+Granada,ES
+Guadalajara,ES
+Huelva,ES
+Huesca,ES
+Jaén,ES
+León,ES
+Lleida,ES
+Logroño,ES
+Lugo,ES
+Madrid,ES
+Málaga,ES
+Melilla,ES
+Mérida,ES
+Murcia,ES
+Ourense,ES
+Oviedo,ES
+Palencia,ES
+Palma,ES
+Pamplona,ES
+Pontevedra,ES
+Salamanca,ES
+San Sebastián,ES
+Santa Cruz de Tenerife,ES
+Santander,ES
+Segovia,ES
+Sevilla,ES
+Soria,ES
+Tarragona,ES
+Teruel,ES
+Toledo,ES
+Valencia,ES
+Valladolid,ES
+Vitoria-Gasteiz,ES
+Zamora,ES
+Zaragoza,ES
+Amsterdam,NL
+Andorra la Vella,AD
+Athens,GR
+Berlin,DE
+Bern,CH
+Bratislava,SK
+Brussels,BE
+Bucharest,RO
+Budapest,HU
+Copenhagen,DK
+Dublin,IE
+Helsinki,FI
+Istanbul,TR
+Kyiv,UA
+Lisbon,PT
+Ljubljana,SI
+London,GB
+Luxembourg,LU
+Monaco,MC
+Moscow,RU
+Nicosia,CY
+Oslo,NO
+Paris,FR
+Prague,CZ
+Reykjavik,IS
+Riga,LV
+Rome,IT
+San Marino,SM
+Sarajevo,BA
+Skopje,MK
+Sofia,BG
+Stockholm,SE
+Tallinn,EE
+Tirana,AL
+Vaduz,LI
+Valletta,MT
+Vatican City,VA
+Vienna,AT
+Vilnius,LT
+Warsaw,PL
+Zagreb,HR
+Ankara,TR
+Manchester,GB
+Munich,DE
+Milan,IT
+Lyon,FR
+Hamburg,DE
+Bangkok,TH
+Beijing,CN
+Damascus,SY
+Dhaka,BD
+Hanoi,VN
+Hong Kong,HK
+Islamabad,PK
+Jakarta,ID
+Jerusalem,IL
+Kabul,AF
+Kathmandu,NP
+Kuala Lumpur,MY
+Manila,PH
+Mumbai,IN
+New Delhi,IN
+Pyongyang,KP
+Riyadh,SA
+Seoul,KR
+Shanghai,CN
+Singapore,SG
+Taipei,TW
+Tashkent,UZ
+Tehran,IR
+Tokyo,JP
+Ulaanbaatar,MN
+Sydney,AU
+Melbourne,AU
+Wellington,NZ
+Auckland,NZ
+Buenos Aires,AR
+Bogota,CO
+Brasilia,BR
+Caracas,VE
+Havana,CU
+Kingston,JM
+La Paz,BO
+Lima,PE
+Mexico City,MX
+Montevideo,UY
+New York,US
+Los Angeles,US
+Chicago,US
+Houston,US
+Toronto,CA
+Vancouver,CA
+Ottawa,CA
+Panama City,PA
+Quito,EC
+San Jose,CR
+Santiago,CL
+Sao Paulo,BR
+Washington DC,US
+Abuja,NG
+Accra,GH
+Algiers,DZ
+Cairo,EG
+Cape Town,ZA
+Casablanca,MA
+Dakar,SN
+Johannesburg,ZA
+Lagos,NG
+Nairobi,KE
+Rabat,MA
+Tripoli,LY
+Tunis,TN
