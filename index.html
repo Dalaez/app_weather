@@ -3,15 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Climático Global (v2.2.1)</title>
+    <title>Dashboard Climático Global (v2.3 con Mapa)</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/styles/choices.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/scripts/choices.min.js"></script>
 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+
     <style>
-        /* --- Fuentes y Fondo --- */
+        /* --- Fuentes y Fondo (sin cambios) --- */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         
         body {
@@ -33,7 +40,19 @@
             margin-top: 30px;
         }
 
-        /* --- Contenedores "Glass" --- */
+        /* [NUEVO] Estilo para el contenedor del mapa */
+        #map-container {
+            width: 100%;
+            height: 450px; /* Buena altura para el mapa */
+            border-radius: 12px;
+            margin-bottom: 20px;
+            z-index: 5; /* Por debajo de los controles (10) */
+            background: #fff; /* Fondo mientras carga */
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        /* --- Contenedores "Glass" (sin cambios) --- */
         #controls-container, #chart-container, .kpi-card {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(10px);
@@ -42,7 +61,7 @@
             border: 1px solid rgba(255, 255, 255, 0.18);
         }
 
-        /* --- Controles --- */
+        /* --- Controles (sin cambios, ya tiene el z-index) --- */
         #controls-container {
             display: flex;
             justify-content: center;
@@ -51,8 +70,6 @@
             flex-wrap: wrap;
             padding: 20px;
             margin-bottom: 20px;
-            
-            /* [CAMBIO] Arreglo para el bug de superposición */
             position: relative;
             z-index: 10;
         }
@@ -68,18 +85,14 @@
             width: 100%;
         }
 
-        /* --- Estilo para Selectores (Métrica y Rango) --- */
+        /* --- Estilo para Selectores (sin cambios) --- */
         .selector-group {
             display: flex;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
-        .selector-group input {
-            opacity: 0;
-            position: fixed;
-            width: 0;
-        }
+        .selector-group input { opacity: 0; position: fixed; width: 0; }
         .selector-group label,
         .time-btn {
             background-color: #fff;
@@ -93,9 +106,7 @@
             border-right: 1px solid #eee;
         }
         .selector-group label:last-of-type,
-        .time-btn:last-of-type {
-            border-right: none;
-        }
+        .time-btn:last-of-type { border-right: none; }
         .selector-group input:not(:checked) + label:hover,
         .time-btn:not(.active):hover {
             background-color: #f4f4f4;
@@ -109,10 +120,10 @@
             transform: scale(1.05);
         }
 
-        /* --- Estilo Tarjetas KPI --- */
+        /* --- Estilo Tarjetas KPI (sin cambios) --- */
         #kpi-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Más ancho */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             margin-bottom: 20px;
         }
@@ -141,8 +152,8 @@
             font-size: 0.9em;
             color: #555;
             display: flex;
-            flex-direction: column; /* Apilamos min y max */
-            gap: 5px; /* Espacio entre min y max */
+            flex-direction: column;
+            gap: 5px;
             border-top: 1px solid #eee;
             padding-top: 10px;
             margin-top: 10px;
@@ -151,22 +162,20 @@
             display: flex;
             justify-content: space-between;
         }
-        .kpi-hist-item .date { /* Estilo para la fecha */
+        .kpi-hist-item .date {
             color: #7f8c8d;
             font-size: 0.9em;
             padding-left: 5px;
         }
         
-        /* --- [CAMBIO] Contenedor del Gráfico --- */
+        /* --- Contenedor del Gráfico (sin cambios) --- */
         #chart-container {
             width: 100%;
             padding: 20px;
             box-sizing: border-box;
-            /* [CAMBIO] Devolvemos la altura al gráfico */
             min-height: 500px; 
             position: relative;
         }
-        /* Hacemos que el canvas ocupe todo el contenedor */
         #myChart {
             position: absolute;
             top: 0;
@@ -194,10 +203,8 @@
                 <div class="selector-group">
                     <input type="radio" name="metric" value="temp" id="m-temp" checked>
                     <label for="m-temp">Temperatura</label>
-                    
                     <input type="radio" name="metric" value="humidity" id="m-humidity">
                     <label for="m-humidity">Humedad</label>
-                    
                     <input type="radio" name="metric" value="wind" id="m-wind">
                     <label for="m-wind">Viento</label>
                 </div>
@@ -219,32 +226,45 @@
         </div>
     </div>
 
+    <h2>Mapa Interactivo</h2>
+    <div id="map-container"></div>
+
     <h2>Datos más recientes</h2>
     <div id="kpi-container"></div>
 
     <h2>Evolución Histórica</h2>
+    <p style="text-align: center; margin-top: -10px; color: #555;">(Todas las horas se muestran en tu zona horaria local)</p>
     <div id="chart-container">
         <canvas id="myChart"></canvas>
     </div>
 
     <script>
-        // --- Configuración Global (Sin cambios) ---
+        // --- Configuración Global ---
         const CITIES_LIST_URL = 'ciudades.txt';
         const DATA_FOLDER_URL = 'datos/';
+        const MAP_DATA_URL = 'city_locations.json'; // Fichero de datos del mapa
+        
+        // Elementos del DOM
         const citySelectorElement = document.getElementById('city-select');
         const kpiContainer = document.getElementById('kpi-container');
         const metricRadios = document.querySelectorAll('input[name="metric"]');
         const timeRangeButtons = document.querySelectorAll('.time-btn');
         const ctx = document.getElementById('myChart').getContext('2d');
+        
+        // Variables de Estado
         let myChart;
         let choicesInstance;
         let allDataCache = {};
         let currentTimeRange = 'all';
         const COLOR_PALETTE = ['#e6194B', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4'];
         
-        // --- [CAMBIO] 1. Calcular Stats al Cargar CSV (Ahora guarda fechas) ---
+        // [NUEVO] Variables del Mapa
+        let map;
+        let mapMarkers = {}; // Guardará los marcadores (círculos) por nombre de ciudad
+
+        
+        // --- 1. Calcular Stats (Sin cambios) ---
         function calculateStats(records) {
-            // [CAMBIO] Inicializamos los stats con objetos para guardar valor y fecha
             const stats = {
                 min_temp: { value: Infinity, date: null }, max_temp: { value: -Infinity, date: null },
                 min_humidity: { value: Infinity, date: null }, max_humidity: { value: -Infinity, date: null },
@@ -254,30 +274,17 @@
             records.forEach(row => {
                 row.fecha_hora = new Date(row.fecha_hora); 
                 
-                // Comparamos y guardamos valor + fecha
-                if (row.temperatura_c < stats.min_temp.value) {
-                    stats.min_temp = { value: row.temperatura_c, date: row.fecha_hora };
-                }
-                if (row.temperatura_c > stats.max_temp.value) {
-                    stats.max_temp = { value: row.temperatura_c, date: row.fecha_hora };
-                }
-                if (row.humedad_porc < stats.min_humidity.value) {
-                    stats.min_humidity = { value: row.humedad_porc, date: row.fecha_hora };
-                }
-                if (row.humedad_porc > stats.max_humidity.value) {
-                    stats.max_humidity = { value: row.humedad_porc, date: row.fecha_hora };
-                }
-                if (row.viento_kmh < stats.min_wind.value) {
-                    stats.min_wind = { value: row.viento_kmh, date: row.fecha_hora };
-                }
-                if (row.viento_kmh > stats.max_wind.value) {
-                    stats.max_wind = { value: row.viento_kmh, date: row.fecha_hora };
-                }
+                if (row.temperatura_c < stats.min_temp.value) { stats.min_temp = { value: row.temperatura_c, date: row.fecha_hora }; }
+                if (row.temperatura_c > stats.max_temp.value) { stats.max_temp = { value: row.temperatura_c, date: row.fecha_hora }; }
+                if (row.humedad_porc < stats.min_humidity.value) { stats.min_humidity = { value: row.humedad_porc, date: row.fecha_hora }; }
+                if (row.humedad_porc > stats.max_humidity.value) { stats.max_humidity = { value: row.humedad_porc, date: row.fecha_hora }; }
+                if (row.viento_kmh < stats.min_wind.value) { stats.min_wind = { value: row.viento_kmh, date: row.fecha_hora }; }
+                if (row.viento_kmh > stats.max_wind.value) { stats.max_wind = { value: row.viento_kmh, date: row.fecha_hora }; }
             });
             return stats;
         }
 
-        // --- 2. Función de Carga de CSV (Sin cambios) ---
+        // --- 2. Carga de CSV (Sin cambios) ---
         function loadCSV(ciudad) {
             if (allDataCache[ciudad]) {
                 return Promise.resolve(allDataCache[ciudad]);
@@ -302,7 +309,6 @@
                         
                         const stats = calculateStats(records);
                         allDataCache[ciudad] = { records, stats }; 
-                        console.log(`Datos y stats calculados para ${ciudad}`);
                         resolve(allDataCache[ciudad]);
                     },
                     error: (err) => {
@@ -313,7 +319,7 @@
             });
         }
 
-        // --- 3. Función de Carga Múltiple (Sin cambios) ---
+        // --- 3. Carga Múltiple (Sin cambios) ---
         async function loadDataForCities(ciudades) {
             const promises = ciudades.map(ciudad => loadCSV(ciudad));
             try {
@@ -330,14 +336,15 @@
             }
         }
 
-        // --- 4. Función para Actualizar el Dashboard (Sin cambios) ---
+        // --- [MODIFICADO] 4. Actualizar Dashboard (Ahora llama al mapa) ---
         async function updateDashboard() {
-            const selectedCities = choicesInstance.getValue(true);
+            const selectedCities = choicesInstance.getValue(true); // Obtiene nombres de ciudad
             const selectedMetric = document.querySelector('input[name="metric"]:checked').value;
 
             if (selectedCities.length === 0) {
                 kpiContainer.innerHTML = "<p>Selecciona una o más ciudades para empezar.</p>";
                 if (myChart) myChart.destroy();
+                highlightMapMarkers([]); // [NUEVO] Limpia el resaltado del mapa
                 return;
             }
             
@@ -346,13 +353,13 @@
 
             updateKPIs(cityDataMap, selectedMetric);
             updateChart(cityDataMap, selectedMetric);
+            highlightMapMarkers(selectedCities); // [NUEVO] Resalta ciudades en el mapa
         }
 
-        // --- [CAMBIO] 5. Función para Actualizar las Tarjetas de KPI (con fechas) ---
+        // --- 5. Actualizar KPIs (Sin cambios) ---
         function updateKPIs(cityDataMap, selectedMetric) {
             kpiContainer.innerHTML = '';
             
-            // Función helper para formatear fechas
             const formatDate = (date) => {
                 if (!date) return '';
                 return date.toLocaleString('es-ES', { day: 'numeric', month: 'short' });
@@ -397,7 +404,6 @@
                         <p>Sensación: <strong>${latestData.sensacion_c.toFixed(1)} °C</strong></p>
                         <p>Humedad: <strong>${latestData.humedad_porc} %</strong></p>
                         <p>Viento: <strong>${latestData.viento_kmh} km/h</strong></p>
-                        
                         <div class="kpi-hist">
                             <div class="kpi-hist-item">
                                 <span>Min Hist (${unit}): <strong>${minHist}</strong></span>
@@ -414,11 +420,9 @@
             });
         }
         
-        // --- 6. Función para Actualizar el Gráfico Histórico (Sin cambios) ---
+        // --- 6. Actualizar Gráfico (Sin cambios) ---
         function updateChart(cityDataMap, metric) {
-            if (myChart) {
-                myChart.destroy();
-            }
+            if (myChart) { myChart.destroy(); }
             
             const metricMap = {
                 'temp': { key: 'temperatura_c', label: 'Temperatura (°C)' },
@@ -442,12 +446,11 @@
             Object.keys(cityDataMap).forEach((ciudad) => {
                 const data = cityDataMap[ciudad];
                 if (!data || data.records.length === 0) return;
-
                 const filteredData = data.records.filter(row => row.fecha_hora >= startDate);
                 cityDataSets[ciudad] = {};
 
                 filteredData.forEach(row => {
-                        const label = row.fecha_hora.toLocaleString('es-ES', { 
+                    const label = row.fecha_hora.toLocaleString('es-ES', { 
                         day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', timeZoneName: 'short'
                     });
                     allLabels.add(label);
@@ -455,15 +458,12 @@
                 });
             });
 
-            // Ordenamos las etiquetas
             const sortedLabels = Array.from(allLabels).sort((a, b) => {
-                // Pequeño truco para parsear fechas "25 oct, 14:44"
                 const parseDate = (str) => {
                     const parts = str.match(/(\d+)\s(\w+)\.?,\s(\d+):(\d+)/);
                     if (!parts) return new Date(0);
                     const months = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
                     const monthIndex = months.indexOf(parts[2].toLowerCase());
-                    // Asumimos el año actual, para la ordenación es suficiente
                     return new Date(new Date().getFullYear(), monthIndex, parts[1], parts[3], parts[4]);
                 };
                 return parseDate(a) - parseDate(b);
@@ -471,9 +471,7 @@
 
 
             Object.keys(cityDataSets).forEach((ciudad, index) => {
-                const chartData = sortedLabels.map(label => {
-                    return cityDataSets[ciudad][label] || null; 
-                });
+                const chartData = sortedLabels.map(label => cityDataSets[ciudad][label] || null); 
 
                 datasets.push({
                     label: `${ciudad}`,
@@ -482,53 +480,113 @@
                     backgroundColor: 'transparent',
                     tension: 0.1,
                     spanGaps: true,
-                    borderWidth: 2, // [CAMBIO] Líneas un poco más gruesas
-                    pointRadius: 1.5 // [CAMBIO] Puntos más pequeños
+                    borderWidth: 2,
+                    pointRadius: 1.5
                 });
             });
 
             myChart = new Chart(ctx, {
                 type: 'line',
-                data: {
-                    labels: sortedLabels,
-                    datasets: datasets
-                },
+                data: { labels: sortedLabels, datasets: datasets },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: false, // ¡Clave para que min-height funcione!
+                    maintainAspectRatio: false,
                     plugins: {
-                        title: {
-                            display: true,
-                            text: `Evolución Histórica de ${currentMetric.label}`,
-                            font: { size: 18 }
-                        },
-                        legend: {
-                            position: 'top',
-                        }
+                        title: { display: true, text: `Evolución Histórica de ${currentMetric.label}`, font: { size: 18 } },
+                        legend: { position: 'top' }
                     },
                     scales: {
-                        y: {
-                            title: {
-                                display: true,
-                                text: currentMetric.label
-                            }
-                        },
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Fecha'
-                            }
-                        }
+                        y: { title: { display: true, text: currentMetric.label } },
+                        x: { title: { display: true, text: 'Fecha' } }
                     },
-                    interaction: {
-                        mode: 'index',
-                        intersect: false
-                    }
+                    interaction: { mode: 'index', intersect: false }
                 }
             });
         }
 
-        // --- 7. Función de Inicialización (Sin cambios en la lógica) ---
+        // --- [NUEVO] 7. Funciones del Mapa ---
+
+        /**
+         * Inicializa el mapa y pinta todos los marcadores
+         */
+        async function initMap() {
+            map = L.map('map-container').setView([20, 0], 2); // Vista global
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                maxZoom: 18,
+            }).addTo(map);
+
+            try {
+                const response = await fetch(MAP_DATA_URL);
+                const mapData = await response.json();
+                
+                mapData.forEach(city => {
+                    if (!city.lat || !city.lon) return;
+                    
+                    const temp = city.temp;
+                    const color = getTempColor(temp); // Color por temperatura
+
+                    const marker = L.circleMarker([city.lat, city.lon], {
+                        radius: 5,
+                        fillColor: color,
+                        color: "#000", // Borde negro
+                        weight: 0.5,
+                        opacity: 1,
+                        fillOpacity: 0.7
+                    }).addTo(map);
+
+                    marker.bindTooltip(`<b>${city.ciudad}</b><br>Temp: ${temp.toFixed(1)} °C`);
+                    
+                    // Guardamos el marcador para poder resaltarlo
+                    mapMarkers[city.ciudad] = marker;
+                });
+
+            } catch (e) {
+                console.error("Error al cargar datos del mapa:", e);
+                document.getElementById('map-container').innerHTML = "Error al cargar el mapa.";
+            }
+        }
+
+        /**
+         * Resalta los marcadores del mapa que están seleccionados
+         */
+        function highlightMapMarkers(selectedCities) {
+            // 1. Reseteamos todos los marcadores
+            for (const cityName in mapMarkers) {
+                mapMarkers[cityName].setStyle({
+                    weight: 0.5,
+                    color: "#000",
+                    fillOpacity: 0.7
+                });
+            }
+            
+            // 2. Resaltamos los seleccionados
+            selectedCities.forEach((cityName, index) => {
+                const marker = mapMarkers[cityName];
+                if (marker) {
+                    marker.setStyle({
+                        weight: 2.5, // Borde más grueso
+                        color: COLOR_PALETTE[index % COLOR_PALETTE.length], // Color de la leyenda
+                        fillOpacity: 0.9
+                    });
+                    marker.bringToFront(); // Trae al frente
+                }
+            });
+        }
+
+        /**
+         * Devuelve un color basado en la temperatura
+         */
+        function getTempColor(temp) {
+            if (temp < 0) return '#007bff';   // Azul frío
+            if (temp < 10) return '#00bfff';  // Azul claro
+            if (temp < 20) return '#28a745';  // Verde
+            if (temp < 30) return '#ffc107';  // Amarillo
+            return '#dc3545';                 // Rojo calor
+        }
+
+        // --- [MODIFICADO] 8. Función de Inicialización ---
         async function init() {
             choicesInstance = new Choices(citySelectorElement, {
                 removeItemButton: true,
@@ -539,26 +597,33 @@
             });
 
             try {
-                const response = await fetch(CITIES_LIST_URL);
-                const text = await response.text();
+                // [NUEVO] Cargamos el mapa y la lista de ciudades en paralelo
+                const [ciudadesResponse, _] = await Promise.all([
+                    fetch(CITIES_LIST_URL),
+                    initMap() // Esta función ahora es asíncrona y carga el mapa
+                ]);
+
+                // Procesamos la lista de ciudades
+                const text = await ciudadesResponse.text();
                 const ciudades = text.split('\n')
                                      .map(city => city.trim())
                                      .filter(city => city.length > 0)
                                      .map(city => ({ value: city, label: city }));
                 
                 choicesInstance.setChoices(ciudades, 'value', 'label', false);
-                choicesInstance.setChoiceByValue(['Madrid', 'León', 'Barcelona']); // Añadida BCN para el ejemplo
+                choicesInstance.setChoiceByValue(['Madrid', 'León', 'Barcelona']);
+                
+                // Primera actualización del Dashboard
                 updateDashboard();
 
             } catch (error) {
-                console.error("Error al cargar la lista de ciudades:", error);
-                alert("No se pudo cargar la lista de ciudades.");
+                console.error("Error al inicializar la aplicación:", error);
+                alert("No se pudo cargar la lista de ciudades o el mapa.");
             }
             
+            // Añadimos todos los Listeners (sin cambios)
             citySelectorElement.addEventListener('change', updateDashboard);
-            
             metricRadios.forEach(radio => radio.addEventListener('change', updateDashboard));
-
             timeRangeButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     currentTimeRange = button.dataset.range;
