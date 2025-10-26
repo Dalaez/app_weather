@@ -1,2 +1,3 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-26T08:11:31.444734,Madrid,11.03,10.41,10.21,11.68,85,3.6,muy nuboso,40.4165,-3.7026
+2025-10-26T08:17:07.267442,Madrid,11.08,10.44,10.21,11.79,84,3.6,muy nuboso,40.4165,-3.7026

@@ -1,2 +1,3 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-26T08:13:31.322581,Melbourne,16.65,16.56,15.92,17.72,84,3.09,muy nuboso,-37.814,144.9633
+2025-10-26T08:19:10.800003,Melbourne,16.7,16.62,16.31,17.53,84,3.09,muy nuboso,-37.814,144.9633
