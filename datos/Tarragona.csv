@@ -3,3 +3,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-26T09:00:10.228633,Tarragona,13.67,13.18,13.2,14.38,80,2.85,algo de nubes,41.1189,1.2445
 2025-10-26T09:15:14.281564,Tarragona,13.67,13.16,13.2,14.26,79,2.85,algo de nubes,41.1189,1.2445
 2025-10-26T09:28:09.516262,Tarragona,13.52,13.02,13.2,14.38,80,4.63,algo de nubes,41.1189,1.2445
+2025-10-26T09:44:53.117602,Tarragona,13.67,13.16,13.2,14.93,79,3.6,algo de nubes,41.1189,1.2445

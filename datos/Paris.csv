@@ -3,3 +3,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-26T09:00:47.537032,Paris,8.19,5.27,7.81,8.88,93,5.14,nubes dispersas,48.8566,2.3522
 2025-10-26T09:15:49.459766,Paris,8.4,5.53,7.93,9.44,92,5.14,nubes dispersas,48.8566,2.3522
 2025-10-26T09:28:47.050957,Paris,8.99,6.08,8.49,9.72,90,5.66,muy nuboso,48.8566,2.3522
+2025-10-26T09:45:28.268762,Paris,9.73,7.01,9.05,10.72,86,5.66,muy nuboso,48.8566,2.3522
