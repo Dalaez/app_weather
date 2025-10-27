@@ -1,2 +1,3 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-27T07:01:54.500853,Palma de Mallorca,13.25,13.19,11.97,14.01,98,2.27,cielo claro,39.5696,2.6502
+2025-10-27T14:17:20.100228,Palma,20.94,20.63,19.9,21.18,59,5.66,algo de nubes,39.5696,2.6502
