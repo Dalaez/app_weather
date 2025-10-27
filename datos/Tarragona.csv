@@ -1,8 +1,0 @@
-fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
-2025-10-26T08:48:27.070533,Tarragona,13.39,12.87,13.2,14.38,80,2.85,algo de nubes,41.1189,1.2445
-2025-10-26T09:00:10.228633,Tarragona,13.67,13.18,13.2,14.38,80,2.85,algo de nubes,41.1189,1.2445
-2025-10-26T09:15:14.281564,Tarragona,13.67,13.16,13.2,14.26,79,2.85,algo de nubes,41.1189,1.2445
-2025-10-26T09:28:09.516262,Tarragona,13.52,13.02,13.2,14.38,80,4.63,algo de nubes,41.1189,1.2445
-2025-10-26T09:44:53.117602,Tarragona,13.67,13.16,13.2,14.93,79,3.6,algo de nubes,41.1189,1.2445
-2025-10-26T10:05:30.281556,Tarragona,13.26,12.73,13.2,14.56,80,3.6,algo de nubes,41.1189,1.2445
-2025-10-26T10:15:20.566144,Tarragona,13.26,12.73,13.2,14.56,80,3.6,algo de nubes,41.1189,1.2445

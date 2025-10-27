@@ -1,8 +1,0 @@
-fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
-2025-10-26T08:49:43.641771,Kuala Lumpur,34.86,37.88,34.86,34.86,43,3.6,algo de nubes,3.139,101.6869
-2025-10-26T09:01:33.069073,Kuala Lumpur,34.83,38.14,34.83,34.86,44,3.6,algo de nubes,3.139,101.6869
-2025-10-26T09:16:31.636803,Kuala Lumpur,31.91,33.97,31.91,31.91,49,3.6,nubes,3.139,101.6869
-2025-10-26T09:29:32.007255,Kuala Lumpur,33.86,36.83,33.86,33.86,46,2.57,algo de nubes,3.139,101.6869
-2025-10-26T09:46:10.522239,Kuala Lumpur,28,28.03,26.64,28,45,2.19,nubes,3.139,101.6869
-2025-10-26T10:06:50.333072,Kuala Lumpur,28,28.19,26.64,28,47,2.19,nubes,3.139,101.6869
-2025-10-26T10:16:37.946828,Kuala Lumpur,33.86,36.83,26.64,33.86,46,3.09,algo de nubes,3.139,101.6869

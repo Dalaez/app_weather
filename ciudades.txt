@@ -36,6 +36,7 @@ Palencia,ES,42.0095,-4.5241
 Palma,ES,39.5696,2.6502
 Pamplona,ES,42.8125,-1.6458
 Pontevedra,ES,42.4310,-8.6444
+Prioro,ES,42.8948,-4.9635
 Salamanca,ES,40.9688,-5.6639
 San Sebastián,ES,43.3183,-1.9812
 Santa Cruz de Tenerife,ES,28.4636,-16.2518
@@ -48,6 +49,7 @@ Teruel,ES,40.3456,-1.1065
 Toledo,ES,39.8628,-4.0273
 Valencia,ES,39.4699,-0.3763
 Valladolid,ES,41.6521,-4.7286
+Vallelado,ES,41.4044,-4.4266
 Vitoria-Gasteiz,ES,42.8467,-2.6731
 Zamora,ES,41.5035,-5.7455
 Zaragoza,ES,41.6488,-0.8891

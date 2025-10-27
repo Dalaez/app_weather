@@ -9,7 +9,7 @@ on:
     branches: [ "main" ]
   schedule: # Se ejecuta en un horario
     # Ejecuta cada día a las 6:00 UTC (8:00 en España en verano)
-    - cron: '0 8 * * *'
+    - cron: '0 6,14,22 * * *'
   workflow_dispatch: # Botón para ejecutarlo manualmente
 
 jobs:

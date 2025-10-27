@@ -1,8 +1,0 @@
-fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
-2025-10-26T08:48:15.467953,Palma,18.27,18.53,17.13,18.95,91,4.12,muy nuboso,39.5696,2.6502
-2025-10-26T08:59:57.759142,Palma de Mallorca,18.27,18.53,17.13,18.95,91,4.12,muy nuboso,39.5696,2.6502
-2025-10-26T09:15:02.536716,Palma,18.22,18.47,17.13,18.95,91,4.12,muy nuboso,39.5696,2.6502
-2025-10-26T09:27:57.003170,Palma de Mallorca,18.22,18.47,17.13,18.95,91,3.09,muy nuboso,39.5696,2.6502
-2025-10-26T09:44:41.361060,Palma de Mallorca,18.22,18.47,16.97,18.95,91,4.12,muy nuboso,39.5696,2.6502
-2025-10-26T10:05:18.137373,Palma de Mallorca,18,18.23,16.97,18.4,91,4.12,muy nuboso,39.5696,2.6502
-2025-10-26T10:15:08.800312,Palma de Mallorca,18,18.26,16.97,18.4,92,4.12,muy nuboso,39.5696,2.6502

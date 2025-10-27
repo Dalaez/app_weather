@@ -1,8 +1,0 @@
-fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
-2025-10-26T08:50:45.119067,Bab El Jazira,25.99,25.99,25.99,25.99,41,1.54,algo de nubes,36.8065,10.1815
-2025-10-26T09:02:38.929856,Bab El Jazira,25.99,25.99,25.99,25.99,41,1.54,algo de nubes,36.8065,10.1815
-2025-10-26T09:17:33.757203,Bab El Jazira,26.99,26.67,26.99,26.99,36,1.54,algo de nubes,36.8065,10.1815
-2025-10-26T09:30:38.188171,Bab El Jazira,26.99,26.67,26.99,26.99,36,1.54,algo de nubes,36.8065,10.1815
-2025-10-26T09:47:12.635961,Bab El Jazira,27.99,27.18,27.99,27.99,32,3.09,algo de nubes,36.8065,10.1815
-2025-10-26T10:07:54.673131,Bab El Jazira,27.99,27.18,27.99,27.99,32,3.09,algo de nubes,36.8065,10.1815
-2025-10-26T10:17:40.048625,Bab El Jazira,28.99,27.76,28.99,28.99,28,2.06,algo de nubes,36.8065,10.1815

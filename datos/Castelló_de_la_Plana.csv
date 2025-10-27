@@ -1,8 +1,0 @@
-fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
-2025-10-26T08:47:48.699170,Castellón de la Plana/Castelló de la Plana,15.82,15.7,15.82,15.82,86,0.81,lluvia de gran intensidad,39.9864,-0.0375
-2025-10-26T08:59:29.103432,Castellón de la Plana,15.82,15.7,15.82,15.82,86,0.81,lluvia moderada,39.9864,-0.0375
-2025-10-26T09:14:35.549749,Castellón de la Plana/Castelló de la Plana,15.27,15.12,15.27,15.27,87,0.81,lluvia moderada,39.9864,-0.0375
-2025-10-26T09:27:28.240404,Castellón de la Plana,15.27,15.15,15.27,15.27,88,0.81,lluvia moderada,39.9864,-0.0375
-2025-10-26T09:44:14.421591,Castellón de la Plana,15.27,15.15,15.27,15.27,88,0.23,lluvia moderada,39.9864,-0.0375
-2025-10-26T10:04:50.229451,Castellón de la Plana,15.27,15.18,15.27,15.27,89,0.23,lluvia moderada,39.9864,-0.0375
-2025-10-26T10:14:41.884704,Castellón de la Plana/Castelló de la Plana,15.27,15.18,15.27,15.27,89,0.23,lluvia moderada,39.9864,-0.0375

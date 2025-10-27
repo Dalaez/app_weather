@@ -1,8 +1,0 @@
-fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
-2025-10-26T08:48:42.149846,Bratislava,12.45,11.34,11.43,13.12,61,4.63,cielo claro,48.1486,17.1077
-2025-10-26T09:00:26.390636,Bratislava,12.39,11.23,12.08,12.81,59,4.63,cielo claro,48.1486,17.1077
-2025-10-26T09:15:29.539508,Bratislava,12.7,11.54,12.57,13.09,58,3.6,algo de nubes,48.1486,17.1077
-2025-10-26T09:28:25.773372,Bratislava,12.76,11.71,12.57,13.12,62,3.6,algo de nubes,48.1486,17.1077
-2025-10-26T09:45:08.369718,Bratislava,12.84,11.85,12.57,13.68,64,5.66,algo de nubes,48.1486,17.1077
-2025-10-26T10:05:46.010805,Bratislava,13.23,12.23,12.57,14.23,62,5.66,algo de nubes,48.1486,17.1077
-2025-10-26T10:15:35.788986,Bratislava,13.27,12.27,12.64,14.23,62,5.66,algo de nubes,48.1486,17.1077

@@ -1,8 +1,0 @@
-fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
-2025-10-26T08:50:08.012826,Distrito Capital,19.52,19.56,19.52,19.52,78,1.03,algo de nubes,10.4806,-66.9036
-2025-10-26T09:01:59.208074,Distrito Capital,22.18,22.8,19.52,22.18,90,1.03,algo de nubes,10.4806,-66.9036
-2025-10-26T09:16:56.252479,Distrito Capital,22.18,22.78,18.52,22.18,89,1.03,algo de nubes,10.4806,-66.9036
-2025-10-26T09:29:58.212177,Caracas,22.18,22.8,18.52,22.18,90,1.03,algo de nubes,10.4806,-66.9036
-2025-10-26T09:46:35.134117,Distrito Capital,22.27,22.9,18.61,22.27,90,1.03,algo de nubes,10.4835,-66.898
-2025-10-26T10:07:15.835472,Distrito Capital,22.18,22.8,21.52,22.18,90,0,algo de nubes,10.4806,-66.9036
-2025-10-26T10:17:02.539593,Caracas,22.18,22.8,21.52,22.18,90,0,algo de nubes,10.4806,-66.9036
