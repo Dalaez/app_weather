@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-27T07:01:14.375940,Viñas,7.06,5.55,7.06,8.53,89,2.24,cielo claro,43.3613,-8.4066
 2025-10-27T14:16:39.160067,A Coruña,16.64,16.24,15.23,18.39,72,6.26,cielo claro,43.3623,-8.4115
+2025-10-27T22:14:09.038393,A Coruña,10.38,9.93,8.95,11.76,94,2.06,algo de nubes,43.3623,-8.4115

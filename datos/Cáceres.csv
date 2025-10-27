@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-27T07:01:24.919520,Cáceres,9.4,8.55,9.4,9.4,76,1.93,cielo claro,39.4731,-6.3711
 2025-10-27T14:16:50.010701,Cáceres,20.95,20.04,20.95,20.95,36,1.02,cielo claro,39.4731,-6.3711
+2025-10-27T22:14:19.537988,Cáceres,13.5,12.24,13.5,13.5,51,2.03,cielo claro,39.4731,-6.3711

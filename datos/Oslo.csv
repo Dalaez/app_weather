@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-27T07:02:42.205382,Oslo,6.84,5.6,6.84,6.84,94,1.91,nubes,59.9139,10.7522
 2025-10-27T14:18:09.531339,Oslo,9.06,9.06,9.06,9.06,85,0.94,nubes,59.9139,10.7522
+2025-10-27T22:15:36.606514,Oslo,4.06,4.06,4.06,4.06,95,0.89,nubes,59.9139,10.7522

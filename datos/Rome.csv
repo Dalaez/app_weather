@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-27T07:02:47.983172,Trevi,12.87,11.83,10.07,14.6,62,1.03,cielo claro,41.9028,12.4964
 2025-10-27T14:18:15.562567,Trevi,18.93,18.34,17.89,19.73,56,5.66,nubes dispersas,41.9028,12.4964
+2025-10-27T22:15:42.534780,Trevi,14.72,13.81,12.54,15.3,60,1.54,cielo claro,41.9028,12.4964

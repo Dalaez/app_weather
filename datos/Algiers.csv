@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-27T07:04:14.930552,L’Agha,17.84,18.13,17.84,17.84,94,2.57,muy nuboso,36.7762,3.0599
 2025-10-27T14:19:45.931358,L’Agha,22.84,22.75,22.84,22.84,60,4.12,algo de nubes,36.7762,3.0599
+2025-10-27T22:17:10.000781,L’Agha,14.84,14.68,14.84,14.84,88,1.54,algo de nubes,36.7762,3.0599

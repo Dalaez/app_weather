@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-27T07:04:19.575778,Mermoz Boabab,27.73,32.75,27.73,27.88,89,1.03,cielo claro,14.7167,-17.4677
 2025-10-27T14:19:50.762361,Mermoz Boabab,31.88,38.88,31.88,31.88,70,3.09,algo de nubes,14.7167,-17.4677
+2025-10-27T22:17:14.684872,Mermoz Boabab,28.84,35.84,28.84,28.88,88,4.12,nubes dispersas,14.7167,-17.4677

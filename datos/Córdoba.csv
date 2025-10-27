@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-27T07:01:30.738232,Cordova,15.72,15.1,15.72,15.72,67,5.14,cielo claro,37.8882,-4.7794
 2025-10-27T14:16:56.032249,Cordova,23.72,23.27,23.72,23.72,43,2.06,cielo claro,37.8882,-4.7794
+2025-10-27T22:14:25.410902,Cordova,15.72,15.49,15.72,15.72,82,0.51,cielo claro,37.8882,-4.7794

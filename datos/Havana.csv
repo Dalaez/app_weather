@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-27T07:03:50.615120,Havana,25.33,26.37,25.33,25.38,94,1.54,algo de nubes,23.1136,-82.3666
 2025-10-27T14:19:20.666481,Havana,28.33,33.47,25.94,28.33,83,3.09,algo de nubes,23.1136,-82.3666
+2025-10-27T22:16:45.564278,Havana,26.33,26.33,25.94,26.33,94,0.51,muy nuboso,23.1136,-82.3666

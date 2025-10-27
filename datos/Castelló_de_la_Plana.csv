@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-27T07:01:27.260418,Castellón de la Plana,11.94,10.81,11.94,11.94,62,1.69,cielo claro,39.9864,-0.0375
 2025-10-27T14:16:52.419897,Castellón de la Plana,21.94,21,21.94,21.94,31,2.49,cielo claro,39.9864,-0.0375
+2025-10-27T22:14:21.897093,Castellón de la Plana,14.71,14.14,14.71,14.71,73,1.18,cielo claro,39.9864,-0.0375

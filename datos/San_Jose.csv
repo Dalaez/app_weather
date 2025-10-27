@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-27T07:04:07.983420,San José,19.4,19.9,18.16,19.51,96,1.54,niebla,9.9281,-84.0907
 2025-10-27T14:19:38.713404,San José,21.48,21.98,21.21,22.46,88,2.06,nubes dispersas,9.9295,-84.0884
+2025-10-27T22:17:02.994823,San José,20.77,21.36,20.38,21,94,3.58,bruma,9.9281,-84.0907

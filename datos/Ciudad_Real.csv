@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-27T07:01:29.576621,Ciudad Real,7.21,7.21,0.96,7.21,83,0.89,cielo claro,38.9863,-3.9213
 2025-10-27T14:16:54.820860,Ciudad Real,19.32,18.27,18.78,19.43,37,1.54,cielo claro,38.9863,-3.9213
+2025-10-27T22:14:24.238799,Ciudad Real,11.1,9.81,5.96,11.1,59,0.51,cielo claro,38.9863,-3.9213

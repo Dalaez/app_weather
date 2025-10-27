@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-27T07:03:59.875525,Chicago,9.97,8.97,8.92,10.61,82,2.24,cielo claro,41.8781,-87.6298
 2025-10-27T14:19:30.324691,Chicago,11.07,10.06,10.02,11.7,70,5.66,algo de nubes,41.8781,-87.6298
+2025-10-27T22:16:54.859240,Chicago,13.22,12.29,12.51,13.92,65,3.13,nubes,41.8781,-87.6298

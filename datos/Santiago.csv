@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-27T07:04:09.136635,Barrio Brazil,16.49,15.79,15.66,17.82,61,0.45,nubes,-33.4489,-70.6693
 2025-10-27T14:19:39.910816,Barrio Brazil,21.11,20.58,19.49,22.07,50,0.89,nubes,-33.4489,-70.6693
+2025-10-27T22:17:04.160956,Barrio Brazil,21.84,21.33,21.1,22.35,48,6.69,cielo claro,-33.4489,-70.6693

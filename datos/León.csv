@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-27T07:01:40.019157,León,2.71,0.63,0.45,2.72,94,2.06,cielo claro,42.5984,-5.5719
 2025-10-27T14:17:05.639087,León,17.15,16.8,16.59,17.72,72,2.06,cielo claro,42.5984,-5.5719
+2025-10-27T22:14:34.818440,León,8.81,8.81,7.72,8.81,67,0.45,cielo claro,42.5984,-5.5719

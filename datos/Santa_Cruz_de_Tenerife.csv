@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-27T07:02:01.473843,Santa Cruz de Tenerife,21.84,22.01,21.01,23.35,74,1.54,cielo claro,28.4636,-16.2518
 2025-10-27T14:17:27.316906,Santa Cruz de Tenerife,26.29,26.29,25.34,27.54,77,2.57,algo de nubes,28.4636,-16.2518
+2025-10-27T22:14:55.808337,Santa Cruz de Tenerife,22.2,22.83,21.95,24.46,90,1.03,nubes dispersas,28.4636,-16.2518

@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-27T07:02:34.084530,Socorro,16.14,15.59,15.69,17.53,68,5.14,cielo claro,38.7223,-9.1393
 2025-10-27T14:18:01.107604,Socorro,23.77,23.66,22.59,25.4,56,4.12,algo de nubes,38.7223,-9.1393
+2025-10-27T22:15:28.423102,Socorro,19.12,19.15,18,19.35,79,1.54,algo de nubes,38.7176,-9.1449

@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-27T07:03:54.091215,Rímac,17.21,17.28,17.21,17.23,88,4.12,muy nuboso,-12.0464,-77.0428
 2025-10-27T14:19:24.282991,Rímac,18.21,18.1,18.21,18.34,77,3.09,nubes,-12.0464,-77.0428
+2025-10-27T22:16:49.060116,Rímac,19.21,19.09,19.21,19.21,73,4.12,cielo claro,-12.0464,-77.0428

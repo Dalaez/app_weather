@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-27T07:01:21.361477,Eixample,11.71,10.27,9.85,13.09,51,6.69,cielo claro,41.3851,2.1734
 2025-10-27T14:16:46.394824,Eixample,19.54,18.67,17.85,20.31,43,5.14,cielo claro,41.3851,2.1734
+2025-10-27T22:14:16.032525,Eixample,15.35,14.53,12.85,16.42,61,4.12,cielo claro,41.3851,2.1734

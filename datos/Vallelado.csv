@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-27T07:02:13.227499,Vallelado,4.71,4.71,4.71,4.71,79,1.12,cielo claro,41.4044,-4.4266
 2025-10-27T14:17:39.352110,Vallelado,15.54,14.4,15.54,15.54,48,1.56,cielo claro,41.4044,-4.4266
+2025-10-27T22:15:07.485973,Vallelado,8.18,7.67,8.18,8.18,72,1.42,cielo claro,41.4044,-4.4266

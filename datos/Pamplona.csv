@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-27T07:01:55.654595,Pamplona,6.95,6.95,6.95,6.95,87,1.03,nubes dispersas,42.8143,-1.6459
 2025-10-27T14:17:21.290511,Pamplona,14.95,14.02,14.63,14.95,58,5.66,cielo claro,42.8143,-1.6459
+2025-10-27T22:14:49.977508,Pamplona,7.95,7.95,7.95,8.52,81,0,cielo claro,42.8125,-1.6458

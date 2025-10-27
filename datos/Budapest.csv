@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-27T07:02:27.137551,Budapest,8.57,6.19,7.73,9.33,57,4.12,cielo claro,47.4979,19.0402
 2025-10-27T14:17:53.909668,Budapest,12.61,11.49,11.43,13.17,60,7.2,muy nuboso,47.4979,19.0402
+2025-10-27T22:15:21.446371,Budapest,8.28,6.39,7.58,8.78,84,3.09,cielo claro,47.4979,19.0402

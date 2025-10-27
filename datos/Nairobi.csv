@@ -1,3 +1,4 @@
 fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon
 2025-10-27T07:04:23.057623,Nairobi,22.82,22.62,22.82,22.82,56,1.87,cielo claro,-1.2921,36.8219
 2025-10-27T14:19:54.430095,Nairobi,21.71,21.61,21.71,21.71,64,4.12,muy nuboso,-1.2921,36.8219
+2025-10-27T22:17:18.172545,Nairobi,19.21,19.01,19.21,19.21,70,3,nubes dispersas,-1.2921,36.8219
