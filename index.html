@@ -52,6 +52,18 @@
         
         #chart-container { width: 100%; padding: 20px; box-sizing: border-box; min-height: 500px; position: relative; } 
         
+        /* NUEVO: Estilo para el contenedor del nuevo gráfico */
+        #chart-container-variation {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            width: 100%; 
+            padding: 20px; 
+            box-sizing: border-box;
+        }
+
         /* Popup del mapa */
         .leaflet-popup-content-wrapper { border-radius: 8px; }
         .leaflet-popup-content { font-family: 'Inter', sans-serif; }
@@ -116,7 +128,8 @@
         body.dark-mode h2 { color: #9ab, #ecf0f1; border-bottom-color: #34495e; }
         body.dark-mode #map-container { background: #111; border-color: #34495e; }
         body.dark-mode #controls-container, 
-        body.dark-mode #chart-container, 
+        body.dark-mode #chart-container,
+        body.dark-mode #chart-container-variation, /* <-- NUEVO */
         body.dark-mode .kpi-card {
             background: rgba(44, 62, 80, 0.85); /* #2c3e50 con opacidad */
             border-color: rgba(93, 109, 126, 0.5);
@@ -245,6 +258,24 @@
             </fieldset>
         </div>
 
+        <!-- NUEVO: Filtro de Hora -->
+        <div id="hour-filter-select">
+            <fieldset>
+                <legend>Hora del Día</legend>
+                <div class="selector-group">
+                    <input type="radio" name="hour-filter" value="all" id="h-all" checked>
+                    <label for="h-all">Todas</label>
+                    <input type="radio" name="hour-filter" value="6" id="h-morning">
+                    <label for="h-morning">Mañana (06h)</label>
+                    <input type="radio" name="hour-filter" value="14" id="h-afternoon">
+                    <label for="h-afternoon">Tarde (14h)</label>
+                    <input type="radio" name="hour-filter" value="22" id="h-night">
+                    <label for="h-night">Noche (22h)</label>
+                </div>
+            </fieldset>
+        </div>
+        <!-- FIN NUEVO -->
+
         <!-- NUEVO: Botón Dark Mode -->
         <div id="dark-mode-toggle-container">
             <button id="dark-mode-toggle" aria-label="Toggle Dark Mode">
@@ -254,17 +285,25 @@
         </div>
     </div>
 
-    <h2>Datos más recientes</h2>
-    <div id="kpi-container"></div>
-
     <h2>Mapa Interactivo</h2>
     <div id="map-container"></div>
+
+    <h2>Datos más recientes</h2>
+    <div id="kpi-container"></div>
 
     <h2>Evolución Histórica</h2>
     <p style="text-align: center; margin-top: -10px; color: #555;">(Todas las horas se muestran en tu zona horaria local)</p>
     <div id="chart-container">
         <canvas id="myChart"></canvas>
     </div>
+
+    <!-- NUEVO: Gráfico de Variación Diaria -->
+    <h2>Variación Diaria</h2>
+    <p style="text-align: center; margin-top: -10px; color: #555;">(Rango entre la temperatura Máx. y Mín. de cada día)</p>
+    <div id="chart-container-variation" style="min-height: 300px; position: relative; margin-top: 20px;">
+        <canvas id="variationChart"></canvas>
+    </div>
+    <!-- FIN NUEVO -->
 
     <script>
         // --- Configuración Global ---
@@ -276,11 +315,14 @@
         const kpiContainer = document.getElementById('kpi-container');
         const metricRadios = document.querySelectorAll('input[name="metric"]');
         const timeRangeButtons = document.querySelectorAll('.time-btn');
+        const hourFilterRadios = document.querySelectorAll('input[name="hour-filter"]'); // <-- NUEVO
         const ctx = document.getElementById('myChart').getContext('2d');
+        const variationCtx = document.getElementById('variationChart').getContext('2d'); // <-- NUEVO
         const loadingSpinner = document.getElementById('loading-spinner');
         const darkModeToggle = document.getElementById('dark-mode-toggle'); // <-- NUEVO
         
         let myChart;
+        let myVariationChart; // <-- NUEVO
         let choicesInstance;
         let allDataCache = {}; 
         let currentTimeRange = 'all'; 
@@ -396,10 +438,13 @@
             const selectedCitiesValues = choicesInstance.getValue(true); 
             const checkedMetricRadio = document.querySelector('input[name="metric"]:checked');
             const selectedMetric = checkedMetricRadio ? checkedMetricRadio.value : 'temp'; 
+            const checkedHourRadio = document.querySelector('input[name="hour-filter"]:checked'); // <-- NUEVO
+            const selectedHour = checkedHourRadio ? checkedHourRadio.value : 'all'; // <-- NUEVO
 
             if (selectedCitiesValues.length === 0) { 
                 kpiContainer.innerHTML = "<p>Selecciona una o más ciudades para ver los datos.</p>"; 
                 if (myChart) myChart.destroy(); 
+                if (myVariationChart) myVariationChart.destroy(); // <-- NUEVO
                 highlightMapMarkers([]); 
                 loadingSpinner.style.display = 'none'; 
                 return; 
@@ -411,6 +456,11 @@
                  myChart.data.labels = [];
                  myChart.update();
             }
+            if (myVariationChart) { // <-- NUEVO
+                myVariationChart.data.datasets = []; // <-- NUEVO
+                myVariationChart.data.labels = []; // <-- NUEVO
+                myVariationChart.update(); // <-- NUEVO
+            } // <-- NUEVO
 
             // OBTENER DATOS (puede usar caché)
             const cityDataMap = await loadDataForCities(selectedCitiesValues); 
@@ -424,7 +474,8 @@
             const selectedCitiesClean = selectedCitiesValues.map(v => v.split(',')[0]);
 
             updateKPIs(cityDataMap, selectedMetric); 
-            updateChart(cityDataMap, selectedMetric); 
+            updateChart(cityDataMap, selectedMetric, selectedHour); // MODIFICADO
+            updateVariationChart(cityDataMap, selectedMetric); // <-- NUEVO
             highlightMapMarkers(selectedCitiesClean); 
 
             loadingSpinner.style.display = 'none'; 
@@ -517,9 +568,9 @@
         }
 
         /**
-         * MODIFICADO: Actualiza el gráfico de historial (sensible a Dark Mode).
+         * MODIFICADO: Actualiza el gráfico de historial (sensible a Dark Mode y Filtro de Hora).
          */
-        function updateChart(cityDataMap, metric) { 
+        function updateChart(cityDataMap, metric, selectedHour) { // MODIFICADO
             if (myChart) { myChart.destroy(); }
             const currentMetric = METRIC_MAP[metric];
             if (!currentMetric) { console.error("ERROR: Métrica inválida:", metric); return; }
@@ -539,9 +590,25 @@
             Object.keys(cityDataMap).forEach((ciudad, index) => {
                 const data = cityDataMap[ciudad];
                 if (!data || !data.records || data.records.length === 0) { return; }
+                
+                // --- MODIFICADO: Añadir filtro de hora ---
                 const filteredData = data.records
-                    .filter(row => row.fecha_hora >= startDate && row[currentMetric.key] !== null && row[currentMetric.key] !== undefined)
+                    .filter(row => {
+                        const dateFilter = row.fecha_hora >= startDate;
+                        const valueFilter = row[currentMetric.key] !== null && row[currentMetric.key] !== undefined;
+                        
+                        let hourFilterCheck = true;
+                        if (selectedHour !== 'all') {
+                            const filterHour = Number(selectedHour);
+                            // Comparamos la hora exacta
+                            hourFilterCheck = (row.fecha_hora.getHours() === filterHour);
+                        }
+                        
+                        return dateFilter && valueFilter && hourFilterCheck;
+                    })
                     .map(row => ({ x: row.fecha_hora, y: row[currentMetric.key] }));
+                // --- FIN MODIFICADO ---
+
                 if (filteredData.length > 0) {
                     datasets.push({
                         label: ciudad, data: filteredData,
@@ -587,6 +654,115 @@
             }
         }
         
+        // --- NUEVO: Gráfico de Variación Diaria ---
+        /**
+         * Actualiza el gráfico de barras de variación diaria.
+         */
+        function updateVariationChart(cityDataMap, metric) {
+            if (myVariationChart) { myVariationChart.destroy(); }
+            const currentMetric = METRIC_MAP[metric];
+            if (!currentMetric) return; // Métrica no válida
+
+            // Colores sensibles al Dark Mode
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            const gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.1)';
+            const textColor = isDarkMode ? '#f5f7fa' : '#2c3e50';
+
+            // Rango de tiempo
+            const now = new Date();
+            let startDate = new Date(0); 
+            if (currentTimeRange !== 'all') {
+                startDate = new Date(now.getTime() - (Number(currentTimeRange) * 24 * 60 * 60 * 1000));
+            }
+
+            const datasets = [];
+            
+            Object.keys(cityDataMap).forEach((ciudad, index) => {
+                const data = cityDataMap[ciudad];
+                if (!data || !data.records || data.records.length === 0) { return; }
+
+                // 1. Filtrar por rango de fecha y valor válido (SIN filtro de hora)
+                const filteredRecords = data.records
+                    .filter(row => row.fecha_hora >= startDate && row[currentMetric.key] !== null && row[currentMetric.key] !== undefined);
+
+                // 2. Agrupar por día
+                const dailyData = {}; // clave: "YYYY-MM-DD"
+                filteredRecords.forEach(row => {
+                    const day = row.fecha_hora.toISOString().split('T')[0];
+                    if (!dailyData[day]) dailyData[day] = [];
+                    dailyData[day].push(row[currentMetric.key]);
+                });
+
+                // 3. Calcular variación (Max - Min)
+                const variationData = [];
+                Object.keys(dailyData).forEach(day => {
+                    const values = dailyData[day];
+                    // Solo tiene sentido si hay más de 1 registro (ej. mañana y noche)
+                    if (values.length > 1) { 
+                        const max = Math.max(...values);
+                        const min = Math.min(...values);
+                        variationData.push({ 
+                            x: new Date(day), // Usar objeto Date para el eje de tiempo
+                            y: (max - min) 
+                        });
+                    }
+                });
+
+                // Ordenar por fecha
+                variationData.sort((a, b) => a.x - b.x);
+
+                if (variationData.length > 0) {
+                    datasets.push({
+                        label: `Variación ${ciudad} (${currentMetric.unit})`,
+                        data: variationData,
+                        backgroundColor: COLOR_PALETTE[index % COLOR_PALETTE.length] + '90', // Con transparencia
+                        borderColor: COLOR_PALETTE[index % COLOR_PALETTE.length],
+                        borderWidth: 1
+                    });
+                }
+            });
+
+            // 4. Crear el gráfico de barras
+            if (datasets.length > 0) {
+                myVariationChart = new Chart(variationCtx, {
+                    type: 'bar',
+                    data: { datasets: datasets },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                type: 'time',
+                                time: { unit: 'day', tooltipFormat: 'dd MMM yyyy', displayFormats: { day: 'dd MMM' } },
+                                title: { display: true, text: 'Fecha', color: textColor },
+                                ticks: { color: textColor },
+                                grid: { color: 'rgba(0,0,0,0)' } // Sin grid vertical
+                            },
+                            y: {
+                                title: { display: true, text: `Variación ${currentMetric.label} (${currentMetric.unit})`, color: textColor },
+                                ticks: { color: textColor },
+                                grid: { color: gridColor },
+                                beginAtZero: true
+                            }
+                        },
+                        plugins: {
+                            tooltip: { mode: 'index', intersect: false },
+                            legend: { position: 'top', labels: { color: textColor } }
+                        }
+                    }
+                });
+            } else {
+                // Mensaje si no hay datos
+                variationCtx.clearRect(0, 0, variationCtx.canvas.width, variationCtx.canvas.height);
+                variationCtx.font = "16px Inter"; 
+                variationCtx.fillStyle = textColor; 
+                variationCtx.textAlign = "center";
+                variationCtx.fillText("No hay suficientes datos para calcular la variación diaria.", variationCtx.canvas.width / 2, 50);
+            }
+        }
+        // --- FIN NUEVO ---
+
+
         // --- Funciones del Mapa ---
 
         /**
@@ -691,6 +867,8 @@
             // Re-leemos la métrica y los datos de la caché para solo redibujar el gráfico
             const checkedMetricRadio = document.querySelector('input[name="metric"]:checked');
             const selectedMetric = checkedMetricRadio ? checkedMetricRadio.value : 'temp';
+            const checkedHourRadio = document.querySelector('input[name="hour-filter"]:checked'); // <-- NUEVO
+            const selectedHour = checkedHourRadio ? checkedHourRadio.value : 'all'; // <-- NUEVO
             const selectedCitiesValues = choicesInstance.getValue(true);
             
             if (selectedCitiesValues.length > 0) {
@@ -700,7 +878,8 @@
                          cityDataMap[val.split(',')[0]] = allDataCache[val];
                      }
                  });
-                 updateChart(cityDataMap, selectedMetric); // Solo actualiza el gráfico
+                 updateChart(cityDataMap, selectedMetric, selectedHour); // MODIFICADO
+                 updateVariationChart(cityDataMap, selectedMetric); // <-- NUEVO
             }
         }
 
@@ -768,6 +947,11 @@
             // Configurar Listeners
             citySelectorElement.addEventListener('change', async () => await updateDashboard());
             metricRadios.forEach(radio => radio.addEventListener('change', async () => await updateDashboard()));
+            
+            // --- NUEVO: Listener para filtro de hora ---
+            hourFilterRadios.forEach(radio => radio.addEventListener('change', async () => await updateDashboard()));
+            // --- FIN NUEVO ---
+            
             timeRangeButtons.forEach(button => {
                 button.addEventListener('click', async (e) => {
                     e.preventDefault();
@@ -788,4 +972,6 @@
     </script>
 </body>
 </html>
+
+
 
