@@ -4,3 +4,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-27T22:14:51.143873,Pontevedra,13.5,12.99,11.16,13.5,80,1.94,cielo claro,42.431,-8.6444
 2025-10-28T06:25:11.486153,Pontevedra,11.5,11,11.5,11.5,88,2.66,nubes dispersas,42.431,-8.6444
 2025-10-28T06:39:35.144414,Pontevedra,11.5,10.74,11.5,11.5,78,2.72,nubes,42.431,-8.6444
+2025-10-28T14:17:07.015878,Pontevedra,15.5,15.3,15.5,15.5,84,0.88,nubes,42.431,-8.6444

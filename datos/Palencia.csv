@@ -4,3 +4,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-27T22:14:47.641206,Palencia,8.61,8.61,7.93,8.9,73,0.57,cielo claro,42.0095,-4.5241
 2025-10-28T06:25:07.854009,Palencia,4.21,4.21,4.21,4.21,80,0.72,cielo claro,42.0095,-4.5241
 2025-10-28T06:39:31.619735,Palencia,4.15,4.15,4.15,4.15,67,1.05,cielo claro,42.0095,-4.5241
+2025-10-28T14:17:03.268151,Palencia,19.98,18.97,18.48,19.98,36,0.89,muy nuboso,42.0095,-4.5241

@@ -4,3 +4,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-27T22:15:05.144461,Valencia,15.05,14.67,13.23,16.31,79,1.79,cielo claro,39.4699,-0.3763
 2025-10-28T06:25:26.027818,Valencia,12.56,11.75,10.23,13.64,72,2.24,cielo claro,39.4699,-0.3763
 2025-10-28T06:39:49.243967,Valencia,12.43,11.58,10.23,13.64,71,2.24,cielo claro,39.4699,-0.3763
+2025-10-28T14:17:22.037985,Valencia,21.82,21.21,20.87,22.4,44,4.12,cielo claro,39.4699,-0.3763
