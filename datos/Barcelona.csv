@@ -5,3 +5,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-28T06:24:35.146848,Ciutat Vella,13.37,12.33,11.33,14.32,60,3.13,cielo claro,41.3851,2.1734
 2025-10-28T06:38:59.922891,Eixample,13.37,12.33,11.03,13.77,60,3.13,cielo claro,41.3851,2.1734
 2025-10-28T14:16:29.482287,Eixample,20.88,20.38,19.85,22.14,52,3.6,algo de nubes,41.3851,2.1734
+2025-10-28T22:15:10.438510,Ciutat Vella,16.2,15.7,13.6,17.64,70,2.24,algo de nubes,41.3851,2.1734
