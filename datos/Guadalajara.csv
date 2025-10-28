@@ -3,3 +3,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-27T14:17:00.832648,Guadalajara,16.68,15.5,15.33,17.35,42,2.37,cielo claro,40.6333,-3.1667
 2025-10-27T22:14:30.160523,Guadalajara,14.53,13.24,6.36,14.53,46,0.76,cielo claro,40.633,-3.1654
 2025-10-28T06:24:49.667539,Guadalajara,8.98,8.98,2.36,8.98,58,0.81,cielo claro,40.633,-3.1654
+2025-10-28T06:39:14.023735,Guadalajara,9.53,9.53,2.36,9.53,57,0.75,cielo claro,40.633,-3.1654

@@ -3,3 +3,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-27T14:17:33.334550,Tarragona,19.99,19.22,19.39,20.67,45,6.69,cielo claro,41.1189,1.2445
 2025-10-27T22:15:01.650395,Tarragona,15.11,14.24,14.26,15.11,60,2.97,cielo claro,41.1189,1.2445
 2025-10-28T06:25:22.388024,Tarragona,11.23,10.37,11.23,12.04,75,2.41,cielo claro,41.1189,1.2445
+2025-10-28T06:39:45.731183,Tarragona,11.23,10.34,11.23,12.04,74,2.13,cielo claro,41.1189,1.2445

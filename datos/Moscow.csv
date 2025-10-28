@@ -3,3 +3,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-27T14:18:07.126501,Moscow,8.33,5.61,7.99,8.52,72,4.73,nubes,55.7558,37.6173
 2025-10-27T22:15:34.271801,Moscow,7.03,3.95,6.29,7.24,61,4.84,lluvia moderada,55.7558,37.6173
 2025-10-28T06:25:56.294811,Moscow,5.99,3.74,5.24,6.88,58,2.93,lluvia ligera,55.7558,37.6173
+2025-10-28T06:40:18.635447,Moscow,5.99,3.64,5.24,6.88,57,3.08,lluvia ligera,55.7558,37.6173

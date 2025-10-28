@@ -3,3 +3,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-27T14:19:14.639550,Auckland,16.62,16.09,16.25,17.77,67,6.17,lluvia de gran intensidad,-36.8485,174.7633
 2025-10-27T22:16:39.720963,Auckland,17.12,16.53,16.81,18.77,63,8.75,muy nuboso,-36.8485,174.7633
 2025-10-28T06:27:04.109705,Auckland,12.29,11.35,11.67,13.19,68,14.92,muy nuboso,-36.8485,174.7633
+2025-10-28T06:41:24.288862,Auckland,12.24,11.3,11.67,12.92,68,14.92,muy nuboso,-36.8485,174.7633

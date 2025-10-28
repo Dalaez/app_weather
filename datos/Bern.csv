@@ -3,3 +3,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-27T14:17:49.092541,Bern,9.62,6.54,9.09,10.08,71,6.69,muy nuboso,46.948,7.4474
 2025-10-27T22:15:16.787806,Bern,8.8,7.28,7.42,10.24,77,2.68,algo de nubes,46.948,7.4474
 2025-10-28T06:25:38.149328,Bern,6.62,4.39,5.7,8.61,70,3.09,nubes dispersas,46.948,7.4474
+2025-10-28T06:40:01.060208,Bern,6.61,4.38,5.7,9.13,70,3.09,nubes dispersas,46.948,7.4474

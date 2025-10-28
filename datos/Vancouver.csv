@@ -3,3 +3,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-27T14:19:33.911888,Vancouver,5.35,5.35,4.81,5.94,97,0.45,nubes,49.2827,-123.1207
 2025-10-27T22:16:58.348390,Vancouver,10.96,10.07,9.26,11.48,75,2.24,muy nuboso,49.2827,-123.1207
 2025-10-28T06:27:23.469138,Vancouver,6.01,3.03,5.09,6.82,93,4.12,algo de nubes,49.2827,-123.1207
+2025-10-28T06:41:43.319153,Vancouver,5.91,2.91,5.09,6.82,93,4.12,algo de nubes,49.2827,-123.1207

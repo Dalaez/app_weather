@@ -3,3 +3,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-27T14:17:29.733128,Segovia,15.76,14.41,15.76,15.76,39,2.56,cielo claro,40.9429,-4.1203
 2025-10-27T22:14:58.143725,Segovia,7.07,6.34,7.07,7.07,62,1.47,cielo claro,40.9429,-4.1203
 2025-10-28T06:25:18.757450,Segovia,2.82,0.72,2.82,2.82,71,2.1,cielo claro,40.9429,-4.1203
+2025-10-28T06:39:42.209203,Segovia,3.34,1.24,3.34,3.34,56,2.18,cielo claro,40.9429,-4.1203
