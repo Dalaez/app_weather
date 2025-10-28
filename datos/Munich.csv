@@ -2,3 +2,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-27T07:03:07.695807,Munich,5.53,2.76,4.57,6.51,85,3.58,lluvia ligera,48.1351,11.582
 2025-10-27T14:18:36.025135,Munich,7.41,4.59,6.3,8.41,86,4.47,lluvia moderada,48.1351,11.582
 2025-10-27T22:16:02.386908,Altstadt,7.44,4.85,6.49,7.58,82,4.02,muy nuboso,48.1351,11.582
+2025-10-28T06:26:25.349471,Altstadt,7.83,5.82,6.3,8.41,84,3.13,nubes,48.1351,11.582
