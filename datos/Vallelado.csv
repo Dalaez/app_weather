@@ -6,3 +6,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-28T06:39:51.598627,Vallelado,4.01,2.74,4.01,4.01,64,1.56,cielo claro,41.4044,-4.4266
 2025-10-28T14:17:24.555087,Vallelado,17.38,16.04,17.38,17.38,33,1.9,nubes,41.4044,-4.4266
 2025-10-28T22:16:05.932056,Vallelado,11.5,10.3,11.5,11.5,61,3.95,lluvia ligera,41.4044,-4.4266
+2025-10-29T06:25:50.983332,Vallelado,9.05,7.08,9.05,9.05,91,3.52,nubes,41.4044,-4.4266
