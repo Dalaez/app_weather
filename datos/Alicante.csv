@@ -13,3 +13,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-29T07:00:34.807643,Alicante,17.71,17.73,16.86,18.36,84,1.54,cielo claro,38.3452,-0.4815
 2025-10-29T07:08:08.940341,Alicante,17.74,17.76,16.87,18.37,84,1.54,cielo claro,38.3452,-0.481
 2025-10-29T14:16:35.638089,Alicante,23.65,23.77,22.42,24.01,65,3.6,cielo claro,38.3452,-0.481
+2025-10-29T22:14:43.048030,Alicante,19.94,20.29,19.09,20.4,88,1.54,algo de nubes,38.3452,-0.481

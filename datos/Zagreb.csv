@@ -13,3 +13,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-29T07:02:24.891240,City of Zagreb,9.25,9.25,4.69,9.25,81,0,cielo claro,45.815,15.9819
 2025-10-29T07:09:57.012705,City of Zagreb,9.81,9.81,5.69,9.81,81,0,cielo claro,45.815,15.9819
 2025-10-29T14:18:22.689052,Zagreb,18.7,18.3,18.7,19.69,64,3.09,cielo claro,45.815,15.9819
+2025-10-29T22:16:37.812107,City of Zagreb,15.37,14.71,14.69,15.37,67,4.12,cielo claro,45.815,15.9819
