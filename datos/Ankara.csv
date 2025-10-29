@@ -7,3 +7,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-28T14:18:20.825188,Kolej,18.13,17.54,16.68,18.38,59,4.63,lluvia ligera,39.9334,32.8597
 2025-10-28T22:17:02.613929,Kolej,11.71,11.21,11.43,11.71,87,0.89,lluvia moderada,39.9334,32.8597
 2025-10-29T06:26:45.584254,Ulus,9.8,8.91,8.68,10.04,84,2.06,nubes dispersas,39.9334,32.8597
+2025-10-29T06:45:40.483440,Ulus,9.82,8.93,8.68,10.43,82,2.06,nubes dispersas,39.9334,32.8597

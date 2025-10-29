@@ -7,3 +7,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-28T14:16:45.750844,Huelva,21.59,21.74,19.97,21.59,74,4.92,lluvia de gran intensidad,37.2614,-6.9447
 2025-10-28T22:15:26.878768,Huelva,19.36,19.52,19.36,19.41,83,4.02,nubes,37.2614,-6.9447
 2025-10-29T06:25:13.401987,Huelva,19.92,20.13,19.92,20.53,83,3.13,lluvia moderada,37.2614,-6.9447
+2025-10-29T06:44:03.441447,Huelva,20.48,20.75,19.97,20.48,83,2.24,lluvia moderada,37.2614,-6.9447
