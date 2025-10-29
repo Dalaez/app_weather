@@ -9,3 +9,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-29T06:26:45.584254,Ulus,9.8,8.91,8.68,10.04,84,2.06,nubes dispersas,39.9334,32.8597
 2025-10-29T06:45:40.483440,Ulus,9.82,8.93,8.68,10.43,82,2.06,nubes dispersas,39.9334,32.8597
 2025-10-29T06:51:21.663772,Ulus,9.82,8.93,8.68,10.43,82,2.06,nubes dispersas,39.9334,32.8597
+2025-10-29T06:58:15.936950,Ulus,10.04,9.06,10.04,10.43,75,2.24,cielo claro,39.9334,32.8597

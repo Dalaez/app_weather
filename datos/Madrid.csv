@@ -9,3 +9,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-29T06:25:21.894695,Madrid City Center,10.44,9.99,9.53,11.07,94,1.03,algo de nubes,40.4168,-3.7038
 2025-10-29T06:44:12.388411,Madrid City Center,10.33,9.87,9.53,11.07,94,1.03,muy nuboso,40.4168,-3.7038
 2025-10-29T06:49:53.553104,Sol,10.33,9.87,9.53,11.07,94,1.03,muy nuboso,40.4168,-3.7038
+2025-10-29T06:56:53.235908,Madrid,10.33,9.87,9.53,11.07,94,1.03,muy nuboso,40.4168,-3.7038

@@ -9,3 +9,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-29T06:27:52.400770,Barrio Brazil,16.44,15.78,15.13,18.79,63,1.04,cielo claro,-33.4489,-70.6693
 2025-10-29T06:46:50.633185,Barrio Brazil,16.41,15.78,15.13,18.23,64,0.88,cielo claro,-33.4489,-70.6693
 2025-10-29T06:52:31.857382,Barrio Brazil,16.26,15.64,14.57,17.68,65,2.06,cielo claro,-33.4489,-70.6693
+2025-10-29T06:59:21.843023,Barrio Brazil,16.26,15.61,14.57,17.68,64,2.06,cielo claro,-33.4489,-70.6693
