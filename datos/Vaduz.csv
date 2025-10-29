@@ -7,3 +7,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-28T14:18:12.064976,Vaduz,13.69,12.71,13.67,14.79,61,1.33,nubes dispersas,47.141,9.5215
 2025-10-28T22:16:53.815034,Vaduz,6.65,4.53,6.45,8.09,89,2.94,algo de nubes,47.141,9.5215
 2025-10-29T06:26:37.103250,Vaduz,2.78,-0.92,2.56,7.54,91,4.09,nubes dispersas,47.141,9.5215
+2025-10-29T06:45:31.548548,Vaduz,8.39,5.87,7.54,9.99,65,4.33,nubes,47.141,9.5215
