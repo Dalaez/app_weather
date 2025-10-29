@@ -8,3 +8,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-28T22:17:17.744638,Islamabad,17.68,17.46,17.68,17.68,75,2.28,cielo claro,33.6844,73.0479
 2025-10-29T06:27:00.145908,Islamabad,24.34,24.45,24.34,24.34,62,0.89,cielo claro,33.6844,73.0479
 2025-10-29T06:45:55.810173,Islamabad,24.9,25.09,24.9,24.9,63,0.45,cielo claro,33.6844,73.0479
+2025-10-29T06:51:36.991490,Islamabad,24.9,25.04,24.9,24.9,61,2.57,cielo claro,33.6844,73.0479
