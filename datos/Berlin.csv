@@ -8,3 +8,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-28T22:16:14.739970,Mitte,9.37,6.75,7.77,9.97,90,5.14,nubes dispersas,52.52,13.405
 2025-10-29T06:25:59.475176,Mitte,7.04,4.05,5.59,7.82,93,4.63,cielo claro,52.52,13.405
 2025-10-29T06:44:51.959366,Alt-Kölln,7.1,4.13,6.05,7.82,92,4.63,cielo claro,52.52,13.405
+2025-10-29T06:50:33.133754,Mitte,7.15,4.19,6.05,7.82,92,4.63,cielo claro,52.52,13.405

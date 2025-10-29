@@ -1,1 +1,22 @@
-{}
+{
+    "Madrid": {
+        "prediccion_temp_max": 10.92,
+        "fecha_prediccion": "2025-10-29T06:52:52.107530",
+        "historial_usado": 10
+    },
+    "Le\u00f3n": {
+        "prediccion_temp_max": 9.93,
+        "fecha_prediccion": "2025-10-29T06:52:52.116479",
+        "historial_usado": 10
+    },
+    "London": {
+        "prediccion_temp_max": 11.84,
+        "fecha_prediccion": "2025-10-29T06:52:52.125101",
+        "historial_usado": 10
+    },
+    "New York": {
+        "prediccion_temp_max": 10.13,
+        "fecha_prediccion": "2025-10-29T06:52:52.133642",
+        "historial_usado": 10
+    }
+}

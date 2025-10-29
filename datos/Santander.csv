@@ -8,3 +8,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-28T22:15:54.578622,Santander,14.94,14.66,10.86,14.94,83,0.89,nubes,43.4623,-3.8099
 2025-10-29T06:25:40.065172,Santander,18.17,17.71,15.57,18.27,64,3.6,nubes dispersas,43.4623,-3.8099
 2025-10-29T06:44:31.536150,Santander,18.27,17.82,17.86,18.27,64,4.63,muy nuboso,43.4623,-3.8099
+2025-10-29T06:50:12.715707,Santander,18.27,17.82,17.86,18.27,64,4.63,muy nuboso,43.4623,-3.8099
