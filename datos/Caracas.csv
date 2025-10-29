@@ -12,3 +12,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-29T06:59:01.458765,Caracas,21.52,22.05,21.52,21.52,89,0,cielo claro,10.4806,-66.9036
 2025-10-29T07:03:10.707043,Distrito Capital,21.52,22.05,21.52,21.52,89,0,cielo claro,10.4806,-66.9036
 2025-10-29T07:10:42.846362,Distrito Capital,26.51,26.51,26.51,26.51,83,1.4,algo de nubes,10.4806,-66.9036
+2025-10-29T14:19:07.979008,Distrito Capital,27.61,29.39,26.52,28.29,65,4.12,algo de nubes,10.4806,-66.9036

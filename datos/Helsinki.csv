@@ -12,3 +12,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-29T06:57:39.994797,Helsinki,5.61,4.59,4.44,6.32,97,1.54,muy nuboso,60.1699,24.9384
 2025-10-29T07:01:50.815651,Helsinki,5.61,4.59,4.44,6.32,97,1.54,muy nuboso,60.1699,24.9384
 2025-10-29T07:09:22.971282,Helsinki,6.1,5.15,4.69,6.65,97,1.54,muy nuboso,60.1699,24.9384
+2025-10-29T14:17:49.054618,Helsinki,7.63,6.9,6.91,8.2,95,1.54,muy nuboso,60.1699,24.9384

@@ -12,3 +12,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-29T06:59:14.637046,Downtown Toronto,6,0.84,5.07,7.15,73,10.28,nubes dispersas,43.6532,-79.3832
 2025-10-29T07:03:23.612491,Downtown Toronto,6,0.84,5.07,7.15,73,10.28,nubes dispersas,43.6532,-79.3832
 2025-10-29T07:10:55.748149,Downtown Toronto,5.62,0.34,4.91,6.79,74,10.28,nubes dispersas,43.6532,-79.3832
+2025-10-29T14:19:20.697210,Downtown Toronto,8.19,3.75,7.24,9.01,74,10.28,cielo claro,43.6532,-79.3832
