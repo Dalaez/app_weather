@@ -11,3 +11,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-29T06:52:20.377874,Los Angeles,22.43,21.9,18.65,24.62,45,3.09,cielo claro,34.0522,-118.2437
 2025-10-29T06:59:11.051227,Los Angeles,22.44,21.91,18.65,24.62,45,3.09,cielo claro,34.054,-118.243
 2025-10-29T07:03:20.091276,Los Angeles,22.05,21.56,18.01,24.89,48,3.09,cielo claro,34.0522,-118.2437
+2025-10-29T07:10:52.212939,Los Angeles,21.96,21.46,17.86,24.89,48,3.09,cielo claro,34.0522,-118.2437

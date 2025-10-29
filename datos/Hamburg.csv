@@ -11,3 +11,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-29T06:51:28.069751,Hamburg,7.93,5.4,7.42,8.36,93,4.12,cielo claro,53.5511,9.9937
 2025-10-29T06:58:21.932721,Neustadt,7.93,5.4,7.42,8.36,93,4.12,cielo claro,53.5511,9.9937
 2025-10-29T07:02:31.921508,Neustadt,7.93,5.4,7.42,8.36,93,4.12,cielo claro,53.5511,9.9937
+2025-10-29T07:10:04.105233,Neustadt,8.47,5.62,7.43,8.97,93,5.14,cielo claro,53.5511,9.9937
