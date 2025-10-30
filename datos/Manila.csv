@@ -16,3 +16,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-29T22:17:01.578143,Santa Cruz,26.49,26.49,25.59,27,94,1.03,muy nuboso,14.5995,120.9842
 2025-10-30T06:25:39.345365,Santa Cruz,28.71,35.71,28.39,30.01,89,2.32,nubes,14.5995,120.9842
 2025-10-30T14:17:47.736724,Manila,27.09,31.33,26.14,28,93,1.03,algo de nubes,14.5995,120.9842
+2025-10-30T22:16:49.280424,Quiapo District,26.35,26.35,25.59,27,96,0.51,algo de nubes,14.6,120.983

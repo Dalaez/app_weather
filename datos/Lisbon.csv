@@ -16,3 +16,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-29T22:16:05.369912,Socorro,17.35,17.41,16.97,17.83,87,2.06,nubes dispersas,38.7223,-9.1393
 2025-10-30T06:24:46.567566,Socorro,16.71,16.79,15.85,17.83,90,1.54,algo de nubes,38.7223,-9.1393
 2025-10-30T14:16:53.483491,Sacramento,20.1,20.18,17.59,21.16,77,6.17,nubes dispersas,38.7223,-9.1393
+2025-10-30T22:15:55.023751,Sacramento,18.19,18.36,17.53,18.94,88,6.17,muy nuboso,38.7223,-9.1393

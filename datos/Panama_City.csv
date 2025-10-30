@@ -16,3 +16,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-29T22:17:44.022923,Panama City,27.99,32.71,27.75,28.44,84,2.57,lluvia ligera,8.9824,-79.5199
 2025-10-30T06:26:19.197075,Panama City,25.51,26.65,24.41,25.97,97,2.57,muy nuboso,8.9824,-79.5199
 2025-10-30T14:18:28.603178,Veranillo,28.3,33.21,28.3,29.55,82,0.45,lluvia ligera,8.9824,-79.5199
+2025-10-30T22:17:30.162575,Panama City,27.52,32.12,25.97,27.98,89,2.06,llovizna,8.9824,-79.5199

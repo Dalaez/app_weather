@@ -16,3 +16,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-29T22:15:29.162724,San Martin,16.47,16.29,15.64,16.79,81,4.12,nubes,43.3221,-1.9784
 2025-10-30T06:24:12.602370,San Martin,12.35,11.91,11.67,12.9,87,1.79,algo de nubes,43.3183,-1.9812
 2025-10-30T14:16:18.527799,San Martin,24.1,23.87,22.86,24.44,50,3.13,nubes dispersas,43.3183,-1.9812
+2025-10-30T22:15:20.080054,San Martin,15.94,15.73,15.94,15.94,82,0.51,cielo claro,43.3183,-1.9812

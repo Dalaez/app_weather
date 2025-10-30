@@ -16,3 +16,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-29T22:15:27.909614,Salamanca,9.32,6.77,8.79,9.32,16,4.92,cielo claro,40.9688,-5.6639
 2025-10-30T06:24:11.430920,Salamanca,10.89,8.9,8.79,11.37,33,2.06,niebla,40.9688,-5.6639
 2025-10-30T14:16:17.308450,Salamanca,15.89,13.9,15.44,16.37,14,8.94,algo de nubes,40.9688,-5.6639
+2025-10-30T22:15:18.774861,Salamanca,12.55,10.28,9.79,13.03,16,10.28,algo de nubes,40.9688,-5.6639
