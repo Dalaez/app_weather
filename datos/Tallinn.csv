@@ -15,3 +15,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-29T14:18:13.417788,Tallinn,8.09,6.16,7.75,8.53,85,3.09,nubes dispersas,59.437,24.7536
 2025-10-29T22:16:27.817532,Tallinn,4.19,1.88,2.75,4.19,93,2.57,cielo claro,59.437,24.7536
 2025-10-30T06:25:07.669484,Toompea,1.19,-0.46,1.19,1.64,100,1.54,bruma,59.437,24.7536
+2025-10-30T14:17:15.197194,Toompea,8.19,5.72,8.19,8.3,100,4.12,lluvia ligera,59.437,24.7536
