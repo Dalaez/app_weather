@@ -14,3 +14,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-29T07:08:27.774657,Guadalajara,11.66,11.41,10.13,11.76,97,3.42,nubes,40.633,-3.1654
 2025-10-29T14:16:54.305449,Guadalajara,13.92,13.93,13.11,13.98,98,2.45,nubes,40.633,-3.1654
 2025-10-29T22:15:02.992227,Guadalajara,11.48,11.16,11.36,11.8,95,1.04,muy nuboso,40.633,-3.1654
+2025-10-30T06:23:47.992332,Guadalajara,11.78,11.6,11.76,12.36,99,1.78,nubes dispersas,40.633,-3.1654
