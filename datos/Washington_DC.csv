@@ -17,3 +17,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-30T06:26:25.038680,Washington D.C.,11.89,11.48,10.97,12.99,90,5.81,lluvia de gran intensidad,38.9072,-77.0369
 2025-10-30T14:18:34.610251,Washington D.C.,16.76,16.95,15.59,17.89,94,5.66,lluvia ligera,38.9072,-77.0369
 2025-10-30T22:17:36.179040,Washington D.C.,16.45,15.98,14.85,17.39,70,4.12,nubes dispersas,38.9072,-77.0369
+2025-10-31T06:26:37.720477,Washington D.C.,10.66,9.82,9,11.64,78,4.12,algo de nubes,38.9072,-77.0369

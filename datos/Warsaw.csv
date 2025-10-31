@@ -17,3 +17,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-30T06:25:15.886921,Warsaw,6.82,4.03,5.88,8.28,91,4.12,cielo claro,52.2297,21.0122
 2025-10-30T14:17:23.661669,Warsaw,12.9,12.44,12.12,13.88,84,5.66,nubes dispersas,52.2297,21.0122
 2025-10-30T22:16:25.185342,Warsaw,9.04,5.11,8.21,9.88,77,9.26,algo de nubes,52.2297,21.0122
+2025-10-31T06:25:29.288394,Warsaw,7.56,3.58,6.63,8.77,84,7.72,algo de nubes,52.2297,21.0122

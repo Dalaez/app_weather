@@ -17,3 +17,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-30T06:24:40.704091,Copenhagen,9.92,7.63,9.16,9.92,93,4.63,muy nuboso,55.6819,12.572
 2025-10-30T14:16:47.468255,Inner City,9.44,5.52,8.97,10.19,89,9.77,muy nuboso,55.6761,12.5683
 2025-10-30T22:15:49.014536,Copenhagen,7.94,4.96,6.19,7.94,81,5.14,algo de nubes,55.6761,12.5683
+2025-10-31T06:24:54.469819,Inner City,3.94,2.07,3.94,4.19,100,2.06,bruma,55.6761,12.5683

@@ -17,3 +17,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-30T06:25:40.516540,Konkan Division,26,26,25.95,26,89,3.6,niebla,19.076,72.8777
 2025-10-30T14:17:48.945343,Konkan Division,28,31.21,28,28,74,4.12,niebla,19.076,72.8777
 2025-10-30T22:16:50.485674,Konkan Division,26,26,26,26,78,4.12,niebla,19.076,72.8777
+2025-10-31T06:25:53.655886,Konkan Division,28,31.8,27.95,28,78,5.14,nubes,19.076,72.8777

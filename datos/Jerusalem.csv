@@ -17,3 +17,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-30T06:25:34.646774,Jerusalem,21.12,20.83,20.54,21.12,59,0.45,cielo claro,31.7683,35.2137
 2025-10-30T14:17:42.923033,Jerusalem,25.01,24.58,23.87,25.01,39,2.83,muy nuboso,31.7683,35.2137
 2025-10-30T22:16:44.477580,Jerusalem,20.01,19.4,20.01,21.09,51,3.37,nubes dispersas,31.7683,35.2137
+2025-10-31T06:25:47.867841,Jerusalem,23.34,22.67,21.65,23.34,36,0.45,cielo claro,31.7683,35.2137
