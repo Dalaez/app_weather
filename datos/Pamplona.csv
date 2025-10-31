@@ -19,3 +19,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-30T22:15:15.171362,Primer Ensanche,14.95,14.25,13.52,14.95,67,3.6,cielo claro,42.8125,-1.6458
 2025-10-31T06:24:21.771876,Pamplona,12.95,12.15,12.95,12.95,71,4.63,cielo claro,42.8125,-1.6458
 2025-10-31T14:16:19.106896,Pamplona,18.95,18.15,16.85,18.95,48,4.63,cielo claro,42.8143,-1.6459
+2025-10-31T22:15:13.565940,Pamplona,16.95,16.14,16.85,16.95,55,4.12,cielo claro,42.8125,-1.6458

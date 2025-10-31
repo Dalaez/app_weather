@@ -19,3 +19,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-30T22:17:13.356108,Distrito Capital,24.6,25.18,24.6,24.6,79,2.57,lluvia ligera,10.4818,-66.9038
 2025-10-31T06:26:15.705064,Distrito Capital,20.52,20.95,20.52,20.52,89,0,algo de nubes,10.4806,-66.9036
 2025-10-31T14:18:17.207110,Distrito Capital,26.78,28.49,24.52,27.74,70,2.24,nubes dispersas,10.4806,-66.9036
+2025-10-31T22:17:07.586920,Caracas,22.74,23.47,21.35,22.74,92,0.45,lluvia moderada,10.4806,-66.9036
