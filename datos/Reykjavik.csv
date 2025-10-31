@@ -18,3 +18,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-30T14:17:05.569509,Grímsstaðaholt,-3.08,-6.13,-3.08,0.05,54,2.06,cielo claro,64.1466,-21.9426
 2025-10-30T22:16:07.078341,Grímsstaðaholt,0.05,-4.55,0.05,0.05,60,4.49,nevada ligera,64.1466,-21.9426
 2025-10-31T06:25:11.855997,Grímsstaðaholt,3.92,-1.14,3.38,3.92,56,7.72,cielo claro,64.1466,-21.9426
+2025-10-31T14:17:10.832117,Grímsstaðaholt,6.92,3.91,6.16,6.92,61,4.63,muy nuboso,64.1466,-21.9426

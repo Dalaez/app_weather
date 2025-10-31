@@ -18,3 +18,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-30T14:16:36.610080,Amsterdam,12.34,11.51,11.61,13.34,72,5.14,nubes dispersas,52.3676,4.9041
 2025-10-30T22:15:38.164742,Amsterdam,8.57,6.19,7.17,9.4,83,4.12,cielo claro,52.3676,4.9041
 2025-10-31T06:24:43.930181,Amsterdam,8.47,5.62,7.17,9.41,73,5.14,lluvia ligera,52.3676,4.9041
+2025-10-31T14:16:41.974694,Amsterdam,12.77,11.9,12.17,13.9,69,6.69,cielo claro,52.3676,4.9041

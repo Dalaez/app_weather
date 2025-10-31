@@ -18,3 +18,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-30T14:18:24.994483,Downtown Toronto,8.72,4.45,8.25,9.56,88,10.28,lluvia moderada,43.6532,-79.3832
 2025-10-30T22:17:26.559808,Downtown Toronto,7.07,3.77,6.65,7.89,92,5.36,lluvia moderada,43.6532,-79.3832
 2025-10-31T06:26:28.430183,Downtown Toronto,5.58,2.24,4.98,6.15,90,4.63,lluvia ligera,43.6532,-79.3832
+2025-10-31T14:18:30.409405,Downtown Toronto,6.48,2.68,6.1,7.34,89,6.26,nubes,43.6532,-79.3832
