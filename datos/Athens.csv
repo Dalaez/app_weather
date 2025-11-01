@@ -21,3 +21,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-31T14:16:44.368214,Athens,20.78,20.95,19.76,21.63,78,4.12,algo de nubes,37.9838,23.7275
 2025-10-31T22:15:38.043354,Metaxourgio,18.61,18.77,17.4,19.57,86,0.45,algo de nubes,37.9838,23.7275
 2025-11-01T06:22:02.701783,Metaxourgio,19.13,19.32,17.54,20.13,85,2.24,algo de nubes,37.9838,23.7275
+2025-11-01T14:13:41.372285,Metaxourgio,21.14,21.32,19.82,22.19,77,4.63,muy nuboso,37.9838,23.7275

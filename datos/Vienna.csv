@@ -21,3 +21,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-31T14:17:26.539767,Inner city,15.74,14.99,14.81,17.1,62,4.47,cielo claro,48.2082,16.3738
 2025-10-31T22:16:18.684215,Vienna,8.99,8.99,7.05,10.62,81,1.03,nubes dispersas,48.2082,16.3738
 2025-11-01T06:22:44.684163,Vienna,8.8,8.8,7.04,10.48,84,0.51,muy nuboso,48.2082,16.3738
+2025-11-01T14:14:23.855973,Innere Stadt,17.97,17.78,15.38,19.45,75,8.05,algo de nubes,48.2082,16.3738

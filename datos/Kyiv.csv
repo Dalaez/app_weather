@@ -21,3 +21,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-31T14:16:57.603234,Podil,11.3,10.31,11.3,11.3,70,0.89,nubes,50.4501,30.5234
 2025-10-31T22:15:50.804104,Pushcha-Vodytsya,9.63,9.63,9.63,9.63,80,0.89,nubes,50.4501,30.5234
 2025-11-01T06:22:15.883959,Pushcha-Vodytsya,9.08,9.08,9.08,9.08,83,0.89,muy nuboso,50.4501,30.5234
+2025-11-01T14:13:54.695768,Pushcha-Vodytsya,10.19,9.3,10.19,10.19,78,2.47,nubes,50.4501,30.5234

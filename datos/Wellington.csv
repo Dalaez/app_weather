@@ -21,3 +21,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-31T14:18:11.188087,Wellington,10.97,9.92,10.31,11.81,69,6.17,nubes,-41.2865,174.7762
 2025-10-31T22:17:01.770592,Wellington,14.18,13.22,13.81,15.37,60,5.14,algo de nubes,-41.2865,174.7762
 2025-11-01T06:23:29.060162,Wellington,15.92,15,14.39,16.81,55,4.63,algo de nubes,-41.2865,174.7762
+2025-11-01T14:15:08.749976,Wellington,12.35,11.83,11.98,12.81,84,6.69,cielo claro,-41.2865,174.7762
