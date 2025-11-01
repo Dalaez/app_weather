@@ -22,3 +22,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-31T22:17:28.450618,Liberdade,17.37,17.64,16.86,17.97,95,2.57,muy nuboso,-23.5505,-46.6333
 2025-11-01T06:23:56.596688,Liberdade,17.48,17.76,16.88,17.77,95,2.06,nubes,-23.5505,-46.6333
 2025-11-01T14:15:36.675431,Liberdade,25.37,25.69,25.15,28.39,66,2.57,nubes dispersas,-23.5505,-46.6333
+2025-11-01T22:16:14.163944,Liberdade,19.4,19.75,19.15,20.19,90,2.06,nubes dispersas,-23.5505,-46.6333

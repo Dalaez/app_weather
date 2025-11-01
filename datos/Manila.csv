@@ -22,3 +22,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-31T22:16:44.329401,Manila,27.02,30.79,26.74,28.39,90,1.93,nubes,14.5995,120.9842
 2025-11-01T06:23:11.080581,Santa Cruz,30.86,37.86,30.63,31.73,78,4.92,nubes dispersas,14.5995,120.9842
 2025-11-01T14:14:50.580470,Santa Cruz,28.22,33.17,27.85,29,83,2.06,nubes dispersas,14.5995,120.9842
+2025-11-01T22:15:28.653288,Manila,26.39,26.39,26.14,27,90,0,algo de nubes,14.5995,120.9842

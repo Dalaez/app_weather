@@ -22,3 +22,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-10-31T22:16:51.316369,Shanghai Municipality,16.88,16.76,16.88,16.88,82,2,niebla,31.2304,121.4737
 2025-11-01T06:23:18.277627,Shanghai Municipality,21.88,21.25,21.88,21.88,43,5,niebla,31.2304,121.4737
 2025-11-01T14:14:57.851081,Shanghai Municipality,17.88,17.37,17.88,17.88,63,1,nubes,31.2304,121.4737
+2025-11-01T22:15:35.860894,Shanghai Municipality,13.88,13.62,13.88,13.88,88,2,niebla,31.2304,121.4737
