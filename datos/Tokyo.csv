@@ -25,3 +25,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-01T22:15:41.855838,Horinouchi,13.97,13.41,12.26,14.25,76,3.6,muy nuboso,35.6762,139.6503
 2025-11-02T06:24:26.649635,Horinouchi,18.66,18.17,17.97,19.89,61,5.66,muy nuboso,35.6762,139.6503
 2025-11-02T14:15:21.803670,Horinouchi,15.86,15.33,13.4,16.81,70,3.6,cielo claro,35.6762,139.6503
+2025-11-02T22:16:00.521222,Horinouchi,12.44,11.83,10.59,12.59,80,2.06,algo de nubes,35.6762,139.6503

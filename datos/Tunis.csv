@@ -25,3 +25,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-01T22:16:30.943707,Bab El Jazira,17.99,18.46,17.99,17.99,100,0,algo de nubes,36.8065,10.1815
 2025-11-02T06:25:15.750362,Bab El Jazira,15.99,16.26,15.99,15.99,100,1.54,algo de nubes,36.8065,10.1815
 2025-11-02T14:16:13.981592,Bab El Jazira,27.99,27.09,27.99,27.99,30,2.06,algo de nubes,36.8065,10.1815
+2025-11-02T22:16:49.637574,Bab El Jazira,20.99,21.31,20.99,20.99,83,1.54,algo de nubes,36.8065,10.1815

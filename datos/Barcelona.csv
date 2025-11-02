@@ -25,3 +25,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-01T22:13:20.196275,Eixample,18.3,18.04,16.48,19.39,71,2.06,cielo claro,41.3851,2.1734
 2025-11-02T06:22:05.038139,Eixample,18.32,17.93,15.85,19.2,66,3.09,cielo claro,41.3851,2.1734
 2025-11-02T14:12:51.732978,Eixample,21.26,20.93,20.26,22.45,57,4.63,algo de nubes,41.3851,2.1734
+2025-11-02T22:13:38.810825,Eixample,15.77,15.57,15.22,16.62,83,2.57,algo de nubes,41.3851,2.1734

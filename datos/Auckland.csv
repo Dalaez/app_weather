@@ -25,3 +25,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-01T22:15:47.848947,Auckland,19.26,18.91,17.89,19.44,64,4.12,nubes dispersas,-36.8485,174.7633
 2025-11-02T06:24:32.641855,Auckland,17.07,16.63,16.67,18.81,69,5.14,cielo claro,-36.8485,174.7633
 2025-11-02T14:15:28.151213,Auckland,11.63,11.22,8.44,12.22,91,1.03,muy nuboso,-36.8485,174.7633
+2025-11-02T22:16:06.519167,Auckland,19.91,19.63,17.77,20.14,64,2.57,nubes dispersas,-36.8485,174.7633

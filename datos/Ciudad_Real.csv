@@ -25,3 +25,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-01T22:13:28.596795,Ciudad Real,16.1,15.8,16.1,16.56,78,3.13,nubes,38.9863,-3.9213
 2025-11-02T06:22:13.446925,Ciudad Real,14.32,14.29,13.78,14.43,95,1.79,algo de nubes,38.9863,-3.9213
 2025-11-02T14:13:00.627356,Ciudad Real,19.15,18.5,18.88,19.46,53,4.63,algo de nubes,38.9863,-3.9213
+2025-11-02T22:13:47.188170,Ciudad Real,12.77,12.01,10.45,12.77,73,0.32,nubes,38.9863,-3.9213

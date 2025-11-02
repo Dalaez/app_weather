@@ -25,3 +25,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-01T22:13:53.795390,Palma de Mallorca,18.41,18.76,17.29,19.56,94,2.06,nubes dispersas,39.5696,2.6502
 2025-11-02T06:22:38.703393,Palma,16.76,16.87,16.14,17.9,91,1.7,nubes,39.5696,2.6502
 2025-11-02T14:13:27.349409,Palma de Mallorca,23.17,23.03,22.81,24.35,57,6.69,algo de nubes,39.5696,2.6502
+2025-11-02T22:14:12.332951,Palma de Mallorca,15.02,14.85,14.51,16.23,87,1.03,algo de nubes,39.5696,2.6502

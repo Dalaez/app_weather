@@ -25,3 +25,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-01T22:14:19.050224,Andorra la Vella,13.62,13.23,13.56,13.79,84,1.34,nubes,42.5063,1.5218
 2025-11-02T06:23:03.906817,Andorra la Vella,12.43,11.95,11.57,13.04,85,0.45,nubes,42.5063,1.5218
 2025-11-02T14:13:54.064589,Andorra la Vella,8.92,7.74,8.23,9.15,96,2.24,nubes,42.5063,1.5218
+2025-11-02T22:14:37.490136,Andorra la Vella,8.92,7.74,7.68,9.15,96,2.24,nubes dispersas,42.5063,1.5218

@@ -25,3 +25,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-01T22:14:20.261736,Metaxourgio,19.15,19.29,17.77,20.13,83,3.09,muy nuboso,37.9838,23.7275
 2025-11-02T06:23:05.100824,Metaxourgio,18.43,18.63,16.97,19.57,88,0.45,llovizna,37.9838,23.7275
 2025-11-02T14:13:55.334308,Kolonaki,22.29,22.45,20.92,23.46,72,3.09,algo de nubes,37.9838,23.7275
+2025-11-02T22:14:38.685803,Metaxourgio,19.27,19.42,17.54,20.13,83,2.24,nubes dispersas,37.9838,23.7275
