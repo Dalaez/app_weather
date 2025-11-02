@@ -23,3 +23,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-01T06:23:09.884228,Kuala Lumpur,30.8,35.42,30.78,31.63,64,1.54,algo de nubes,3.139,101.6869
 2025-11-01T14:14:49.372447,Kuala Lumpur,28.55,28.41,26.64,28.55,43,1.27,algo de nubes,3.139,101.6869
 2025-11-01T22:15:27.458471,Kuala Lumpur,26.64,26.64,26.64,26.64,81,0.81,muy nuboso,3.139,101.6869
+2025-11-02T06:24:12.265708,Kuala Lumpur,34.13,41.13,31.63,34.13,73,1.27,nubes,3.139,101.6869

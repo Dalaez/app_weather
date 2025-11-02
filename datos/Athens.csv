@@ -23,3 +23,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-01T06:22:02.701783,Metaxourgio,19.13,19.32,17.54,20.13,85,2.24,algo de nubes,37.9838,23.7275
 2025-11-01T14:13:41.372285,Metaxourgio,21.14,21.32,19.82,22.19,77,4.63,muy nuboso,37.9838,23.7275
 2025-11-01T22:14:20.261736,Metaxourgio,19.15,19.29,17.77,20.13,83,3.09,muy nuboso,37.9838,23.7275
+2025-11-02T06:23:05.100824,Metaxourgio,18.43,18.63,16.97,19.57,88,0.45,llovizna,37.9838,23.7275
