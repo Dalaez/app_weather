@@ -24,3 +24,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-01T14:15:17.233357,Kingston,28.9,32.51,28.9,28.9,70,2.57,muy nuboso,17.9712,-76.7936
 2025-11-01T22:15:55.037293,Up Park Camp,29.9,33.88,29.9,29.9,66,2.06,lluvia ligera,17.9712,-76.7936
 2025-11-02T06:24:39.835456,Kingston,26.9,29.35,26.9,26.9,78,3.09,nubes dispersas,17.9712,-76.7936
+2025-11-02T14:15:35.798481,Kingston,28.72,32.47,28.72,28.72,72,0.89,cielo claro,17.9712,-76.7936

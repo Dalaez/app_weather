@@ -24,3 +24,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-01T14:14:34.754036,Hamburg,13.87,13.61,12.98,13.97,88,4.63,chubasco de ligera intensidad,53.5511,9.9937
 2025-11-01T22:15:13.061353,Neustadt,10.79,10.38,10.5,11.87,94,4.12,muy nuboso,53.5511,9.9937
 2025-11-02T06:23:57.842898,Neustadt,9,6.72,7.98,9.63,99,4.12,muy nuboso,53.5511,9.9937
+2025-11-02T14:14:51.279940,Hamburg,12.55,11.9,11.86,12.99,78,4.63,muy nuboso,53.5511,9.9937

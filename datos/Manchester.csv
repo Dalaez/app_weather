@@ -24,3 +24,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-01T14:14:29.905918,Manchester,11.82,10.96,10.83,13.19,73,7.2,muy nuboso,53.4839,-2.2446
 2025-11-01T22:15:08.267599,Manchester,6.67,6.67,5.14,7.19,84,1.03,nubes dispersas,53.4839,-2.2446
 2025-11-02T06:23:53.044038,Manchester,7.26,5.52,6.81,7.75,91,2.57,muy nuboso,53.4839,-2.2446
+2025-11-02T14:14:46.204387,Manchester,11.58,10.49,11.03,12.47,65,5.14,nubes dispersas,53.4839,-2.2446

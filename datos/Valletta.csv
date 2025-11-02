@@ -24,3 +24,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-01T14:14:21.431922,Valletta,23.3,23.46,23.3,23.3,68,4.12,algo de nubes,35.8989,14.5146
 2025-11-01T22:14:59.856963,Valletta,20.3,20.55,20.3,20.3,83,4.12,algo de nubes,35.8989,14.5146
 2025-11-02T06:23:44.660154,Valletta,20.3,20.68,20.3,20.3,88,3.6,nubes dispersas,35.8989,14.5146
+2025-11-02T14:14:37.304358,Valletta,22.3,22.75,22.3,22.3,83,5.14,muy nuboso,35.8989,14.5146
