@@ -27,3 +27,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-02T14:14:01.698076,Grefoaicele,19.58,18.98,18.88,21.08,53,2.24,cielo claro,44.4268,26.1025
 2025-11-02T22:14:44.679132,Bucharest,12.23,11.39,10.11,12.76,72,2.57,cielo claro,44.4268,26.1025
 2025-11-03T06:26:27.498477,Bucharest,10,7.95,9.42,10.62,90,4.12,niebla,44.4268,26.1025
+2025-11-03T14:17:04.981680,Bucharest,19.13,18.59,17.77,20.08,57,1.54,cielo claro,44.4268,26.1025

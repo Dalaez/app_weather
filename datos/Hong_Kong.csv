@@ -27,3 +27,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-02T14:14:58.898265,Mongkok,24.09,24.33,22.89,25.58,68,3.58,muy nuboso,22.3193,114.1694
 2025-11-02T22:15:38.925500,Mongkok,22.51,22.51,21.59,22.86,65,5.36,nubes,22.3193,114.1694
 2025-11-03T06:27:23.695853,Mongkok,24.96,24.82,23.91,25.05,50,5.81,lluvia de gran intensidad,22.3193,114.1694
+2025-11-03T14:17:58.906787,Mongkok,22.25,22.25,21.19,22.86,66,4.47,lluvia ligera,22.3193,114.1694

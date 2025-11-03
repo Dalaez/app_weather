@@ -27,3 +27,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-02T14:15:11.630239,Pyongyang,1.62,-3.1,1.62,1.62,47,5.4,cielo claro,39.0392,125.7625
 2025-11-02T22:15:50.926674,Pyongyang,0.44,0.44,0.44,0.44,58,0.83,cielo claro,39.0392,125.7625
 2025-11-03T06:27:36.163874,Pyongyang,9.31,8.14,9.31,9.31,36,2.32,cielo claro,39.0392,125.7625
+2025-11-03T14:18:10.911250,Pyongyang,4.36,4.36,4.36,4.36,54,1.11,cielo claro,39.0392,125.7625

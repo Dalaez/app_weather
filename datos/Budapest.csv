@@ -27,3 +27,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-02T14:14:02.968820,Budapest,19.86,19.65,18.84,20.45,67,3.6,muy nuboso,47.4979,19.0402
 2025-11-02T22:14:45.876463,Budapest,15.89,15.52,14.23,16.62,76,2.68,cielo claro,47.4979,19.0402
 2025-11-03T06:26:28.742267,Budapest,10.88,10.3,9.95,12.17,87,6.69,lluvia moderada,47.4979,19.0402
+2025-11-03T14:17:06.185702,Budapest,11.52,10.66,10.87,12.17,74,10.8,muy nuboso,47.4979,19.0402

@@ -27,3 +27,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-02T14:12:46.647293,Alicante,26.25,26.25,25.61,27.2,43,5.14,algo de nubes,38.3452,-0.481
 2025-11-02T22:13:34.009402,Alicante,20.05,19.52,19.58,20.53,54,2.57,cielo claro,38.3452,-0.4815
 2025-11-03T06:25:13.843358,Alicante,17.69,17.24,16.09,18.47,66,2.57,cielo claro,38.3452,-0.481
+2025-11-03T14:15:54.266497,Alicante,22.16,22.05,21.14,22.82,62,5.14,algo de nubes,38.3452,-0.4815

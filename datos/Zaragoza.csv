@@ -27,3 +27,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-02T14:13:51.527495,Zaragoza,18.18,16.84,18.18,19.21,30,6.69,algo de nubes,41.6488,-0.8891
 2025-11-02T22:14:35.092794,Zaragoza,12.63,11.31,12.21,12.63,52,3.09,cielo claro,41.6488,-0.8891
 2025-11-03T06:26:17.518144,Zaragoza,10.79,9.33,10.53,12.21,54,4.12,cielo claro,41.6488,-0.8891
+2025-11-03T14:16:55.395074,Zaragoza,19.97,18.75,19.97,20.21,28,1.03,cielo claro,41.6488,-0.8891

@@ -27,3 +27,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-02T14:16:03.785306,De Waterkant,20.33,19.67,19.95,21.26,48,4.47,cielo claro,-33.9249,18.4241
 2025-11-02T22:16:40.038040,De Waterkant,16.41,15.91,16.05,16.86,69,5.81,cielo claro,-33.9249,18.4241
 2025-11-03T06:28:27.262060,Cape Town,19.43,18.97,19.08,19.65,59,2.06,cielo claro,-33.9249,18.4241
+2025-11-03T14:19:00.101738,Cape Town,21.32,21.1,20.61,21.86,61,5.81,algo de nubes,-33.9249,18.4241
