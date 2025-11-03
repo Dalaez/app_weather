@@ -26,3 +26,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-02T06:23:56.646653,Lyon,11.85,11.68,10.73,12.54,99,1.03,lluvia de gran intensidad,45.764,4.8357
 2025-11-02T14:14:50.009402,Lyon,13.25,12.98,12.2,14.43,90,1.46,nubes,45.764,4.8357
 2025-11-02T22:15:30.543763,Vieux Lyon,8.98,8.98,7.67,9.97,94,1.03,cielo claro,45.764,4.8357
+2025-11-03T06:27:14.971216,Vieux Lyon,8.83,8.83,7.75,9.15,99,1.03,niebla,45.764,4.8357

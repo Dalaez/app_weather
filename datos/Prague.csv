@@ -26,3 +26,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-02T06:23:30.256214,Žižkov,9.8,8.77,9.09,10.31,95,2.24,lluvia de gran intensidad,50.0755,14.4378
 2025-11-02T14:14:22.044661,Žižkov,10.82,10.46,9.82,11.32,96,26.82,lluvia moderada,50.0755,14.4378
 2025-11-02T22:15:03.831346,Žižkov,8.94,6.64,8.15,9.7,95,4.12,lluvia moderada,50.0755,14.4378
+2025-11-03T06:26:47.456031,Žižkov,8.22,5.11,7.56,9.17,91,5.66,nubes,50.0755,14.4378

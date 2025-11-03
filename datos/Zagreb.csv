@@ -26,3 +26,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-02T06:23:50.636439,Zagreb,13.7,13.35,11.69,13.7,85,1.03,cielo claro,45.815,15.9819
 2025-11-02T14:14:43.658224,Donji grad,22.03,21.67,22.03,22.69,53,8.23,cielo claro,45.815,15.9819
 2025-11-02T22:15:24.555064,Zagreb,17.03,16.67,16.69,17.03,72,2.06,algo de nubes,45.815,15.9819
+2025-11-03T06:27:08.730010,Zagreb,10.92,10.23,9.69,10.92,83,4.63,lluvia de gran intensidad,45.815,15.9819

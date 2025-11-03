@@ -26,3 +26,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-02T06:22:59.122842,Vitoria-Gasteiz,7.84,7.84,6.71,8.25,97,0.51,bruma,42.8467,-2.6731
 2025-11-02T14:13:48.994004,Vitoria-Gasteiz,14.62,13.81,14.12,15.6,64,4.12,muy nuboso,42.8467,-2.6731
 2025-11-02T22:14:32.702852,Vitoria-Gasteiz,9.08,9.08,8.84,10.23,87,0.51,muy nuboso,42.8467,-2.6731
+2025-11-03T06:26:15.015432,Vitoria-Gasteiz,4.9,4.9,4.9,6.9,92,1.28,algo de nubes,42.8467,-2.6731

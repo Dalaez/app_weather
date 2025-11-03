@@ -26,3 +26,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-02T06:24:39.835456,Kingston,26.9,29.35,26.9,26.9,78,3.09,nubes dispersas,17.9712,-76.7936
 2025-11-02T14:15:35.798481,Kingston,28.72,32.47,28.72,28.72,72,0.89,cielo claro,17.9712,-76.7936
 2025-11-02T22:16:13.693401,Kingston,27.6,31.93,27.6,27.6,86,2.18,lluvia ligera,17.9712,-76.7936
+2025-11-03T06:27:59.840474,Kingston,28.9,32.51,28.9,28.9,70,6.17,cielo claro,17.9712,-76.7936
