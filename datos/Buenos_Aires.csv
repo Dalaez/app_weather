@@ -28,3 +28,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-02T22:16:07.713606,San Nicolas,20.92,20.74,19.93,21.05,64,0.45,cielo claro,-34.6037,-58.3816
 2025-11-03T06:27:53.603938,San Nicolas,18.1,18.18,15.88,18.82,85,2.57,cielo claro,-34.6037,-58.3816
 2025-11-03T14:18:27.689695,San Nicolas,25.9,26.03,25.4,27.9,57,2.69,cielo claro,-34.6037,-58.3816
+2025-11-03T22:17:55.694261,San Nicolas,21.19,21.35,20.46,21.58,76,0.89,algo de nubes,-34.5953,-58.38

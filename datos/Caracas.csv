@@ -28,3 +28,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-02T22:16:11.299009,Distrito Capital,23.52,23.99,23.52,23.52,79,3.6,nubes dispersas,10.4806,-66.9036
 2025-11-03T06:27:57.345232,Caracas,21.35,21.66,21.35,21.52,81,0.45,algo de nubes,10.4806,-66.9036
 2025-11-03T14:18:31.285908,Distrito Capital,25.38,25.72,24.68,26.07,67,3.6,algo de nubes,10.4806,-66.9036
+2025-11-03T22:17:59.208587,Distrito Capital,23.52,23.86,23.52,23.52,74,4.12,algo de nubes,10.4806,-66.9036
