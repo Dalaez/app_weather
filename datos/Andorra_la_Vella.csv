@@ -29,3 +29,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-03T06:26:20.012153,Andorra la Vella,7.43,5.34,6.89,8.04,74,3.13,muy nuboso,42.5063,1.5218
 2025-11-03T14:16:57.790845,Andorra la Vella,13.37,12.15,13.14,14.34,53,0.45,cielo claro,42.5063,1.5218
 2025-11-03T22:16:27.490290,Andorra la Vella,9.43,9.43,8.56,10.45,69,0.45,cielo claro,42.5063,1.5218
+2025-11-04T06:25:29.687340,Andorra la Vella,6.33,6.33,6.33,9.8,79,0.45,cielo claro,42.5063,1.5218

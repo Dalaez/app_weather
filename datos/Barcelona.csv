@@ -29,3 +29,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-03T06:25:18.848433,Eixample,14.74,13.44,11.85,15.87,45,6.17,nubes dispersas,41.3851,2.1734
 2025-11-03T14:15:59.051592,Eixample,20.61,20.29,19.75,21.4,60,1.54,nubes dispersas,41.3851,2.1734
 2025-11-03T22:15:28.897874,Eixample,16.21,15.84,13.6,17.09,75,3.09,algo de nubes,41.3851,2.1734
+2025-11-04T06:24:32.722736,Ciutat Vella,14,13.28,10.85,15.04,70,5.14,cielo claro,41.3851,2.1734

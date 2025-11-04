@@ -29,3 +29,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-03T06:27:58.593171,Havana,20.33,21.03,20.33,20.38,100,1.03,nubes dispersas,23.1136,-82.3666
 2025-11-03T14:18:32.480224,Havana,25.33,26.22,25.33,25.38,88,0.51,algo de nubes,23.1136,-82.3666
 2025-11-03T22:18:00.381584,Havana,27.33,29.33,27.33,27.33,69,5.14,nubes dispersas,23.1136,-82.3666
+2025-11-04T06:27:01.448056,Havana,23.33,24.17,23.16,23.33,94,0.51,nubes dispersas,23.1136,-82.3666

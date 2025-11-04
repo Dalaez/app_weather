@@ -29,3 +29,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-03T06:27:16.215810,Neustadt,8.41,5.54,7.72,9.09,90,5.14,algo de nubes,53.5511,9.9937
 2025-11-03T14:17:51.713356,Neustadt,9.91,7.24,9.38,10.21,88,5.66,lluvia moderada,53.5511,9.9937
 2025-11-03T22:17:20.332438,Hamburg,11.82,11.25,10.76,11.97,84,5.66,nubes,53.5511,9.9937
+2025-11-04T06:26:21.967006,Neustadt,11.5,11.06,10.93,11.97,90,6.17,cielo claro,53.5511,9.9937

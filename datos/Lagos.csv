@@ -29,3 +29,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-03T06:28:32.242816,Shogunle,26.12,26.12,26.12,26.12,94,2.06,tormenta con lluvia ligera,6.5244,3.3792
 2025-11-03T14:19:04.895530,Shogunle,29.12,34.85,29.12,29.12,79,4.12,nubes dispersas,6.5244,3.3792
 2025-11-03T22:18:31.982644,Shogunle,27.51,30.31,27.51,27.51,75,3.49,nubes,6.5244,3.3792
+2025-11-04T06:27:32.762365,Shogunle,25.12,26.14,25.12,25.12,94,1.54,niebla,6.5244,3.3792

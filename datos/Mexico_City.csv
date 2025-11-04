@@ -29,3 +29,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-03T06:28:03.583044,Mexico City,10.5,9.46,10.5,10.94,71,3.6,algo de nubes,19.4326,-99.1332
 2025-11-03T14:18:37.277492,Mexico City,9.94,8.39,9.94,9.94,76,3.09,muy nuboso,19.4326,-99.1332
 2025-11-03T22:18:05.062594,Mexico City,21.64,20.36,21.64,21.96,19,4.12,cielo claro,19.4285,-99.1277
+2025-11-04T06:27:06.087843,Mexico City,11.61,10.45,11.61,11.94,62,3.09,cielo claro,19.4326,-99.1332
