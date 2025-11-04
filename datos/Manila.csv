@@ -30,3 +30,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-03T14:18:07.308803,Santa Cruz,25.01,25.92,24.47,25.01,90,5.01,lluvia ligera,14.5995,120.9842
 2025-11-03T22:17:35.690381,Manila,24.05,24.97,23.96,24.5,94,1.34,lluvia moderada,14.5995,120.9842
 2025-11-04T06:26:37.077485,Quiapo District,26.84,30.57,26.68,27.25,93,2.57,lluvia moderada,14.5995,120.9842
+2025-11-04T14:18:40.042418,Santa Cruz,25.35,26.4,25.06,26,94,2.57,nubes,14.5995,120.9842

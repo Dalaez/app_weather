@@ -30,3 +30,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-03T14:18:42.060966,Chicago,7.61,5.28,6.21,8.36,74,3.6,algo de nubes,41.8781,-87.6298
 2025-11-03T22:18:09.726653,Chicago,15.49,14.03,15,16.12,36,1.79,cielo claro,41.8781,-87.6298
 2025-11-04T06:27:10.730685,Chicago,7.73,6.08,6.72,8.4,55,2.57,muy nuboso,41.8781,-87.6298
+2025-11-04T14:19:14.342206,Chicago,8.47,6.74,7.22,9.51,62,2.9,muy nuboso,41.8781,-87.6298

@@ -30,3 +30,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-03T14:16:40.985077,Santander,17.75,17.36,17.72,18.34,68,3.09,cielo claro,43.4623,-3.8099
 2025-11-03T22:16:11.001888,Santander,13.83,13.54,9.86,13.83,87,0,algo de nubes,43.4623,-3.8099
 2025-11-04T06:25:13.438204,Santander,19.86,18.87,19.86,19.86,37,6.17,cielo claro,43.4623,-3.8099
+2025-11-04T14:17:15.528523,Santander,21.66,20.95,21.61,21.86,41,6.17,nubes dispersas,43.4623,-3.8099
