@@ -1,22 +1,22 @@
 {
     "Madrid": {
-        "prediccion_temp_max": 14.41,
-        "fecha_prediccion": "2025-11-04T14:19:42.467330",
-        "historial_usado": 32
+        "prediccion_temp_max": 13.01,
+        "fecha_prediccion": "2025-11-04T22:17:35.506143",
+        "historial_usado": 33
     },
     "Le\u00f3n": {
-        "prediccion_temp_max": 11.68,
-        "fecha_prediccion": "2025-11-04T14:19:42.475902",
-        "historial_usado": 32
+        "prediccion_temp_max": 9.43,
+        "fecha_prediccion": "2025-11-04T22:17:35.515166",
+        "historial_usado": 33
     },
     "London": {
-        "prediccion_temp_max": 14.28,
-        "fecha_prediccion": "2025-11-04T14:19:42.484238",
-        "historial_usado": 32
+        "prediccion_temp_max": 13.13,
+        "fecha_prediccion": "2025-11-04T22:17:35.523774",
+        "historial_usado": 33
     },
     "New York": {
-        "prediccion_temp_max": 11.65,
-        "fecha_prediccion": "2025-11-04T14:19:42.492568",
-        "historial_usado": 32
+        "prediccion_temp_max": 11.84,
+        "fecha_prediccion": "2025-11-04T22:17:35.532265",
+        "historial_usado": 33
     }
 }

@@ -31,3 +31,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-03T22:16:46.294733,Luxembourg,10.01,9.55,9.09,11.04,95,3.09,muy nuboso,49.6116,6.1319
 2025-11-04T06:25:48.278331,Luxembourg,8.07,6.49,6.64,9.17,96,2.57,bruma,49.6116,6.1319
 2025-11-04T14:17:50.734463,Luxembourg,13.66,12.96,12.87,14.85,72,5.14,cielo claro,49.6116,6.1319
+2025-11-04T22:15:43.891341,Luxembourg,7.9,6.69,6.08,8.82,87,2.06,cielo claro,49.6116,6.1319
