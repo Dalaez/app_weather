@@ -36,3 +36,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-05T06:58:43.167536,Ourense,14.33,13.96,14.33,14.33,82,23.904,nubes,42.3368,-7.8639
 2025-11-05T07:14:30.666818,Ourense,14.22,14,14.22,14.22,88,23.904,lluvia de gran intensidad,42.3368,-7.8639
 2025-11-05T14:17:39.212872,Ourense,14.34,14.18,14.34,14.34,90,12.96,lluvia moderada,42.3368,-7.8639
+2025-11-05T22:16:15.370727,Ourense,11,10.51,11,11,90,9.144,muy nuboso,42.3368,-7.8639

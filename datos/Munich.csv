@@ -36,3 +36,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-05T07:01:23.447248,Altstadt,3.92,3.92,0.41,4.66,90,3.672,nubes,48.1351,11.582
 2025-11-05T07:17:18.655004,Munich,3.29,3.29,1.41,4.73,96,1.62,nubes,48.1351,11.582
 2025-11-05T14:20:21.078498,Altstadt,14.23,13.25,12.57,15.4,59,7.812,nubes dispersas,48.1351,11.582
+2025-11-05T22:18:55.749309,Altstadt,3.04,3.04,-0.43,3.62,95,3.096,nubes dispersas,48.1351,11.582
