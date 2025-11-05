@@ -33,3 +33,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-04T14:17:27.265370,Vitoria-Gasteiz,19.22,18.48,18.25,19.84,49,4.63,cielo claro,42.8467,-2.6731
 2025-11-04T22:15:20.338923,Vitoria-Gasteiz,15.14,14.35,14.84,15.48,63,9.83,cielo claro,42.8467,-2.6731
 2025-11-05T06:25:18.566097,Vitoria-Gasteiz,13.83,13.23,13.81,14.12,75,4.47,cielo claro,42.8467,-2.6731
+2025-11-05T06:59:31.646553,Vitoria-Gasteiz,13.57,12.97,12.27,14.12,76,14.472,algo de nubes,42.8467,-2.6731

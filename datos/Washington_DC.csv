@@ -33,3 +33,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-04T14:19:26.079187,Washington D.C.,12.87,11.52,11.57,13.83,50,5.14,muy nuboso,38.9072,-77.0369
 2025-11-04T22:17:19.123620,Washington D.C.,14.92,13.38,12.88,16.28,35,0.45,nubes dispersas,38.9072,-77.0369
 2025-11-05T06:27:25.576093,Washington D.C.,7.84,7.14,5.37,9.44,64,1.54,algo de nubes,38.9072,-77.0369
+2025-11-05T07:03:36.684487,Washington D.C.,6.94,6.94,4.37,8.42,69,0.0,cielo claro,38.9072,-77.0369

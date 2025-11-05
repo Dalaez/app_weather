@@ -1,22 +1,2160 @@
 {
-    "Madrid": {
-        "prediccion_temp_max": 13.14,
-        "fecha_prediccion": "2025-11-05T06:27:42.999393",
-        "historial_usado": 34
+  "A Coruña": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
     },
-    "Le\u00f3n": {
-        "prediccion_temp_max": 11.24,
-        "fecha_prediccion": "2025-11-05T06:27:43.008607",
-        "historial_usado": 34
-    },
-    "London": {
-        "prediccion_temp_max": 13.57,
-        "fecha_prediccion": "2025-11-05T06:27:43.017608",
-        "historial_usado": 34
-    },
-    "New York": {
-        "prediccion_temp_max": 11.28,
-        "fecha_prediccion": "2025-11-05T06:27:43.026750",
-        "historial_usado": 34
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
     }
+  },
+  "Albacete": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Alicante": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Almería": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Ávila": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Badajoz": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Barcelona": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Bilbao": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Burgos": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Cáceres": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Cádiz": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Castelló de la Plana": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Ceuta": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Ciudad Real": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Córdoba": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Cuenca": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Girona": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Granada": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Guadalajara": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Huelva": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Huesca": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Jaén": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "León": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Lleida": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Logroño": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Lugo": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Madrid": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Málaga": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Melilla": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Mérida": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Murcia": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Ourense": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Oviedo": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Palencia": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Palma": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Pamplona": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Pontevedra": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Prioro": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Salamanca": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "San Sebastián": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Santa Cruz de Tenerife": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Santander": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Segovia": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Sevilla": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Soria": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Tarragona": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Teruel": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Toledo": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Valencia": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Valladolid": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Vallelado": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Vitoria-Gasteiz": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Zamora": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Zaragoza": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Amsterdam": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Andorra la Vella": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Athens": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Berlin": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Bern": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Bratislava": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Brussels": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Bucharest": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Budapest": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Copenhagen": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Dublin": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Helsinki": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Istanbul": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Kyiv": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Lisbon": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Ljubljana": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "London": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Luxembourg": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Monaco": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Moscow": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Nicosia": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Oslo": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Paris": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Prague": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Reykjavik": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Riga": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Rome": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "San Marino": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Sarajevo": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Skopje": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Sofia": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Stockholm": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Tallinn": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Tirana": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Vaduz": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Valletta": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Vatican City": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Vienna": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Vilnius": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Warsaw": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Zagreb": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Ankara": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Manchester": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Munich": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Milan": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Lyon": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Hamburg": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Bangkok": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Beijing": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Damascus": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Dhaka": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Hanoi": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Hong Kong": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Islamabad": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Jakarta": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Jerusalem": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Kabul": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Kathmandu": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Kuala Lumpur": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Manila": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Mumbai": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "New Delhi": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Pyongyang": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Riyadh": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Seoul": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Shanghai": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Singapore": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Taipei": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Tashkent": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Tehran": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Tokyo": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Ulaanbaatar": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Sydney": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Melbourne": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Wellington": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Auckland": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Buenos Aires": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Bogota": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Brasilia": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Caracas": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Havana": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Kingston": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "La Paz": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Lima": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Mexico City": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Montevideo": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "New York": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Los Angeles": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Chicago": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Houston": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Toronto": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Vancouver": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Ottawa": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Panama City": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Quito": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "San Jose": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Santiago": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Sao Paulo": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Washington DC": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Abuja": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Accra": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Algiers": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Cairo": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Cape Town": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Casablanca": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Dakar": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Johannesburg": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Lagos": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Nairobi": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Rabat": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Tripoli": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  },
+  "Tunis": {
+    "pred_owm": {
+      "max": null,
+      "min": null,
+      "media": null
+    },
+    "pred_ia": {
+      "max": null,
+      "min": null,
+      "media": null,
+      "registros": 9
+    }
+  }
 }
