@@ -34,3 +34,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-04T22:17:17.947311,Liberdade,20.18,20.66,19.15,21.3,92,2.57,lluvia ligera,-23.5505,-46.6333
 2025-11-05T06:27:24.331813,Liberdade,19.71,20.16,18.88,20.15,93,2.06,cielo claro,-23.5505,-46.6333
 2025-11-05T07:03:34.267320,Liberdade,19.49,19.92,18.88,20.15,93,7.416,cielo claro,-23.5505,-46.6333
+2025-11-05T07:19:36.316160,Liberdade,19.19,19.65,17.88,19.63,95,3.708,cielo claro,-23.5505,-46.6333

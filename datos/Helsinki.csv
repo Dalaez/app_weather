@@ -34,3 +34,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-04T22:15:36.855342,Helsinki,10.73,10.42,10.43,11.32,98,13.86,llovizna ligera,60.1699,24.9384
 2025-11-05T06:25:36.238800,Helsinki,10.89,10.59,10.43,11.6,98,12.52,lluvia ligera,60.1699,24.9384
 2025-11-05T07:00:05.607978,Helsinki,10.96,10.67,10.43,11.88,98,45.072,llovizna ligera,60.1699,24.9384
+2025-11-05T07:15:57.213781,Helsinki,10.96,10.67,10.43,11.88,98,45.072,llovizna ligera,60.1699,24.9384

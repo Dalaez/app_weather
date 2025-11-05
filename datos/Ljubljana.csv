@@ -34,3 +34,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-04T22:15:41.548262,Ljubljana,4.72,4.72,2.48,5.01,86,0.51,cielo claro,46.0569,14.5058
 2025-11-05T06:25:41.299008,Ljubljana,2.16,2.16,1.59,2.79,98,0.23,cielo claro,46.0569,14.5058
 2025-11-05T07:00:15.327074,Ljubljana,2.53,2.53,-0.52,2.53,92,1.836,algo de nubes,46.0569,14.5058
+2025-11-05T07:16:07.353268,Ljubljana,3.09,3.09,-0.52,3.09,92,1.836,algo de nubes,46.0569,14.5058

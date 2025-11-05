@@ -34,3 +34,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-04T22:16:06.230333,Vatican City,14.2,13.19,12.04,15.46,58,1.54,cielo claro,41.9029,12.4534
 2025-11-05T06:26:07.684655,Vatican City,10.23,8.8,6.71,12.12,57,1.54,cielo claro,41.9029,12.4534
 2025-11-05T07:01:06.498601,Vatican City,10.65,9.42,7.71,12.12,63,5.5440000000000005,cielo claro,41.9029,12.4534
+2025-11-05T07:17:00.839871,Vatican City,11,9.77,8.71,12.12,62,7.416,cielo claro,41.9029,12.4534
