@@ -32,3 +32,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-04T06:26:48.680818,Tehran,11.61,9.87,11.61,12.1,40,3.09,cielo claro,35.6892,51.389
 2025-11-04T14:18:51.818798,Tehran,15.5,13.97,15.5,16.1,33,3.09,cielo claro,35.6892,51.389
 2025-11-04T22:16:45.149090,Tehran,10.5,8.73,10.5,11.1,43,2.06,cielo claro,35.6892,51.389
+2025-11-05T06:26:49.169167,Tehran,14.94,13.27,14.94,15.1,30,2.06,nubes dispersas,35.6892,51.389

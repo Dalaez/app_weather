@@ -32,3 +32,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-04T06:26:18.481870,Altstadt,1.08,1.08,-0.43,3.62,92,0.89,algo de nubes,48.1351,11.582
 2025-11-04T14:18:21.266357,Altstadt,14.12,13.08,12.41,14.8,57,0.89,nubes dispersas,48.1351,11.582
 2025-11-04T22:16:14.444614,Altstadt,2.49,2.49,1.89,3.62,92,1.14,nubes dispersas,48.1351,11.582
+2025-11-05T06:26:16.487012,Altstadt,1.4,1.4,-0.43,1.41,94,0.74,nubes,48.1351,11.582

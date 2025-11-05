@@ -32,3 +32,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-04T06:27:36.245784,Tripoli,18.94,18.9,18.94,18.94,77,0,muy nuboso,32.8872,13.1913
 2025-11-04T14:19:40.180277,Tripoli,23.94,23.59,23.94,23.94,46,10,algo de nubes,32.8872,13.1913
 2025-11-04T22:17:33.203054,Tripoli,20.94,20.55,20.94,20.94,56,2.57,nubes dispersas,32.8872,13.1913
+2025-11-05T06:27:40.609600,Tripoli,21.13,20.97,21.13,21.13,64,3.79,cielo claro,32.8872,13.1913

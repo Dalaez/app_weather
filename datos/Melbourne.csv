@@ -32,3 +32,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-04T06:26:53.317372,Melbourne,14.67,13.71,14.16,15.31,58,9.77,lluvia ligera,-37.8136,144.9631
 2025-11-04T14:18:56.716566,Melbourne,10.52,9.74,9.71,11.48,81,7.72,nubes,-37.8136,144.9631
 2025-11-04T22:16:49.842065,Melbourne,13.75,13.01,12.86,14.38,70,7.2,llovizna ligera,-37.8136,144.9631
+2025-11-05T06:26:54.217082,Melbourne,19.52,18.75,18.28,20.82,47,9.26,cielo claro,-37.8136,144.9631

@@ -32,3 +32,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-04T06:26:21.967006,Neustadt,11.5,11.06,10.93,11.97,90,6.17,cielo claro,53.5511,9.9937
 2025-11-04T14:18:24.791043,Neustadt,14.95,14.43,14.63,15.76,74,5.14,cielo claro,53.5511,9.9937
 2025-11-04T22:16:17.975291,Neustadt,10.83,10.14,10.53,11.32,83,4.12,cielo claro,53.5511,9.9937
+2025-11-05T06:26:20.262815,Neustadt,10.2,9.36,9.08,11.14,80,3.09,cielo claro,53.5511,9.9937

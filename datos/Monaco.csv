@@ -32,3 +32,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-04T06:25:49.443572,La Condamine,14.99,14.11,11.81,15.41,60,6.69,cielo claro,43.7384,7.4246
 2025-11-04T14:17:51.916912,La Condamine,19.84,19.34,19.81,20.18,56,1.54,cielo claro,43.7384,7.4246
 2025-11-04T22:15:45.093159,La Condamine,15.12,14.62,12.81,16.27,74,4.63,cielo claro,43.7384,7.4246
+2025-11-05T06:25:45.089597,La Condamine,14.3,13.48,12.96,14.6,65,2.44,cielo claro,43.7384,7.4246

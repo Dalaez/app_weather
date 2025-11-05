@@ -32,3 +32,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-04T06:26:31.270456,Jakarta,32.54,37.09,31.75,35.07,56,4.12,nubes dispersas,-6.2088,106.8456
 2025-11-04T14:18:34.170413,Jakarta,28.54,32.24,27.75,28.97,73,0.45,algo de nubes,-6.2088,106.8456
 2025-11-04T22:16:27.456181,Jakarta,26.15,26.15,25.53,26.19,81,3.09,nubes dispersas,-6.2088,106.8456
+2025-11-05T06:26:30.326475,Jakarta,31.57,36.37,31.19,32.07,61,7.72,nubes dispersas,-6.2088,106.8456
