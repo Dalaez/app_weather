@@ -33,3 +33,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-04T14:17:00.225695,Melilla,22.21,22.39,22.21,22.21,73,2.06,nubes dispersas,35.2923,-2.9381
 2025-11-04T22:14:53.312374,Melilla,20.21,20.45,20.21,20.21,83,1.03,muy nuboso,35.2923,-2.9381
 2025-11-05T06:24:49.465646,Melilla,19.21,19.48,19.21,19.21,88,1.54,nubes dispersas,35.2923,-2.9381
+2025-11-05T06:58:35.898354,Melilla,18.21,18.54,18.21,18.21,94,9.251999999999999,nubes dispersas,35.2923,-2.9381
