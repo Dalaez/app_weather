@@ -35,3 +35,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-05T06:24:21.703655,"Sant Pere, Santa Caterina i La Ribera",15.41,14.91,12.85,16.22,73,5.14,nubes dispersas,41.3851,2.1734
 2025-11-05T06:57:42.563650,Ciutat Vella,16.16,15.69,13.85,17.53,71,18.503999999999998,nubes dispersas,41.3851,2.1734
 2025-11-05T07:13:27.075633,Eixample,16.2,15.76,13.14,17.33,72,18.503999999999998,nubes dispersas,41.3851,2.1734
+2025-11-05T14:16:37.840444,Eixample,18.63,18.51,17.66,19.86,75,5.5440000000000005,llovizna,41.3851,2.1734
