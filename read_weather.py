@@ -2,12 +2,12 @@ import requests
 import csv
 import os
 import time
-import json                  
-import pandas as pd          
-from datetime import datetime
-from sklearn.linear_model import LinearRegression 
-from sklearn.model_selection import train_test_split 
-from sklearn.metrics import mean_squared_error 
+import json
+import pandas as pd
+from datetime import datetime, timedelta
+from sklearn.linear_model import LinearRegression
+# [OPCIONAL] Si quieres un modelo más potente, descomenta la siguiente línea
+# from sklearn.ensemble import RandomForestRegressor 
 
 # --- CONFIGURACIÓN ---
 API_KEY = os.environ.get("OPENWEATHER_API_KEY")
@@ -17,14 +17,13 @@ if not API_KEY:
 DIRECTORIO_DATOS = "datos" 
 FICHERO_CIUDADES = "ciudades.txt"
 FICHERO_PREDICCIONES = "predicciones.json"
-# [CORRECCIÓN] CIUDADES_A_PREDECIR ahora debe usar el nombre limpio ('León' no 'León,ES')
-# porque así se llamará el fichero CSV
-CIUDADES_A_PREDECIR = ["Madrid", "León", "London", "New York"] 
 FICHERO_MAPA = "city_locations.json"
+# Mínimo de días con datos limpios para intentar entrenar un modelo
+MIN_RECORDS_FOR_IA = 10 
 # --- FIN DE LA CONFIGURACIÓN ---
 
 
-# --- FUNCIONES DE RECOLECCIÓN ---
+# --- FUNCIONES DE RECOLECCIÓN (Sin cambios) ---
 
 def obtener_datos_climaticos(ciudad_data, api_key):
     """
@@ -58,8 +57,6 @@ def obtener_datos_climaticos(ciudad_data, api_key):
         print(f"Error de conexión para {nombre_query.split(',')[0]}: {e}")
         return None
 
-
-# [CORRECCIÓN] Modificamos la función de guardado para usar el nombre limpio
 def guardar_datos_ciudad(datos, nombre_ciudad_query): # Recibe "León,ES"
     """Extrae los datos relevantes y los guarda en el CSV específico de esa ciudad."""
     if not datos:
@@ -67,10 +64,7 @@ def guardar_datos_ciudad(datos, nombre_ciudad_query): # Recibe "León,ES"
         return None
 
     try:
-        # [CORRECCIÓN] Limpiamos el nombre ANTES de usarlo
         nombre_ciudad_limpio = nombre_ciudad_query.split(',')[0]
-
-        # [CORRECCIÓN] Usamos el nombre limpio para el fichero
         nombre_fichero = f"{DIRECTORIO_DATOS}/{nombre_ciudad_limpio.replace(' ', '_')}.csv"
         
         # 1. Extraemos los datos (sin cambios)
@@ -82,18 +76,19 @@ def guardar_datos_ciudad(datos, nombre_ciudad_query): # Recibe "León,ES"
         temp_min = datos['main']['temp_min']
         temp_max = datos['main']['temp_max']
         humedad = datos['main']['humidity']
-        velocidad_viento = datos['wind']['speed']
+        # [MEJORA] Convertir viento de m/s a km/h
+        velocidad_viento_kmh = datos['wind']['speed'] * 3.6
         latitud = datos['coord']['lat']
         longitud = datos['coord']['lon']
         
-        # 2. Preparamos la fila de datos (sin cambios)
+        # 2. Preparamos la fila de datos
         fila_datos = [
             timestamp, ciudad_api, temperatura, sensacion_termica,
-            temp_min, temp_max, humedad, velocidad_viento, descripcion_cielo,
+            temp_min, temp_max, humedad, velocidad_viento_kmh, descripcion_cielo,
             latitud, longitud
         ]
         
-        # 3. Definimos la cabecera (sin cambios)
+        # 3. Definimos la cabecera
         cabecera = [
             'fecha_hora', 'ciudad', 'temperatura_c', 'sensacion_c',
             'temp_min_c', 'temp_max_c', 'humedad_porc', 'viento_kmh', 'descripcion',
@@ -110,7 +105,6 @@ def guardar_datos_ciudad(datos, nombre_ciudad_query): # Recibe "León,ES"
             
         print(f"Datos guardados correctamente en {nombre_fichero}")
         
-        # [CORRECCIÓN] Devolvemos el nombre limpio para el mapa
         return {
             "ciudad": nombre_ciudad_limpio,
             "lat": latitud,
@@ -156,111 +150,228 @@ def leer_ciudades(fichero):
     print(f"Se han cargado {len(ciudades_data)} ciudades de {fichero}.")
     return ciudades_data
 
-# --- SECCIÓN DE PREDICCIÓN (IA) (Sin cambios) ---
-def preparar_datos_para_ia(df): # ... (idéntico)
-    df['fecha_hora'] = pd.to_datetime(df['fecha_hora'])
-    df = df.sort_values(by='fecha_hora')
-    df['temp_max_manana'] = df['temp_max_c'].shift(-1)
-    df = df.dropna()
-    features = ['temp_max_c', 'temp_min_c', 'humedad_porc', 'viento_kmh']
-    target = 'temp_max_manana'
-    for col in features:
-        df[col] = pd.to_numeric(df[col], errors='coerce')
-    df = df.dropna(subset=features)
-    X = df[features]
-    y = df[target]
-    ultima_fila_conocida = df[features].iloc[-1:]
-    return X, y, ultima_fila_conocida
+# --- [NUEVA] SECCIÓN DE PREDICCIÓN (IA) ---
 
-def entrenar_modelo_ia(X, y): # ... (idéntico)
-    print("Entrenando modelo de IA...")
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-    model = LinearRegression()
-    model.fit(X_train, y_train)
-    predictions = model.predict(X_test)
-    error = mean_squared_error(y_test, predictions)
-    print(f"Modelo entrenado. Error (MSE): {error:.2f}")
-    return model
-
-def generar_predicciones(): # ... (idéntico)
-    print("\n--- Iniciando Módulo de Predicción de IA ---")
-    resultados_predicciones = {}
-    for ciudad in CIUDADES_A_PREDECIR: # Usa los nombres limpios: 'Madrid', 'León'...
-        print(f"\nProcesando predicción para: {ciudad}")
-        # Busca el fichero con el nombre limpio: datos/León.csv
-        nombre_fichero = f"{DIRECTORIO_DATOS}/{ciudad.replace(' ', '_')}.csv" 
-        if not os.path.exists(nombre_fichero):
-            print(f"No se encontró historial para {ciudad}. Saltando.")
-            continue
-        try:
-            historial_df = pd.read_csv(nombre_fichero)
-            if len(historial_df) < 10:
-                print(f"Historial insuficiente para {ciudad}. Saltando.")
-                continue
-            X, y, ultima_fila_conocida = preparar_datos_para_ia(historial_df)
-            if X.empty:
-                print(f"No hay datos limpios suficientes para entrenar en {ciudad}.")
-                continue
-            modelo = entrenar_modelo_ia(X, y)
-            prediccion_para_manana = modelo.predict(ultima_fila_conocida)
-            temp_predicha = prediccion_para_manana[0]
-            print(f"Predicción de Tº Max para mañana en {ciudad}: {temp_predicha:.2f}°C")
-            resultados_predicciones[ciudad] = {
-                'prediccion_temp_max': round(temp_predicha, 2),
-                'fecha_prediccion': datetime.now().isoformat(),
-                'historial_usado': len(historial_df)
-            }
-        except Exception as e:
-            print(f"Error al procesar la predicción para {ciudad}: {e}")
-            
+def obtener_prediccion_owm(lat, lon, api_key):
+    """
+    Obtiene la predicción oficial de OWM para mañana (Max y Min).
+    Usa la API OneCall 3.0, que REQUIERE lat/lon.
+    """
+    print("  Obteniendo predicción de OWM...")
     try:
-        with open(FICHERO_PREDICCIONES, 'w', encoding='utf-8') as f:
-            json.dump(resultados_predicciones, f, indent=4)
-        print(f"\nPredicciones guardadas con éxito en {FICHERO_PREDICCIONES}")
+        # Usamos la API One Call 3.0 que da 8 días de pronóstico
+        forecast_url = f"https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude=current,minutely,hourly,alerts&appid={api_key}&units=metric"
+        
+        r_forecast = requests.get(forecast_url)
+        r_forecast.raise_for_status() # Lanza un error si la petición falla
+        forecast_data = r_forecast.json()
+        
+        # 'daily[0]' es hoy, 'daily[1]' es mañana
+        tomorrow_forecast = forecast_data['daily'][1]
+        
+        owm_max = tomorrow_forecast['temp']['max']
+        owm_min = tomorrow_forecast['temp']['min']
+        # OWM no da 'media', la calculamos
+        owm_media = (owm_max + owm_min) / 2 
+        
+        print(f"  [OWM OK] Max: {owm_max}°C, Min: {owm_min}°C")
+        return {
+            "max": round(owm_max, 1),
+            "min": round(owm_min, 1),
+            "media": round(owm_media, 1)
+        }
+
     except Exception as e:
-        print(f"Error al guardar el fichero JSON de predicciones: {e}")
+        print(f"  [OWM Error] Fallo al obtener pronóstico: {e}")
+        return {"max": None, "min": None, "media": None}
+
+def generar_prediccion_ia_ciudad(csv_path):
+    """
+    Carga el historial de una ciudad, entrena 3 modelos (max, min, media)
+    y predice los valores de mañana.
+    """
+    print("  Generando predicción de IA...")
+    
+    # Valores por defecto si falla
+    default_return = {"max": None, "min": None, "media": None, "registros": 0}
+
+    try:
+        df = pd.read_csv(csv_path)
+    except FileNotFoundError:
+        print(f"  [IA Error] No se encontró {csv_path}")
+        return default_return
+
+    # Tienes múltiples lecturas al día. 'temp_max_c' y 'temp_min_c' son del *momento*.
+    # Necesitamos los agregados del *día*.
+    try:
+        df['fecha_hora'] = pd.to_datetime(df['fecha_hora'])
+        
+        # Agrupar por día (Resample). Usamos 'temperatura_c' para los agregados diarios reales.
+        df_daily = df.resample('D', on='fecha_hora').agg(
+            temp_max=('temperatura_c', 'max'),
+            temp_min=('temperatura_c', 'min'),
+            temp_media=('temperatura_c', 'mean'),
+            hum_media=('humedad_porc', 'mean'),
+            viento_media=('viento_kmh', 'mean')
+        )
+        
+        # Rellenar días sin datos (ej. fines de semana si el script no corrió)
+        df_daily = df_daily.ffill() 
+
+        # --- Crear Features (X) y Objetivos (y) ---
+        
+        # Features (X): Usamos los datos de "ayer" (lag=1) para predecir "hoy"
+        df_daily['dia_del_anio'] = df_daily.index.dayofyear
+        df_daily['temp_max_lag1'] = df_daily['temp_max'].shift(1)
+        df_daily['temp_min_lag1'] = df_daily['temp_min'].shift(1)
+        df_daily['temp_media_lag1'] = df_daily['temp_media'].shift(1)
+        df_daily['hum_media_lag1'] = df_daily['hum_media'].shift(1)
+        df_daily['viento_media_lag1'] = df_daily['viento_media'].shift(1)
+        
+        # Limpiar NaNs creados por .shift() y .agg()
+        df_clean = df_daily.dropna()
+        
+        registros_limpios = len(df_clean)
+        
+        if registros_limpios < MIN_RECORDS_FOR_IA:
+            print(f"  [IA Info] Historial insuficiente ({registros_limpios} días limpios). Se requieren {MIN_RECORDS_FOR_IA}.")
+            return {"max": None, "min": None, "media": None, "registros": registros_limpios}
+
+        # Definir X (features) e y (targets)
+        features = ['temp_max_lag1', 'temp_min_lag1', 'temp_media_lag1', 
+                    'hum_media_lag1', 'viento_media_lag1', 'dia_del_anio']
+        X_train = df_clean[features]
+
+        # --- Entrenar 3 Modelos Separados ---
+        
+        # Modelo 1: Predicción de Temp Máxima
+        y_max = df_clean['temp_max']
+        model_max = LinearRegression()
+        # model_max = RandomForestRegressor(n_estimators=50) # Opcional: Mejora
+        model_max.fit(X_train, y_max)
+
+        # Modelo 2: Predicción de Temp Mínima
+        y_min = df_clean['temp_min']
+        model_min = LinearRegression()
+        model_min.fit(X_train, y_min)
+        
+        # Modelo 3: Predicción de Temp Media
+        y_media = df_clean['temp_media']
+        model_media = LinearRegression()
+        model_media.fit(X_train, y_media)
+
+        # --- Preparar datos para predecir "Mañana" ---
+        
+        # Necesitamos los datos de "Hoy" (última fila de df_daily) para predecir "Mañana"
+        # Usamos df_daily.ffill() por si el script corre a las 00:01 y "hoy" aún no tiene datos
+        today_features_row = df_daily.ffill().iloc[-1]
+        
+        # Calcular el 'dia_del_anio' de mañana
+        dia_manana = (today_features_row.name + timedelta(days=1)).dayofyear
+
+        X_to_predict = [[
+            today_features_row['temp_max'],
+            today_features_row['temp_min'],
+            today_features_row['temp_media'],
+            today_features_row['hum_media'],
+            today_features_row['viento_media'],
+            dia_manana
+        ]]
+
+        # --- Realizar las 3 Predicciones ---
+        pred_max = model_max.predict(X_to_predict)[0]
+        pred_min = model_min.predict(X_to_predict)[0]
+        pred_media = model_media.predict(X_to_predict)[0]
+
+        print(f"  [IA OK] Registros: {registros_limpios}. Pred Max: {pred_max:.1f}°C")
+        return {
+            "max": round(pred_max, 1), 
+            "min": round(pred_min, 1), 
+            "media": round(pred_media, 1),
+            "registros": registros_limpios
+        }
+
+    except Exception as e:
+        print(f"  [IA Error] Fallo al procesar IA: {e}")
+        return {"max": None, "min": None, "media": None, "registros": 0}
 
 
-# --- [CORRECCIÓN] Ejecución Principal del Script ---
+# --- [REESTRUCTURADO] Ejecución Principal del Script ---
 if __name__ == "__main__":
     
-    # --- Parte 1: Recolección de Datos ---
     os.makedirs(DIRECTORIO_DATOS, exist_ok=True)
     ciudades_a_procesar = leer_ciudades(FICHERO_CIUDADES) # devuelve lista de tuplas
-    print(f"Iniciando proceso de registro para {len(ciudades_a_procesar)} ciudades.")
+    print(f"\n--- Iniciando proceso para {len(ciudades_a_procesar)} ciudades ---")
     
     datos_para_mapa = []
+    all_predictions_data = {} # Estructura para el nuevo JSON de predicciones
 
     # Iteramos sobre la lista de tuplas
     for ciudad_data in ciudades_a_procesar: 
-        # Pasamos la tupla completa a obtener_datos_climaticos
+        
+        # Desempaquetamos los datos de la ciudad
+        nombre_ciudad_query, lat, lon = ciudad_data
+        nombre_ciudad_limpio = nombre_ciudad_query.split(',')[0]
+        
+        print(f"\nProcesando: {nombre_ciudad_limpio}...")
+
+        # Inicializamos la estructura de predicción para esta ciudad
+        all_predictions_data[nombre_ciudad_limpio] = {
+            "pred_owm": {"max": None, "min": None, "media": None},
+            "pred_ia": {"max": None, "min": None, "media": None, "registros": 0}
+        }
+        
+        # --- Parte 1: Recolección de Datos (Tu código) ---
         datos_actuales = obtener_datos_climaticos(ciudad_data, API_KEY) 
         
         if datos_actuales:
-            # [CORRECCIÓN] Pasamos SOLO el nombre_query ('León,ES') a guardar_datos_ciudad
-            nombre_ciudad_query = ciudad_data[0] 
             resumen_ciudad = guardar_datos_ciudad(datos_actuales, nombre_ciudad_query)
             if resumen_ciudad:
                 datos_para_mapa.append(resumen_ciudad)
         else:
-            # Mostramos el nombre limpio en el error
-            print(f"No se pudieron obtener datos para {ciudad_data[0].split(',')[0]}. Saltando.") 
+            print(f"No se pudieron obtener datos actuales para {nombre_ciudad_limpio}.")
             
-        print("Pausando 1.1 segundos para respetar el límite de la API...")
+        print("Pausando 1.1 seg (API datos actuales)...")
         time.sleep(1.1) 
+        
+        
+        # --- Parte 2: Generación de Predicción OWM (Nueva) ---
+        if lat and lon:
+            # Esta función ya imprime sus propios logs
+            owm_preds = obtener_prediccion_owm(lat, lon, API_KEY)
+            all_predictions_data[nombre_ciudad_limpio]["pred_owm"] = owm_preds
             
-    print("Proceso de registro completado.")
+            print("Pausando 1.1 seg (API pronóstico)...")
+            time.sleep(1.1) # Pausa para la segunda API (OneCall)
+        else:
+            print(f"  No hay lat/lon para {nombre_ciudad_limpio}. Saltando predicción OWM.")
+            
+            
+        # --- Parte 3: Generación de Predicción IA (Nueva) ---
+        csv_path = f"{DIRECTORIO_DATOS}/{nombre_ciudad_limpio.replace(' ', '_')}.csv"
+        # Esta función ya imprime sus propios logs
+        ia_preds = generar_prediccion_ia_ciudad(csv_path)
+        all_predictions_data[nombre_ciudad_limpio]["pred_ia"] = ia_preds
+
+            
+    print("\n--- Proceso de registro y predicción completado ---")
     
-    # Guardamos el fichero JSON para el mapa (sin cambios)
+    # --- Parte 4: Guardar Ficheros JSON ---
+    
+    # Guardamos el fichero JSON para el mapa (Tu código)
     try:
         with open(FICHERO_MAPA, 'w', encoding='utf-8') as f:
-            json.dump(datos_para_mapa, f)
+            json.dump(datos_para_mapa, f, indent=2, ensure_ascii=False)
         print(f"Resumen de mapa guardado con éxito en {FICHERO_MAPA}")
     except Exception as e:
         print(f"Error al guardar el fichero JSON del mapa: {e}")
 
-    # --- Parte 2: Generación de Predicciones ---
-    # La función generar_predicciones ya usa los nombres limpios, no necesita cambios
-    generar_predicciones() 
-    
-    print("Script finalizado.")
+    # Guardamos el fichero JSON para las predicciones (Nuevo)
+    try:
+        with open(FICHERO_PREDICCIONES, 'w', encoding='utf-8') as f:
+            json.dump(all_predictions_data, f, indent=2, ensure_ascii=False)
+        print(f"Predicciones guardadas con éxito en {FICHERO_PREDICCIONES}")
+    except Exception as e:
+        print(f"Error al guardar el fichero JSON de predicciones: {e}")
+
+    print("\nScript finalizado.")
