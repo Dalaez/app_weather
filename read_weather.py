@@ -154,36 +154,59 @@ def leer_ciudades(fichero):
 
 def obtener_prediccion_owm(lat, lon, api_key):
     """
-    Obtiene la predicción oficial de OWM para mañana (Max y Min).
-    Usa la API OneCall 3.0, que REQUIERE lat/lon.
+    Obtiene el pronóstico de 5 días de OWM.
+    [CAMBIO] Devuelve una lista con los agregados de CADA día.
     """
-    print("  Obteniendo predicción de OWM...")
+    print("  Obteniendo pronóstico de 5 días de OWM (API 2.5/forecast)...")
     try:
-        # Usamos la API One Call 3.0 que da 8 días de pronóstico
-        forecast_url = f"https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude=current,minutely,hourly,alerts&appid={api_key}&units=metric"
+        forecast_url = f"https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={api_key}&units=metric"
         
         r_forecast = requests.get(forecast_url)
-        r_forecast.raise_for_status() # Lanza un error si la petición falla
+        r_forecast.raise_for_status()
         forecast_data = r_forecast.json()
+
+        # --- Nueva Lógica de Agregación ---
+        daily_temps = {} # Clave: "YYYY-MM-DD", Valor: [lista de temps]
+        today_date_str = datetime.now().strftime('%Y-%m-%d')
+
+        for item in forecast_data['list']:
+            date_str = item['dt_txt'].split(' ')[0]
+            
+            # Ignoramos los registros de "hoy"
+            if date_str == today_date_str:
+                continue
+                
+            if date_str not in daily_temps:
+                daily_temps[date_str] = []
+                
+            daily_temps[date_str].append(item['main']['temp'])
         
-        # 'daily[0]' es hoy, 'daily[1]' es mañana
-        tomorrow_forecast = forecast_data['daily'][1]
+        if not daily_temps:
+            print("  [OWM Info] La API 2.5 no devolvió datos para días futuros.")
+            return [] # Devolver lista vacía
+
+        # --- Procesar los días agregados ---
+        forecast_list = []
+        for date_str, temps in daily_temps.items():
+            owm_max = max(temps)
+            owm_min = min(temps)
+            owm_media = sum(temps) / len(temps)
+            
+            forecast_list.append({
+                "date": date_str, # Importante para el gráfico
+                "max": round(owm_max, 1),
+                "min": round(owm_min, 1),
+                "media": round(owm_media, 1)
+            })
         
-        owm_max = tomorrow_forecast['temp']['max']
-        owm_min = tomorrow_forecast['temp']['min']
-        # OWM no da 'media', la calculamos
-        owm_media = (owm_max + owm_min) / 2 
-        
-        print(f"  [OWM OK] Max: {owm_max}°C, Min: {owm_min}°C")
-        return {
-            "max": round(owm_max, 1),
-            "min": round(owm_min, 1),
-            "media": round(owm_media, 1)
-        }
+        # Ordenar por fecha y devolver la lista
+        forecast_list.sort(key=lambda x: x['date'])
+        print(f"  [OWM OK] Pronóstico de {len(forecast_list)} días calculado.")
+        return forecast_list
 
     except Exception as e:
-        print(f"  [OWM Error] Fallo al obtener pronóstico: {e}")
-        return {"max": None, "min": None, "media": None}
+        print(f"  [OWM Error] Fallo al obtener pronóstico (API 2.5): {e}")
+        return [] # Devolver lista vacía
 
 def generar_prediccion_ia_ciudad(csv_path):
     """
@@ -317,7 +340,7 @@ if __name__ == "__main__":
 
         # Inicializamos la estructura de predicción para esta ciudad
         all_predictions_data[nombre_ciudad_limpio] = {
-            "pred_owm": {"max": None, "min": None, "media": None},
+            "pred_owm_5day": [],  # <--- CAMBIADO DE "pred_owm": {...}
             "pred_ia": {"max": None, "min": None, "media": None, "registros": 0}
         }
         
@@ -338,8 +361,8 @@ if __name__ == "__main__":
         # --- Parte 2: Generación de Predicción OWM (Nueva) ---
         if lat and lon:
             # Esta función ya imprime sus propios logs
-            owm_preds = obtener_prediccion_owm(lat, lon, API_KEY)
-            all_predictions_data[nombre_ciudad_limpio]["pred_owm"] = owm_preds
+            owm_preds_lista = obtener_prediccion_owm(lat, lon, API_KEY)
+            all_predictions_data[nombre_ciudad_limpio]["pred_owm_5day"] = owm_preds_lista # <--- CAMBIADO
             
             print("Pausando 1.1 seg (API pronóstico)...")
             time.sleep(1.1) # Pausa para la segunda API (OneCall)
