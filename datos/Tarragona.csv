@@ -42,3 +42,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-06T07:06:02.953718,Tarragona,13.2,13.03,13.2,13.7,94,3.708,tormenta con lluvia,41.1189,1.2445
 2025-11-06T07:18:27.859060,Tarragona,13.24,13.05,13.2,14,93,12.96,lluvia moderada,41.1189,1.2445
 2025-11-06T14:18:18.527496,Tarragona,18.6,18,18.1,19.38,57,22.212,algo de nubes,41.1189,1.2445
+2025-11-06T22:16:40.458169,Tarragona,16.74,16.04,15.49,17.2,60,16.668,cielo claro,41.1189,1.2445

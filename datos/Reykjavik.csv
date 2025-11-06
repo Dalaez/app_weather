@@ -42,3 +42,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-06T07:07:21.629008,Grímsstaðaholt,4.71,2.91,4.71,4.71,82,7.632000000000001,nubes,64.1466,-21.9426
 2025-11-06T07:19:45.483421,Grímsstaðaholt,4.92,1.69,4.92,4.92,70,14.832,nubes dispersas,64.1466,-21.9426
 2025-11-06T14:19:39.367552,Grímsstaðaholt,4.92,4.92,4.92,4.92,75,3.708,muy nuboso,64.1466,-21.9426
+2025-11-06T22:18:01.182989,Grímsstaðaholt,1.92,1.92,1.92,1.92,87,3.708,cielo claro,64.1466,-21.9426

@@ -42,3 +42,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-06T07:06:12.459163,Valladolid,7.73,3.8,7.17,7.93,79,27.791999999999998,muy nuboso,41.6521,-4.7286
 2025-11-06T07:18:37.285774,Valladolid,7.73,3.96,6.93,7.92,79,25.92,muy nuboso,41.6521,-4.7286
 2025-11-06T14:18:28.320807,Valladolid,13.27,12.4,12.73,13.92,67,40.752,muy nuboso,41.6521,-4.7286
+2025-11-06T22:16:50.276386,Valladolid,7.69,5.95,7.36,7.78,86,9.648000000000001,nubes dispersas,41.6521,-4.7286
