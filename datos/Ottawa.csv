@@ -37,3 +37,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-05T07:19:23.576137,ByWard Market,1.7,-0.55,0.27,2.83,74,7.416,muy nuboso,45.4215,-75.6972
 2025-11-05T14:22:21.427853,ByWard Market,4.65,2.9,3.94,5.83,86,7.416,lluvia ligera,45.4215,-75.6972
 2025-11-05T22:20:54.916157,Ottawa,2.94,-1.56,1.77,4.25,86,20.376,lluvia moderada,45.4215,-75.6972
+2025-11-06T06:30:17.468952,ByWard Market,3.66,-0.15,2.88,4.4,90,16.668,nubes,45.4215,-75.6972

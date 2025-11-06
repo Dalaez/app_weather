@@ -37,3 +37,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-05T07:15:46.996568,Bucharest,10.7,10.18,10.08,11.22,90,11.124,llovizna ligera,44.4268,26.1025
 2025-11-05T14:18:52.868614,Bucharest,12.06,11.28,11.66,13.11,75,14.832,nubes dispersas,44.4268,26.1025
 2025-11-05T22:17:28.342331,Grefoaicele,10.15,9.39,9,10.55,83,3.708,lluvia de gran intensidad,44.4268,26.1025
+2025-11-06T06:26:48.774672,Bucharest,8.55,6.16,7.86,8.95,89,14.832,niebla,44.4268,26.1025

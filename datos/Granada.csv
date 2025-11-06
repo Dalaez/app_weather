@@ -37,3 +37,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-05T07:13:55.079465,Realejo-San Matías,8.92,7.16,8.14,8.92,87,11.124,cielo claro,37.1773,-3.5986
 2025-11-05T14:17:04.902811,Sacromonte,19.13,18.46,18.77,19.92,52,24.084000000000003,algo de nubes,37.1773,-3.5986
 2025-11-05T22:15:41.309811,Realejo-San Matías,17.66,17.1,16.14,17.68,62,5.5440000000000005,lluvia ligera,37.1773,-3.5986
+2025-11-06T06:25:00.649097,Realejo-San Matías,10.68,9.97,9.14,11.01,83,9.251999999999999,muy nuboso,37.1773,-3.5986
