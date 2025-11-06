@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datalaria - Dashboard Climático (v2.7.0 - Predicciones)</title>
+    <title>Datalaria - Dashboard Climático (v2.8.0 - Rango Personalizado)</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -61,6 +61,34 @@
             width: 100%; 
             padding: 20px; 
             box-sizing: border-box;
+        }
+
+        /* --- NUEVO: Estilos para Rango Personalizado --- */
+        #custom-range-container {
+            display: none; /* Oculto por defecto */
+            align-items: center;
+            gap: 10px;
+        }
+        .custom-range-inputs {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #fff;
+            padding: 8px 14px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .custom-range-inputs label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #555;
+        }
+        .custom-range-inputs input[type="date"] {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
         }
 
         /* Popup del mapa */
@@ -153,6 +181,21 @@
             box-shadow: 0 2px 8px rgba(78, 115, 224, 0.3);
         }
         
+        /* --- NUEVO: Dark Mode para Rango Personalizado --- */
+        body.dark-mode .custom-range-inputs {
+            background-color: #34495e;
+            border-right: 1px solid #2c3e50;
+        }
+        body.dark-mode .custom-range-inputs label {
+            color: #bdc3c7;
+        }
+        body.dark-mode .custom-range-inputs input[type="date"] {
+            background-color: #4a6582;
+            border-color: #5d6d7e;
+            color: #f5f7fa;
+            color-scheme: dark; /* Importante para el picker nativo */
+        }
+
         /* Choices.js */
         body.dark-mode .choices__inner {
             background-color: #34495e;
@@ -251,6 +294,18 @@
                     <button class="time-btn" data-range="365">1A</button>
                     <button class="time-btn" data-range="1825">5A</button>
                     <button class="time-btn active" data-range="all">Todo</button>
+                    <button class="time-btn" data-range="custom">Personalizado</button> </div>
+            </fieldset>
+        </div>
+
+        <div id="custom-range-container">
+            <fieldset>
+                <legend>Rango Personalizado</legend>
+                <div class="custom-range-inputs">
+                    <label for="start-date">Desde:</label>
+                    <input type="date" id="start-date">
+                    <label for="end-date">Hasta:</label>
+                    <input type="date" id="end-date">
                 </div>
             </fieldset>
         </div>
@@ -301,7 +356,7 @@
         const CITIES_LIST_URL = '/apps/weather/ciudades.txt';
         const DATA_FOLDER_URL = '/apps/weather/datos/';
         const MAP_DATA_URL = '/apps/weather/city_locations.json';
-        const PREDICTIONS_URL = '/apps/weather/predicciones.json'; // <-- NUEVO
+        const PREDICTIONS_URL = '/apps/weather/predicciones.json'; 
         
         const citySelectorElement = document.getElementById('city-select');
         const kpiContainer = document.getElementById('kpi-container');
@@ -313,12 +368,19 @@
         const loadingSpinner = document.getElementById('loading-spinner');
         const darkModeToggle = document.getElementById('dark-mode-toggle');
         
+        // --- NUEVO: Elementos de Rango Personalizado ---
+        const customRangeContainer = document.getElementById('custom-range-container');
+        const startDateInput = document.getElementById('start-date');
+        const endDateInput = document.getElementById('end-date');
+        
         let myChart;
         let myVariationChart;
         let choicesInstance;
         let allDataCache = {}; 
-        let allPredictionsCache = {}; // <-- NUEVO
+        let allPredictionsCache = {};
         let currentTimeRange = 'all'; 
+        let customStartDate = null; // NUEVO
+        let customEndDate = null; // NUEVO
         const COLOR_PALETTE = ['#e6194B', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4', '#42d4f4', '#f032e6', '#bfef45', '#fabed4'];
         
         let map;
@@ -332,42 +394,26 @@
             'wind': { key: 'viento_kmh', label: 'Viento', unit: 'km/h', icon: 'wind' }
         };
 
-        // --- NUEVO: Función Auxiliar para Patrón Rayado ---
-        /**
-         * Crea un patrón de rayas para Chart.js
-         * @param {string} color - Color Hex/RGB (ej. '#FF0000')
-         * @returns {CanvasPattern}
-         */
+        // --- Función Auxiliar para Patrón Rayado ---
         function createStripedPattern(color) {
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
             canvas.width = 10;
             canvas.height = 10;
-            
-            // Fondo semi-transparente
-            ctx.fillStyle = color + '60'; // Opacidad 60
+            ctx.fillStyle = color + '60'; 
             ctx.fillRect(0, 0, 10, 10);
-            
-            // Rayas diagonales más oscuras
-            ctx.strokeStyle = color + 'B3'; // Opacidad B3
+            ctx.strokeStyle = color + 'B3';
             ctx.lineWidth = 2;
             ctx.beginPath();
             ctx.moveTo(0, 10);
             ctx.lineTo(10, 0);
             ctx.stroke();
-            
             return ctx.createPattern(canvas, 'repeat');
         }
 
         // --- Funciones de Carga de Datos ---
-
-        // --- NUEVO: Cargar Predicciones ---
-        /**
-         * Carga el fichero de predicciones una vez al inicio.
-         */
         async function loadPredictions() {
             try {
-                // Añadimos un "cache buster" para asegurarnos de que siempre cargue el más reciente
                 const response = await fetch(PREDICTIONS_URL + '?v=' + new Date().getTime());
                 if (!response.ok) {
                     throw new Error(`Error HTTP! status: ${response.status}`);
@@ -376,7 +422,7 @@
                 console.log("Datos de predicción cargados:", allPredictionsCache);
             } catch (error) {
                 console.error("Error al cargar predicciones.json:", error);
-                allPredictionsCache = {}; // Dejarlo vacío si falla
+                allPredictionsCache = {}; 
             }
         }
 
@@ -440,7 +486,7 @@
                 return cityDataMap;
             } catch (error) {
                 console.error("Fallo al cargar uno o más datasets:", error);
-                kpiContainer.innerHTML = `<p style="color: red; grid-column: 1 / -1;">Error al cargar los datos de una o más ciudades. Verifica que los ficheros CSV existen en la carpeta 'datos/'.</p>`;
+                kpiContainer.innerHTML = `<p style="color: red; grid-column: 1 / -1;">Error al cargar los datos de una o más ciudades.</p>`;
                 return null;
             }
         }
@@ -469,34 +515,19 @@
             requestAnimationFrame(step);
         }
 
-        // --- NUEVO: Función Auxiliar para Pronóstico en KPI ---
-        /**
-         * Construye el HTML para el bloque de pronóstico de 5 días.
-         * @param {Array} forecastList - La lista de pronósticos de `predicciones.json`
-         * @param {string} selectedMetric - La métrica actual (ej. "temp")
-         * @returns {string} El string HTML para insertar.
-         */
         function buildForecastHTML(forecastList, selectedMetric) {
-            // Solo mostramos esto si la métrica es Temperatura y hay datos
             if (selectedMetric !== 'temp' || !forecastList || forecastList.length === 0) {
                 return '';
             }
-
-            // Formato de fecha para "Sáb, 7 nov"
             const dateFormatter = new Intl.DateTimeFormat('es-ES', { 
                 weekday: 'short', 
                 day: 'numeric', 
                 month: 'short' 
             });
-
-            // Mapeamos cada día de pronóstico a una fila de HTML
             const forecastRows = forecastList.map(day => {
                 const dateObj = new Date(day.date);
-                // Ajuste para parsear YYYY-MM-DD correctamente en UTC
                 dateObj.setUTCHours(0, 0, 0, 0); 
-                
                 const displayDate = dateFormatter.format(dateObj);
-                
                 return `
                     <div class="kpi-hist-item">
                         <span style="text-transform: capitalize;">${displayDate}</span>
@@ -505,9 +536,7 @@
                         </span>
                     </div>
                 `;
-            }).join(''); // Unimos todas las filas en un solo string
-
-            // Devolvemos el contenedor completo
+            }).join('');
             return `
                 <div class="kpi-hist" style="margin-top: 15px;">
                     <strong>Pronóstico OWM (Max/Min):</strong>
@@ -516,9 +545,6 @@
             `;
         }
 
-        /**
-         * Función principal que actualiza todo el dashboard.
-         */
         async function updateDashboard() { 
             loadingSpinner.style.display = 'flex'; 
 
@@ -549,9 +575,7 @@
                 myVariationChart.update();
             }
 
-            // OBTENER DATOS (puede usar caché)
             const cityDataMap = await loadDataForCities(selectedCitiesValues); 
-            
             if (!cityDataMap) {
                 console.error("No se pudieron cargar los datos para las ciudades seleccionadas.");
                 loadingSpinner.style.display = 'none'; 
@@ -568,9 +592,6 @@
             loadingSpinner.style.display = 'none'; 
         }
 
-        /**
-         * MODIFICADO: Actualiza las tarjetas de KPI (incluye pronóstico).
-         */
         function updateKPIs(cityDataMap, selectedMetric) {
             kpiContainer.innerHTML = ""; 
             const metricInfo = METRIC_MAP[selectedMetric];
@@ -597,8 +618,6 @@
                     .map(row => ({ x: row.fecha_hora, y: row[metricInfo.key] }));
                 const sparkCanvasId = `spark-${ciudad.replace(/ /g, '_')}-${selectedMetric}`;
                 const kpiMainId = `kpi-main-${ciudad.replace(/ /g, '_')}-${selectedMetric}`;
-
-                // --- NUEVO: Obtener la lista de pronóstico ---
                 const forecast_list = allPredictionsCache[ciudad]?.pred_owm_5day;
 
                 card.innerHTML = `
@@ -625,9 +644,8 @@
                             <span class="date">(${minDate})</span>
                         </div>
                     </div>
-
                     ${buildForecastHTML(forecast_list, selectedMetric)} 
-                    `;
+                `;
                 kpiContainer.appendChild(card);
 
                 const kpiElement = document.getElementById(kpiMainId);
@@ -655,12 +673,11 @@
                     });
                 }
             });
-
             feather.replace();
         }
 
         /**
-         * MODIFICADO: Actualiza el gráfico de historial (incluye pronóstico).
+         * MODIFICADO: Actualiza el gráfico (lógica de fechas personalizada).
          */
         function updateChart(cityDataMap, metric, selectedHour) {
             if (myChart) { myChart.destroy(); }
@@ -671,20 +688,31 @@
             const gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.1)';
             const textColor = isDarkMode ? '#f5f7fa' : '#2c3e50';
             
+            // --- LÓGICA DE FECHAS MODIFICADA ---
             const now = new Date();
-            let startDate = new Date(0); 
-            if (currentTimeRange !== 'all') {
+            let startDate, endDate;
+            endDate = new Date(); // Por defecto, 'hasta' es 'ahora'
+
+            if (currentTimeRange === 'custom' && customStartDate && customEndDate) {
+                startDate = customStartDate;
+                endDate = customEndDate;
+            } else if (currentTimeRange !== 'all') {
                 startDate = new Date(now.getTime() - (Number(currentTimeRange) * 24 * 60 * 60 * 1000));
+            } else {
+                startDate = new Date(0); // Epoch (principio de los tiempos)
             }
+            // --- FIN LÓGICA DE FECHAS ---
+            
             const datasets = [];
             Object.keys(cityDataMap).forEach((ciudad, index) => {
                 const data = cityDataMap[ciudad];
                 if (!data || !data.records || data.records.length === 0) { return; }
                 
-                // --- Filtrado de datos (sin cambios) ---
+                // --- FILTRADO DE DATOS MODIFICADO ---
                 const filteredData = data.records
                     .filter(row => {
-                        const dateFilter = row.fecha_hora >= startDate;
+                        // La lógica de 'startDate' y 'endDate' ahora es universal
+                        const dateFilter = row.fecha_hora >= startDate && row.fecha_hora <= endDate;
                         const valueFilter = row[currentMetric.key] !== null && row[currentMetric.key] !== undefined;
                         
                         let hourFilterCheck = true;
@@ -697,7 +725,6 @@
                     })
                     .map(row => ({ x: row.fecha_hora, y: row[currentMetric.key] }));
 
-                // --- Dataset Principal (Datos Reales) (sin cambios) ---
                 if (filteredData.length > 0) {
                     datasets.push({
                         label: ciudad, data: filteredData,
@@ -707,33 +734,23 @@
                     });
                 }
 
-                // --- ===== NUEVO: AÑADIR DATASET DE PRONÓSTICO (LÍNEA PUNTOS) ===== ---
+                // --- DATASET DE PRONÓSTICO (Sin cambios) ---
                 const forecast_list = allPredictionsCache[ciudad]?.pred_owm_5day;
-                
-                // Solo si la métrica es 'temp', el filtro de hora es 'all' y hay datos
                 if (metric === 'temp' && selectedHour === 'all' && forecast_list && forecast_list.length > 0) {
-                    
-                    // Usamos la 'media' para la línea de pronóstico
                     const forecastData = forecast_list.map(day => {
                         const dateObj = new Date(day.date);
-                        dateObj.setUTCHours(12, 0, 0, 0); // Ponerlo a mediodía para el gráfico
-                        return {
-                            x: dateObj,
-                            y: day.media 
-                        };
+                        dateObj.setUTCHours(12, 0, 0, 0);
+                        return { x: dateObj, y: day.media };
                     });
-
-                    // Para conectar la línea, añadimos el último punto *real*
                     if (filteredData.length > 0) {
                         const lastRealPoint = filteredData[filteredData.length - 1];
                         forecastData.unshift({ x: lastRealPoint.x, y: lastRealPoint.y });
                     }
-
                     datasets.push({
                         label: `Pronóstico ${ciudad} (media)`,
                         data: forecastData,
                         borderColor: COLOR_PALETTE[index % COLOR_PALETTE.length],
-                        borderDash: [5, 5], // <-- ¡LA LÍNEA DE PUNTOS!
+                        borderDash: [5, 5], 
                         borderWidth: 2,
                         fill: false,
                         pointRadius: 2,
@@ -741,8 +758,6 @@
                         tension: 0.1,
                     });
                 }
-                // --- ===== FIN DE NUEVA SECCIÓN ===== ---
-
             });
 
             if (datasets.length > 0) {
@@ -782,7 +797,7 @@
         }
         
         /**
-         * MODIFICADO: Actualiza el gráfico de barras de variación diaria (incluye pronóstico).
+         * MODIFICADO: Actualiza el gráfico de variación (lógica de fechas personalizada).
          */
         function updateVariationChart(cityDataMap, metric) {
             if (myVariationChart) { myVariationChart.destroy(); }
@@ -793,11 +808,20 @@
             const gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.1)';
             const textColor = isDarkMode ? '#f5f7fa' : '#2c3e50';
 
+            // --- LÓGICA DE FECHAS MODIFICADA ---
             const now = new Date();
-            let startDate = new Date(0); 
-            if (currentTimeRange !== 'all') {
+            let startDate, endDate;
+            endDate = new Date(); // Por defecto, 'hasta' es 'ahora'
+
+            if (currentTimeRange === 'custom' && customStartDate && customEndDate) {
+                startDate = customStartDate;
+                endDate = customEndDate;
+            } else if (currentTimeRange !== 'all') {
                 startDate = new Date(now.getTime() - (Number(currentTimeRange) * 24 * 60 * 60 * 1000));
+            } else {
+                startDate = new Date(0); // Epoch (principio de los tiempos)
             }
+            // --- FIN LÓGICA DE FECHAS ---
 
             const datasets = [];
             
@@ -805,9 +829,9 @@
                 const data = cityDataMap[ciudad];
                 if (!data || !data.records || data.records.length === 0) { return; }
 
-                // --- Lógica de datos reales (sin cambios) ---
+                // --- FILTRADO DE DATOS MODIFICADO ---
                 const filteredRecords = data.records
-                    .filter(row => row.fecha_hora >= startDate && row[currentMetric.key] !== null && row[currentMetric.key] !== undefined);
+                    .filter(row => row.fecha_hora >= startDate && row.fecha_hora <= endDate && row[currentMetric.key] !== null && row[currentMetric.key] !== undefined);
 
                 const dailyData = {};
                 filteredRecords.forEach(row => {
@@ -830,7 +854,6 @@
                 });
                 variationData.sort((a, b) => a.x - b.x);
 
-                // --- Dataset Principal (Datos Reales) (sin cambios) ---
                 if (variationData.length > 0) {
                     datasets.push({
                         label: `Variación ${ciudad} (${currentMetric.unit})`,
@@ -841,16 +864,12 @@
                     });
                 }
 
-                // --- ===== NUEVO: AÑADIR DATASET DE PRONÓSTICO (BARRAS RAYADAS) ===== ---
+                // --- DATASET DE PRONÓSTICO (Sin cambios) ---
                 const forecast_list = allPredictionsCache[ciudad]?.pred_owm_5day;
-
-                // Solo si la métrica es 'temp' y hay datos
                 if (metric === 'temp' && forecast_list && forecast_list.length > 0) {
-                    
-                    // Calculamos la variación (Max - Min) del pronóstico
                     const forecastVariationData = forecast_list.map(day => {
                         const dateObj = new Date(day.date);
-                        dateObj.setUTCHours(12, 0, 0, 0); // Centrar la barra en el día
+                        dateObj.setUTCHours(12, 0, 0, 0);
                         return {
                             x: dateObj,
                             y: (day.max - day.min) 
@@ -862,18 +881,14 @@
                         datasets.push({
                             label: `Pronóstico Variación ${ciudad}`,
                             data: forecastVariationData,
-                            // --- ¡AQUÍ ESTÁ LA MAGIA! ---
                             backgroundColor: createStripedPattern(color),
                             borderColor: color,
                             borderWidth: 1
                         });
                     }
                 }
-                // --- ===== FIN DE NUEVA SECCIÓN ===== ---
-
             });
 
-            // --- Creación del gráfico de barras (sin cambios) ---
             if (datasets.length > 0) {
                 myVariationChart = new Chart(variationCtx, {
                     type: 'bar',
@@ -1026,7 +1041,6 @@
 
         // --- Función de Inicialización ---
         async function init() {
-            // --- Dark Mode Check ---
             if (localStorage.getItem('theme') === 'dark') {
                 document.body.classList.add('dark-mode');
                 document.getElementById('dark-mode-icon').setAttribute('data-feather', 'sun');
@@ -1035,7 +1049,6 @@
             }
             feather.replace();
             
-            // --- NUEVO: Cargar predicciones ANTES de todo lo demás ---
             await loadPredictions(); 
 
             choicesInstance = new Choices(citySelectorElement, {
@@ -1058,31 +1071,57 @@
                 choicesInstance.setChoices(ciudades, 'value', 'label', false);
                 choicesInstance.setChoiceByValue(['Madrid,ES', 'León,ES']); 
                 
-                // updateDashboard ahora tendrá acceso a allPredictionsCache
                 await updateDashboard(); 
             
             } catch (error) {
                 console.error("Error al inicializar la aplicación:", error);
-                kpiContainer.innerHTML = `<p style="color: red;"><b>Error fatal:</b> No se pudo cargar la lista de ciudades (${CITIES_LIST_URL}). La aplicación no puede continuar.</p>`;
+                kpiContainer.innerHTML = `<p style="color: red;"><b>Error fatal:</b> No se pudo cargar la lista de ciudades (${CITIES_LIST_URL}).</p>`;
                 loadingSpinner.style.display = 'none'; 
             }
             
-            // Configurar Listeners
+            // --- LISTENERS MODIFICADOS ---
             citySelectorElement.addEventListener('change', async () => await updateDashboard());
             metricRadios.forEach(radio => radio.addEventListener('change', async () => await updateDashboard()));
             hourFilterRadios.forEach(radio => radio.addEventListener('change', async () => await updateDashboard()));
+            darkModeToggle.addEventListener('click', toggleDarkMode);
             
+            // Listener de Botones de Rango (MODIFICADO)
             timeRangeButtons.forEach(button => {
                 button.addEventListener('click', async (e) => {
                     e.preventDefault();
                     timeRangeButtons.forEach(btn => btn.classList.remove('active'));
                     e.target.classList.add('active');
                     currentTimeRange = e.target.dataset.range;
-                    await updateDashboard();
+
+                    if (currentTimeRange === 'custom') {
+                        customRangeContainer.style.display = 'block';
+                        // No llamamos a updateDashboard, esperamos a que el usuario elija fechas
+                    } else {
+                        customRangeContainer.style.display = 'none';
+                        customStartDate = null;
+                        customEndDate = null;
+                        await updateDashboard(); // Llamar como antes
+                    }
                 });
             });
             
-            darkModeToggle.addEventListener('click', toggleDarkMode);
+            // --- NUEVOS LISTENERS para Rango Personalizado ---
+            startDateInput.addEventListener('change', async () => {
+                customStartDate = new Date(startDateInput.value);
+                if (customEndDate) { // Solo actualiza si ambas fechas están puestas
+                    await updateDashboard();
+                }
+            });
+            
+            endDateInput.addEventListener('change', async () => {
+                customEndDate = new Date(endDateInput.value);
+                // Ajuste: Poner la fecha de fin al final del día (23:59)
+                customEndDate.setHours(23, 59, 59, 999);
+                
+                if (customStartDate) { // Solo actualiza si ambas fechas están puestas
+                    await updateDashboard();
+                }
+            });
         }
         
         // --- INICIO DE LA APLICACIÓN ---
