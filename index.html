@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datalaria - Dashboard Climático (v2.6.0 - Dark Mode)</title>
+    <title>Datalaria - Dashboard Climático (v2.7.0 - Predicciones)</title>
     
-    <!-- Librerías JS y CSS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
@@ -52,7 +51,7 @@
         
         #chart-container { width: 100%; padding: 20px; box-sizing: border-box; min-height: 500px; position: relative; } 
         
-        /* NUEVO: Estilo para el contenedor del nuevo gráfico */
+        /* Estilo para el contenedor del nuevo gráfico */
         #chart-container-variation {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(10px);
@@ -91,7 +90,7 @@
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         
-        /* --- NUEVO: Botón Dark Mode --- */
+        /* Botón Dark Mode */
         #dark-mode-toggle-container {
             position: absolute;
             top: 20px;
@@ -119,7 +118,7 @@
             transition: color 0.3s ease;
         }
 
-        /* --- NUEVO: Reglas de Dark Mode --- */
+        /* Reglas de Dark Mode */
         body.dark-mode {
             background: #1a2533;
             color: #f5f7fa;
@@ -129,7 +128,7 @@
         body.dark-mode #map-container { background: #111; border-color: #34495e; }
         body.dark-mode #controls-container, 
         body.dark-mode #chart-container,
-        body.dark-mode #chart-container-variation, /* <-- NUEVO */
+        body.dark-mode #chart-container-variation, 
         body.dark-mode .kpi-card {
             background: rgba(44, 62, 80, 0.85); /* #2c3e50 con opacidad */
             border-color: rgba(93, 109, 126, 0.5);
@@ -229,7 +228,6 @@
         </div>
         
         <div id="metric-select">
-            <!-- ... (inputs de métrica) ... -->
             <fieldset>
                 <legend>Métrica</legend>
                 <div class="selector-group">
@@ -244,7 +242,6 @@
         </div>
 
         <div id="time-range-select">
-            <!-- ... (botones de rango) ... -->
             <fieldset>
                 <legend>Rango</legend>
                 <div class="selector-group">
@@ -258,7 +255,6 @@
             </fieldset>
         </div>
 
-        <!-- NUEVO: Filtro de Hora -->
         <div id="hour-filter-select">
             <fieldset>
                 <legend>Hora del Día</legend>
@@ -274,12 +270,9 @@
                 </div>
             </fieldset>
         </div>
-        <!-- FIN NUEVO -->
 
-        <!-- NUEVO: Botón Dark Mode -->
         <div id="dark-mode-toggle-container">
             <button id="dark-mode-toggle" aria-label="Toggle Dark Mode">
-                <!-- El icono se rellenará con JS (moon o sun) -->
                 <i data-feather="moon" id="dark-mode-icon"></i>
             </button>
         </div>
@@ -297,41 +290,41 @@
         <canvas id="myChart"></canvas>
     </div>
 
-    <!-- NUEVO: Gráfico de Variación Diaria -->
     <h2>Variación Diaria</h2>
     <p style="text-align: center; margin-top: -10px; color: #555;">(Rango entre la temperatura Máx. y Mín. de cada día)</p>
     <div id="chart-container-variation" style="min-height: 300px; position: relative; margin-top: 20px;">
         <canvas id="variationChart"></canvas>
     </div>
-    <!-- FIN NUEVO -->
 
     <script>
         // --- Configuración Global ---
         const CITIES_LIST_URL = '/apps/weather/ciudades.txt';
         const DATA_FOLDER_URL = '/apps/weather/datos/';
         const MAP_DATA_URL = '/apps/weather/city_locations.json';
+        const PREDICTIONS_URL = '/apps/weather/predicciones.json'; // <-- NUEVO
         
         const citySelectorElement = document.getElementById('city-select');
         const kpiContainer = document.getElementById('kpi-container');
         const metricRadios = document.querySelectorAll('input[name="metric"]');
         const timeRangeButtons = document.querySelectorAll('.time-btn');
-        const hourFilterRadios = document.querySelectorAll('input[name="hour-filter"]'); // <-- NUEVO
+        const hourFilterRadios = document.querySelectorAll('input[name="hour-filter"]');
         const ctx = document.getElementById('myChart').getContext('2d');
-        const variationCtx = document.getElementById('variationChart').getContext('2d'); // <-- NUEVO
+        const variationCtx = document.getElementById('variationChart').getContext('2d');
         const loadingSpinner = document.getElementById('loading-spinner');
-        const darkModeToggle = document.getElementById('dark-mode-toggle'); // <-- NUEVO
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
         
         let myChart;
-        let myVariationChart; // <-- NUEVO
+        let myVariationChart;
         let choicesInstance;
         let allDataCache = {}; 
+        let allPredictionsCache = {}; // <-- NUEVO
         let currentTimeRange = 'all'; 
         const COLOR_PALETTE = ['#e6194B', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4', '#42d4f4', '#f032e6', '#bfef45', '#fabed4'];
         
         let map;
         let mapMarkers = {}; 
         let cityOptionsList = []; 
-        let lightTileLayer, darkTileLayer; // <-- NUEVO: Para Dark Mode del mapa
+        let lightTileLayer, darkTileLayer;
 
         const METRIC_MAP = {
             'temp': { key: 'temperatura_c', label: 'Temperatura', unit: '°C', icon: 'thermometer' },
@@ -339,8 +332,54 @@
             'wind': { key: 'viento_kmh', label: 'Viento', unit: 'km/h', icon: 'wind' }
         };
 
+        // --- NUEVO: Función Auxiliar para Patrón Rayado ---
+        /**
+         * Crea un patrón de rayas para Chart.js
+         * @param {string} color - Color Hex/RGB (ej. '#FF0000')
+         * @returns {CanvasPattern}
+         */
+        function createStripedPattern(color) {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 10;
+            canvas.height = 10;
+            
+            // Fondo semi-transparente
+            ctx.fillStyle = color + '60'; // Opacidad 60
+            ctx.fillRect(0, 0, 10, 10);
+            
+            // Rayas diagonales más oscuras
+            ctx.strokeStyle = color + 'B3'; // Opacidad B3
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(0, 10);
+            ctx.lineTo(10, 0);
+            ctx.stroke();
+            
+            return ctx.createPattern(canvas, 'repeat');
+        }
+
         // --- Funciones de Carga de Datos ---
-        // ... (calculateStats, loadCSV, loadDataForCities no cambian) ...
+
+        // --- NUEVO: Cargar Predicciones ---
+        /**
+         * Carga el fichero de predicciones una vez al inicio.
+         */
+        async function loadPredictions() {
+            try {
+                // Añadimos un "cache buster" para asegurarnos de que siempre cargue el más reciente
+                const response = await fetch(PREDICTIONS_URL + '?v=' + new Date().getTime());
+                if (!response.ok) {
+                    throw new Error(`Error HTTP! status: ${response.status}`);
+                }
+                allPredictionsCache = await response.json();
+                console.log("Datos de predicción cargados:", allPredictionsCache);
+            } catch (error) {
+                console.error("Error al cargar predicciones.json:", error);
+                allPredictionsCache = {}; // Dejarlo vacío si falla
+            }
+        }
+
         function calculateStats(records) {
             if (records.length === 0) return {};
             const stats = {
@@ -360,6 +399,7 @@
             stats.latest = records[records.length - 1];
             return stats;
         }
+
         function loadCSV(ciudadQuery) {
             if (allDataCache[ciudadQuery]) {
                 return Promise.resolve(allDataCache[ciudadQuery]);
@@ -388,6 +428,7 @@
                 });
             });
         }
+
         async function loadDataForCities(ciudadesQuery) {
             const promises = ciudadesQuery.map(ciudadQuery => loadCSV(ciudadQuery));
             try {
@@ -406,7 +447,6 @@
 
         // --- Funciones de UI ---
         
-        // ... (animateCountUp no cambia) ...
         function animateCountUp(element, end, duration = 800, decimals = 1) {
             let startTime = null;
             const start = 0; 
@@ -429,8 +469,55 @@
             requestAnimationFrame(step);
         }
 
+        // --- NUEVO: Función Auxiliar para Pronóstico en KPI ---
         /**
-         * MODIFICADO: Función principal que actualiza todo el dashboard.
+         * Construye el HTML para el bloque de pronóstico de 5 días.
+         * @param {Array} forecastList - La lista de pronósticos de `predicciones.json`
+         * @param {string} selectedMetric - La métrica actual (ej. "temp")
+         * @returns {string} El string HTML para insertar.
+         */
+        function buildForecastHTML(forecastList, selectedMetric) {
+            // Solo mostramos esto si la métrica es Temperatura y hay datos
+            if (selectedMetric !== 'temp' || !forecastList || forecastList.length === 0) {
+                return '';
+            }
+
+            // Formato de fecha para "Sáb, 7 nov"
+            const dateFormatter = new Intl.DateTimeFormat('es-ES', { 
+                weekday: 'short', 
+                day: 'numeric', 
+                month: 'short' 
+            });
+
+            // Mapeamos cada día de pronóstico a una fila de HTML
+            const forecastRows = forecastList.map(day => {
+                const dateObj = new Date(day.date);
+                // Ajuste para parsear YYYY-MM-DD correctamente en UTC
+                dateObj.setUTCHours(0, 0, 0, 0); 
+                
+                const displayDate = dateFormatter.format(dateObj);
+                
+                return `
+                    <div class="kpi-hist-item">
+                        <span style="text-transform: capitalize;">${displayDate}</span>
+                        <span class="date" style="font-weight: 600;">
+                            ${day.max.toFixed(1)}°C / ${day.min.toFixed(1)}°C
+                        </span>
+                    </div>
+                `;
+            }).join(''); // Unimos todas las filas en un solo string
+
+            // Devolvemos el contenedor completo
+            return `
+                <div class="kpi-hist" style="margin-top: 15px;">
+                    <strong>Pronóstico OWM (Max/Min):</strong>
+                    ${forecastRows}
+                </div>
+            `;
+        }
+
+        /**
+         * Función principal que actualiza todo el dashboard.
          */
         async function updateDashboard() { 
             loadingSpinner.style.display = 'flex'; 
@@ -438,13 +525,13 @@
             const selectedCitiesValues = choicesInstance.getValue(true); 
             const checkedMetricRadio = document.querySelector('input[name="metric"]:checked');
             const selectedMetric = checkedMetricRadio ? checkedMetricRadio.value : 'temp'; 
-            const checkedHourRadio = document.querySelector('input[name="hour-filter"]:checked'); // <-- NUEVO
-            const selectedHour = checkedHourRadio ? checkedHourRadio.value : 'all'; // <-- NUEVO
+            const checkedHourRadio = document.querySelector('input[name="hour-filter"]:checked');
+            const selectedHour = checkedHourRadio ? checkedHourRadio.value : 'all';
 
             if (selectedCitiesValues.length === 0) { 
                 kpiContainer.innerHTML = "<p>Selecciona una o más ciudades para ver los datos.</p>"; 
                 if (myChart) myChart.destroy(); 
-                if (myVariationChart) myVariationChart.destroy(); // <-- NUEVO
+                if (myVariationChart) myVariationChart.destroy();
                 highlightMapMarkers([]); 
                 loadingSpinner.style.display = 'none'; 
                 return; 
@@ -456,11 +543,11 @@
                  myChart.data.labels = [];
                  myChart.update();
             }
-            if (myVariationChart) { // <-- NUEVO
-                myVariationChart.data.datasets = []; // <-- NUEVO
-                myVariationChart.data.labels = []; // <-- NUEVO
-                myVariationChart.update(); // <-- NUEVO
-            } // <-- NUEVO
+            if (myVariationChart) {
+                myVariationChart.data.datasets = [];
+                myVariationChart.data.labels = [];
+                myVariationChart.update();
+            }
 
             // OBTENER DATOS (puede usar caché)
             const cityDataMap = await loadDataForCities(selectedCitiesValues); 
@@ -474,15 +561,15 @@
             const selectedCitiesClean = selectedCitiesValues.map(v => v.split(',')[0]);
 
             updateKPIs(cityDataMap, selectedMetric); 
-            updateChart(cityDataMap, selectedMetric, selectedHour); // MODIFICADO
-            updateVariationChart(cityDataMap, selectedMetric); // <-- NUEVO
+            updateChart(cityDataMap, selectedMetric, selectedHour);
+            updateVariationChart(cityDataMap, selectedMetric); 
             highlightMapMarkers(selectedCitiesClean); 
 
             loadingSpinner.style.display = 'none'; 
         }
 
         /**
-         * MODIFICADO: Actualiza las tarjetas de KPI.
+         * MODIFICADO: Actualiza las tarjetas de KPI (incluye pronóstico).
          */
         function updateKPIs(cityDataMap, selectedMetric) {
             kpiContainer.innerHTML = ""; 
@@ -511,6 +598,9 @@
                 const sparkCanvasId = `spark-${ciudad.replace(/ /g, '_')}-${selectedMetric}`;
                 const kpiMainId = `kpi-main-${ciudad.replace(/ /g, '_')}-${selectedMetric}`;
 
+                // --- NUEVO: Obtener la lista de pronóstico ---
+                const forecast_list = allPredictionsCache[ciudad]?.pred_owm_5day;
+
                 card.innerHTML = `
                     <h3>${ciudad}</h3>
                     <p class="kpi-main">
@@ -535,7 +625,9 @@
                             <span class="date">(${minDate})</span>
                         </div>
                     </div>
-                `;
+
+                    ${buildForecastHTML(forecast_list, selectedMetric)} 
+                    `;
                 kpiContainer.appendChild(card);
 
                 const kpiElement = document.getElementById(kpiMainId);
@@ -568,18 +660,16 @@
         }
 
         /**
-         * MODIFICADO: Actualiza el gráfico de historial (sensible a Dark Mode y Filtro de Hora).
+         * MODIFICADO: Actualiza el gráfico de historial (incluye pronóstico).
          */
-        function updateChart(cityDataMap, metric, selectedHour) { // MODIFICADO
+        function updateChart(cityDataMap, metric, selectedHour) {
             if (myChart) { myChart.destroy(); }
             const currentMetric = METRIC_MAP[metric];
             if (!currentMetric) { console.error("ERROR: Métrica inválida:", metric); return; }
             
-            // --- NUEVO: Lógica para Dark Mode en Gráfico ---
             const isDarkMode = document.body.classList.contains('dark-mode');
             const gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.1)';
             const textColor = isDarkMode ? '#f5f7fa' : '#2c3e50';
-            // --- FIN NUEVO ---
             
             const now = new Date();
             let startDate = new Date(0); 
@@ -591,7 +681,7 @@
                 const data = cityDataMap[ciudad];
                 if (!data || !data.records || data.records.length === 0) { return; }
                 
-                // --- MODIFICADO: Añadir filtro de hora ---
+                // --- Filtrado de datos (sin cambios) ---
                 const filteredData = data.records
                     .filter(row => {
                         const dateFilter = row.fecha_hora >= startDate;
@@ -600,15 +690,14 @@
                         let hourFilterCheck = true;
                         if (selectedHour !== 'all') {
                             const filterHour = Number(selectedHour);
-                            // Comparamos la hora exacta
                             hourFilterCheck = (row.fecha_hora.getHours() === filterHour);
                         }
                         
                         return dateFilter && valueFilter && hourFilterCheck;
                     })
                     .map(row => ({ x: row.fecha_hora, y: row[currentMetric.key] }));
-                // --- FIN MODIFICADO ---
 
+                // --- Dataset Principal (Datos Reales) (sin cambios) ---
                 if (filteredData.length > 0) {
                     datasets.push({
                         label: ciudad, data: filteredData,
@@ -617,7 +706,45 @@
                         tension: 0.1, fill: false, pointRadius: 2, pointHoverRadius: 5
                     });
                 }
+
+                // --- ===== NUEVO: AÑADIR DATASET DE PRONÓSTICO (LÍNEA PUNTOS) ===== ---
+                const forecast_list = allPredictionsCache[ciudad]?.pred_owm_5day;
+                
+                // Solo si la métrica es 'temp', el filtro de hora es 'all' y hay datos
+                if (metric === 'temp' && selectedHour === 'all' && forecast_list && forecast_list.length > 0) {
+                    
+                    // Usamos la 'media' para la línea de pronóstico
+                    const forecastData = forecast_list.map(day => {
+                        const dateObj = new Date(day.date);
+                        dateObj.setUTCHours(12, 0, 0, 0); // Ponerlo a mediodía para el gráfico
+                        return {
+                            x: dateObj,
+                            y: day.media 
+                        };
+                    });
+
+                    // Para conectar la línea, añadimos el último punto *real*
+                    if (filteredData.length > 0) {
+                        const lastRealPoint = filteredData[filteredData.length - 1];
+                        forecastData.unshift({ x: lastRealPoint.x, y: lastRealPoint.y });
+                    }
+
+                    datasets.push({
+                        label: `Pronóstico ${ciudad} (media)`,
+                        data: forecastData,
+                        borderColor: COLOR_PALETTE[index % COLOR_PALETTE.length],
+                        borderDash: [5, 5], // <-- ¡LA LÍNEA DE PUNTOS!
+                        borderWidth: 2,
+                        fill: false,
+                        pointRadius: 2,
+                        pointHoverRadius: 4,
+                        tension: 0.1,
+                    });
+                }
+                // --- ===== FIN DE NUEVA SECCIÓN ===== ---
+
             });
+
             if (datasets.length > 0) {
                 myChart = new Chart(ctx, {
                     type: 'line', data: { datasets: datasets },
@@ -627,20 +754,20 @@
                             x: {
                                 type: 'time', 
                                 time: { unit: 'day', tooltipFormat: 'dd MMM yyyy, HH:mm', displayFormats: { hour: 'HH:mm', day: 'dd MMM', month: 'MMM yyyy' } },
-                                title: { display: true, text: 'Fecha y Hora', color: textColor }, // MODIFICADO
-                                ticks: { color: textColor }, // MODIFICADO
-                                grid: { color: gridColor } // MODIFICADO
+                                title: { display: true, text: 'Fecha y Hora', color: textColor },
+                                ticks: { color: textColor },
+                                grid: { color: gridColor }
                             },
                             y: {
-                                title: { display: true, text: currentMetric.label + ' (' + currentMetric.unit + ')', color: textColor }, // MODIFICADO
-                                ticks: { color: textColor }, // MODIFICADO
-                                grid: { color: gridColor }, // MODIFICADO
+                                title: { display: true, text: currentMetric.label + ' (' + currentMetric.unit + ')', color: textColor },
+                                ticks: { color: textColor },
+                                grid: { color: gridColor },
                                 beginAtZero: (metric === 'humidity') 
                             }
                         },
                         plugins: { 
                             tooltip: { mode: 'index', intersect: false }, 
-                            legend: { position: 'top', labels: { color: textColor } } // MODIFICADO
+                            legend: { position: 'top', labels: { color: textColor } }
                         },
                         interaction: { mode: 'nearest', axis: 'x', intersect: false }
                     }
@@ -648,27 +775,24 @@
             } else {
                 ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
                 ctx.font = "16px Inter"; 
-                ctx.fillStyle = textColor; // MODIFICADO
+                ctx.fillStyle = textColor;
                 ctx.textAlign = "center";
                 ctx.fillText("No hay datos disponibles para la selección actual.", ctx.canvas.width / 2, 50);
             }
         }
         
-        // --- NUEVO: Gráfico de Variación Diaria ---
         /**
-         * Actualiza el gráfico de barras de variación diaria.
+         * MODIFICADO: Actualiza el gráfico de barras de variación diaria (incluye pronóstico).
          */
         function updateVariationChart(cityDataMap, metric) {
             if (myVariationChart) { myVariationChart.destroy(); }
             const currentMetric = METRIC_MAP[metric];
-            if (!currentMetric) return; // Métrica no válida
+            if (!currentMetric) return;
 
-            // Colores sensibles al Dark Mode
             const isDarkMode = document.body.classList.contains('dark-mode');
             const gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.1)';
             const textColor = isDarkMode ? '#f5f7fa' : '#2c3e50';
 
-            // Rango de tiempo
             const now = new Date();
             let startDate = new Date(0); 
             if (currentTimeRange !== 'all') {
@@ -681,48 +805,75 @@
                 const data = cityDataMap[ciudad];
                 if (!data || !data.records || data.records.length === 0) { return; }
 
-                // 1. Filtrar por rango de fecha y valor válido (SIN filtro de hora)
+                // --- Lógica de datos reales (sin cambios) ---
                 const filteredRecords = data.records
                     .filter(row => row.fecha_hora >= startDate && row[currentMetric.key] !== null && row[currentMetric.key] !== undefined);
 
-                // 2. Agrupar por día
-                const dailyData = {}; // clave: "YYYY-MM-DD"
+                const dailyData = {};
                 filteredRecords.forEach(row => {
                     const day = row.fecha_hora.toISOString().split('T')[0];
                     if (!dailyData[day]) dailyData[day] = [];
                     dailyData[day].push(row[currentMetric.key]);
                 });
 
-                // 3. Calcular variación (Max - Min)
                 const variationData = [];
                 Object.keys(dailyData).forEach(day => {
                     const values = dailyData[day];
-                    // Solo tiene sentido si hay más de 1 registro (ej. mañana y noche)
                     if (values.length > 1) { 
                         const max = Math.max(...values);
                         const min = Math.min(...values);
                         variationData.push({ 
-                            x: new Date(day), // Usar objeto Date para el eje de tiempo
+                            x: new Date(day), 
                             y: (max - min) 
                         });
                     }
                 });
-
-                // Ordenar por fecha
                 variationData.sort((a, b) => a.x - b.x);
 
+                // --- Dataset Principal (Datos Reales) (sin cambios) ---
                 if (variationData.length > 0) {
                     datasets.push({
                         label: `Variación ${ciudad} (${currentMetric.unit})`,
                         data: variationData,
-                        backgroundColor: COLOR_PALETTE[index % COLOR_PALETTE.length] + '90', // Con transparencia
+                        backgroundColor: COLOR_PALETTE[index % COLOR_PALETTE.length] + '90', 
                         borderColor: COLOR_PALETTE[index % COLOR_PALETTE.length],
                         borderWidth: 1
                     });
                 }
+
+                // --- ===== NUEVO: AÑADIR DATASET DE PRONÓSTICO (BARRAS RAYADAS) ===== ---
+                const forecast_list = allPredictionsCache[ciudad]?.pred_owm_5day;
+
+                // Solo si la métrica es 'temp' y hay datos
+                if (metric === 'temp' && forecast_list && forecast_list.length > 0) {
+                    
+                    // Calculamos la variación (Max - Min) del pronóstico
+                    const forecastVariationData = forecast_list.map(day => {
+                        const dateObj = new Date(day.date);
+                        dateObj.setUTCHours(12, 0, 0, 0); // Centrar la barra en el día
+                        return {
+                            x: dateObj,
+                            y: (day.max - day.min) 
+                        };
+                    });
+                    
+                    if (forecastVariationData.length > 0) {
+                        const color = COLOR_PALETTE[index % COLOR_PALETTE.length];
+                        datasets.push({
+                            label: `Pronóstico Variación ${ciudad}`,
+                            data: forecastVariationData,
+                            // --- ¡AQUÍ ESTÁ LA MAGIA! ---
+                            backgroundColor: createStripedPattern(color),
+                            borderColor: color,
+                            borderWidth: 1
+                        });
+                    }
+                }
+                // --- ===== FIN DE NUEVA SECCIÓN ===== ---
+
             });
 
-            // 4. Crear el gráfico de barras
+            // --- Creación del gráfico de barras (sin cambios) ---
             if (datasets.length > 0) {
                 myVariationChart = new Chart(variationCtx, {
                     type: 'bar',
@@ -736,7 +887,7 @@
                                 time: { unit: 'day', tooltipFormat: 'dd MMM yyyy', displayFormats: { day: 'dd MMM' } },
                                 title: { display: true, text: 'Fecha', color: textColor },
                                 ticks: { color: textColor },
-                                grid: { color: 'rgba(0,0,0,0)' } // Sin grid vertical
+                                grid: { color: 'rgba(0,0,0,0)' }
                             },
                             y: {
                                 title: { display: true, text: `Variación ${currentMetric.label} (${currentMetric.unit})`, color: textColor },
@@ -752,7 +903,6 @@
                     }
                 });
             } else {
-                // Mensaje si no hay datos
                 variationCtx.clearRect(0, 0, variationCtx.canvas.width, variationCtx.canvas.height);
                 variationCtx.font = "16px Inter"; 
                 variationCtx.fillStyle = textColor; 
@@ -760,19 +910,13 @@
                 variationCtx.fillText("No hay suficientes datos para calcular la variación diaria.", variationCtx.canvas.width / 2, 50);
             }
         }
-        // --- FIN NUEVO ---
 
 
         // --- Funciones del Mapa ---
-
-        /**
-         * MODIFICADO: Inicializa el mapa de Leaflet (sensible a Dark Mode).
-         */
         async function initMap() {
             try {
                 map = L.map('map-container').setView([20, 0], 2); 
                 
-                // --- NUEVO: Definir ambas capas de tiles ---
                 lightTileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 });
@@ -781,13 +925,11 @@
                     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
                 });
                 
-                // Añadir la capa correcta según el modo actual
                 if (document.body.classList.contains('dark-mode')) {
                     darkTileLayer.addTo(map);
                 } else {
                     lightTileLayer.addTo(map);
                 }
-                // --- FIN NUEVO ---
 
                 const response = await fetch(MAP_DATA_URL);
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -807,12 +949,7 @@
                         if (!currentValues.includes(cityOption.value) && currentValues.length < 5) {
                             const newValues = [...currentValues, cityOption.value];
                             choicesInstance.setChoiceByValue(newValues); 
-                            
-                            // --- INICIO DE CORRECCIÓN DE BUG ---
-                            // Llamar a updateDashboard() manualmente, ya que setChoiceByValue
-                            // no siempre dispara el evento 'change' de forma fiable.
                             updateDashboard();
-                            // --- FIN DE CORRECCIÓN DE BUG ---
                         }
                     });
                     mapMarkers[city.ciudad] = marker;
@@ -823,7 +960,6 @@
             }
         }
         
-        // ... (highlightMapMarkers, getTempColor no cambian) ...
         function highlightMapMarkers(selectedCitiesClean) {
             Object.keys(mapMarkers).forEach(ciudad => {
                 const marker = mapMarkers[ciudad];
@@ -835,6 +971,7 @@
                 }
             });
         }
+
         function getTempColor(temp) {
             if (temp < 0) return '#0033cc'; 
             if (temp < 10) return '#0099ff'; 
@@ -843,51 +980,40 @@
             return '#ff3300'; 
         }
 
-        // --- NUEVO: Funciones de Dark Mode ---
+        // --- Funciones de Dark Mode ---
         
-        /**
-         * Activa o desactiva el Dark Mode.
-         */
         function toggleDarkMode() {
             const body = document.body;
             body.classList.toggle('dark-mode');
             const isDarkMode = body.classList.contains('dark-mode');
             
-            // 1. Guardar preferencia
             localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
 
-            // 2. Cambiar icono
             document.getElementById('dark-mode-icon').setAttribute('data-feather', isDarkMode ? 'sun' : 'moon');
-            feather.replace(); // Actualizar el icono
+            feather.replace(); 
 
-            // 3. Cambiar tiles del mapa
             updateMapTiles(isDarkMode);
 
-            // 4. Redibujar el gráfico con nuevos colores
-            // Re-leemos la métrica y los datos de la caché para solo redibujar el gráfico
             const checkedMetricRadio = document.querySelector('input[name="metric"]:checked');
             const selectedMetric = checkedMetricRadio ? checkedMetricRadio.value : 'temp';
-            const checkedHourRadio = document.querySelector('input[name="hour-filter"]:checked'); // <-- NUEVO
-            const selectedHour = checkedHourRadio ? checkedHourRadio.value : 'all'; // <-- NUEVO
+            const checkedHourRadio = document.querySelector('input[name="hour-filter"]:checked');
+            const selectedHour = checkedHourRadio ? checkedHourRadio.value : 'all';
             const selectedCitiesValues = choicesInstance.getValue(true);
             
             if (selectedCitiesValues.length > 0) {
                  const cityDataMap = {};
                  selectedCitiesValues.forEach(val => {
-                     if (allDataCache[val]) { // Asegurarse que los datos están en caché
+                     if (allDataCache[val]) {
                          cityDataMap[val.split(',')[0]] = allDataCache[val];
                      }
                  });
-                 updateChart(cityDataMap, selectedMetric, selectedHour); // MODIFICADO
-                 updateVariationChart(cityDataMap, selectedMetric); // <-- NUEVO
+                 updateChart(cityDataMap, selectedMetric, selectedHour);
+                 updateVariationChart(cityDataMap, selectedMetric);
             }
         }
 
-        /**
-         * Actualiza las capas del mapa (tiles) según el modo.
-         */
         function updateMapTiles(isDarkMode) {
-            if (!map || !lightTileLayer || !darkTileLayer) return; // Asegurarse que el mapa esté listo
+            if (!map || !lightTileLayer || !darkTileLayer) return;
             if (isDarkMode) {
                 if (map.hasLayer(lightTileLayer)) map.removeLayer(lightTileLayer);
                 if (!map.hasLayer(darkTileLayer)) map.addLayer(darkTileLayer);
@@ -896,25 +1022,21 @@
                 if (!map.hasLayer(lightTileLayer)) map.addLayer(lightTileLayer);
             }
         }
-        // --- FIN NUEVO ---
 
 
         // --- Función de Inicialización ---
-
-        /**
-         * MODIFICADO: Inicializa la aplicación (sensible a Dark Mode).
-         */
         async function init() {
-            // --- NUEVO: Dark Mode Check ---
-            // Debe ir ANTES de initMap() y updateDashboard()
+            // --- Dark Mode Check ---
             if (localStorage.getItem('theme') === 'dark') {
                 document.body.classList.add('dark-mode');
                 document.getElementById('dark-mode-icon').setAttribute('data-feather', 'sun');
             } else {
                 document.getElementById('dark-mode-icon').setAttribute('data-feather', 'moon');
             }
-            feather.replace(); // Renderizar el icono inicial del toggle
-            // --- FIN NUEVO ---
+            feather.replace();
+            
+            // --- NUEVO: Cargar predicciones ANTES de todo lo demás ---
+            await loadPredictions(); 
 
             choicesInstance = new Choices(citySelectorElement, {
                 allowHTML: false, maxItemCount: 5, removeItemButton: true,
@@ -931,12 +1053,13 @@
                     .map(parts => ({ value: `${parts[0]},${parts[1]}`, label: parts[0] }));
                 cityOptionsList = ciudades;
                 
-                await initMap(); // initMap AHORA depende de la clase del body
+                await initMap(); 
                 
                 choicesInstance.setChoices(ciudades, 'value', 'label', false);
                 choicesInstance.setChoiceByValue(['Madrid,ES', 'León,ES']); 
                 
-                await updateDashboard(); // updateDashboard AHORA depende de la clase del body
+                // updateDashboard ahora tendrá acceso a allPredictionsCache
+                await updateDashboard(); 
             
             } catch (error) {
                 console.error("Error al inicializar la aplicación:", error);
@@ -947,10 +1070,7 @@
             // Configurar Listeners
             citySelectorElement.addEventListener('change', async () => await updateDashboard());
             metricRadios.forEach(radio => radio.addEventListener('change', async () => await updateDashboard()));
-            
-            // --- NUEVO: Listener para filtro de hora ---
             hourFilterRadios.forEach(radio => radio.addEventListener('change', async () => await updateDashboard()));
-            // --- FIN NUEVO ---
             
             timeRangeButtons.forEach(button => {
                 button.addEventListener('click', async (e) => {
@@ -962,7 +1082,6 @@
                 });
             });
             
-            // --- NUEVO: Listener para Dark Mode ---
             darkModeToggle.addEventListener('click', toggleDarkMode);
         }
         
@@ -972,6 +1091,3 @@
     </script>
 </body>
 </html>
-
-
-
