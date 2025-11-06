@@ -38,3 +38,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-05T14:21:00.359190,Santa Cruz,28.23,32.85,27.85,29,81,11.124,muy nuboso,14.5995,120.9842
 2025-11-05T22:19:34.671303,Santa Cruz,27.87,32.38,27.79,28,84,11.124,nubes dispersas,14.5995,120.9842
 2025-11-06T06:28:56.474191,Santa Cruz,33.07,40.07,31.7,33.34,64,12.96,algo de nubes,14.5995,120.9842
+2025-11-06T07:00:14.640722,Santa Cruz,33.54,40.54,32.81,33.96,67,12.96,algo de nubes,14.5995,120.9842
