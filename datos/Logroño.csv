@@ -40,3 +40,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-06T06:25:17.818608,Logroño,8.72,7.65,8.72,8.72,87,7.416,muy nuboso,42.4658,-2.4486
 2025-11-06T06:56:25.096705,Logroño,7.72,6.48,7.72,7.72,93,7.416,nubes dispersas,42.4658,-2.4486
 2025-11-06T07:05:12.802765,Logroño,7.72,6.48,7.72,7.72,93,7.416,nubes dispersas,42.4658,-2.4486
+2025-11-06T07:17:38.426914,Logroño,7.72,7.72,7.72,7.72,87,1.836,algo de nubes,42.4658,-2.4486

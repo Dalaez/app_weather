@@ -40,3 +40,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-06T06:26:43.870928,Bratislava,3.66,0.83,1.81,5.42,92,11.124,bruma,48.1486,17.1077
 2025-11-06T06:57:55.325361,Bratislava,5.33,2.86,3.68,5.96,89,11.016,cielo claro,48.1486,17.1077
 2025-11-06T07:06:36.406622,Bratislava,5.01,2.45,3.81,5.96,90,11.124,algo de nubes,48.1486,17.1077
+2025-11-06T07:19:00.806753,Bratislava,5.79,3.41,5.32,6.51,88,11.016,cielo claro,48.1486,17.1077

@@ -40,3 +40,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-06T06:26:24.222130,Vitoria-Gasteiz,10.16,9.32,9.67,10.46,80,22.212,muy nuboso,42.8467,-2.6731
 2025-11-06T06:57:34.720236,Vitoria-Gasteiz,10.16,9.24,9.67,10.46,77,16.092,nubes dispersas,42.8467,-2.6731
 2025-11-06T07:06:17.248619,Vitoria-Gasteiz,10.03,9.1,9.36,10.46,77,11.268,nubes dispersas,42.8467,-2.6731
+2025-11-06T07:18:42.005707,Vitoria-Gasteiz,10.04,9.11,9.36,10.46,77,11.268,nubes dispersas,42.85,-2.673

@@ -40,3 +40,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-06T06:24:33.648478,Ciutat Vella,18.72,18.45,16.4,19.95,69,22.536,lluvia ligera,41.3851,2.1734
 2025-11-06T06:55:38.739220,Ciutat Vella,18.36,18.18,16.03,19.95,74,32.184,tormenta con lluvia,41.3851,2.1734
 2025-11-06T07:04:29.986212,"Sant Pere, Santa Caterina i La Ribera",18.13,18.01,16.29,19.85,77,18.503999999999998,tormenta con lluvia,41.3851,2.1734
+2025-11-06T07:16:55.992983,Eixample,17.76,17.58,16.25,19.81,76,18.503999999999998,tormenta con lluvia,41.3907,2.1745
