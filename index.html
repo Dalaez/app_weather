@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datalaria - Dashboard Climático (v2.8.0 - Rango Personalizado)</title>
+    <title>Datalaria - Dashboard Climático (v2.9.0 - Comparativa IA)</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -15,14 +15,12 @@
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
     <style>
-        /* --- CSS (Modificado para Super-Cards, Spinner y Dark Mode) --- */
+        /* --- CSS (Sin cambios) --- */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         
-        /* --- Transiciones --- */
         body, #controls-container, #chart-container, .kpi-card, .selector-group label, .time-btn {
             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
-
         body { 
             font-family: 'Inter', sans-serif; 
             background: linear-gradient(135deg, #f5f7fa 0%, #d6e0ea 100%); 
@@ -51,7 +49,6 @@
         
         #chart-container { width: 100%; padding: 20px; box-sizing: border-box; min-height: 500px; position: relative; } 
         
-        /* Estilo para el contenedor del nuevo gráfico */
         #chart-container-variation {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(10px);
@@ -63,9 +60,8 @@
             box-sizing: border-box;
         }
 
-        /* --- NUEVO: Estilos para Rango Personalizado --- */
         #custom-range-container {
-            display: none; /* Oculto por defecto */
+            display: none;
             align-items: center;
             gap: 10px;
         }
@@ -91,18 +87,15 @@
             font-size: 14px;
         }
 
-        /* Popup del mapa */
         .leaflet-popup-content-wrapper { border-radius: 8px; }
         .leaflet-popup-content { font-family: 'Inter', sans-serif; }
         .popup-title { font-weight: bold; font-size: 1.1em; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-bottom: 5px; }
         .popup-temp { font-size: 1.3em; font-weight: 600; }
 
-        /* Super-Cards */
         .kpi-icon, .kpi-icon-main { width: 1em; height: 1em; margin-right: 8px; vertical-align: -0.125em; stroke-width: 2.5; color: #555; }
         .kpi-icon-main { width: 1.2em; height: 1.2em; margin-right: 10px; color: #333; }
         .sparkline-container { width: 100%; height: 50px; margin: 15px 0 10px 0; }
         
-        /* Loading Spinner */
         #loading-spinner {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(255, 255, 255, 0.7);
@@ -118,7 +111,6 @@
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         
-        /* Botón Dark Mode */
         #dark-mode-toggle-container {
             position: absolute;
             top: 20px;
@@ -146,7 +138,6 @@
             transition: color 0.3s ease;
         }
 
-        /* Reglas de Dark Mode */
         body.dark-mode {
             background: #1a2533;
             color: #f5f7fa;
@@ -158,12 +149,11 @@
         body.dark-mode #chart-container,
         body.dark-mode #chart-container-variation, 
         body.dark-mode .kpi-card {
-            background: rgba(44, 62, 80, 0.85); /* #2c3e50 con opacidad */
+            background: rgba(44, 62, 80, 0.85);
             border-color: rgba(93, 109, 126, 0.5);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
         }
         
-        /* Controles */
         body.dark-mode .selector-group label, 
         body.dark-mode .time-btn {
             background-color: #34495e;
@@ -181,7 +171,6 @@
             box-shadow: 0 2px 8px rgba(78, 115, 224, 0.3);
         }
         
-        /* --- NUEVO: Dark Mode para Rango Personalizado --- */
         body.dark-mode .custom-range-inputs {
             background-color: #34495e;
             border-right: 1px solid #2c3e50;
@@ -193,10 +182,9 @@
             background-color: #4a6582;
             border-color: #5d6d7e;
             color: #f5f7fa;
-            color-scheme: dark; /* Importante para el picker nativo */
+            color-scheme: dark;
         }
 
-        /* Choices.js */
         body.dark-mode .choices__inner {
             background-color: #34495e;
             border-color: #5d6d7e;
@@ -214,7 +202,6 @@
             background-color: #4a6582;
         }
 
-        /* Tarjetas KPI */
         body.dark-mode .kpi-card h3 { color: #ecf0f1; }
         body.dark-mode .kpi-card .kpi-main { color: #f5f7fa; }
         body.dark-mode .kpi-card .kpi-main span { color: #bdc3c7; }
@@ -224,7 +211,6 @@
         body.dark-mode .kpi-hist { color: #bdc3c7; border-top-color: #34495e; }
         body.dark-mode .kpi-hist-item .date { color: #95a5a6; }
         
-        /* Popup Mapa */
         body.dark-mode .leaflet-popup-content-wrapper {
             background-color: #2c3e50;
             color: #f5f7fa;
@@ -233,16 +219,14 @@
         body.dark-mode .leaflet-popup-tip { background-color: #2c3e50; }
         body.dark-mode .popup-title { border-bottom-color: #34495e; }
         
-        /* Spinner */
         body.dark-mode #loading-spinner {
-            background: rgba(26, 37, 51, 0.7); /* #1a2533 con opacidad */
+            background: rgba(26, 37, 51, 0.7);
         }
         body.dark-mode .spinner {
             border: 5px solid #34495e;
             border-top: 5px solid #4e73e0;
         }
         
-        /* Botón Dark Mode */
         body.dark-mode #dark-mode-toggle {
             background: #2c3e50;
             border-color: #34495e;
@@ -294,7 +278,8 @@
                     <button class="time-btn" data-range="365">1A</button>
                     <button class="time-btn" data-range="1825">5A</button>
                     <button class="time-btn active" data-range="all">Todo</button>
-                    <button class="time-btn" data-range="custom">Personalizado</button> </div>
+                    <button class="time-btn" data-range="custom">Personalizado</button> 
+                </div>
             </fieldset>
         </div>
 
@@ -357,6 +342,7 @@
         const DATA_FOLDER_URL = '/apps/weather/datos/';
         const MAP_DATA_URL = '/apps/weather/city_locations.json';
         const PREDICTIONS_URL = '/apps/weather/predicciones.json'; 
+        const MIN_RECORDS_FOR_IA = 10; // <-- NUEVO: Para la comparativa de IA
         
         const citySelectorElement = document.getElementById('city-select');
         const kpiContainer = document.getElementById('kpi-container');
@@ -368,7 +354,6 @@
         const loadingSpinner = document.getElementById('loading-spinner');
         const darkModeToggle = document.getElementById('dark-mode-toggle');
         
-        // --- NUEVO: Elementos de Rango Personalizado ---
         const customRangeContainer = document.getElementById('custom-range-container');
         const startDateInput = document.getElementById('start-date');
         const endDateInput = document.getElementById('end-date');
@@ -379,8 +364,8 @@
         let allDataCache = {}; 
         let allPredictionsCache = {};
         let currentTimeRange = 'all'; 
-        let customStartDate = null; // NUEVO
-        let customEndDate = null; // NUEVO
+        let customStartDate = null;
+        let customEndDate = null;
         const COLOR_PALETTE = ['#e6194B', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4', '#42d4f4', '#f032e6', '#bfef45', '#fabed4'];
         
         let map;
@@ -545,6 +530,96 @@
             `;
         }
 
+        // --- NUEVA FUNCIÓN AUXILIAR (para la Super-Card) ---
+        /**
+         * Construye el HTML para el bloque de predicción de IA (1 día)
+         * y lo compara con el pronóstico de OWM para mañana.
+         * @param {Object} cityPredictionData - El objeto completo de la ciudad de `allPredictionsCache`
+         * @param {string} selectedMetric - La métrica actual (ej. "temp")
+         * @returns {string} El string HTML para insertar.
+         */
+        function buildIAForecastHTML(cityPredictionData, selectedMetric) {
+            // Solo mostramos esto si la métrica es Temperatura
+            if (selectedMetric !== 'temp' || !cityPredictionData) {
+                return '';
+            }
+
+            const ia_preds = cityPredictionData.pred_ia;
+            const owm_forecast = cityPredictionData.pred_owm_5day;
+
+            // Caso 1: No hay datos de IA (el script de python no incluyó la clave)
+            if (!ia_preds) return '';
+
+            let html = `
+                <div class="kpi-hist" style="margin-top: 15px;">
+                    <strong>Predicción IA (Mañana):</strong>
+            `;
+
+            // Caso 2: La IA no pudo predecir (datos insuficientes)
+            if (ia_preds.max === null) {
+                html += `
+                    <div class="kpi-hist-item">
+                        <span><i data-feather="cpu" class="kpi-icon"></i> Mi IA</span>
+                        <span class="date" style="font-weight: 600;">
+                            Datos insuf. (${ia_preds.registros}/${MIN_RECORDS_FOR_IA})
+                        </span>
+                    </div>
+                `;
+            } 
+            // Caso 3: ¡Tenemos predicción de IA! La comparamos con OWM
+            else if (owm_forecast && owm_forecast.length > 0) {
+                const owm_tomorrow = owm_forecast[0]; // El primer día del pronóstico es mañana
+
+                // --- Función interna para comparar y colorear ---
+                const getComparisonHTML = (ia_val, owm_val, unit) => {
+                    if (owm_val === undefined || owm_val === null) return ''; // No hay OWM para comparar
+
+                    const diff = ia_val - owm_val;
+                    let color = '#7f8c8d'; // Gris por defecto
+                    if (diff > 0.5) color = '#e6194B'; // Rojo (IA predice más calor)
+                    if (diff < -0.5) color = '#4363d8'; // Azul (IA predice más frío)
+
+                    return `
+                        (vs ${owm_val.toFixed(1)}${unit}) 
+                        <span style="color: ${color}; font-weight: 600;">
+                            (${diff >= 0 ? '+' : ''}${diff.toFixed(1)}${unit})
+                        </span>
+                    `;
+                };
+                // --- Fin función interna ---
+
+                html += `
+                    <div class="kpi-hist-item">
+                        <span><i data-feather="cpu" class="kpi-icon"></i> Max: <strong>${ia_preds.max.toFixed(1)}°C</strong></span>
+                        <span class="date">${getComparisonHTML(ia_preds.max, owm_tomorrow.max, '°C')}</span>
+                    </div>
+                    <div class="kpi-hist-item">
+                        <span><i data-feather="cpu" class="kpi-icon"></i> Min: <strong>${ia_preds.min.toFixed(1)}°C</strong></span>
+                        <span class="date">${getComparisonHTML(ia_preds.min, owm_tomorrow.min, '°C')}</span>
+                    </div>
+                    <div class="kpi-hist-item">
+                        <span><i data-feather="cpu" class="kpi-icon"></i> Media: <strong>${ia_preds.media.toFixed(1)}°C</strong></span>
+                        <span class="date">${getComparisonHTML(ia_preds.media, owm_tomorrow.media, '°C')}</span>
+                    </div>
+                `;
+            }
+            // Caso 4: Hay datos de IA pero no de OWM (fallback)
+            else if (ia_preds.max !== null) {
+                html += `
+                    <div class="kpi-hist-item">
+                        <span><i data-feather="cpu" class="kpi-icon"></i> Max: <strong>${ia_preds.max.toFixed(1)}°C</strong></span>
+                    </div>
+                    <div class="kpi-hist-item">
+                        <span><i data-feather="cpu" class="kpi-icon"></i> Min: <strong>${ia_preds.min.toFixed(1)}°C</strong></span>
+                    </div>
+                `;
+            }
+
+            html += '</div>';
+            return html;
+        }
+
+
         async function updateDashboard() { 
             loadingSpinner.style.display = 'flex'; 
 
@@ -592,6 +667,9 @@
             loadingSpinner.style.display = 'none'; 
         }
 
+        /**
+         * MODIFICADO: Actualiza las tarjetas de KPI (incluye pronóstico OWM y IA).
+         */
         function updateKPIs(cityDataMap, selectedMetric) {
             kpiContainer.innerHTML = ""; 
             const metricInfo = METRIC_MAP[selectedMetric];
@@ -618,7 +696,10 @@
                     .map(row => ({ x: row.fecha_hora, y: row[metricInfo.key] }));
                 const sparkCanvasId = `spark-${ciudad.replace(/ /g, '_')}-${selectedMetric}`;
                 const kpiMainId = `kpi-main-${ciudad.replace(/ /g, '_')}-${selectedMetric}`;
-                const forecast_list = allPredictionsCache[ciudad]?.pred_owm_5day;
+                
+                // --- MODIFICADO: Obtener el objeto de predicción completo ---
+                const cityPredictionData = allPredictionsCache[ciudad];
+                const forecast_list = cityPredictionData?.pred_owm_5day; // Usar el objeto anterior
 
                 card.innerHTML = `
                     <h3>${ciudad}</h3>
@@ -644,8 +725,11 @@
                             <span class="date">(${minDate})</span>
                         </div>
                     </div>
+
                     ${buildForecastHTML(forecast_list, selectedMetric)} 
-                `;
+
+                    ${buildIAForecastHTML(cityPredictionData, selectedMetric)} 
+                    `;
                 kpiContainer.appendChild(card);
 
                 const kpiElement = document.getElementById(kpiMainId);
@@ -676,9 +760,7 @@
             feather.replace();
         }
 
-        /**
-         * MODIFICADO: Actualiza el gráfico (lógica de fechas personalizada).
-         */
+        
         function updateChart(cityDataMap, metric, selectedHour) {
             if (myChart) { myChart.destroy(); }
             const currentMetric = METRIC_MAP[metric];
@@ -688,10 +770,9 @@
             const gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.1)';
             const textColor = isDarkMode ? '#f5f7fa' : '#2c3e50';
             
-            // --- LÓGICA DE FECHAS MODIFICADA ---
             const now = new Date();
             let startDate, endDate;
-            endDate = new Date(); // Por defecto, 'hasta' es 'ahora'
+            endDate = new Date(); 
 
             if (currentTimeRange === 'custom' && customStartDate && customEndDate) {
                 startDate = customStartDate;
@@ -699,19 +780,16 @@
             } else if (currentTimeRange !== 'all') {
                 startDate = new Date(now.getTime() - (Number(currentTimeRange) * 24 * 60 * 60 * 1000));
             } else {
-                startDate = new Date(0); // Epoch (principio de los tiempos)
+                startDate = new Date(0);
             }
-            // --- FIN LÓGICA DE FECHAS ---
             
             const datasets = [];
             Object.keys(cityDataMap).forEach((ciudad, index) => {
                 const data = cityDataMap[ciudad];
                 if (!data || !data.records || data.records.length === 0) { return; }
                 
-                // --- FILTRADO DE DATOS MODIFICADO ---
                 const filteredData = data.records
                     .filter(row => {
-                        // La lógica de 'startDate' y 'endDate' ahora es universal
                         const dateFilter = row.fecha_hora >= startDate && row.fecha_hora <= endDate;
                         const valueFilter = row[currentMetric.key] !== null && row[currentMetric.key] !== undefined;
                         
@@ -734,7 +812,7 @@
                     });
                 }
 
-                // --- DATASET DE PRONÓSTICO (Sin cambios) ---
+                // --- DATASET DE PRONÓSTICO OWM (Sin cambios) ---
                 const forecast_list = allPredictionsCache[ciudad]?.pred_owm_5day;
                 if (metric === 'temp' && selectedHour === 'all' && forecast_list && forecast_list.length > 0) {
                     const forecastData = forecast_list.map(day => {
@@ -796,9 +874,7 @@
             }
         }
         
-        /**
-         * MODIFICADO: Actualiza el gráfico de variación (lógica de fechas personalizada).
-         */
+        
         function updateVariationChart(cityDataMap, metric) {
             if (myVariationChart) { myVariationChart.destroy(); }
             const currentMetric = METRIC_MAP[metric];
@@ -808,10 +884,9 @@
             const gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.1)';
             const textColor = isDarkMode ? '#f5f7fa' : '#2c3e50';
 
-            // --- LÓGICA DE FECHAS MODIFICADA ---
             const now = new Date();
             let startDate, endDate;
-            endDate = new Date(); // Por defecto, 'hasta' es 'ahora'
+            endDate = new Date(); 
 
             if (currentTimeRange === 'custom' && customStartDate && customEndDate) {
                 startDate = customStartDate;
@@ -819,9 +894,8 @@
             } else if (currentTimeRange !== 'all') {
                 startDate = new Date(now.getTime() - (Number(currentTimeRange) * 24 * 60 * 60 * 1000));
             } else {
-                startDate = new Date(0); // Epoch (principio de los tiempos)
+                startDate = new Date(0);
             }
-            // --- FIN LÓGICA DE FECHAS ---
 
             const datasets = [];
             
@@ -829,7 +903,6 @@
                 const data = cityDataMap[ciudad];
                 if (!data || !data.records || data.records.length === 0) { return; }
 
-                // --- FILTRADO DE DATOS MODIFICADO ---
                 const filteredRecords = data.records
                     .filter(row => row.fecha_hora >= startDate && row.fecha_hora <= endDate && row[currentMetric.key] !== null && row[currentMetric.key] !== undefined);
 
@@ -864,7 +937,7 @@
                     });
                 }
 
-                // --- DATASET DE PRONÓSTICO (Sin cambios) ---
+                // --- DATASET DE PRONÓSTICO OWM (Sin cambios) ---
                 const forecast_list = allPredictionsCache[ciudad]?.pred_owm_5day;
                 if (metric === 'temp' && forecast_list && forecast_list.length > 0) {
                     const forecastVariationData = forecast_list.map(day => {
@@ -1085,7 +1158,6 @@
             hourFilterRadios.forEach(radio => radio.addEventListener('change', async () => await updateDashboard()));
             darkModeToggle.addEventListener('click', toggleDarkMode);
             
-            // Listener de Botones de Rango (MODIFICADO)
             timeRangeButtons.forEach(button => {
                 button.addEventListener('click', async (e) => {
                     e.preventDefault();
@@ -1095,30 +1167,27 @@
 
                     if (currentTimeRange === 'custom') {
                         customRangeContainer.style.display = 'block';
-                        // No llamamos a updateDashboard, esperamos a que el usuario elija fechas
                     } else {
                         customRangeContainer.style.display = 'none';
                         customStartDate = null;
                         customEndDate = null;
-                        await updateDashboard(); // Llamar como antes
+                        await updateDashboard();
                     }
                 });
             });
             
-            // --- NUEVOS LISTENERS para Rango Personalizado ---
             startDateInput.addEventListener('change', async () => {
                 customStartDate = new Date(startDateInput.value);
-                if (customEndDate) { // Solo actualiza si ambas fechas están puestas
+                if (customEndDate) {
                     await updateDashboard();
                 }
             });
             
             endDateInput.addEventListener('change', async () => {
                 customEndDate = new Date(endDateInput.value);
-                // Ajuste: Poner la fecha de fin al final del día (23:59)
                 customEndDate.setHours(23, 59, 59, 999);
                 
-                if (customStartDate) { // Solo actualiza si ambas fechas están puestas
+                if (customStartDate) {
                     await updateDashboard();
                 }
             });
