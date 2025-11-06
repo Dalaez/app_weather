@@ -39,3 +39,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-05T22:21:26.619649,Mermoz Boabab,28.84,33.69,27.88,28.84,77,7.416,algo de nubes,14.7167,-17.4677
 2025-11-06T06:30:49.523412,Mermoz Boabab,27.17,30.33,24.88,27.17,82,7.416,cielo claro,14.7167,-17.4677
 2025-11-06T07:02:13.300850,Mermoz Boabab,27.73,31.43,24.88,27.73,80,7.416,cielo claro,14.7167,-17.4677
+2025-11-06T07:10:34.834233,Mermoz Boabab,27.73,31.43,27.73,27.73,80,3.204,cielo claro,14.7167,-17.4677
