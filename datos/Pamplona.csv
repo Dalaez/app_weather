@@ -41,3 +41,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-06T06:56:53.447557,Pamplona,9.95,9.95,9.95,9.95,87,0.0,nubes dispersas,42.8125,-1.6458
 2025-11-06T07:05:39.150694,Pamplona,9.95,9.95,9.95,9.95,87,0.0,nubes dispersas,42.8125,-1.6458
 2025-11-06T07:18:04.307482,Pamplona,10.95,10.09,10.95,10.95,76,0.0,cielo claro,42.8125,-1.6458
+2025-11-06T14:17:53.969277,Pamplona,13.95,12.92,13.52,13.95,58,6.444,muy nuboso,42.8125,-1.6458
