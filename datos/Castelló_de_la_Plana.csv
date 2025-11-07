@@ -43,3 +43,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-06T07:17:07.759024,Castellón de la Plana,15.59,14.85,15.59,15.59,63,17.928,muy nuboso,39.9864,-0.0375
 2025-11-06T14:16:55.064503,Castellón de la Plana,22.49,21.89,22.49,22.49,42,11.484,cielo claro,39.9864,-0.0375
 2025-11-06T22:15:17.191298,Castellón de la Plana,15.27,14.39,15.27,15.27,59,7.884,nubes dispersas,39.9864,-0.0375
+2025-11-07T06:24:34.089036,Castellón de la Plana,12.74,11.79,12.74,12.74,66,11.376000000000001,algo de nubes,39.9864,-0.0375
