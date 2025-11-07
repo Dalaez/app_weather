@@ -45,3 +45,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-06T22:15:09.824543,Burgos,6.29,2.67,5.64,6.3,92,20.376,cielo claro,42.3439,-3.6969
 2025-11-07T06:24:27.025985,Burgos,6.9,3.88,6.86,7.3,96,16.668,nubes dispersas,42.3439,-3.6969
 2025-11-07T14:15:50.212678,Burgos,10.7,10.38,10.18,11.19,98,20.376,llovizna ligera,42.3439,-3.6969
+2025-11-07T22:14:27.676853,Burgos,7.89,6.68,7.18,8.41,99,7.416,lluvia ligera,42.3439,-3.6969

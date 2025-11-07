@@ -45,3 +45,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-06T22:16:25.745171,San Martin,13.64,13.1,12.83,14.35,78,11.124,muy nuboso,43.3224,-1.9842
 2025-11-07T06:25:39.907084,San Martin,11.69,10.82,10.38,11.79,73,14.472,cielo claro,43.3183,-1.9812
 2025-11-07T14:17:06.656909,San Martin,16.19,15.74,16.19,17.94,72,11.124,muy nuboso,43.3183,-1.9812
+2025-11-07T22:15:41.365578,San Martin,12.7,12.19,12.3,13.94,83,7.416,lluvia moderada,43.3183,-1.9812

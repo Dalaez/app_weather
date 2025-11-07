@@ -45,3 +45,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-06T22:17:19.605229,Bucharest,9.28,6.1,8.88,9.5,94,24.156,lluvia y llovizna ligera,44.4268,26.1025
 2025-11-07T06:26:31.639949,Bucharest,8.35,4.46,7.77,8.95,85,29.628000000000004,nubes,44.4268,26.1025
 2025-11-07T14:17:58.542621,Bucharest,8.32,5.05,8.08,9.11,93,22.212,lluvia ligera,44.4268,26.1025
+2025-11-07T22:16:33.786132,Bucharest,8.48,5.63,7.86,8.95,97,18.503999999999998,llovizna ligera,44.4268,26.1025
