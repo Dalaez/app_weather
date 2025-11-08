@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datalaria - Dashboard Climático (v3.1.2 - Bugfix Carga)</title>
+    <title>Datalaria - Dashboard Climático (v3.1.2 - Corrección Bilingüe)</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -667,7 +667,6 @@
             requestAnimationFrame(step);
         }
 
-        // --- MODIFICADO: Funciones bilingües ---
         function buildForecastHTML(forecastList, selectedMetric) {
             if (selectedMetric !== 'temp' || !forecastList || forecastList.length === 0) {
                 return '';
@@ -810,12 +809,9 @@
             loadingSpinner.style.display = 'none'; 
         }
 
-        /**
-         * MODIFICADO: Actualiza las tarjetas de KPI (bilingüe y con nuevos iconos).
-         */
         function updateKPIs(cityDataMap, selectedMetric) {
             kpiContainer.innerHTML = ""; 
-            const metricInfo = getMetricMap()[selectedMetric]; // MODIFICADO
+            const metricInfo = getMetricMap()[selectedMetric]; 
 
             Object.keys(cityDataMap).forEach((ciudad, index) => {
                 const data = cityDataMap[ciudad];
@@ -825,14 +821,12 @@
                 }
                 const stats = data.stats;
                 const latest = stats.latest;
-                // --- CORRECCIÓN: Asegurarse de que metricStats existe ---
                 const metricStats = stats[selectedMetric] || stats['temp'];
                 
                 const card = document.createElement('div');
                 card.className = 'kpi-card';
                 card.style.borderLeftColor = COLOR_PALETTE[index % COLOR_PALETTE.length];
                 
-                // --- MODIFICADO: Formato de fecha bilingüe ---
                 const latestDate = latest.fecha_hora.toLocaleString(currentLang, { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
                 const minDate = (metricStats.min && metricStats.min.date) ? metricStats.min.date.toLocaleDateString(currentLang) : 'N/A';
                 const maxDate = (metricStats.max && metricStats.max.date) ? metricStats.max.date.toLocaleDateString(currentLang) : 'N/A';
@@ -1023,7 +1017,8 @@
                                 type: 'time', 
                                 time: { unit: 'day', tooltipFormat: 'dd MMM yyyy, HH:mm', displayFormats: { hour: 'HH:mm', day: 'dd MMM', month: 'MMM yyyy' } },
                                 title: { display: true, text: translations[currentLang].chartDateHour, color: textColor },
-                                ticks: { color: textColor, source: 'auto' },
+                                // --- CORRECCIÓN: Eliminado 'source: "auto"' ---
+                                ticks: { color: textColor, autoSkip: true, maxTicksLimit: 20 },
                                 grid: { color: gridColor }
                             },
                             y: {
@@ -1153,7 +1148,8 @@
                                 type: 'time',
                                 time: { unit: 'day', tooltipFormat: 'dd MMM yyyy', displayFormats: { day: 'dd MMM' } },
                                 title: { display: true, text: translations[currentLang].chartDate, color: textColor },
-                                ticks: { color: textColor, source: 'auto' },
+                                // --- CORRECCIÓN: Eliminado 'source: "auto"' ---
+                                ticks: { color: textColor, autoSkip: true, maxTicksLimit: 20 },
                                 grid: { color: 'rgba(0,0,0,0)' }
                             },
                             y: {
@@ -1362,8 +1358,7 @@
                 
                 choicesInstance.setChoices(ciudades, 'value', 'label', false);
                 
-                // --- CORRECCIÓN: Línea restaurada ---
-                // Cargar ciudades por defecto
+                // --- CORRECCIÓN: Línea restaurada para carga inicial ---
                 choicesInstance.setChoiceByValue(['Madrid,ES', 'León,ES']); 
                 
                 // 6. Carga inicial del dashboard
