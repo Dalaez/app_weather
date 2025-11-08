@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datalaria - Dashboard Climático (v3.0.0 - Iconos Dinámicos)</title>
+    <title>Datalaria - Dashboard Climático (v3.1.0 - Bilingüe)</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/2.30.0/date-fns.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/2.30.0/locale/es/index.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/2.30.0/locale/en-US/index.min.js"></script>
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/styles/choices.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/scripts/choices.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
@@ -15,7 +19,7 @@
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
     <style>
-        /* --- CSS (Sin cambios) --- */
+        /* --- CSS (Modificado para el botón de idioma) --- */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         
         body, #controls-container, #chart-container, .kpi-card, .selector-group label, .time-btn {
@@ -111,12 +115,16 @@
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         
-        #dark-mode-toggle-container {
+        /* --- MODIFICADO: Contenedor para ambos botones --- */
+        #settings-toggles {
             position: absolute;
             top: 20px;
             right: 20px;
+            display: flex;
+            gap: 10px;
         }
-        #dark-mode-toggle {
+        /* Estilo base para ambos botones */
+        #dark-mode-toggle, #language-toggle {
             background: #fff;
             border: 1px solid #ddd;
             border-radius: 50%;
@@ -128,8 +136,12 @@
             align-items: center;
             transition: all 0.2s ease;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            color: #555;
         }
-        #dark-mode-toggle:hover {
+        #dark-mode-toggle:hover, #language-toggle:hover {
             background: #f4f4f4;
             transform: scale(1.1);
         }
@@ -138,6 +150,7 @@
             transition: color 0.3s ease;
         }
 
+        /* --- Reglas de Dark Mode --- */
         body.dark-mode {
             background: #1a2533;
             color: #f5f7fa;
@@ -227,11 +240,13 @@
             border-top: 5px solid #4e73e0;
         }
         
-        body.dark-mode #dark-mode-toggle {
+        /* --- MODIFICADO: Dark mode para ambos botones --- */
+        body.dark-mode #dark-mode-toggle, body.dark-mode #language-toggle {
             background: #2c3e50;
             border-color: #34495e;
+            color: #f5f7fa;
         }
-        body.dark-mode #dark-mode-toggle:hover {
+        body.dark-mode #dark-mode-toggle:hover, body.dark-mode #language-toggle:hover {
             background: #34495e;
         }
         body.dark-mode #dark-mode-toggle i {
@@ -246,54 +261,54 @@
         <div class="spinner"></div>
     </div>
 
-    <h1>Datalaria - Dashboard Climático</h1>
+    <h1 data-i18n-key="mainTitle"></h1>
 
     <div id="controls-container">
         <div id="city-select-container">
-            <label for="city-select" style="font-weight: bold; margin-bottom: 5px; display: block;">Selecciona hasta 5 ciudades:</label>
+            <label for="city-select" style="font-weight: bold; margin-bottom: 5px; display: block;" data-i18n-key="citySelectLabel"></label>
             <select id="city-select" multiple></select>
         </div>
         
         <div id="metric-select">
             <fieldset>
-                <legend>Métrica</legend>
+                <legend data-i18n-key="metricLegend"></legend>
                 <div class="selector-group">
                     <input type="radio" name="metric" value="temp" id="m-temp" checked>
-                    <label for="m-temp">Temperatura</label>
+                    <label for="m-temp" data-i18n-key="metricTemp"></label>
                     <input type="radio" name="metric" value="humidity" id="m-humidity">
-                    <label for="m-humidity">Humedad</label>
+                    <label for="m-humidity" data-i18n-key="metricHum"></label>
                     <input type="radio" name="metric" value="wind" id="m-wind">
-                    <label for="m-wind">Viento</label>
+                    <label for="m-wind" data-i18n-key="metricWind"></label>
                     <input type="radio" name="metric" value="clouds" id="m-clouds">
-                    <label for="m-clouds">Nubosidad</label>
+                    <label for="m-clouds" data-i18n-key="metricClouds"></label>
                     <input type="radio" name="metric" value="rain" id="m-rain">
-                    <label for="m-rain">Lluvia (1h)</label>
+                    <label for="m-rain" data-i18n-key="metricRain"></label>
                 </div>
             </fieldset>
         </div>
 
         <div id="time-range-select">
             <fieldset>
-                <legend>Rango</legend>
+                <legend data-i18n-key="rangeLegend"></legend>
                 <div class="selector-group">
-                    <button class="time-btn" data-range="7">1S</button>
-                    <button class="time-btn" data-range="30">1M</button>
-                    <button class="time-btn" data-range="90">3M</button>
-                    <button class="time-btn" data-range="365">1A</button>
-                    <button class="time-btn" data-range="1825">5A</button>
-                    <button class="time-btn active" data-range="all">Todo</button>
-                    <button class="time-btn" data-range="custom">Personalizado</button> 
+                    <button class="time-btn" data-range="7" data-i18n-key="range1S"></button>
+                    <button class="time-btn" data-range="30" data-i18n-key="range1M"></button>
+                    <button class="time-btn" data-range="90" data-i18n-key="range3M"></button>
+                    <button class="time-btn" data-range="365" data-i18n-key="range1A"></button>
+                    <button class="time-btn" data-range="1825" data-i18n-key="range5A"></button>
+                    <button class="time-btn active" data-range="all" data-i18n-key="rangeAll"></button>
+                    <button class="time-btn" data-range="custom" data-i18n-key="rangeCustom"></button> 
                 </div>
             </fieldset>
         </div>
 
         <div id="custom-range-container">
             <fieldset>
-                <legend>Rango Personalizado</legend>
+                <legend data-i18n-key="customRangeLegend"></legend>
                 <div class="custom-range-inputs">
-                    <label for="start-date">Desde:</label>
+                    <label for="start-date" data-i18n-key="customRangeFrom"></label>
                     <input type="date" id="start-date">
-                    <label for="end-date">Hasta:</label>
+                    <label for="end-date" data-i18n-key="customRangeTo"></label>
                     <input type="date" id="end-date">
                 </div>
             </fieldset>
@@ -301,46 +316,162 @@
 
         <div id="hour-filter-select">
             <fieldset>
-                <legend>Hora del Día</legend>
+                <legend data-i18n-key="hourLegend"></legend>
                 <div class="selector-group">
                     <input type="radio" name="hour-filter" value="all" id="h-all" checked>
-                    <label for="h-all">Todas</label>
+                    <label for="h-all" data-i18n-key="hourAll"></label>
                     <input type="radio" name="hour-filter" value="6" id="h-morning">
-                    <label for="h-morning">Mañana (06h)</label>
+                    <label for="h-morning" data-i18n-key="hourMorning"></label>
                     <input type="radio" name="hour-filter" value="14" id="h-afternoon">
-                    <label for="h-afternoon">Tarde (14h)</label>
+                    <label for="h-afternoon" data-i18n-key="hourAfternoon"></label>
                     <input type="radio" name="hour-filter" value="22" id="h-night">
-                    <label for="h-night">Noche (22h)</label>
+                    <label for="h-night" data-i18n-key="hourNight"></label>
                 </div>
             </fieldset>
         </div>
 
-        <div id="dark-mode-toggle-container">
-            <button id="dark-mode-toggle" aria-label="Toggle Dark Mode">
+        <div id="settings-toggles">
+            <button id="language-toggle" aria-label="Toggle Language"></button> <button id="dark-mode-toggle" aria-label="Toggle Dark Mode">
                 <i data-feather="moon" id="dark-mode-icon"></i>
             </button>
         </div>
     </div>
 
-    <h2>Mapa Interactivo</h2>
+    <h2 data-i18n-key="mapTitle"></h2>
     <div id="map-container"></div>
 
-    <h2>Datos más recientes</h2>
+    <h2 data-i18n-key="kpiTitle"></h2>
     <div id="kpi-container"></div>
 
-    <h2>Evolución Histórica</h2>
-    <p style="text-align: center; margin-top: -10px; color: #555;">(Todas las horas se muestran en tu zona horaria local)</p>
+    <h2 data-i18n-key="historyTitle"></h2>
+    <p style="text-align: center; margin-top: -10px; color: #555;" data-i18n-key="historySubtitle"></p>
     <div id="chart-container">
         <canvas id="myChart"></canvas>
     </div>
 
-    <h2>Variación Diaria</h2>
-    <p style="text-align: center; margin-top: -10px; color: #555;">(Rango entre la temperatura Máx. y Mín. de cada día)</p>
+    <h2 data-i18n-key="variationTitle"></h2>
+    <p style="text-align: center; margin-top: -10px; color: #555;" data-i18n-key="variationSubtitle"></p>
     <div id="chart-container-variation" style="min-height: 300px; position: relative; margin-top: 20px;">
         <canvas id="variationChart"></canvas>
     </div>
 
     <script>
+        // --- NUEVO: Diccionario de Traducciones ---
+        const translations = {
+            'es': {
+                'mainTitle': 'Datalaria - Dashboard Climático',
+                'citySelectLabel': 'Selecciona hasta 5 ciudades:',
+                'metricLegend': 'Métrica',
+                'metricTemp': 'Temperatura',
+                'metricHum': 'Humedad',
+                'metricWind': 'Viento',
+                'metricClouds': 'Nubosidad',
+                'metricRain': 'Lluvia (1h)',
+                'rangeLegend': 'Rango',
+                'range1S': '1S',
+                'range1M': '1M',
+                'range3M': '3M',
+                'range1A': '1A',
+                'range5A': '5A',
+                'rangeAll': 'Todo',
+                'rangeCustom': 'Personalizado',
+                'customRangeLegend': 'Rango Personalizado',
+                'customRangeFrom': 'Desde:',
+                'customRangeTo': 'Hasta:',
+                'hourLegend': 'Hora del Día',
+                'hourAll': 'Todas',
+                'hourMorning': 'Mañana (06h)',
+                'hourAfternoon': 'Tarde (14h)',
+                'hourNight': 'Noche (22h)',
+                'mapTitle': 'Mapa Interactivo',
+                'kpiTitle': 'Datos más recientes',
+                'historyTitle': 'Evolución Histórica',
+                'historySubtitle': '(Todas las horas se muestran en tu zona horaria local)',
+                'variationTitle': 'Variación Diaria',
+                'variationSubtitle': '(Rango entre la temperatura Máx. y Mín. de cada día)',
+                'kpiNoData': 'No hay datos recientes.',
+                'kpiEmpty': 'Selecciona una o más ciudades para ver los datos.',
+                'kpiFeels': 'Sensación',
+                'kpiHumidity': 'Humedad',
+                'kpiWind': 'Viento',
+                'kpiClouds': 'Nubosidad',
+                'kpiVisibility': 'Visibilidad',
+                'kpiRain': 'Lluvia (1h)',
+                'kpiSnow': 'Nieve (1h)',
+                'kpiHist': 'Histórico',
+                'kpiMax': 'Max',
+                'kpiMin': 'Min',
+                'forecastTitle': 'Pronóstico OWM (Max/Min)',
+                'iaTitle': 'Predicción IA (Mañana)',
+                'iaNoData': 'Datos insuf.',
+                'iaVsOWM': 'OWM',
+                'kpiMedia': 'Media',
+                'chartDateHour': 'Fecha y Hora',
+                'chartDate': 'Fecha',
+                'chartVariation': 'Variación',
+                'chartEmpty': 'No hay datos disponibles para la selección actual.',
+                'varChartEmpty': 'No hay suficientes datos para calcular la variación diaria.',
+                'fatalError': 'Error fatal: No se pudo cargar la lista de ciudades',
+                'choicesPlaceholder': 'Escribe para buscar...',
+            },
+            'en': {
+                'mainTitle': 'Datalaria - Climate Dashboard',
+                'citySelectLabel': 'Select up to 5 cities:',
+                'metricLegend': 'Metric',
+                'metricTemp': 'Temperature',
+                'metricHum': 'Humidity',
+                'metricWind': 'Wind',
+                'metricClouds': 'Cloudiness',
+                'metricRain': 'Rain (1h)',
+                'rangeLegend': 'Range',
+                'range1S': '1W',
+                'range1M': '1M',
+                'range3M': '3M',
+                'range1A': '1Y',
+                'range5A': '5Y',
+                'rangeAll': 'All',
+                'rangeCustom': 'Custom',
+                'customRangeLegend': 'Custom Range',
+                'customRangeFrom': 'From:',
+                'customRangeTo': 'To:',
+                'hourLegend': 'Time of Day',
+                'hourAll': 'All',
+                'hourMorning': 'Morning (06h)',
+                'hourAfternoon': 'Afternoon (14h)',
+                'hourNight': 'Night (22h)',
+                'mapTitle': 'Interactive Map',
+                'kpiTitle': 'Most Recent Data',
+                'historyTitle': 'Historical Evolution',
+                'historySubtitle': '(All times are shown in your local timezone)',
+                'variationTitle': 'Daily Variation',
+                'variationSubtitle': '(Range between Max. and Min. temperature of each day)',
+                'kpiNoData': 'No recent data.',
+                'kpiEmpty': 'Select one or more cities to see data.',
+                'kpiFeels': 'Feels like',
+                'kpiHumidity': 'Humidity',
+                'kpiWind': 'Wind',
+                'kpiClouds': 'Cloudiness',
+                'kpiVisibility': 'Visibility',
+                'kpiRain': 'Rain (1h)',
+                'kpiSnow': 'Snow (1h)',
+                'kpiHist': 'Historical',
+                'kpiMax': 'Max',
+                'kpiMin': 'Min',
+                'forecastTitle': 'OWM Forecast (Max/Min)',
+                'iaTitle': 'AI Prediction (Tomorrow)',
+                'iaNoData': 'Insuff. data',
+                'iaVsOWM': 'OWM',
+                'kpiMedia': 'Mean',
+                'chartDateHour': 'Date and Time',
+                'chartDate': 'Date',
+                'chartVariation': 'Variation',
+                'chartEmpty': 'No data available for the current selection.',
+                'varChartEmpty': 'Not enough data to calculate daily variation.',
+                'fatalError': 'Fatal Error: Could not load city list',
+                'choicesPlaceholder': 'Type to search...',
+            }
+        };
+
         // --- Configuración Global ---
         const CITIES_LIST_URL = '/apps/weather/ciudades.txt';
         const DATA_FOLDER_URL = '/apps/weather/datos/';
@@ -358,6 +489,9 @@
         const loadingSpinner = document.getElementById('loading-spinner');
         const darkModeToggle = document.getElementById('dark-mode-toggle');
         
+        // --- NUEVO: Selector de Idioma ---
+        const languageToggle = document.getElementById('language-toggle');
+        
         const customRangeContainer = document.getElementById('custom-range-container');
         const startDateInput = document.getElementById('start-date');
         const endDateInput = document.getElementById('end-date');
@@ -367,9 +501,12 @@
         let choicesInstance;
         let allDataCache = {}; 
         let allPredictionsCache = {};
+        
+        let currentLang = 'es'; // NUEVO: Se seteará en init()
         let currentTimeRange = 'all'; 
         let customStartDate = null;
         let customEndDate = null;
+        
         const COLOR_PALETTE = ['#e6194B', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4', '#42d4f4', '#f032e6', '#bfef45', '#fabed4'];
         
         let map;
@@ -377,16 +514,19 @@
         let cityOptionsList = []; 
         let lightTileLayer, darkTileLayer;
 
-        // --- MODIFICADO: Añadido nuevos campos al METRIC_MAP ---
-        const METRIC_MAP = {
-            'temp': { key: 'temperatura_c', label: 'Temperatura', unit: '°C', icon: 'thermometer' },
-            'humidity': { key: 'humedad_porc', label: 'Humedad', unit: '%', icon: 'droplet' },
-            'wind': { key: 'viento_kmh', label: 'Viento', unit: 'km/h', icon: 'wind' },
-            'clouds': { key: 'nubosidad_porc', label: 'Nubosidad', unit: '%', icon: 'cloud' },
-            'rain': { key: 'lluvia_1h', label: 'Lluvia (últ 1h)', unit: 'mm', icon: 'umbrella' },
-            'snow': { key: 'nieve_1h', label: 'Nieve (últ 1h)', unit: 'mm', icon: 'cloud-snow' },
-            'visibility': { key: 'visibilidad_m', label: 'Visibilidad', unit: 'm', icon: 'eye' }
-        };
+        // --- MODIFICADO: METRIC_MAP es ahora una función ---
+        function getMetricMap() {
+            const lang = currentLang;
+            return {
+                'temp': { key: 'temperatura_c', label: translations[lang].metricTemp, unit: '°C', icon: 'thermometer' },
+                'humidity': { key: 'humedad_porc', label: translations[lang].metricHum, unit: '%', icon: 'droplet' },
+                'wind': { key: 'viento_kmh', label: translations[lang].metricWind, unit: 'km/h', icon: 'wind' },
+                'clouds': { key: 'nubosidad_porc', label: translations[lang].metricClouds, unit: '%', icon: 'cloud' },
+                'rain': { key: 'lluvia_1h', label: translations[lang].metricRain, unit: 'mm', icon: 'umbrella' },
+                'snow': { key: 'nieve_1h', label: 'Nieve (últ 1h)', unit: 'mm', icon: 'cloud-snow' }, // Asumiendo que no se muestra en botón
+                'visibility': { key: 'visibilidad_m', label: 'Visibilidad', unit: 'm', icon: 'eye' } // Asumiendo que no se muestra en botón
+            };
+        }
 
         // --- Función Auxiliar para Patrón Rayado ---
         function createStripedPattern(color) {
@@ -405,27 +545,18 @@
             return ctx.createPattern(canvas, 'repeat');
         }
 
-        // --- NUEVA FUNCIÓN AUXILIAR (para Icono Dinámico) ---
-        /**
-         * Devuelve un icono de Feather basado en la descripción del tiempo.
-         * @param {string} description - ej. "nubes dispersas", "lluvia ligera"
-         * @param {number} cloudPercent - ej. 85
-         * @returns {string} El nombre del icono de Feather (ej. "sun", "cloud-rain")
-         */
+        // --- Función Auxiliar para Icono Dinámico ---
         function getWeatherIcon(description, cloudPercent) {
-            if (!description) return 'sun'; // Fallback
+            if (!description) return 'sun';
             const desc = description.toLowerCase();
-
             if (desc.includes('lluvia') || desc.includes('llovizna')) return 'cloud-rain';
             if (desc.includes('nieve') || desc.includes('nevada')) return 'cloud-snow';
             if (desc.includes('tormenta')) return 'cloud-lightning';
             if (desc.includes('niebla') || desc.includes('neblina')) return 'eye-off'; 
             if (desc.includes('cielo claro')) return 'sun';
             if (desc.includes('pocas nubes')) return 'cloud-sun';
-            // Usamos cloudPercent para "nubes dispersas" o "muy nuboso"
             if (desc.includes('nubes') || cloudPercent > 50) return 'cloud';
-            
-            return 'sun'; // Icono por defecto
+            return 'sun';
         }
 
         // --- Funciones de Carga de Datos ---
@@ -449,28 +580,20 @@
                 temp: { min: { val: Infinity, date: null }, max: { val: -Infinity, date: null } },
                 humidity: { min: { val: Infinity, date: null }, max: { val: -Infinity, date: null } },
                 wind: { min: { val: Infinity, date: null }, max: { val: -Infinity, date: null } },
-                // --- NUEVO: Añadir stats para nuevos campos ---
                 clouds: { min: { val: Infinity, date: null }, max: { val: -Infinity, date: null } },
-                rain: { min: { val: Infinity, date: null }, max: { val: -Infinity, date: null } }
+                rain: { min: { val: 0, date: null }, max: { val: -Infinity, date: null } } // Lluvia min siempre es 0
             };
             
             records.forEach(row => {
                 const date = row.fecha_hora;
-                // Temp
                 if (row.temperatura_c < stats.temp.min.val) { stats.temp.min = { val: row.temperatura_c, date: date }; }
                 if (row.temperatura_c > stats.temp.max.val) { stats.temp.max = { val: row.temperatura_c, date: date }; }
-                // Humedad
                 if (row.humedad_porc < stats.humidity.min.val) { stats.humidity.min = { val: row.humedad_porc, date: date }; }
                 if (row.humedad_porc > stats.humidity.max.val) { stats.humidity.max = { val: row.humedad_porc, date: date }; }
-                // Viento
                 if (row.viento_kmh < stats.wind.min.val) { stats.wind.min = { val: row.viento_kmh, date: date }; }
                 if (row.viento_kmh > stats.wind.max.val) { stats.wind.max = { val: row.viento_kmh, date: date }; }
-                
-                // --- NUEVO: Calcular stats para nubes y lluvia ---
-                // Nubes
                 if (row.nubosidad_porc < stats.clouds.min.val) { stats.clouds.min = { val: row.nubosidad_porc, date: date }; }
                 if (row.nubosidad_porc > stats.clouds.max.val) { stats.clouds.max = { val: row.nubosidad_porc, date: date }; }
-                // Lluvia (solo nos interesa el max, el min casi siempre es 0)
                 if (row.lluvia_1h > stats.rain.max.val) { stats.rain.max = { val: row.lluvia_1h, date: date }; }
             });
             stats.latest = records[records.length - 1];
@@ -488,13 +611,10 @@
             return new Promise((resolve, reject) => {
                 Papa.parse(csvUrl, {
                     download: true, header: true, dynamicTyping: true, skipEmptyLines: true,
-                    // --- MODIFICADO: Asegurar que los nuevos campos se parsean ---
-                    // (dynamicTyping ya debería manejar 'nubosidad_porc', 'visibilidad_m', etc. como números)
                     complete: (results) => {
                         const records = results.data.map(row => ({
                             ...row, 
                             fecha_hora: new Date(row.fecha_hora),
-                            // Aseguramos que los nuevos campos existan si el CSV es antiguo
                             nubosidad_porc: row.nubosidad_porc || 0,
                             visibilidad_m: row.visibilidad_m || 0,
                             lluvia_1h: row.lluvia_1h || 0,
@@ -526,7 +646,7 @@
                 return cityDataMap;
             } catch (error) {
                 console.error("Fallo al cargar uno o más datasets:", error);
-                kpiContainer.innerHTML = `<p style="color: red; grid-column: 1 / -1;">Error al cargar los datos de una o más ciudades.</p>`;
+                kpiContainer.innerHTML = `<p style="color: red; grid-column: 1 / -1;">${translations[currentLang].fatalError.replace('lista de ciudades', 'datos CSV')}</p>`;
                 return null;
             }
         }
@@ -555,11 +675,12 @@
             requestAnimationFrame(step);
         }
 
+        // --- MODIFICADO: Funciones bilingües ---
         function buildForecastHTML(forecastList, selectedMetric) {
             if (selectedMetric !== 'temp' || !forecastList || forecastList.length === 0) {
                 return '';
             }
-            const dateFormatter = new Intl.DateTimeFormat('es-ES', { 
+            const dateFormatter = new Intl.DateTimeFormat(currentLang, { // Usa currentLang
                 weekday: 'short', 
                 day: 'numeric', 
                 month: 'short' 
@@ -579,7 +700,7 @@
             }).join('');
             return `
                 <div class="kpi-hist" style="margin-top: 15px;">
-                    <strong>Pronóstico OWM (Max/Min):</strong>
+                    <strong>${translations[currentLang].forecastTitle}:</strong>
                     ${forecastRows}
                 </div>
             `;
@@ -595,7 +716,7 @@
 
             let html = `
                 <div class="kpi-hist" style="margin-top: 15px;">
-                    <strong>Predicción IA (Mañana):</strong>
+                    <strong>${translations[currentLang].iaTitle}:</strong>
             `;
 
             if (ia_preds.max === null) {
@@ -603,7 +724,7 @@
                     <div class="kpi-hist-item">
                         <span><i data-feather="cpu" class="kpi-icon"></i> Mi IA</span>
                         <span class="date" style="font-weight: 600;">
-                            Datos insuf. (${ia_preds.registros}/${MIN_RECORDS_FOR_IA})
+                            ${translations[currentLang].iaNoData} (${ia_preds.registros}/${MIN_RECORDS_FOR_IA})
                         </span>
                     </div>
                 `;
@@ -617,7 +738,7 @@
                     if (diff > 0.5) color = '#e6194B'; 
                     if (diff < -0.5) color = '#4363d8';
                     return `
-                        (vs ${owm_val.toFixed(1)}${unit}) 
+                        (vs ${owm_val.toFixed(1)}${unit} ${translations[currentLang].iaVsOWM}) 
                         <span style="color: ${color}; font-weight: 600;">
                             (${diff >= 0 ? '+' : ''}${diff.toFixed(1)}${unit})
                         </span>
@@ -625,15 +746,15 @@
                 };
                 html += `
                     <div class="kpi-hist-item">
-                        <span><i data-feather="cpu" class="kpi-icon"></i> Max: <strong>${ia_preds.max.toFixed(1)}°C</strong></span>
+                        <span><i data-feather="cpu" class="kpi-icon"></i> ${translations[currentLang].kpiMax}: <strong>${ia_preds.max.toFixed(1)}°C</strong></span>
                         <span class="date">${getComparisonHTML(ia_preds.max, owm_tomorrow.max, '°C')}</span>
                     </div>
                     <div class="kpi-hist-item">
-                        <span><i data-feather="cpu" class="kpi-icon"></i> Min: <strong>${ia_preds.min.toFixed(1)}°C</strong></span>
+                        <span><i data-feather="cpu" class="kpi-icon"></i> ${translations[currentLang].kpiMin}: <strong>${ia_preds.min.toFixed(1)}°C</strong></span>
                         <span class="date">${getComparisonHTML(ia_preds.min, owm_tomorrow.min, '°C')}</span>
                     </div>
                     <div class="kpi-hist-item">
-                        <span><i data-feather="cpu" class="kpi-icon"></i> Media: <strong>${ia_preds.media.toFixed(1)}°C</strong></span>
+                        <span><i data-feather="cpu" class="kpi-icon"></i> ${translations[currentLang].kpiMedia}: <strong>${ia_preds.media.toFixed(1)}°C</strong></span>
                         <span class="date">${getComparisonHTML(ia_preds.media, owm_tomorrow.media, '°C')}</span>
                     </div>
                 `;
@@ -641,10 +762,10 @@
             else if (ia_preds.max !== null) {
                 html += `
                     <div class="kpi-hist-item">
-                        <span><i data-feather="cpu" class="kpi-icon"></i> Max: <strong>${ia_preds.max.toFixed(1)}°C</strong></span>
+                        <span><i data-feather="cpu" class="kpi-icon"></i> ${translations[currentLang].kpiMax}: <strong>${ia_preds.max.toFixed(1)}°C</strong></span>
                     </div>
                     <div class="kpi-hist-item">
-                        <span><i data-feather="cpu" class="kpi-icon"></i> Min: <strong>${ia_preds.min.toFixed(1)}°C</strong></span>
+                        <span><i data-feather="cpu" class="kpi-icon"></i> ${translations[currentLang].kpiMin}: <strong>${ia_preds.min.toFixed(1)}°C</strong></span>
                     </div>
                 `;
             }
@@ -662,7 +783,7 @@
             const selectedHour = checkedHourRadio ? checkedHourRadio.value : 'all';
 
             if (selectedCitiesValues.length === 0) { 
-                kpiContainer.innerHTML = "<p>Selecciona una o más ciudades para ver los datos.</p>"; 
+                kpiContainer.innerHTML = `<p>${translations[currentLang].kpiEmpty}</p>`; 
                 if (myChart) myChart.destroy(); 
                 if (myVariationChart) myVariationChart.destroy();
                 highlightMapMarkers([]); 
@@ -698,27 +819,30 @@
         }
 
         /**
-         * MODIFICADO: Actualiza las tarjetas de KPI (incluye Iconos Dinámicos y más datos).
+         * MODIFICADO: Actualiza las tarjetas de KPI (bilingüe y con nuevos iconos).
          */
         function updateKPIs(cityDataMap, selectedMetric) {
             kpiContainer.innerHTML = ""; 
-            const metricInfo = METRIC_MAP[selectedMetric];
+            const metricInfo = getMetricMap()[selectedMetric]; // MODIFICADO
 
             Object.keys(cityDataMap).forEach((ciudad, index) => {
                 const data = cityDataMap[ciudad];
                 if (!data || !data.stats || !data.stats.latest) {
-                    kpiContainer.innerHTML += `<div class="kpi-card" style="border-left-color: #ccc;"><h3>${ciudad}</h3><p>No hay datos recientes.</p></div>`;
+                    kpiContainer.innerHTML += `<div class="kpi-card" style="border-left-color: #ccc;"><h3>${ciudad}</h3><p>${translations[currentLang].kpiNoData}</p></div>`;
                     return;
                 }
                 const stats = data.stats;
                 const latest = stats.latest;
-                const metricStats = stats[selectedMetric]; 
+                const metricStats = stats[selectedMetric] || stats['temp']; // Fallback a temp si la métrica no tiene stats (ej. lluvia)
                 const card = document.createElement('div');
                 card.className = 'kpi-card';
                 card.style.borderLeftColor = COLOR_PALETTE[index % COLOR_PALETTE.length];
-                const latestDate = latest.fecha_hora.toLocaleString('es-ES', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
-                const minDate = metricStats.min.date ? metricStats.min.date.toLocaleDateString('es-ES') : 'N/A';
-                const maxDate = metricStats.max.date ? metricStats.max.date.toLocaleDateString('es-ES') : 'N/A';
+                
+                // --- MODIFICADO: Formato de fecha bilingüe ---
+                const latestDate = latest.fecha_hora.toLocaleString(currentLang, { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+                const minDate = metricStats.min.date ? metricStats.min.date.toLocaleDateString(currentLang) : 'N/A';
+                const maxDate = metricStats.max.date ? metricStats.max.date.toLocaleDateString(currentLang) : 'N/A';
+                
                 const now = new Date();
                 const sevenDaysAgo = new Date(now.getTime() - (7 * 24 * 60 * 60 * 1000));
                 const sparklineData = data.records
@@ -730,7 +854,7 @@
                 const cityPredictionData = allPredictionsCache[ciudad];
                 const forecast_list = cityPredictionData?.pred_owm_5day;
 
-                // --- NUEVO: Obtener icono dinámico ---
+                // --- NUEVO: Icono dinámico ---
                 const weatherIcon = getWeatherIcon(latest.descripcion, latest.nubosidad_porc);
 
                 card.innerHTML = `
@@ -741,29 +865,29 @@
                         <span id="${kpiMainId}">${(0).toFixed(1)}</span> ${metricInfo.unit} 
                         <span>(${latestDate})</span>
                     </p>
-                    <p><i data-feather="thermometer" class="kpi-icon"></i> Sensación: ${latest.sensacion_c.toFixed(1)}°C</p>
-                    <p><i data-feather="droplet" class="kpi-icon"></i> Humedad: ${latest.humedad_porc}%</p>
-                    <p><i data-feather="wind" class="kpi-icon"></i> Viento: ${latest.viento_kmh.toFixed(1)} km/h</p>
-
-                    <p><i data-feather="cloud" class="kpi-icon"></i> Nubosidad: ${latest.nubosidad_porc}%</p>
-                    <p><i data-feather="eye" class="kpi-icon"></i> Visibilidad: ${(latest.visibilidad_m / 1000).toFixed(1)} km</p>
+                    <p><i data-feather="thermometer" class="kpi-icon"></i> ${translations[currentLang].kpiFeels}: ${latest.sensacion_c.toFixed(1)}°C</p>
+                    <p><i data-feather="droplet" class="kpi-icon"></i> ${translations[currentLang].kpiHumidity}: ${latest.humedad_porc}%</p>
+                    <p><i data-feather="wind" class="kpi-icon"></i> ${translations[currentLang].kpiWind}: ${latest.viento_kmh.toFixed(1)} km/h</p>
+                    <p><i data-feather="cloud" class="kpi-icon"></i> ${translations[currentLang].kpiClouds}: ${latest.nubosidad_porc}%</p>
+                    <p><i data-feather="eye" class="kpi-icon"></i> ${translations[currentLang].kpiVisibility}: ${(latest.visibilidad_m / 1000).toFixed(1)} km</p>
                     ${latest.lluvia_1h > 0 
-                        ? `<p><i data-feather="umbrella" class="kpi-icon" style="color: #4363d8;"></i> Lluvia (1h): ${latest.lluvia_1h} mm</p>` 
+                        ? `<p><i data-feather="umbrella" class="kpi-icon" style="color: #4363d8;"></i> ${translations[currentLang].kpiRain}: ${latest.lluvia_1h} mm</p>` 
                         : ''}
                     ${latest.nieve_1h > 0 
-                        ? `<p><i data-feather="cloud-snow" class="kpi-icon" style="color: #42d4f4;"></i> Nieve (1h): ${latest.nieve_1h} mm</p>` 
+                        ? `<p><i data-feather="cloud-snow" class="kpi-icon" style="color: #42d4f4;"></i> ${translations[currentLang].kpiSnow}: ${latest.nieve_1h} mm</p>` 
                         : ''}
+                    
                     <div class="sparkline-container">
                         <canvas id="${sparkCanvasId}"></canvas>
                     </div>
                     <div class="kpi-hist">
-                        <strong>Histórico (${metricInfo.label}):</strong>
+                        <strong>${translations[currentLang].kpiHist} (${metricInfo.label}):</strong>
                         <div class="kpi-hist-item">
-                            <span>Max: ${metricStats.max.val > -Infinity ? metricStats.max.val.toFixed(1) : '-'} ${metricInfo.unit}</span>
+                            <span>${translations[currentLang].kpiMax}: ${metricStats.max.val > -Infinity ? metricStats.max.val.toFixed(1) : '-'} ${metricInfo.unit}</span>
                             <span class="date">(${maxDate})</span>
                         </div>
                         <div class="kpi-hist-item">
-                            <span>Min: ${metricStats.min.val < Infinity ? metricStats.min.val.toFixed(1) : '-'} ${metricInfo.unit}</span>
+                            <span>${translations[currentLang].kpiMin}: ${metricStats.min.val < Infinity ? metricStats.min.val.toFixed(1) : '-'} ${metricInfo.unit}</span>
                             <span class="date">(${minDate})</span>
                         </div>
                     </div>
@@ -798,13 +922,13 @@
                     });
                 }
             });
-            feather.replace(); // <-- Llamada clave para renderizar los nuevos iconos
+            feather.replace();
         }
 
         
         function updateChart(cityDataMap, metric, selectedHour) {
             if (myChart) { myChart.destroy(); }
-            const currentMetric = METRIC_MAP[metric];
+            const currentMetric = getMetricMap()[metric]; // MODIFICADO
             if (!currentMetric) { console.error("ERROR: Métrica inválida:", metric); return; }
             
             const isDarkMode = document.body.classList.contains('dark-mode');
@@ -844,12 +968,26 @@
                     })
                     .map(row => ({ x: row.fecha_hora, y: row[currentMetric.key] }));
 
+                // --- MODIFICADO: Tipo de gráfico dinámico ---
+                let chartType = 'line';
+                let fillChart = false;
+                if (metric === 'rain' || metric === 'snow') {
+                    chartType = 'bar';
+                }
+                if (metric === 'humidity' || metric === 'clouds') {
+                    fillChart = true; // Rellenar el gráfico de línea
+                }
+                
                 if (filteredData.length > 0) {
                     datasets.push({
-                        label: ciudad, data: filteredData,
+                        label: ciudad, 
+                        data: filteredData,
                         borderColor: COLOR_PALETTE[index % COLOR_PALETTE.length],
                         backgroundColor: COLOR_PALETTE[index % COLOR_PALETTE.length] + '80', 
-                        tension: 0.1, fill: false, pointRadius: 2, pointHoverRadius: 5
+                        tension: 0.1, 
+                        fill: fillChart, // <-- MODIFICADO
+                        pointRadius: 2, 
+                        pointHoverRadius: 5
                     });
                 }
 
@@ -865,7 +1003,7 @@
                         forecastData.unshift({ x: lastRealPoint.x, y: lastRealPoint.y });
                     }
                     datasets.push({
-                        label: `Pronóstico ${ciudad} (media)`,
+                        label: `${translations[currentLang].forecastTitle} ${ciudad} (media)`,
                         data: forecastData,
                         borderColor: COLOR_PALETTE[index % COLOR_PALETTE.length],
                         borderDash: [5, 5], 
@@ -879,15 +1017,18 @@
             });
 
             if (datasets.length > 0) {
+                // --- MODIFICADO: Tipo de gráfico y locale ---
                 myChart = new Chart(ctx, {
-                    type: 'line', data: { datasets: datasets },
+                    type: (metric === 'rain' || metric === 'snow' ? 'bar' : 'line'), // Tipo dinámico
+                    data: { datasets: datasets },
                     options: {
+                        locale: currentLang, // Para formato de fecha/hora
                         responsive: true, maintainAspectRatio: false,
                         scales: {
                             x: {
                                 type: 'time', 
                                 time: { unit: 'day', tooltipFormat: 'dd MMM yyyy, HH:mm', displayFormats: { hour: 'HH:mm', day: 'dd MMM', month: 'MMM yyyy' } },
-                                title: { display: true, text: 'Fecha y Hora', color: textColor },
+                                title: { display: true, text: translations[currentLang].chartDateHour, color: textColor },
                                 ticks: { color: textColor },
                                 grid: { color: gridColor }
                             },
@@ -895,7 +1036,7 @@
                                 title: { display: true, text: currentMetric.label + ' (' + currentMetric.unit + ')', color: textColor },
                                 ticks: { color: textColor },
                                 grid: { color: gridColor },
-                                beginAtZero: (metric === 'humidity' || metric === 'rain' || metric === 'snow') // MODIFICADO
+                                beginAtZero: (metric === 'humidity' || metric === 'rain' || metric === 'snow' || metric === 'clouds')
                             }
                         },
                         plugins: { 
@@ -910,14 +1051,14 @@
                 ctx.font = "16px Inter"; 
                 ctx.fillStyle = textColor;
                 ctx.textAlign = "center";
-                ctx.fillText("No hay datos disponibles para la selección actual.", ctx.canvas.width / 2, 50);
+                ctx.fillText(translations[currentLang].chartEmpty, ctx.canvas.width / 2, 50);
             }
         }
         
         
         function updateVariationChart(cityDataMap, metric) {
             if (myVariationChart) { myVariationChart.destroy(); }
-            const currentMetric = METRIC_MAP[metric];
+            const currentMetric = getMetricMap()[metric]; // MODIFICADO
             if (!currentMetric) return;
 
             const isDarkMode = document.body.classList.contains('dark-mode');
@@ -969,7 +1110,7 @@
 
                 if (variationData.length > 0) {
                     datasets.push({
-                        label: `Variación ${ciudad} (${currentMetric.unit})`,
+                        label: `${translations[currentLang].chartVariation} ${ciudad} (${currentMetric.unit})`, // MODIFICADO
                         data: variationData,
                         backgroundColor: COLOR_PALETTE[index % COLOR_PALETTE.length] + '90', 
                         borderColor: COLOR_PALETTE[index % COLOR_PALETTE.length],
@@ -991,7 +1132,7 @@
                     if (forecastVariationData.length > 0) {
                         const color = COLOR_PALETTE[index % COLOR_PALETTE.length];
                         datasets.push({
-                            label: `Pronóstico Variación ${ciudad}`,
+                            label: `${translations[currentLang].forecastTitle} ${ciudad}`, // MODIFICADO
                             data: forecastVariationData,
                             backgroundColor: createStripedPattern(color),
                             borderColor: color,
@@ -1002,22 +1143,24 @@
             });
 
             if (datasets.length > 0) {
+                // --- MODIFICADO: Locale y Títulos ---
                 myVariationChart = new Chart(variationCtx, {
                     type: 'bar',
                     data: { datasets: datasets },
                     options: {
+                        locale: currentLang,
                         responsive: true,
                         maintainAspectRatio: false,
                         scales: {
                             x: {
                                 type: 'time',
                                 time: { unit: 'day', tooltipFormat: 'dd MMM yyyy', displayFormats: { day: 'dd MMM' } },
-                                title: { display: true, text: 'Fecha', color: textColor },
+                                title: { display: true, text: translations[currentLang].chartDate, color: textColor },
                                 ticks: { color: textColor },
                                 grid: { color: 'rgba(0,0,0,0)' }
                             },
                             y: {
-                                title: { display: true, text: `Variación ${currentMetric.label} (${currentMetric.unit})`, color: textColor },
+                                title: { display: true, text: `${translations[currentLang].chartVariation} ${currentMetric.label} (${currentMetric.unit})`, color: textColor },
                                 ticks: { color: textColor },
                                 grid: { color: gridColor },
                                 beginAtZero: true
@@ -1034,7 +1177,7 @@
                 variationCtx.font = "16px Inter"; 
                 variationCtx.fillStyle = textColor; 
                 variationCtx.textAlign = "center";
-                variationCtx.fillText("No hay suficientes datos para calcular la variación diaria.", variationCtx.canvas.width / 2, 50);
+                variationCtx.fillText(translations[currentLang].varChartEmpty, variationCtx.canvas.width / 2, 50);
             }
         }
 
@@ -1083,7 +1226,7 @@
                 });
             } catch (error) {
                 console.error("Error al inicializar el mapa:", error);
-                document.getElementById('map-container').innerHTML = "<p style='color:red; padding: 20px;'>Error al cargar los datos del mapa.</p>";
+                document.getElementById('map-container').innerHTML = `<p style='color:red; padding: 20px;'>Error al cargar los datos del mapa.</p>`;
             }
         }
         
@@ -1107,7 +1250,7 @@
             return '#ff3300'; 
         }
 
-        // --- Funciones de Dark Mode ---
+        // --- Funciones de Dark Mode y Traducción ---
         
         function toggleDarkMode() {
             const body = document.body;
@@ -1121,6 +1264,7 @@
 
             updateMapTiles(isDarkMode);
 
+            // Solo redibujar gráficos, no recargar datos
             const checkedMetricRadio = document.querySelector('input[name="metric"]:checked');
             const selectedMetric = checkedMetricRadio ? checkedMetricRadio.value : 'temp';
             const checkedHourRadio = document.querySelector('input[name="hour-filter"]:checked');
@@ -1150,9 +1294,50 @@
             }
         }
 
+        // --- NUEVAS FUNCIONES DE IDIOMA ---
+        function translatePage(lang) {
+            if (!translations[lang]) lang = 'es';
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
+            
+            // Poner el 'lang' en la etiqueta <html> para selectores CSS y accesibilidad
+            document.documentElement.lang = lang; 
 
-        // --- Función de Inicialización ---
+            // Actualizar el botón de idioma
+            languageToggle.textContent = lang === 'es' ? 'EN' : 'ES';
+
+            // Actualizar todos los elementos estáticos
+            document.querySelectorAll('[data-i18n-key]').forEach(el => {
+                const key = el.getAttribute('data-i18n-key');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            
+            // Actualizar placeholder de Choices.js (si ya existe)
+            if (choicesInstance) {
+                choicesInstance.setProps({
+                    placeholderValue: translations[lang].choicesPlaceholder
+                });
+            }
+            
+            // Actualizar locale de Chart.js
+            Chart.defaults.locale = lang;
+        }
+
+        async function toggleLanguage() {
+            const newLang = currentLang === 'es' ? 'en' : 'es';
+            translatePage(newLang);
+            
+            // Recargar todo el dashboard para que los gráficos y KPIs se actualicen
+            // con las nuevas etiquetas y formatos de fecha
+            await updateDashboard();
+        }
+
+
+        // --- Función de Inicialización (MODIFICADA) ---
         async function init() {
+            // 1. Set Dark Mode
             if (localStorage.getItem('theme') === 'dark') {
                 document.body.classList.add('dark-mode');
                 document.getElementById('dark-mode-icon').setAttribute('data-feather', 'sun');
@@ -1161,13 +1346,22 @@
             }
             feather.replace();
             
+            // 2. Set Language (ANTES de crear Choices.js)
+            const savedLang = localStorage.getItem('lang') || 'es';
+            translatePage(savedLang);
+            
+            // 3. Cargar predicciones
             await loadPredictions(); 
 
+            // 4. Crear Choices (ahora usará el placeholder correcto)
             choicesInstance = new Choices(citySelectorElement, {
                 allowHTML: false, maxItemCount: 5, removeItemButton: true,
-                placeholder: true, placeholderValue: 'Escribe para buscar...', searchResultLimit: 10,
+                placeholder: true, 
+                placeholderValue: translations[currentLang].choicesPlaceholder, // Set inicial
+                searchResultLimit: 10,
             });
             
+            // 5. Cargar datos de ciudades y mapa
             try {
                 const ciudadesResponse = await fetch(CITIES_LIST_URL);
                 if (!ciudadesResponse.ok) throw new Error(`Error al cargar ${CITIES_LIST_URL}`);
@@ -1183,19 +1377,21 @@
                 choicesInstance.setChoices(ciudades, 'value', 'label', false);
                 choicesInstance.setChoiceByValue(['Madrid,ES', 'León,ES']); 
                 
+                // 6. Carga inicial del dashboard
                 await updateDashboard(); 
             
             } catch (error) {
                 console.error("Error al inicializar la aplicación:", error);
-                kpiContainer.innerHTML = `<p style="color: red;"><b>Error fatal:</b> No se pudo cargar la lista de ciudades (${CITIES_LIST_URL}).</p>`;
+                kpiContainer.innerHTML = `<p style="color: red;"><b>${translations[currentLang].fatalError} (${CITIES_LIST_URL}).</b></p>`;
                 loadingSpinner.style.display = 'none'; 
             }
             
-            // --- LISTENERS MODIFICADOS ---
+            // 7. Configurar todos los Listeners
             citySelectorElement.addEventListener('change', async () => await updateDashboard());
             metricRadios.forEach(radio => radio.addEventListener('change', async () => await updateDashboard()));
             hourFilterRadios.forEach(radio => radio.addEventListener('change', async () => await updateDashboard()));
             darkModeToggle.addEventListener('click', toggleDarkMode);
+            languageToggle.addEventListener('click', toggleLanguage); // <-- NUEVO LISTENER
             
             timeRangeButtons.forEach(button => {
                 button.addEventListener('click', async (e) => {
