@@ -46,3 +46,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-07T06:26:57.464467,La Condamine,13,12.86,11.81,13.19,96,38.88,lluvia de gran intensidad,43.7384,7.4246
 2025-11-07T14:18:24.661039,Moneghetti,15.6,14.78,15.3,16.29,60,7.416,muy nuboso,43.7384,7.4246
 2025-11-07T22:16:59.902171,La Condamine,16.3,15.53,13.81,16.52,59,14.832,muy nuboso,43.7384,7.4246
+2025-11-08T06:23:56.136323,Moneghetti,12.67,11.82,12.52,14.07,70,22.212,muy nuboso,43.7384,7.4246

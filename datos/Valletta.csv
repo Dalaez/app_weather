@@ -46,3 +46,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-07T06:27:37.384548,Valletta,19.3,19.58,19.3,19.3,88,7.416,lluvia ligera,35.8989,14.5146
 2025-11-07T14:19:04.761987,Valletta,21.3,21.78,21.3,21.3,88,25.92,nubes dispersas,35.8989,14.5146
 2025-11-07T22:17:40.215338,Valletta,17.3,17.38,17.3,17.3,88,5.5440000000000005,cielo claro,35.8989,14.5146
+2025-11-08T06:24:36.579409,Floriana,17.3,17.38,17.3,17.3,88,7.416,algo de nubes,35.8989,14.5146

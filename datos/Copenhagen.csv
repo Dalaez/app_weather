@@ -46,3 +46,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-07T06:26:36.329700,Inner City,8.94,6.42,8.19,8.94,93,16.668,niebla,55.6761,12.5683
 2025-11-07T14:18:03.253174,Inner City,9.72,7.85,9.19,9.94,85,12.96,nubes dispersas,55.6761,12.5683
 2025-11-07T22:16:38.554129,Inner City,7.61,5.94,6.19,7.94,94,9.251999999999999,muy nuboso,55.6761,12.5683
+2025-11-08T06:23:34.721843,Inner City,7.94,7.94,6.19,7.94,87,3.708,muy nuboso,55.6761,12.5683

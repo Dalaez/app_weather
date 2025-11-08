@@ -46,3 +46,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-07T06:26:05.784700,Vallelado,8.04,5.58,8.04,8.04,80,14.472,lluvia moderada,41.4044,-4.4266
 2025-11-07T14:17:32.596679,Vallelado,11.29,10.51,11.29,11.29,78,24.66,nubes,41.4044,-4.4266
 2025-11-07T22:16:07.522193,Vallelado,9.87,6.7,9.87,9.87,81,26.1,muy nuboso,41.4044,-4.4266
+2025-11-08T06:23:03.858966,Vallelado,6.44,4.35,6.44,6.44,81,10.224,algo de nubes,41.4044,-4.4266

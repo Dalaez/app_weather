@@ -46,3 +46,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-07T06:25:30.501007,Primer Ensanche,7.95,7.95,7.95,7.95,81,1.836,muy nuboso,42.8125,-1.6458
 2025-11-07T14:16:57.225423,Pamplona,11.95,11.19,11.85,11.95,76,12.96,nubes,42.8143,-1.6459
 2025-11-07T22:15:31.859764,Pamplona,10.95,10.24,10.74,10.95,82,11.124,lluvia moderada,42.8125,-1.6458
+2025-11-08T06:22:28.141876,Pamplona,8.95,7.2,8.95,8.95,87,11.124,muy nuboso,42.8125,-1.6458
