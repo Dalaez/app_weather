@@ -57,7 +57,7 @@ def obtener_datos_climaticos(ciudad_data, api_key):
         print(f"Error de conexión para {nombre_query.split(',')[0]}: {e}")
         return None
 
-# --- REEMPLAZA ESTA FUNCIÓN EN read_weather.py ---
+# --- MODIFICADO: Función con Lógica de Migración ---
 
 def guardar_datos_ciudad(datos, nombre_ciudad_query): # Recibe "León,ES"
     """Extrae los datos relevantes y los guarda en el CSV específico de esa ciudad."""
@@ -83,40 +83,71 @@ def guardar_datos_ciudad(datos, nombre_ciudad_query): # Recibe "León,ES"
         longitud = datos['coord']['lon']
         
         # --- NUEVOS CAMPOS ---
-        # Nubosidad en porcentaje (0-100)
         nubosidad = datos['clouds']['all'] 
-        # Visibilidad en metros (max 10000)
         visibilidad = datos['visibility'] 
-        # Lluvia y nieve: .get() es crucial porque la clave 'rain' o 'snow'
-        # solo existe si está lloviendo o nevando.
-        # Si no existe, guardamos 0.0.
         lluvia_1h = datos.get('rain', {}).get('1h', 0.0)
         nieve_1h = datos.get('snow', {}).get('1h', 0.0)
         # --- FIN DE NUEVOS CAMPOS ---
-
         
-        # 3. Definimos la cabecera (ACTUALIZADA)
-        cabecera = [
+        # 2. Definimos la cabecera NUEVA (15 columnas)
+        cabecera_nueva = [
             'fecha_hora', 'ciudad', 'temperatura_c', 'sensacion_c',
             'temp_min_c', 'temp_max_c', 'humedad_porc', 'viento_kmh', 'descripcion',
             'lat', 'lon',
-            'nubosidad_porc', 'visibilidad_m', 'lluvia_1h', 'nieve_1h' # <-- NUEVAS COLUMNAS
+            'nubosidad_porc', 'visibilidad_m', 'lluvia_1h', 'nieve_1h'
         ]
 
-        # 2. Preparamos la fila de datos (ACTUALIZADA)
+        # 3. Preparamos la fila de datos NUEVA (15 columnas)
         fila_datos = [
             timestamp, ciudad_api, temperatura, sensacion_termica,
             temp_min, temp_max, humedad, velocidad_viento_kmh, descripcion_cielo,
             latitud, longitud,
-            nubosidad, visibilidad, lluvia_1h, nieve_1h # <-- NUEVOS DATOS
+            nubosidad, visibilidad, lluvia_1h, nieve_1h
         ]
         
         es_archivo_nuevo = not os.path.exists(nombre_fichero)
         
+        # --- NUEVA LÓGICA DE MIGRACIÓN ---
+        if not es_archivo_nuevo:
+            try:
+                # Leemos la cabecera del fichero existente para comprobar su longitud
+                with open(nombre_fichero, 'r', encoding='utf-8') as f:
+                    cabecera_existente = f.readline().strip().split(',')
+                
+                if len(cabecera_existente) != len(cabecera_nueva):
+                    print(f"  [MIGRACIÓN] Detectado schema antiguo en {nombre_fichero}. Migrando a {len(cabecera_nueva)} columnas SIN PERDER DATOS...")
+                    # El fichero es antiguo. Lo leemos con Pandas
+                    df_antiguo = pd.read_csv(nombre_fichero)
+                    
+                    # Añadimos las columnas que faltan con valores por defecto
+                    if 'nubosidad_porc' not in df_antiguo.columns:
+                        df_antiguo['nubosidad_porc'] = 0
+                    if 'visibilidad_m' not in df_antiguo.columns:
+                        df_antiguo['visibilidad_m'] = 10000
+                    if 'lluvia_1h' not in df_antiguo.columns:
+                        df_antiguo['lluvia_1h'] = 0.0
+                    if 'nieve_1h' not in df_antiguo.columns:
+                        df_antiguo['nieve_1h'] = 0.0
+                    
+                    # Reordenamos y guardamos (SOBREESCRIBIMOS)
+                    df_antiguo = df_antiguo[cabecera_nueva] # Asegura el orden correcto
+                    df_antiguo.to_csv(nombre_fichero, index=False, header=True, encoding='utf-8')
+                    print(f"  [MIGRACIÓN] ¡Fichero {nombre_fichero} migrado con éxito!")
+                    
+                    # El fichero ya está migrado y tiene cabecera.
+                    es_archivo_nuevo = False # No es nuevo, y ya tiene la cabecera correcta
+                    
+            except Exception as e:
+                print(f"  [MIGRACIÓN Error] Fallo al migrar {nombre_fichero}: {e}. Se borrará y recreará para evitar corrupción.")
+                os.remove(nombre_fichero)
+                es_archivo_nuevo = True
+        # --- FIN DE LÓGICA DE MIGRACIÓN ---
+
+        # 4. Escribimos la fila
         with open(nombre_fichero, mode='a', newline='', encoding='utf-8') as f:
             writer = csv.writer(f)
             if es_archivo_nuevo:
-                writer.writerow(cabecera)
+                writer.writerow(cabecera_nueva) # Escribimos la nueva cabecera
             writer.writerow(fila_datos)
             
         print(f"Datos guardados (incluyendo nubes/lluvia) en {nombre_fichero}")
@@ -236,15 +267,27 @@ def generar_prediccion_ia_ciudad(csv_path):
     default_return = {"max": None, "min": None, "media": None, "registros": 0}
 
     try:
+        # --- CORRECCIÓN: Ahora la lectura es segura gracias a la migración ---
         df = pd.read_csv(csv_path)
+    
+    except pd.errors.ParserError as e:
+        # Este error solo debería ocurrir si el script falla a mitad de la migración
+        print(f"  [IA Error] Fichero CSV AÚN corrupto: {e}. Omitiendo por ahora.")
+        return default_return
+
     except FileNotFoundError:
         print(f"  [IA Error] No se encontró {csv_path}")
         return default_return
 
-    # Tienes múltiples lecturas al día. 'temp_max_c' y 'temp_min_c' son del *momento*.
-    # Necesitamos los agregados del *día*.
     try:
         df['fecha_hora'] = pd.to_datetime(df['fecha_hora'])
+        
+        # Rellenar NaNs por si acaso (ej. datos antiguos migrados)
+        df['humedad_porc'] = df['humedad_porc'].fillna(60)
+        df['viento_kmh'] = df['viento_kmh'].fillna(0)
+        
+        # Convertir a numérico por si acaso
+        df[['temperatura_c', 'humedad_porc', 'viento_kmh']] = df[['temperatura_c', 'humedad_porc', 'viento_kmh']].apply(pd.to_numeric, errors='coerce')
         
         # Agrupar por día (Resample). Usamos 'temperatura_c' para los agregados diarios reales.
         df_daily = df.resample('D', on='fecha_hora').agg(
@@ -260,7 +303,6 @@ def generar_prediccion_ia_ciudad(csv_path):
 
         # --- Crear Features (X) y Objetivos (y) ---
         
-        # Features (X): Usamos los datos de "ayer" (lag=1) para predecir "hoy"
         df_daily['dia_del_anio'] = df_daily.index.dayofyear
         df_daily['temp_max_lag1'] = df_daily['temp_max'].shift(1)
         df_daily['temp_min_lag1'] = df_daily['temp_min'].shift(1)
@@ -284,29 +326,21 @@ def generar_prediccion_ia_ciudad(csv_path):
 
         # --- Entrenar 3 Modelos Separados ---
         
-        # Modelo 1: Predicción de Temp Máxima
         y_max = df_clean['temp_max']
         model_max = LinearRegression()
-        # model_max = RandomForestRegressor(n_estimators=50) # Opcional: Mejora
         model_max.fit(X_train, y_max)
 
-        # Modelo 2: Predicción de Temp Mínima
         y_min = df_clean['temp_min']
         model_min = LinearRegression()
         model_min.fit(X_train, y_min)
         
-        # Modelo 3: Predicción de Temp Media
         y_media = df_clean['temp_media']
         model_media = LinearRegression()
         model_media.fit(X_train, y_media)
 
         # --- Preparar datos para predecir "Mañana" ---
         
-        # Necesitamos los datos de "Hoy" (última fila de df_daily) para predecir "Mañana"
-        # Usamos df_daily.ffill() por si el script corre a las 00:01 y "hoy" aún no tiene datos
         today_features_row = df_daily.ffill().iloc[-1]
-        
-        # Calcular el 'dia_del_anio' de mañana
         dia_manana = (today_features_row.name + timedelta(days=1)).dayofyear
 
         X_to_predict = [[
@@ -332,7 +366,7 @@ def generar_prediccion_ia_ciudad(csv_path):
         }
 
     except Exception as e:
-        print(f"  [IA Error] Fallo al procesar IA: {e}")
+        print(f"  [IA Error] Fallo al procesar IA (post-lectura): {e}")
         return {"max": None, "min": None, "media": None, "registros": 0}
 
 
@@ -357,7 +391,7 @@ if __name__ == "__main__":
 
         # Inicializamos la estructura de predicción para esta ciudad
         all_predictions_data[nombre_ciudad_limpio] = {
-            "pred_owm_5day": [],  # <--- CAMBIADO DE "pred_owm": {...}
+            "pred_owm_5day": [],
             "pred_ia": {"max": None, "min": None, "media": None, "registros": 0}
         }
         
@@ -377,19 +411,17 @@ if __name__ == "__main__":
         
         # --- Parte 2: Generación de Predicción OWM (Nueva) ---
         if lat and lon:
-            # Esta función ya imprime sus propios logs
             owm_preds_lista = obtener_prediccion_owm(lat, lon, API_KEY)
-            all_predictions_data[nombre_ciudad_limpio]["pred_owm_5day"] = owm_preds_lista # <--- CAMBIADO
+            all_predictions_data[nombre_ciudad_limpio]["pred_owm_5day"] = owm_preds_lista
             
             print("Pausando 1.1 seg (API pronóstico)...")
-            time.sleep(1.1) # Pausa para la segunda API (OneCall)
+            time.sleep(1.1)
         else:
             print(f"  No hay lat/lon para {nombre_ciudad_limpio}. Saltando predicción OWM.")
             
             
         # --- Parte 3: Generación de Predicción IA (Nueva) ---
         csv_path = f"{DIRECTORIO_DATOS}/{nombre_ciudad_limpio.replace(' ', '_')}.csv"
-        # Esta función ya imprime sus propios logs
         ia_preds = generar_prediccion_ia_ciudad(csv_path)
         all_predictions_data[nombre_ciudad_limpio]["pred_ia"] = ia_preds
 
@@ -398,7 +430,6 @@ if __name__ == "__main__":
     
     # --- Parte 4: Guardar Ficheros JSON ---
     
-    # Guardamos el fichero JSON para el mapa (Tu código)
     try:
         with open(FICHERO_MAPA, 'w', encoding='utf-8') as f:
             json.dump(datos_para_mapa, f, indent=2, ensure_ascii=False)
@@ -406,7 +437,6 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"Error al guardar el fichero JSON del mapa: {e}")
 
-    # Guardamos el fichero JSON para las predicciones (Nuevo)
     try:
         with open(FICHERO_PREDICCIONES, 'w', encoding='utf-8') as f:
             json.dump(all_predictions_data, f, indent=2, ensure_ascii=False)
