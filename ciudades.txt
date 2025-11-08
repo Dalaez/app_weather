@@ -15,6 +15,7 @@ Ceuta,ES,35.8883,-5.3068
 Ciudad Real,ES,38.9863,-3.9213
 Córdoba,ES,37.8882,-4.7794
 Cuenca,ES,40.0704,-2.1374
+Gijón,ES,43.5357,-5.6615
 Girona,ES,41.9794,2.8214
 Granada,ES,37.1773,-3.5986
 Guadalajara,ES,40.6330,-3.1654
@@ -23,6 +24,7 @@ Huesca,ES,42.1402,-0.4087
 Jaén,ES,37.7692,-3.7903
 León,ES,42.5984,-5.5719
 Lleida,ES,41.6176,0.6200
+Llinars del Vallès,ES,41.6365,2.395
 Logroño,ES,42.4658,-2.4486
 Lugo,ES,43.0116,-7.5560
 Madrid,ES,40.4168,-3.7038

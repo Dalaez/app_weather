@@ -57,6 +57,8 @@ def obtener_datos_climaticos(ciudad_data, api_key):
         print(f"Error de conexión para {nombre_query.split(',')[0]}: {e}")
         return None
 
+# --- REEMPLAZA ESTA FUNCIÓN EN read_weather.py ---
+
 def guardar_datos_ciudad(datos, nombre_ciudad_query): # Recibe "León,ES"
     """Extrae los datos relevantes y los guarda en el CSV específico de esa ciudad."""
     if not datos:
@@ -67,7 +69,7 @@ def guardar_datos_ciudad(datos, nombre_ciudad_query): # Recibe "León,ES"
         nombre_ciudad_limpio = nombre_ciudad_query.split(',')[0]
         nombre_fichero = f"{DIRECTORIO_DATOS}/{nombre_ciudad_limpio.replace(' ', '_')}.csv"
         
-        # 1. Extraemos los datos (sin cambios)
+        # 1. Extraemos los datos
         timestamp = datetime.now().isoformat() 
         ciudad_api = datos['name']
         descripcion_cielo = datos['weather'][0]['description']
@@ -76,23 +78,37 @@ def guardar_datos_ciudad(datos, nombre_ciudad_query): # Recibe "León,ES"
         temp_min = datos['main']['temp_min']
         temp_max = datos['main']['temp_max']
         humedad = datos['main']['humidity']
-        # [MEJORA] Convertir viento de m/s a km/h
         velocidad_viento_kmh = datos['wind']['speed'] * 3.6
         latitud = datos['coord']['lat']
         longitud = datos['coord']['lon']
         
-        # 2. Preparamos la fila de datos
-        fila_datos = [
-            timestamp, ciudad_api, temperatura, sensacion_termica,
-            temp_min, temp_max, humedad, velocidad_viento_kmh, descripcion_cielo,
-            latitud, longitud
-        ]
+        # --- NUEVOS CAMPOS ---
+        # Nubosidad en porcentaje (0-100)
+        nubosidad = datos['clouds']['all'] 
+        # Visibilidad en metros (max 10000)
+        visibilidad = datos['visibility'] 
+        # Lluvia y nieve: .get() es crucial porque la clave 'rain' o 'snow'
+        # solo existe si está lloviendo o nevando.
+        # Si no existe, guardamos 0.0.
+        lluvia_1h = datos.get('rain', {}).get('1h', 0.0)
+        nieve_1h = datos.get('snow', {}).get('1h', 0.0)
+        # --- FIN DE NUEVOS CAMPOS ---
+
         
-        # 3. Definimos la cabecera
+        # 3. Definimos la cabecera (ACTUALIZADA)
         cabecera = [
             'fecha_hora', 'ciudad', 'temperatura_c', 'sensacion_c',
             'temp_min_c', 'temp_max_c', 'humedad_porc', 'viento_kmh', 'descripcion',
-            'lat', 'lon'
+            'lat', 'lon',
+            'nubosidad_porc', 'visibilidad_m', 'lluvia_1h', 'nieve_1h' # <-- NUEVAS COLUMNAS
+        ]
+
+        # 2. Preparamos la fila de datos (ACTUALIZADA)
+        fila_datos = [
+            timestamp, ciudad_api, temperatura, sensacion_termica,
+            temp_min, temp_max, humedad, velocidad_viento_kmh, descripcion_cielo,
+            latitud, longitud,
+            nubosidad, visibilidad, lluvia_1h, nieve_1h # <-- NUEVOS DATOS
         ]
         
         es_archivo_nuevo = not os.path.exists(nombre_fichero)
@@ -103,8 +119,9 @@ def guardar_datos_ciudad(datos, nombre_ciudad_query): # Recibe "León,ES"
                 writer.writerow(cabecera)
             writer.writerow(fila_datos)
             
-        print(f"Datos guardados correctamente en {nombre_fichero}")
+        print(f"Datos guardados (incluyendo nubes/lluvia) en {nombre_fichero}")
         
+        # El resumen para el mapa no cambia
         return {
             "ciudad": nombre_ciudad_limpio,
             "lat": latitud,
