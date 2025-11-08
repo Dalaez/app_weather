@@ -115,7 +115,6 @@
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         
-        /* --- MODIFICADO: Contenedor para ambos botones --- */
         #settings-toggles {
             position: absolute;
             top: 20px;
@@ -123,7 +122,6 @@
             display: flex;
             gap: 10px;
         }
-        /* Estilo base para ambos botones */
         #dark-mode-toggle, #language-toggle {
             background: #fff;
             border: 1px solid #ddd;
@@ -150,7 +148,6 @@
             transition: color 0.3s ease;
         }
 
-        /* --- Reglas de Dark Mode --- */
         body.dark-mode {
             background: #1a2533;
             color: #f5f7fa;
@@ -240,7 +237,6 @@
             border-top: 5px solid #4e73e0;
         }
         
-        /* --- MODIFICADO: Dark mode para ambos botones --- */
         body.dark-mode #dark-mode-toggle, body.dark-mode #language-toggle {
             background: #2c3e50;
             border-color: #34495e;
@@ -331,7 +327,8 @@
         </div>
 
         <div id="settings-toggles">
-            <button id="language-toggle" aria-label="Toggle Language"></button> <button id="dark-mode-toggle" aria-label="Toggle Dark Mode">
+            <button id="language-toggle" aria-label="Toggle Language"></button>
+            <button id="dark-mode-toggle" aria-label="Toggle Dark Mode">
                 <i data-feather="moon" id="dark-mode-icon"></i>
             </button>
         </div>
@@ -349,7 +346,7 @@
         <canvas id="myChart"></canvas>
     </div>
 
-    <h2 data-i18n-key="variationTitle"></h2>
+    <h2 data-i1bc-key="variationTitle"></h2>
     <p style="text-align: center; margin-top: -10px; color: #555;" data-i18n-key="variationSubtitle"></p>
     <div id="chart-container-variation" style="min-height: 300px; position: relative; margin-top: 20px;">
         <canvas id="variationChart"></canvas>
@@ -488,8 +485,6 @@
         const variationCtx = document.getElementById('variationChart').getContext('2d');
         const loadingSpinner = document.getElementById('loading-spinner');
         const darkModeToggle = document.getElementById('dark-mode-toggle');
-        
-        // --- NUEVO: Selector de Idioma ---
         const languageToggle = document.getElementById('language-toggle');
         
         const customRangeContainer = document.getElementById('custom-range-container');
@@ -502,7 +497,7 @@
         let allDataCache = {}; 
         let allPredictionsCache = {};
         
-        let currentLang = 'es'; // NUEVO: Se seteará en init()
+        let currentLang = 'es';
         let currentTimeRange = 'all'; 
         let customStartDate = null;
         let customEndDate = null;
@@ -523,8 +518,8 @@
                 'wind': { key: 'viento_kmh', label: translations[lang].metricWind, unit: 'km/h', icon: 'wind' },
                 'clouds': { key: 'nubosidad_porc', label: translations[lang].metricClouds, unit: '%', icon: 'cloud' },
                 'rain': { key: 'lluvia_1h', label: translations[lang].metricRain, unit: 'mm', icon: 'umbrella' },
-                'snow': { key: 'nieve_1h', label: 'Nieve (últ 1h)', unit: 'mm', icon: 'cloud-snow' }, // Asumiendo que no se muestra en botón
-                'visibility': { key: 'visibilidad_m', label: 'Visibilidad', unit: 'm', icon: 'eye' } // Asumiendo que no se muestra en botón
+                'snow': { key: 'nieve_1h', label: translations[lang].kpiSnow, unit: 'mm', icon: 'cloud-snow' },
+                'visibility': { key: 'visibilidad_m', label: translations[lang].kpiVisibility, unit: 'm', icon: 'eye' }
             };
         }
 
@@ -581,7 +576,7 @@
                 humidity: { min: { val: Infinity, date: null }, max: { val: -Infinity, date: null } },
                 wind: { min: { val: Infinity, date: null }, max: { val: -Infinity, date: null } },
                 clouds: { min: { val: Infinity, date: null }, max: { val: -Infinity, date: null } },
-                rain: { min: { val: 0, date: null }, max: { val: -Infinity, date: null } } // Lluvia min siempre es 0
+                rain: { min: { val: 0, date: null }, max: { val: -Infinity, date: null } }
             };
             
             records.forEach(row => {
@@ -833,15 +828,17 @@
                 }
                 const stats = data.stats;
                 const latest = stats.latest;
-                const metricStats = stats[selectedMetric] || stats['temp']; // Fallback a temp si la métrica no tiene stats (ej. lluvia)
+                // --- CORRECCIÓN: Asegurarse de que metricStats existe ---
+                const metricStats = stats[selectedMetric] || stats['temp'];
+                
                 const card = document.createElement('div');
                 card.className = 'kpi-card';
                 card.style.borderLeftColor = COLOR_PALETTE[index % COLOR_PALETTE.length];
                 
                 // --- MODIFICADO: Formato de fecha bilingüe ---
                 const latestDate = latest.fecha_hora.toLocaleString(currentLang, { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
-                const minDate = metricStats.min.date ? metricStats.min.date.toLocaleDateString(currentLang) : 'N/A';
-                const maxDate = metricStats.max.date ? metricStats.max.date.toLocaleDateString(currentLang) : 'N/A';
+                const minDate = (metricStats.min && metricStats.min.date) ? metricStats.min.date.toLocaleDateString(currentLang) : 'N/A';
+                const maxDate = (metricStats.max && metricStats.max.date) ? metricStats.max.date.toLocaleDateString(currentLang) : 'N/A';
                 
                 const now = new Date();
                 const sevenDaysAgo = new Date(now.getTime() - (7 * 24 * 60 * 60 * 1000));
@@ -854,7 +851,6 @@
                 const cityPredictionData = allPredictionsCache[ciudad];
                 const forecast_list = cityPredictionData?.pred_owm_5day;
 
-                // --- NUEVO: Icono dinámico ---
                 const weatherIcon = getWeatherIcon(latest.descripcion, latest.nubosidad_porc);
 
                 card.innerHTML = `
@@ -871,10 +867,10 @@
                     <p><i data-feather="cloud" class="kpi-icon"></i> ${translations[currentLang].kpiClouds}: ${latest.nubosidad_porc}%</p>
                     <p><i data-feather="eye" class="kpi-icon"></i> ${translations[currentLang].kpiVisibility}: ${(latest.visibilidad_m / 1000).toFixed(1)} km</p>
                     ${latest.lluvia_1h > 0 
-                        ? `<p><i data-feather="umbrella" class="kpi-icon" style="color: #4363d8;"></i> ${translations[currentLang].kpiRain}: ${latest.lluvia_1h} mm</p>` 
+                        ? `<p><i data-feather="umbrella" class="kpi-icon" style="color: #4363d8;"></i> ${translations[currentLang].kpiRain}: ${latest.lluvia_1h.toFixed(2)} mm</p>` 
                         : ''}
                     ${latest.nieve_1h > 0 
-                        ? `<p><i data-feather="cloud-snow" class="kpi-icon" style="color: #42d4f4;"></i> ${translations[currentLang].kpiSnow}: ${latest.nieve_1h} mm</p>` 
+                        ? `<p><i data-feather="cloud-snow" class="kpi-icon" style="color: #42d4f4;"></i> ${translations[currentLang].kpiSnow}: ${latest.nieve_1h.toFixed(2)} mm</p>` 
                         : ''}
                     
                     <div class="sparkline-container">
@@ -899,7 +895,9 @@
 
                 const kpiElement = document.getElementById(kpiMainId);
                 if (kpiElement) {
-                    animateCountUp(kpiElement, latest[metricInfo.key], 800, 1);
+                    // --- CORRECCIÓN: Asegurar que latest[metricInfo.key] existe ---
+                    const latestValue = latest[metricInfo.key] !== undefined ? latest[metricInfo.key] : latest.temperatura_c;
+                    animateCountUp(kpiElement, latestValue, 800, 1);
                 }
 
                 if (sparklineData.length > 1) {
@@ -968,14 +966,13 @@
                     })
                     .map(row => ({ x: row.fecha_hora, y: row[currentMetric.key] }));
 
-                // --- MODIFICADO: Tipo de gráfico dinámico ---
                 let chartType = 'line';
                 let fillChart = false;
                 if (metric === 'rain' || metric === 'snow') {
                     chartType = 'bar';
                 }
                 if (metric === 'humidity' || metric === 'clouds') {
-                    fillChart = true; // Rellenar el gráfico de línea
+                    fillChart = true;
                 }
                 
                 if (filteredData.length > 0) {
@@ -985,7 +982,7 @@
                         borderColor: COLOR_PALETTE[index % COLOR_PALETTE.length],
                         backgroundColor: COLOR_PALETTE[index % COLOR_PALETTE.length] + '80', 
                         tension: 0.1, 
-                        fill: fillChart, // <-- MODIFICADO
+                        fill: fillChart,
                         pointRadius: 2, 
                         pointHoverRadius: 5
                     });
@@ -1003,7 +1000,7 @@
                         forecastData.unshift({ x: lastRealPoint.x, y: lastRealPoint.y });
                     }
                     datasets.push({
-                        label: `${translations[currentLang].forecastTitle} ${ciudad} (media)`,
+                        label: `${translations[currentLang].forecastTitle} ${ciudad} (media)`, // MODIFICADO
                         data: forecastData,
                         borderColor: COLOR_PALETTE[index % COLOR_PALETTE.length],
                         borderDash: [5, 5], 
@@ -1017,12 +1014,11 @@
             });
 
             if (datasets.length > 0) {
-                // --- MODIFICADO: Tipo de gráfico y locale ---
                 myChart = new Chart(ctx, {
-                    type: (metric === 'rain' || metric === 'snow' ? 'bar' : 'line'), // Tipo dinámico
+                    type: (metric === 'rain' || metric === 'snow' ? 'bar' : 'line'),
                     data: { datasets: datasets },
                     options: {
-                        locale: currentLang, // Para formato de fecha/hora
+                        locale: currentLang,
                         responsive: true, maintainAspectRatio: false,
                         scales: {
                             x: {
@@ -1143,7 +1139,6 @@
             });
 
             if (datasets.length > 0) {
-                // --- MODIFICADO: Locale y Títulos ---
                 myVariationChart = new Chart(variationCtx, {
                     type: 'bar',
                     data: { datasets: datasets },
@@ -1264,7 +1259,6 @@
 
             updateMapTiles(isDarkMode);
 
-            // Solo redibujar gráficos, no recargar datos
             const checkedMetricRadio = document.querySelector('input[name="metric"]:checked');
             const selectedMetric = checkedMetricRadio ? checkedMetricRadio.value : 'temp';
             const checkedHourRadio = document.querySelector('input[name="hour-filter"]:checked');
@@ -1294,19 +1288,14 @@
             }
         }
 
-        // --- NUEVAS FUNCIONES DE IDIOMA ---
         function translatePage(lang) {
             if (!translations[lang]) lang = 'es';
             currentLang = lang;
             localStorage.setItem('lang', lang);
             
-            // Poner el 'lang' en la etiqueta <html> para selectores CSS y accesibilidad
             document.documentElement.lang = lang; 
-
-            // Actualizar el botón de idioma
             languageToggle.textContent = lang === 'es' ? 'EN' : 'ES';
 
-            // Actualizar todos los elementos estáticos
             document.querySelectorAll('[data-i18n-key]').forEach(el => {
                 const key = el.getAttribute('data-i18n-key');
                 if (translations[lang][key]) {
@@ -1314,23 +1303,18 @@
                 }
             });
             
-            // Actualizar placeholder de Choices.js (si ya existe)
             if (choicesInstance) {
                 choicesInstance.setProps({
                     placeholderValue: translations[lang].choicesPlaceholder
                 });
             }
             
-            // Actualizar locale de Chart.js
             Chart.defaults.locale = lang;
         }
 
         async function toggleLanguage() {
             const newLang = currentLang === 'es' ? 'en' : 'es';
             translatePage(newLang);
-            
-            // Recargar todo el dashboard para que los gráficos y KPIs se actualicen
-            // con las nuevas etiquetas y formatos de fecha
             await updateDashboard();
         }
 
@@ -1391,7 +1375,7 @@
             metricRadios.forEach(radio => radio.addEventListener('change', async () => await updateDashboard()));
             hourFilterRadios.forEach(radio => radio.addEventListener('change', async () => await updateDashboard()));
             darkModeToggle.addEventListener('click', toggleDarkMode);
-            languageToggle.addEventListener('click', toggleLanguage); // <-- NUEVO LISTENER
+            languageToggle.addEventListener('click', toggleLanguage); 
             
             timeRangeButtons.forEach(button => {
                 button.addEventListener('click', async (e) => {
