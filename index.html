@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datalaria - Dashboard Climático (v3.1.0 - Bilingüe)</title>
+    <title>Datalaria - Dashboard Climático (v3.1.1 - Bilingüe Corregido)</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -19,7 +19,7 @@
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
     <style>
-        /* --- CSS (Modificado para el botón de idioma) --- */
+        /* --- CSS (Sin cambios) --- */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         
         body, #controls-container, #chart-container, .kpi-card, .selector-group label, .time-btn {
@@ -346,14 +346,14 @@
         <canvas id="myChart"></canvas>
     </div>
 
-    <h2 data-i1bc-key="variationTitle"></h2>
+    <h2 data-i18n-key="variationTitle"></h2>
     <p style="text-align: center; margin-top: -10px; color: #555;" data-i18n-key="variationSubtitle"></p>
     <div id="chart-container-variation" style="min-height: 300px; position: relative; margin-top: 20px;">
         <canvas id="variationChart"></canvas>
     </div>
 
     <script>
-        // --- NUEVO: Diccionario de Traducciones ---
+        // --- NUEVO: Diccionario de Traducciones (CORREGIDO) ---
         const translations = {
             'es': {
                 'mainTitle': 'Datalaria - Dashboard Climático',
@@ -675,7 +675,8 @@
             if (selectedMetric !== 'temp' || !forecastList || forecastList.length === 0) {
                 return '';
             }
-            const dateFormatter = new Intl.DateTimeFormat(currentLang, { // Usa currentLang
+            // --- CORREGIDO: Usa currentLang como locale ---
+            const dateFormatter = new Intl.DateTimeFormat(currentLang, { 
                 weekday: 'short', 
                 day: 'numeric', 
                 month: 'short' 
@@ -709,6 +710,7 @@
             const owm_forecast = cityPredictionData.pred_owm_5day;
             if (!ia_preds) return '';
 
+            // --- CORREGIDO: Usa clave de traducción ---
             let html = `
                 <div class="kpi-hist" style="margin-top: 15px;">
                     <strong>${translations[currentLang].iaTitle}:</strong>
@@ -739,6 +741,7 @@
                         </span>
                     `;
                 };
+                // --- CORREGIDO: Usa claves de traducción ---
                 html += `
                     <div class="kpi-hist-item">
                         <span><i data-feather="cpu" class="kpi-icon"></i> ${translations[currentLang].kpiMax}: <strong>${ia_preds.max.toFixed(1)}°C</strong></span>
@@ -842,9 +845,12 @@
                 
                 const now = new Date();
                 const sevenDaysAgo = new Date(now.getTime() - (7 * 24 * 60 * 60 * 1000));
+                
+                // --- CORRECCIÓN: Asegurarse de que la clave de la métrica existe ---
                 const sparklineData = data.records
                     .filter(row => row.fecha_hora >= sevenDaysAgo && row[metricInfo.key] !== null && row[metricInfo.key] !== undefined)
                     .map(row => ({ x: row.fecha_hora, y: row[metricInfo.key] }));
+                
                 const sparkCanvasId = `spark-${ciudad.replace(/ /g, '_')}-${selectedMetric}`;
                 const kpiMainId = `kpi-main-${ciudad.replace(/ /g, '_')}-${selectedMetric}`;
                 
@@ -896,8 +902,8 @@
                 const kpiElement = document.getElementById(kpiMainId);
                 if (kpiElement) {
                     // --- CORRECCIÓN: Asegurar que latest[metricInfo.key] existe ---
-                    const latestValue = latest[metricInfo.key] !== undefined ? latest[metricInfo.key] : latest.temperatura_c;
-                    animateCountUp(kpiElement, latestValue, 800, 1);
+                    const latestValue = (latest[metricInfo.key] !== undefined && latest[metricInfo.key] !== null) ? latest[metricInfo.key] : 0;
+                    animateCountUp(kpiElement, latestValue, 800, (metric === 'rain' || metric === 'snow' ? 2 : 1));
                 }
 
                 if (sparklineData.length > 1) {
@@ -1000,7 +1006,7 @@
                         forecastData.unshift({ x: lastRealPoint.x, y: lastRealPoint.y });
                     }
                     datasets.push({
-                        label: `${translations[currentLang].forecastTitle} ${ciudad} (media)`, // MODIFICADO
+                        label: `${translations[currentLang].forecastTitle.split('(')[0]} ${ciudad}`, // MODIFICADO
                         data: forecastData,
                         borderColor: COLOR_PALETTE[index % COLOR_PALETTE.length],
                         borderDash: [5, 5], 
@@ -1025,7 +1031,7 @@
                                 type: 'time', 
                                 time: { unit: 'day', tooltipFormat: 'dd MMM yyyy, HH:mm', displayFormats: { hour: 'HH:mm', day: 'dd MMM', month: 'MMM yyyy' } },
                                 title: { display: true, text: translations[currentLang].chartDateHour, color: textColor },
-                                ticks: { color: textColor },
+                                ticks: { color: textColor, source: 'auto' }, // CORRECCIÓN para mejor auto-escala
                                 grid: { color: gridColor }
                             },
                             y: {
@@ -1056,6 +1062,11 @@
             if (myVariationChart) { myVariationChart.destroy(); }
             const currentMetric = getMetricMap()[metric]; // MODIFICADO
             if (!currentMetric) return;
+            // --- CORRECCIÓN: No mostrar este gráfico para métricas no-diarias ---
+            if (metric === 'rain' || metric === 'snow') {
+                variationCtx.clearRect(0, 0, variationCtx.canvas.width, variationCtx.canvas.height);
+                return; // Esconder gráfico
+            }
 
             const isDarkMode = document.body.classList.contains('dark-mode');
             const gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.1)';
@@ -1128,7 +1139,7 @@
                     if (forecastVariationData.length > 0) {
                         const color = COLOR_PALETTE[index % COLOR_PALETTE.length];
                         datasets.push({
-                            label: `${translations[currentLang].forecastTitle} ${ciudad}`, // MODIFICADO
+                            label: `${translations[currentLang].forecastTitle.split('(')[0]} ${ciudad}`, // MODIFICADO
                             data: forecastVariationData,
                             backgroundColor: createStripedPattern(color),
                             borderColor: color,
@@ -1151,7 +1162,7 @@
                                 type: 'time',
                                 time: { unit: 'day', tooltipFormat: 'dd MMM yyyy', displayFormats: { day: 'dd MMM' } },
                                 title: { display: true, text: translations[currentLang].chartDate, color: textColor },
-                                ticks: { color: textColor },
+                                ticks: { color: textColor, source: 'auto' }, // CORRECCIÓN
                                 grid: { color: 'rgba(0,0,0,0)' }
                             },
                             y: {
@@ -1315,6 +1326,7 @@
         async function toggleLanguage() {
             const newLang = currentLang === 'es' ? 'en' : 'es';
             translatePage(newLang);
+            // --- CORREGIDO: Llamar a updateDashboard para redibujar KPIs ---
             await updateDashboard();
         }
 
@@ -1359,7 +1371,8 @@
                 await initMap(); 
                 
                 choicesInstance.setChoices(ciudades, 'value', 'label', false);
-                choicesInstance.setChoiceByValue(['Madrid,ES', 'León,ES']); 
+                // --- CORREGIDO: No hardcodear ciudades en la carga inicial ---
+                // choicesInstance.setChoiceByValue(['Madrid,ES', 'León,ES']); 
                 
                 // 6. Carga inicial del dashboard
                 await updateDashboard(); 
