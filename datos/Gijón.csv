@@ -1,0 +1,2 @@
+fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,viento_kmh,descripcion,lat,lon,nubosidad_porc,visibilidad_m,lluvia_1h,nieve_1h
+2025-11-08T21:33:52.519138,Gijón,10.7,10.12,9.44,11.66,88,1.62,nubes dispersas,43.5357,-5.6615,41,10000,0.0,0.0
