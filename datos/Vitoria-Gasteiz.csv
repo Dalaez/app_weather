@@ -48,3 +48,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-07T22:16:09.909916,Vitoria-Gasteiz,9.07,8.3,8.81,9.34,92,6.444,lluvia de gran intensidad,42.8467,-2.6731,0,10000,0.0,0.0
 2025-11-08T06:23:06.242246,Gasteiz / Vitoria,8.39,8.39,7.82,8.79,91,3.708,muy nuboso,42.8467,-2.6731,0,10000,0.0,0.0
 2025-11-08T21:35:24.822890,Vitoria-Gasteiz,8.51,8.51,7.7,9.34,94,3.708,muy nuboso,42.8467,-2.6731,75,10000,0.0,0.0
+2025-11-08T22:15:32.188733,Vitoria-Gasteiz,7.78,7.78,7.7,8.01,97,3.708,muy nuboso,42.8467,-2.6731,75,10000,0.0,0.0
