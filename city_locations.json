@@ -3,7 +3,7 @@
     "ciudad": "A Coruña",
     "lat": 43.3623,
     "lon": -8.4115,
-    "temp": 13.65
+    "temp": 13.47
   },
   {
     "ciudad": "Albacete",
@@ -15,7 +15,7 @@
     "ciudad": "Alicante",
     "lat": 38.3452,
     "lon": -0.481,
-    "temp": 14.52
+    "temp": 14.16
   },
   {
     "ciudad": "Almería",
@@ -99,13 +99,13 @@
     "ciudad": "Gijón",
     "lat": 43.5357,
     "lon": -5.6615,
-    "temp": 12.2
+    "temp": 12.21
   },
   {
     "ciudad": "Girona",
     "lat": 41.9794,
     "lon": 2.8214,
-    "temp": 7.81
+    "temp": 5.59
   },
   {
     "ciudad": "Granada",
@@ -141,7 +141,7 @@
     "ciudad": "León",
     "lat": 42.5984,
     "lon": -5.5719,
-    "temp": 4.92
+    "temp": 4.36
   },
   {
     "ciudad": "Lleida",
@@ -153,7 +153,7 @@
     "ciudad": "Llinars del Vallès",
     "lat": 41.6365,
     "lon": 2.395,
-    "temp": 11.06
+    "temp": 11.31
   },
   {
     "ciudad": "Logroño",
@@ -207,7 +207,7 @@
     "ciudad": "Oviedo",
     "lat": 43.3614,
     "lon": -5.8448,
-    "temp": 13.1
+    "temp": 12.57
   },
   {
     "ciudad": "Palencia",
@@ -219,7 +219,7 @@
     "ciudad": "Palma",
     "lat": 39.5696,
     "lon": 2.6502,
-    "temp": 13.45
+    "temp": 14.01
   },
   {
     "ciudad": "Pamplona",
@@ -237,7 +237,7 @@
     "ciudad": "Prioro",
     "lat": 42.8948,
     "lon": -4.9635,
-    "temp": 4.04
+    "temp": 3.48
   },
   {
     "ciudad": "Salamanca",
@@ -249,7 +249,7 @@
     "ciudad": "San Sebastián",
     "lat": 43.3183,
     "lon": -1.9812,
-    "temp": 12.5
+    "temp": 12.31
   },
   {
     "ciudad": "Santa Cruz de Tenerife",
@@ -261,7 +261,7 @@
     "ciudad": "Santander",
     "lat": 43.4623,
     "lon": -3.8099,
-    "temp": 14.24
+    "temp": 11.86
   },
   {
     "ciudad": "Segovia",
@@ -273,7 +273,7 @@
     "ciudad": "Sevilla",
     "lat": 37.3891,
     "lon": -5.9845,
-    "temp": 10.51
+    "temp": 10.42
   },
   {
     "ciudad": "Soria",
@@ -303,7 +303,7 @@
     "ciudad": "Valencia",
     "lat": 39.4699,
     "lon": -0.3763,
-    "temp": 10.41
+    "temp": 10.15
   },
   {
     "ciudad": "Valladolid",
@@ -339,7 +339,7 @@
     "ciudad": "Amsterdam",
     "lat": 52.3676,
     "lon": 4.9041,
-    "temp": 7.8
+    "temp": 7.91
   },
   {
     "ciudad": "Andorra la Vella",
@@ -351,31 +351,31 @@
     "ciudad": "Athens",
     "lat": 37.9838,
     "lon": 23.7275,
-    "temp": 21.18
+    "temp": 21.4
   },
   {
     "ciudad": "Berlin",
     "lat": 52.52,
     "lon": 13.405,
-    "temp": 7.46
+    "temp": 7.51
   },
   {
     "ciudad": "Bern",
     "lat": 46.948,
     "lon": 7.4474,
-    "temp": 2.49
+    "temp": 2.42
   },
   {
     "ciudad": "Bratislava",
     "lat": 48.1486,
     "lon": 17.1077,
-    "temp": 8.19
+    "temp": 7.71
   },
   {
     "ciudad": "Brussels",
     "lat": 50.8503,
     "lon": 4.3517,
-    "temp": 8.54
+    "temp": 8.45
   },
   {
     "ciudad": "Bucharest",
@@ -399,7 +399,7 @@
     "ciudad": "Dublin",
     "lat": 53.3498,
     "lon": -6.2603,
-    "temp": 8.59
+    "temp": 8.42
   },
   {
     "ciudad": "Helsinki",
@@ -441,25 +441,25 @@
     "ciudad": "Luxembourg",
     "lat": 49.6116,
     "lon": 6.1319,
-    "temp": 5.27
+    "temp": 5.29
   },
   {
     "ciudad": "Monaco",
     "lat": 43.7384,
     "lon": 7.4246,
-    "temp": 10.95
+    "temp": 13.41
   },
   {
     "ciudad": "Moscow",
     "lat": 55.7558,
     "lon": 37.6173,
-    "temp": 2.66
+    "temp": 3.17
   },
   {
     "ciudad": "Nicosia",
     "lat": 35.1856,
     "lon": 33.3823,
-    "temp": 19.94
+    "temp": 21.94
   },
   {
     "ciudad": "Oslo",
@@ -477,7 +477,7 @@
     "ciudad": "Prague",
     "lat": 50.0755,
     "lon": 14.4378,
-    "temp": 6.44
+    "temp": 6.57
   },
   {
     "ciudad": "Reykjavik",
@@ -495,13 +495,13 @@
     "ciudad": "Rome",
     "lat": 41.9028,
     "lon": 12.4964,
-    "temp": 10.27
+    "temp": 10.32
   },
   {
     "ciudad": "San Marino",
     "lat": 43.9424,
     "lon": 12.4578,
-    "temp": 7.44
+    "temp": 7.6
   },
   {
     "ciudad": "Sarajevo",
@@ -525,7 +525,7 @@
     "ciudad": "Stockholm",
     "lat": 59.3293,
     "lon": 18.0686,
-    "temp": 4.16
+    "temp": 4.77
   },
   {
     "ciudad": "Tallinn",
@@ -543,7 +543,7 @@
     "ciudad": "Vaduz",
     "lat": 47.141,
     "lon": 9.5215,
-    "temp": 3.5
+    "temp": 3.68
   },
   {
     "ciudad": "Valletta",
@@ -555,13 +555,13 @@
     "ciudad": "Vatican City",
     "lat": 41.9029,
     "lon": 12.4534,
-    "temp": 10.4
+    "temp": 10.35
   },
   {
     "ciudad": "Vienna",
     "lat": 48.2082,
     "lon": 16.3738,
-    "temp": 8.04
+    "temp": 8.25
   },
   {
     "ciudad": "Vilnius",
@@ -573,7 +573,7 @@
     "ciudad": "Warsaw",
     "lat": 52.2297,
     "lon": 21.0122,
-    "temp": 6.71
+    "temp": 6.78
   },
   {
     "ciudad": "Zagreb",
@@ -591,13 +591,13 @@
     "ciudad": "Manchester",
     "lat": 53.4839,
     "lon": -2.2446,
-    "temp": 10.71
+    "temp": 10.9
   },
   {
     "ciudad": "Munich",
     "lat": 48.1351,
     "lon": 11.582,
-    "temp": 6.94
+    "temp": 6.9
   },
   {
     "ciudad": "Milan",
@@ -609,7 +609,7 @@
     "ciudad": "Lyon",
     "lat": 45.764,
     "lon": 4.8357,
-    "temp": 6.86
+    "temp": 6.83
   },
   {
     "ciudad": "Hamburg",
@@ -621,7 +621,7 @@
     "ciudad": "Bangkok",
     "lat": 13.7563,
     "lon": 100.5018,
-    "temp": 32
+    "temp": 32.09
   },
   {
     "ciudad": "Beijing",
@@ -651,7 +651,7 @@
     "ciudad": "Hong Kong",
     "lat": 22.3193,
     "lon": 114.1694,
-    "temp": 26.05
+    "temp": 26.61
   },
   {
     "ciudad": "Islamabad",
@@ -663,13 +663,13 @@
     "ciudad": "Jakarta",
     "lat": -6.2088,
     "lon": 106.8456,
-    "temp": 32.27
+    "temp": 31.89
   },
   {
     "ciudad": "Jerusalem",
     "lat": 31.7683,
     "lon": 35.2137,
-    "temp": 24.45
+    "temp": 25.01
   },
   {
     "ciudad": "Kabul",
@@ -681,13 +681,13 @@
     "ciudad": "Kathmandu",
     "lat": 27.7172,
     "lon": 85.324,
-    "temp": 22.15
+    "temp": 23.15
   },
   {
     "ciudad": "Kuala Lumpur",
     "lat": 3.139,
     "lon": 101.6869,
-    "temp": 28.01
+    "temp": 28
   },
   {
     "ciudad": "Manila",
@@ -711,19 +711,19 @@
     "ciudad": "Pyongyang",
     "lat": 39.0392,
     "lon": 125.7625,
-    "temp": 8.39
+    "temp": 8.38
   },
   {
     "ciudad": "Riyadh",
     "lat": 24.7136,
     "lon": 46.6753,
-    "temp": 20.92
+    "temp": 23.92
   },
   {
     "ciudad": "Seoul",
     "lat": 37.5665,
     "lon": 126.978,
-    "temp": 11.76
+    "temp": 12.13
   },
   {
     "ciudad": "Shanghai",
@@ -735,7 +735,7 @@
     "ciudad": "Singapore",
     "lat": 1.3521,
     "lon": 103.8198,
-    "temp": 32.04
+    "temp": 33
   },
   {
     "ciudad": "Taipei",
@@ -759,25 +759,25 @@
     "ciudad": "Tokyo",
     "lat": 35.6762,
     "lon": 139.6503,
-    "temp": 17.56
+    "temp": 17.42
   },
   {
     "ciudad": "Ulaanbaatar",
     "lat": 47.918,
     "lon": 106.9176,
-    "temp": -5.02
+    "temp": -3.02
   },
   {
     "ciudad": "Sydney",
     "lat": -33.8688,
     "lon": 151.2093,
-    "temp": 20.83
+    "temp": 20.68
   },
   {
     "ciudad": "Melbourne",
     "lat": -37.8136,
     "lon": 144.9631,
-    "temp": 13.75
+    "temp": 13.38
   },
   {
     "ciudad": "Wellington",
@@ -789,19 +789,19 @@
     "ciudad": "Auckland",
     "lat": -36.8485,
     "lon": 174.7633,
-    "temp": 18.85
+    "temp": 18.48
   },
   {
     "ciudad": "Buenos Aires",
     "lat": -34.6037,
     "lon": -58.3816,
-    "temp": 15.12
+    "temp": 15.1
   },
   {
     "ciudad": "Bogota",
     "lat": 4.711,
     "lon": -74.0721,
-    "temp": 13.13
+    "temp": 12.88
   },
   {
     "ciudad": "Brasilia",
@@ -813,25 +813,25 @@
     "ciudad": "Caracas",
     "lat": 10.4806,
     "lon": -66.9036,
-    "temp": 26.1
+    "temp": 20.52
   },
   {
     "ciudad": "Havana",
     "lat": 23.1136,
     "lon": -82.3666,
-    "temp": 23.16
+    "temp": 22.33
   },
   {
     "ciudad": "Kingston",
     "lat": 17.9712,
     "lon": -76.7936,
-    "temp": 26.9
+    "temp": 24.92
   },
   {
     "ciudad": "La Paz",
     "lat": -16.4897,
     "lon": -68.1193,
-    "temp": 8.56
+    "temp": 7.56
   },
   {
     "ciudad": "Lima",
@@ -841,63 +841,63 @@
   },
   {
     "ciudad": "Mexico City",
-    "lat": 19.4326,
-    "lon": -99.1332,
-    "temp": 10.5
+    "lat": 19.4285,
+    "lon": -99.1277,
+    "temp": 10.53
   },
   {
     "ciudad": "Montevideo",
     "lat": -34.9011,
     "lon": -56.1645,
-    "temp": 19.19
+    "temp": 18.64
   },
   {
     "ciudad": "New York",
-    "lat": 40.713,
+    "lat": 40.7128,
     "lon": -74.006,
-    "temp": 13.94
+    "temp": 13.9
   },
   {
     "ciudad": "Los Angeles",
-    "lat": 34.054,
-    "lon": -118.243,
-    "temp": 20.1
+    "lat": 34.0522,
+    "lon": -118.2437,
+    "temp": 19.11
   },
   {
     "ciudad": "Chicago",
     "lat": 41.8781,
     "lon": -87.6298,
-    "temp": -3.44
+    "temp": -3.46
   },
   {
     "ciudad": "Houston",
     "lat": 29.7604,
     "lon": -95.3698,
-    "temp": 11.52
+    "temp": 11.42
   },
   {
     "ciudad": "Toronto",
     "lat": 43.6532,
     "lon": -79.3832,
-    "temp": -3.23
+    "temp": -3.24
   },
   {
     "ciudad": "Vancouver",
     "lat": 49.2827,
     "lon": -123.1207,
-    "temp": 11.61
+    "temp": 11.41
   },
   {
     "ciudad": "Ottawa",
     "lat": 45.4215,
     "lon": -75.6972,
-    "temp": -2.42
+    "temp": -2.34
   },
   {
     "ciudad": "Panama City",
     "lat": 8.9824,
     "lon": -79.5199,
-    "temp": 26.09
+    "temp": 26.08
   },
   {
     "ciudad": "Quito",
@@ -909,13 +909,13 @@
     "ciudad": "San Jose",
     "lat": 9.9281,
     "lon": -84.0907,
-    "temp": 19.65
+    "temp": 19.28
   },
   {
     "ciudad": "Santiago",
     "lat": -33.4489,
     "lon": -70.6693,
-    "temp": 11.22
+    "temp": 11.21
   },
   {
     "ciudad": "Sao Paulo",
@@ -927,19 +927,19 @@
     "ciudad": "Washington DC",
     "lat": 38.9072,
     "lon": -77.0369,
-    "temp": 10.95
+    "temp": 11.03
   },
   {
     "ciudad": "Abuja",
     "lat": 9.0765,
     "lon": 7.3986,
-    "temp": 22.24
+    "temp": 25.19
   },
   {
     "ciudad": "Accra",
     "lat": 5.6037,
     "lon": -0.187,
-    "temp": 25.05
+    "temp": 25.91
   },
   {
     "ciudad": "Algiers",
@@ -963,7 +963,7 @@
     "ciudad": "Casablanca",
     "lat": 33.5731,
     "lon": -7.5898,
-    "temp": 15.01
+    "temp": 14.99
   },
   {
     "ciudad": "Dakar",
@@ -975,19 +975,19 @@
     "ciudad": "Johannesburg",
     "lat": -26.2041,
     "lon": 28.0473,
-    "temp": 16.55
+    "temp": 16.75
   },
   {
     "ciudad": "Lagos",
     "lat": 6.5244,
     "lon": 3.3792,
-    "temp": 25.12
+    "temp": 27.18
   },
   {
     "ciudad": "Nairobi",
     "lat": -1.2921,
     "lon": 36.8219,
-    "temp": 19.02
+    "temp": 20.79
   },
   {
     "ciudad": "Rabat",
@@ -999,7 +999,7 @@
     "ciudad": "Tripoli",
     "lat": 32.8872,
     "lon": 13.1913,
-    "temp": 16.94
+    "temp": 21.55
   },
   {
     "ciudad": "Tunis",
