@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datalaria - Dashboard Climático (v3.1.2 - Corrección Bilingüe)</title>
+    <title>Datalaria - Dashboard Climático (v3.1.3 - Corrección Bugs)</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -312,7 +312,7 @@
 
         <div id="hour-filter-select">
             <fieldset>
-                <legend data-i18n-key="hourLegend"></legend>
+                <legend data-i1act-key="hourLegend"></legend>
                 <div class="selector-group">
                     <input type="radio" name="hour-filter" value="all" id="h-all" checked>
                     <label for="h-all" data-i18n-key="hourAll"></label>
@@ -889,7 +889,9 @@
                 const kpiElement = document.getElementById(kpiMainId);
                 if (kpiElement) {
                     const latestValue = (latest[metricInfo.key] !== undefined && latest[metricInfo.key] !== null) ? latest[metricInfo.key] : 0;
-                    animateCountUp(kpiElement, latestValue, 800, (metric === 'rain' || metric === 'snow' ? 2 : 1));
+                    // --- CORRECCIÓN DEL BUG DEL SPINNER ---
+                    // 'metric' no estaba definido; debe ser 'selectedMetric'
+                    animateCountUp(kpiElement, latestValue, 800, (selectedMetric === 'rain' || selectedMetric === 'snow' ? 2 : 1));
                 }
 
                 if (sparklineData.length > 1) {
