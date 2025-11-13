@@ -496,6 +496,7 @@
         let choicesInstance;
         let allDataCache = {}; 
         let allPredictionsCache = {};
+        let isUpdating = false;
         
         let currentLang = 'es';
         let currentTimeRange = 'all'; 
@@ -765,48 +766,64 @@
         }
 
 
-        async function updateDashboard() { 
-            loadingSpinner.style.display = 'flex'; 
-            const selectedCitiesValues = choicesInstance.getValue(true); 
-            const checkedMetricRadio = document.querySelector('input[name="metric"]:checked');
-            const selectedMetric = checkedMetricRadio ? checkedMetricRadio.value : 'temp'; 
-            const checkedHourRadio = document.querySelector('input[name="hour-filter"]:checked');
-            const selectedHour = checkedHourRadio ? checkedHourRadio.value : 'all';
+        async function updateDashboard() {
+        if (isUpdating) return; // 1. Si ya se está actualizando, no hacer nada.
+        isUpdating = true;      // 2. Activar el cerrojo.
+        loadingSpinner.style.display = 'flex';
 
-            if (selectedCitiesValues.length === 0) { 
-                kpiContainer.innerHTML = `<p>${translations[currentLang].kpiEmpty}</p>`; 
-                if (myChart) myChart.destroy(); 
-                if (myVariationChart) myVariationChart.destroy();
-                highlightMapMarkers([]); 
-                loadingSpinner.style.display = 'none'; 
-                return; 
-            }
-            
-            kpiContainer.innerHTML = ""; 
-            if (myChart) {
-                 myChart.data.datasets = [];
-                 myChart.data.labels = [];
-                 myChart.update();
-            }
-            if (myVariationChart) {
-                myVariationChart.data.datasets = [];
-                myVariationChart.data.labels = [];
-                myVariationChart.update();
-            }
+            try {
+                // --- Toda tu lógica original va aquí dentro del 'try' ---
+                
+                const selectedCitiesValues = choicesInstance.getValue(true);
+                const checkedMetricRadio = document.querySelector('input[name="metric"]:checked');
+                const selectedMetric = checkedMetricRadio ? checkedMetricRadio.value : 'temp';
+                const checkedHourRadio = document.querySelector('input[name="hour-filter"]:checked');
+                const selectedHour = checkedHourRadio ? checkedHourRadio.value : 'all';
 
-            const cityDataMap = await loadDataForCities(selectedCitiesValues); 
-            if (!cityDataMap) {
-                console.error("No se pudieron cargar los datos para las ciudades seleccionadas.");
-                loadingSpinner.style.display = 'none'; 
-                return;
-            }
+                if (selectedCitiesValues.length === 0) {
+                    kpiContainer.innerHTML = `<p>${translations[currentLang].kpiEmpty}</p>`;
+                    if (myChart) myChart.destroy();
+                    if (myVariationChart) myVariationChart.destroy();
+                    highlightMapMarkers([]);
+                    // Ya no necesitamos 'return' aquí, el finally se encargará
+                } else {
+                    
+                    kpiContainer.innerHTML = ""; // Limpiar KPIs
+                    // Limpiar gráficos
+                    if (myChart) {
+                        myChart.data.datasets = [];
+                        myChart.data.labels = [];
+                        myChart.update();
+                    }
+                    if (myVariationChart) {
+                        myVariationChart.data.datasets = [];
+                        myVariationChart.data.labels = [];
+                        myVariationChart.update();
+                    }
 
-            const selectedCitiesClean = selectedCitiesValues.map(v => v.split(',')[0]);
-            updateKPIs(cityDataMap, selectedMetric); 
-            updateChart(cityDataMap, selectedMetric, selectedHour);
-            updateVariationChart(cityDataMap, selectedMetric); 
-            highlightMapMarkers(selectedCitiesClean); 
-            loadingSpinner.style.display = 'none'; 
+                    const cityDataMap = await loadDataForCities(selectedCitiesValues);
+                    
+                    if (!cityDataMap) {
+                        console.error("No se pudieron cargar los datos para las ciudades seleccionadas.");
+                        // Mostrar error al usuario si es necesario
+                    } else {
+                        const selectedCitiesClean = selectedCitiesValues.map(v => v.split(',')[0]);
+                        updateKPIs(cityDataMap, selectedMetric);
+                        updateChart(cityDataMap, selectedMetric, selectedHour);
+                        updateVariationChart(cityDataMap, selectedMetric);
+                        highlightMapMarkers(selectedCitiesClean);
+                    }
+                }
+            } catch (err) {
+                // Si algo falla, lo capturamos para que 'finally' se ejecute
+                console.error("Error durante la actualización del dashboard:", err);
+                kpiContainer.innerHTML = `<p style="color: red;">Error al actualizar. Inténtalo de nuevo.</p>`;
+            } finally {
+                // 3. El bloque 'finally' SIEMPRE se ejecuta,
+                //    incluso después de un 'return' o un 'error'.
+                isUpdating = false;     // 4. Liberar el cerrojo.
+                loadingSpinner.style.display = 'none'; // 5. Ocultar el spinner.
+            }
         }
 
         function updateKPIs(cityDataMap, selectedMetric) {
@@ -1313,6 +1330,8 @@
         }
 
         async function toggleLanguage() {
+            if (isUpdating) return;
+            
             const newLang = currentLang === 'es' ? 'en' : 'es';
             translatePage(newLang);
             await updateDashboard();
