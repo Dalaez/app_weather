@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datalaria - Dashboard Climático (v3.2.0 - Header Mejorado)</title>
+    <title>Datalaria - Dashboard Climático</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -19,7 +19,6 @@
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
     <style>
-        /* --- CSS (Sin cambios) --- */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         
         body, #controls-container, #chart-container, .kpi-card, .selector-group label, .time-btn {
@@ -32,13 +31,13 @@
             margin: 0; 
             padding: 20px; 
         }
-        /* MODIFICADO: h1 ahora está dentro del header */
-        h1 {
-            color: #1a2533;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
-            /* Quitamos text-align y margin-top para el flexbox */
-            margin: 0; 
+        /* --- MODIFICADO: Estilos H1 para el nuevo header --- */
+        h1 { 
+            color: #1a2533; 
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05); 
+            margin: 0;
             font-size: 1.8em;
+            /* Quitado text-align: center para que se alinee con el logo */
         }
         h2 { color: #34495e; border-bottom: 2px solid #bdc3c7; padding-bottom: 5px; margin-top: 30px; }
         #map-container { width: 100%; height: 450px; border-radius: 12px; margin-bottom: 20px; z-index: 5; background: #fff; box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1); border: 1px solid rgba(255, 255, 255, 0.18); }
@@ -122,12 +121,11 @@
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         
+        /* --- MODIFICADO: Contenedor de settings movido al header --- */
         #settings-toggles {
-            position: absolute;
-            top: 20px;
-            right: 20px;
             display: flex;
             gap: 10px;
+            /* Ya no necesita position: absolute */
         }
         #dark-mode-toggle, #language-toggle {
             background: #fff;
@@ -160,21 +158,31 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap; /* Para que se apile en móviles */
+            position: relative; /* Para centrado absoluto del título */
+            flex-wrap: wrap; /* Para móviles */
             gap: 15px;
-            padding: 0 10px 10px 10px; /* Un poco de padding inferior */
-            border-bottom: 2px solid #bdc3c7;
+            padding-bottom: 20px;
             margin-bottom: 20px;
+            border-bottom: 2px solid #bdc3c7;
         }
         .header-logo-title {
             display: flex;
             align-items: center;
             gap: 15px;
-            flex-grow: 1; /* Ocupa el espacio disponible */
+            /* Centrado absoluto */
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
         .header-logo {
-            max-height: 50px;
+            height: 50px; /* Ajusta la altura del logo */
             width: auto;
+        }
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-left: auto; /* Empuja a la derecha */
         }
         .header-link {
             display: flex;
@@ -188,12 +196,29 @@
             background: rgba(255, 255, 255, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.18);
             transition: all 0.2s ease;
+            white-space: nowrap; /* Evita que el texto se parta */
         }
         .header-link:hover {
             background: #fff;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             transform: translateY(-2px);
         }
+        /* Media query para centrar en pantallas pequeñas */
+        @media (max-width: 768px) {
+            .main-header {
+                justify-content: center; /* Centra todo en móvil */
+            }
+            .header-logo-title {
+                position: static; /* Quita el centrado absoluto */
+                transform: none;
+                order: 1; /* El título va primero */
+            }
+            .header-right {
+                order: 2; /* Los controles van después */
+                margin-left: 0; /* Quita el empuje a la derecha */
+            }
+        }
+
 
         body.dark-mode {
             background: #1a2533;
@@ -296,7 +321,6 @@
             color: #f5f7fa;
         }
         
-        /* --- NUEVO: Dark Mode para el Header --- */
         body.dark-mode .main-header {
             border-bottom-color: #34495e;
         }
@@ -319,13 +343,24 @@
     </div>
 
     <header class="main-header">
+        <div style="flex-basis: 150px;"></div> 
+
         <div class="header-logo-title">
             <img src="datalaria_logo_transp.png" alt="Datalaria Logo" class="header-logo">
             <h1 data-i18n-key="mainTitle"></h1>
         </div>
-        <a id="how-to-link" href="#" class="header-link" target="_blank" rel="noopener noreferrer">
-            <span data-i18n-key="howToLink"></span> <i data-feather="external-link" style="width:1em; height:1em; vertical-align: -0.1em;"></i>
-        </a>
+        
+        <div class="header-right">
+            <a id="how-to-link" href="#" class="header-link" target="_blank" rel="noopener noreferrer">
+                <span data-i18n-key="howToLink"></span> <i data-feather="external-link" style="width:1em; height:1em; vertical-align: -0.1em;"></i>
+            </a>
+            <div id="settings-toggles">
+                <button id="language-toggle" aria-label="Toggle Language"></button>
+                <button id="dark-mode-toggle" aria-label="Toggle Dark Mode">
+                    <i data-feather="moon" id="dark-mode-icon"></i>
+                </button>
+            </div>
+        </div>
     </header>
     <div id="controls-container">
         <div id="city-select-container">
@@ -394,13 +429,7 @@
             </fieldset>
         </div>
 
-        <div id="settings-toggles">
-            <button id="language-toggle" aria-label="Toggle Language"></button>
-            <button id="dark-mode-toggle" aria-label="Toggle Dark Mode">
-                <i data-feather="moon" id="dark-mode-icon"></i>
-            </button>
         </div>
-    </div>
 
     <h2 data-i18n-key="mapTitle"></h2>
     <div id="map-container"></div>
@@ -540,10 +569,10 @@
         };
 
         // --- Configuración Global ---
-        const CITIES_LIST_URL = 'ciudades.txt'; // Asumiendo ruta relativa
-        const DATA_FOLDER_URL = 'datos/'; // Asumiendo ruta relativa
-        const MAP_DATA_URL = 'city_locations.json'; // Asumiendo ruta relativa
-        const PREDICTIONS_URL = 'predicciones.json'; // Asumiendo ruta relativa
+        const CITIES_LIST_URL = 'ciudades.txt'; 
+        const DATA_FOLDER_URL = 'datos/'; 
+        const MAP_DATA_URL = 'city_locations.json'; 
+        const PREDICTIONS_URL = 'predicciones.json'; 
         const MIN_RECORDS_FOR_IA = 10;
         
         // --- NUEVO: URLs del Blog ---
@@ -1369,6 +1398,12 @@
             document.documentElement.lang = lang; 
             languageToggle.textContent = lang === 'es' ? 'EN' : 'ES';
 
+            // --- NUEVO: Actualizar el enlace del blog ---
+            const blogLinkElement = document.getElementById('how-to-link');
+            if (blogLinkElement) {
+                blogLinkElement.href = BLOG_LINKS[lang] || BLOG_LINKS['es'];
+            }
+
             document.querySelectorAll('[data-i18n-key]').forEach(el => {
                 const key = el.getAttribute('data-i18n-key');
                 if (translations[lang][key]) {
@@ -1433,7 +1468,6 @@
                 
                 choicesInstance.setChoices(ciudades, 'value', 'label', false);
                 
-                // --- CORRECCIÓN: Línea restaurada para carga inicial ---
                 choicesInstance.setChoiceByValue(['Madrid,ES', 'León,ES']); 
                 
                 // 6. Carga inicial del dashboard
