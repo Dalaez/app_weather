@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datalaria - Dashboard Climático (v3.1.3 - Corrección Bugs)</title>
+    <title>Datalaria - Dashboard Climático (v3.2.0 - Header Mejorado)</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -32,7 +32,14 @@
             margin: 0; 
             padding: 20px; 
         }
-        h1 { color: #1a2533; text-align: center; text-shadow: 1px 1px 2px rgba(0,0,0,0.05); }
+        /* MODIFICADO: h1 ahora está dentro del header */
+        h1 {
+            color: #1a2533;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+            /* Quitamos text-align y margin-top para el flexbox */
+            margin: 0; 
+            font-size: 1.8em;
+        }
         h2 { color: #34495e; border-bottom: 2px solid #bdc3c7; padding-bottom: 5px; margin-top: 30px; }
         #map-container { width: 100%; height: 450px; border-radius: 12px; margin-bottom: 20px; z-index: 5; background: #fff; box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1); border: 1px solid rgba(255, 255, 255, 0.18); }
         #controls-container, #chart-container, .kpi-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); border-radius: 12px; box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1); border: 1px solid rgba(255, 255, 255, 0.18); }
@@ -148,6 +155,46 @@
             transition: color 0.3s ease;
         }
 
+        /* --- NUEVO: Estilos del Header --- */
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap; /* Para que se apile en móviles */
+            gap: 15px;
+            padding: 0 10px 10px 10px; /* Un poco de padding inferior */
+            border-bottom: 2px solid #bdc3c7;
+            margin-bottom: 20px;
+        }
+        .header-logo-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-grow: 1; /* Ocupa el espacio disponible */
+        }
+        .header-logo {
+            max-height: 50px;
+            width: auto;
+        }
+        .header-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: #4363d8;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transition: all 0.2s ease;
+        }
+        .header-link:hover {
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
         body.dark-mode {
             background: #1a2533;
             color: #f5f7fa;
@@ -248,6 +295,20 @@
         body.dark-mode #dark-mode-toggle i {
             color: #f5f7fa;
         }
+        
+        /* --- NUEVO: Dark Mode para el Header --- */
+        body.dark-mode .main-header {
+            border-bottom-color: #34495e;
+        }
+        body.dark-mode .header-link {
+            background: rgba(44, 62, 80, 0.85);
+            color: #4e73e0;
+            border-color: rgba(93, 109, 126, 0.5);
+        }
+        body.dark-mode .header-link:hover {
+            background: #34495e;
+            color: #6a82e0;
+        }
 
     </style>
 </head>
@@ -257,8 +318,15 @@
         <div class="spinner"></div>
     </div>
 
-    <h1 data-i18n-key="mainTitle"></h1>
-
+    <header class="main-header">
+        <div class="header-logo-title">
+            <img src="datalaria_logo_transp.png" alt="Datalaria Logo" class="header-logo">
+            <h1 data-i18n-key="mainTitle"></h1>
+        </div>
+        <a id="how-to-link" href="#" class="header-link" target="_blank" rel="noopener noreferrer">
+            <span data-i18n-key="howToLink"></span> <i data-feather="external-link" style="width:1em; height:1em; vertical-align: -0.1em;"></i>
+        </a>
+    </header>
     <div id="controls-container">
         <div id="city-select-container">
             <label for="city-select" style="font-weight: bold; margin-bottom: 5px; display: block;" data-i18n-key="citySelectLabel"></label>
@@ -312,7 +380,7 @@
 
         <div id="hour-filter-select">
             <fieldset>
-                <legend data-i1act-key="hourLegend"></legend>
+                <legend data-i18n-key="hourLegend"></legend>
                 <div class="selector-group">
                     <input type="radio" name="hour-filter" value="all" id="h-all" checked>
                     <label for="h-all" data-i18n-key="hourAll"></label>
@@ -357,6 +425,7 @@
         const translations = {
             'es': {
                 'mainTitle': 'Datalaria - Dashboard Climático',
+                'howToLink': 'Cómo se hizo', // <-- NUEVO
                 'citySelectLabel': 'Selecciona hasta 5 ciudades:',
                 'metricLegend': 'Métrica',
                 'metricTemp': 'Temperatura',
@@ -413,6 +482,7 @@
             },
             'en': {
                 'mainTitle': 'Datalaria - Climate Dashboard',
+                'howToLink': 'How it was made', // <-- NUEVO
                 'citySelectLabel': 'Select up to 5 cities:',
                 'metricLegend': 'Metric',
                 'metricTemp': 'Temperature',
@@ -470,11 +540,17 @@
         };
 
         // --- Configuración Global ---
-        const CITIES_LIST_URL = '/apps/weather/ciudades.txt';
-        const DATA_FOLDER_URL = '/apps/weather/datos/';
-        const MAP_DATA_URL = '/apps/weather/city_locations.json';
-        const PREDICTIONS_URL = '/apps/weather/predicciones.json'; 
+        const CITIES_LIST_URL = 'ciudades.txt'; // Asumiendo ruta relativa
+        const DATA_FOLDER_URL = 'datos/'; // Asumiendo ruta relativa
+        const MAP_DATA_URL = 'city_locations.json'; // Asumiendo ruta relativa
+        const PREDICTIONS_URL = 'predicciones.json'; // Asumiendo ruta relativa
         const MIN_RECORDS_FOR_IA = 10;
+        
+        // --- NUEVO: URLs del Blog ---
+        const BLOG_LINKS = {
+            'es': 'https://datalaria.com/es/posts/app-openweather_part1_backend/',
+            'en': 'https://datalaria.com/en/posts/app_openweather_part1_backend/'
+        };
         
         const citySelectorElement = document.getElementById('city-select');
         const kpiContainer = document.getElementById('kpi-container');
@@ -496,7 +572,6 @@
         let choicesInstance;
         let allDataCache = {}; 
         let allPredictionsCache = {};
-        let isUpdating = false;
         
         let currentLang = 'es';
         let currentTimeRange = 'all'; 
@@ -766,64 +841,48 @@
         }
 
 
-        async function updateDashboard() {
-        if (isUpdating) return; // 1. Si ya se está actualizando, no hacer nada.
-        isUpdating = true;      // 2. Activar el cerrojo.
-        loadingSpinner.style.display = 'flex';
+        async function updateDashboard() { 
+            loadingSpinner.style.display = 'flex'; 
+            const selectedCitiesValues = choicesInstance.getValue(true); 
+            const checkedMetricRadio = document.querySelector('input[name="metric"]:checked');
+            const selectedMetric = checkedMetricRadio ? checkedMetricRadio.value : 'temp'; 
+            const checkedHourRadio = document.querySelector('input[name="hour-filter"]:checked');
+            const selectedHour = checkedHourRadio ? checkedHourRadio.value : 'all';
 
-            try {
-                // --- Toda tu lógica original va aquí dentro del 'try' ---
-                
-                const selectedCitiesValues = choicesInstance.getValue(true);
-                const checkedMetricRadio = document.querySelector('input[name="metric"]:checked');
-                const selectedMetric = checkedMetricRadio ? checkedMetricRadio.value : 'temp';
-                const checkedHourRadio = document.querySelector('input[name="hour-filter"]:checked');
-                const selectedHour = checkedHourRadio ? checkedHourRadio.value : 'all';
-
-                if (selectedCitiesValues.length === 0) {
-                    kpiContainer.innerHTML = `<p>${translations[currentLang].kpiEmpty}</p>`;
-                    if (myChart) myChart.destroy();
-                    if (myVariationChart) myVariationChart.destroy();
-                    highlightMapMarkers([]);
-                    // Ya no necesitamos 'return' aquí, el finally se encargará
-                } else {
-                    
-                    kpiContainer.innerHTML = ""; // Limpiar KPIs
-                    // Limpiar gráficos
-                    if (myChart) {
-                        myChart.data.datasets = [];
-                        myChart.data.labels = [];
-                        myChart.update();
-                    }
-                    if (myVariationChart) {
-                        myVariationChart.data.datasets = [];
-                        myVariationChart.data.labels = [];
-                        myVariationChart.update();
-                    }
-
-                    const cityDataMap = await loadDataForCities(selectedCitiesValues);
-                    
-                    if (!cityDataMap) {
-                        console.error("No se pudieron cargar los datos para las ciudades seleccionadas.");
-                        // Mostrar error al usuario si es necesario
-                    } else {
-                        const selectedCitiesClean = selectedCitiesValues.map(v => v.split(',')[0]);
-                        updateKPIs(cityDataMap, selectedMetric);
-                        updateChart(cityDataMap, selectedMetric, selectedHour);
-                        updateVariationChart(cityDataMap, selectedMetric);
-                        highlightMapMarkers(selectedCitiesClean);
-                    }
-                }
-            } catch (err) {
-                // Si algo falla, lo capturamos para que 'finally' se ejecute
-                console.error("Error durante la actualización del dashboard:", err);
-                kpiContainer.innerHTML = `<p style="color: red;">Error al actualizar. Inténtalo de nuevo.</p>`;
-            } finally {
-                // 3. El bloque 'finally' SIEMPRE se ejecuta,
-                //    incluso después de un 'return' o un 'error'.
-                isUpdating = false;     // 4. Liberar el cerrojo.
-                loadingSpinner.style.display = 'none'; // 5. Ocultar el spinner.
+            if (selectedCitiesValues.length === 0) { 
+                kpiContainer.innerHTML = `<p>${translations[currentLang].kpiEmpty}</p>`; 
+                if (myChart) myChart.destroy(); 
+                if (myVariationChart) myVariationChart.destroy();
+                highlightMapMarkers([]); 
+                loadingSpinner.style.display = 'none'; 
+                return; 
             }
+            
+            kpiContainer.innerHTML = ""; 
+            if (myChart) {
+                 myChart.data.datasets = [];
+                 myChart.data.labels = [];
+                 myChart.update();
+            }
+            if (myVariationChart) {
+                myVariationChart.data.datasets = [];
+                myVariationChart.data.labels = [];
+                myVariationChart.update();
+            }
+
+            const cityDataMap = await loadDataForCities(selectedCitiesValues); 
+            if (!cityDataMap) {
+                console.error("No se pudieron cargar los datos para las ciudades seleccionadas.");
+                loadingSpinner.style.display = 'none'; 
+                return;
+            }
+
+            const selectedCitiesClean = selectedCitiesValues.map(v => v.split(',')[0]);
+            updateKPIs(cityDataMap, selectedMetric); 
+            updateChart(cityDataMap, selectedMetric, selectedHour);
+            updateVariationChart(cityDataMap, selectedMetric); 
+            highlightMapMarkers(selectedCitiesClean); 
+            loadingSpinner.style.display = 'none'; 
         }
 
         function updateKPIs(cityDataMap, selectedMetric) {
@@ -907,7 +966,6 @@
                 if (kpiElement) {
                     const latestValue = (latest[metricInfo.key] !== undefined && latest[metricInfo.key] !== null) ? latest[metricInfo.key] : 0;
                     // --- CORRECCIÓN DEL BUG DEL SPINNER ---
-                    // 'metric' no estaba definido; debe ser 'selectedMetric'
                     animateCountUp(kpiElement, latestValue, 800, (selectedMetric === 'rain' || selectedMetric === 'snow' ? 2 : 1));
                 }
 
@@ -1036,7 +1094,6 @@
                                 type: 'time', 
                                 time: { unit: 'day', tooltipFormat: 'dd MMM yyyy, HH:mm', displayFormats: { hour: 'HH:mm', day: 'dd MMM', month: 'MMM yyyy' } },
                                 title: { display: true, text: translations[currentLang].chartDateHour, color: textColor },
-                                // --- CORRECCIÓN: Eliminado 'source: "auto"' ---
                                 ticks: { color: textColor, autoSkip: true, maxTicksLimit: 20 },
                                 grid: { color: gridColor }
                             },
@@ -1167,7 +1224,6 @@
                                 type: 'time',
                                 time: { unit: 'day', tooltipFormat: 'dd MMM yyyy', displayFormats: { day: 'dd MMM' } },
                                 title: { display: true, text: translations[currentLang].chartDate, color: textColor },
-                                // --- CORRECCIÓN: Eliminado 'source: "auto"' ---
                                 ticks: { color: textColor, autoSkip: true, maxTicksLimit: 20 },
                                 grid: { color: 'rgba(0,0,0,0)' }
                             },
@@ -1320,16 +1376,16 @@
                 }
             });
             
-            if (choicesInstance && choicesInstance.input) {
-                choicesInstance.input.placeholder = translations[lang].choicesPlaceholder;
+            if (choicesInstance) {
+                choicesInstance.setProps({
+                    placeholderValue: translations[lang].choicesPlaceholder
+                });
             }
             
             Chart.defaults.locale = lang;
         }
 
         async function toggleLanguage() {
-            if (isUpdating) return;
-            
             const newLang = currentLang === 'es' ? 'en' : 'es';
             translatePage(newLang);
             await updateDashboard();
