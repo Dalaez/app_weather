@@ -71,3 +71,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-13T14:20:43.798187,Bright Hill Crescent,25.41,26.38,24.67,26.38,91,3.708,muy nuboso,1.3521,103.8198,75,10000,0.0,0.0
 2025-11-13T22:20:51.748290,Bright Hill Crescent,25.24,26.27,24.7,25.82,94,5.5440000000000005,muy nuboso,1.3521,103.8198,75,8000,0.0,0.0
 2025-11-14T06:29:23.955192,Bright Hill Crescent,26.67,29.57,26.38,27.67,87,20.376,nubes dispersas,1.3521,103.8198,40,2000,0.0,0.0
+2025-11-14T07:17:17.059029,Bright Hill Crescent,27.68,31.73,27.49,28.67,83,11.124,nubes dispersas,1.3521,103.8198,40,10000,0.0,0.0

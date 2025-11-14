@@ -71,3 +71,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-13T14:20:55.694541,Ulaanbaatar Hot,-16.02,-16.02,-16.02,-16.02,78,3.6,cielo claro,47.918,106.9176,0,10000,0.0,0.0
 2025-11-13T22:21:04.016843,Ulaanbaatar Hot,-18.02,-18.02,-18.02,-18.02,78,0.0,cielo claro,47.918,106.9176,0,10000,0.0,0.0
 2025-11-14T06:29:36.203293,Ulaanbaatar Hot,-5.02,-8.3,-5.02,-5.02,58,7.2,nubes dispersas,47.918,106.9176,40,10000,0.0,0.0
+2025-11-14T07:17:29.298900,Ulaanbaatar Hot,-0.02,-6.35,-0.02,-0.02,51,28.8,nubes dispersas,47.918,106.9176,40,10000,0.0,0.0
