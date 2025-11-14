@@ -1411,10 +1411,8 @@
                 }
             });
             
-            if (choicesInstance) {
-                choicesInstance.setProps({
-                    placeholderValue: translations[lang].choicesPlaceholder
-                });
+            if (choicesInstance && choicesInstance.input) {
+                choicesInstance.input.placeholder = translations[lang].choicesPlaceholder;
             }
             
             Chart.defaults.locale = lang;
