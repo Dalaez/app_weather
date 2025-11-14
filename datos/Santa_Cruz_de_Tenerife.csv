@@ -70,3 +70,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-13T07:31:09.935527,Santa Cruz de Tenerife,20.13,20.26,18.95,21.68,79,6.444,algo de nubes,28.4636,-16.2518,20,10000,0.0,0.0
 2025-11-13T14:17:33.241527,Santa Cruz de Tenerife,20.12,20.64,18.78,20.51,94,33.336,lluvia moderada,28.4636,-16.2518,75,1800,1.02,0.0
 2025-11-13T22:17:35.618496,Santa Cruz de Tenerife,19.23,19.58,17.74,22.23,91,14.832,muy nuboso,28.4636,-16.2518,75,10000,0.0,0.0
+2025-11-14T06:26:07.948288,Santa Cruz de Tenerife,18.32,18.37,17.83,20.01,83,11.124,algo de nubes,28.4636,-16.2518,20,10000,0.0,0.0
