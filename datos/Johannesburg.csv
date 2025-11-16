@@ -79,3 +79,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-15T22:18:10.650995,Johannesburg,15.16,15.21,14.85,15.46,95,3.708,lluvia moderada,-26.2041,28.0473,100,10000,2.77,0.0
 2025-11-16T06:28:48.377887,Johannesburg,12.64,12.49,12.12,14.98,97,7.416,lluvia de gran intensidad,-26.2041,28.0473,100,10000,15.49,0.0
 2025-11-16T14:20:12.713046,Johannesburg,12.32,12.04,11.61,13.25,93,11.268,lluvia moderada,-26.2041,28.0473,100,10000,1.01,0.0
+2025-11-16T22:20:49.777454,Johannesburg,9.78,7.92,8.86,10.44,95,12.96,lluvia ligera,-26.2041,28.0473,100,10000,0.16,0.0
