@@ -346,7 +346,7 @@
         <div style="flex-basis: 150px;"></div> 
 
         <div class="header-logo-title">
-            <img src="datalaria_logo_transp.png" alt="Datalaria Logo" class="header-logo">
+            <img src="/apps/weather/datalaria_logo_transp.png" alt="Datalaria Logo" class="header-logo">
             <h1 data-i18n-key="mainTitle"></h1>
         </div>
         
@@ -568,11 +568,13 @@
             }
         };
 
-        // --- Configuración Global ---
-        const CITIES_LIST_URL = 'ciudades.txt'; 
-        const DATA_FOLDER_URL = 'datos/'; 
-        const MAP_DATA_URL = 'city_locations.json'; 
-        const PREDICTIONS_URL = 'predicciones.json'; 
+        // --- Configuración Global (CORREGIDO: Rutas absolutas) ---
+        // Al usar /apps/weather/ al inicio, el navegador busca desde la raíz,
+        // solucionando el problema cuando falta la barra final en la URL.
+        const CITIES_LIST_URL = '/apps/weather/ciudades.txt'; 
+        const DATA_FOLDER_URL = '/apps/weather/datos/'; 
+        const MAP_DATA_URL = '/apps/weather/city_locations.json'; 
+        const PREDICTIONS_URL = '/apps/weather/predicciones.json'; 
         const MIN_RECORDS_FOR_IA = 10;
         
         // --- NUEVO: URLs del Blog ---
