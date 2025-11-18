@@ -84,3 +84,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-17T07:23:43.666832,Santa Barbara Central,12.99,12.9,11.99,13.41,98,16.092,muy nuboso,4.711,-74.0721,75,10000,0.0,0.0
 2025-11-17T14:21:24.592979,Santa Barbara Central,13.39,13.34,12.73,13.99,98,16.092,muy nuboso,4.711,-74.0721,75,10000,0.0,0.0
 2025-11-17T22:21:07.276495,Santa Barbara Central,18.99,18.59,18.99,18.99,63,20.376,lluvia ligera,4.711,-74.0721,75,10000,0.24,0.0
+2025-11-18T06:29:16.526684,Santa Barbara Central,12.69,12.57,12.17,12.86,98,3.204,nubes,4.711,-74.0721,89,10000,0.0,0.0
