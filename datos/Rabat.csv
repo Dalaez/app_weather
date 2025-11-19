@@ -88,3 +88,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-18T14:23:16.235848,Medina De Rabat,20.37,20.24,20.37,20.37,68,9.251999999999999,nubes dispersas,34.0209,-6.8417,40,7000,0.0,0.0
 2025-11-18T22:22:19.951349,Medina De Rabat,12.37,12.27,12.37,12.37,100,0.0,nubes dispersas,34.0209,-6.8417,40,7000,0.0,0.0
 2025-11-19T06:30:38.428572,Medina De Rabat,9.37,9.37,9.37,9.37,100,0.0,cielo claro,34.0209,-6.8417,0,6000,0.0,0.0
+2025-11-19T14:22:49.666291,Medina De Rabat,19.37,18.8,19.37,19.37,55,7.416,nubes dispersas,34.0209,-6.8417,40,6000,0.0,0.0

@@ -88,3 +88,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-18T14:21:14.358426,"Parliament House, Delhi",18.07,17.71,18.07,18.07,68,3.708,niebla,28.6139,77.209,6,2800,0.0,0.0
 2025-11-18T22:20:22.293110,"Parliament House, Delhi",13.07,12.73,13.07,13.07,88,3.708,niebla,28.6139,77.209,18,2100,0.0,0.0
 2025-11-19T06:28:34.252555,"Parliament House, Delhi",24.44,23.72,24.44,24.44,30,5.256,cielo claro,28.6139,77.209,0,10000,0.0,0.0
+2025-11-19T14:20:55.276118,"Parliament House, Delhi",21.07,20.69,21.07,21.07,56,0.0,niebla,28.6139,77.209,20,2200,0.0,0.0
