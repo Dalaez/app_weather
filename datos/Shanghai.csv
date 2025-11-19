@@ -87,3 +87,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-18T06:28:47.083793,Shanghai Municipality,9.88,6.52,9.88,9.88,22,28.8,cielo claro,31.2304,121.4737,0,10000,0.0,0.0
 2025-11-18T14:21:24.505499,Shanghai Municipality,5.88,2.94,5.88,5.88,36,14.4,cielo claro,31.2304,121.4737,0,10000,0.0,0.0
 2025-11-18T22:20:32.071881,Shanghai Municipality,4.88,1.19,4.88,4.88,45,18.0,cielo claro,31.2304,121.4737,0,10000,0.0,0.0
+2025-11-19T06:28:44.618752,Shanghai Municipality,11.88,9.65,11.88,11.88,20,18.0,cielo claro,31.2304,121.4737,0,10000,0.0,0.0
