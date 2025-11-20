@@ -90,3 +90,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-19T06:26:40.430918,Luxembourg,0.75,-3.44,0.09,1.64,95,14.832,nevada ligera,49.6116,6.1319,75,1700,0.51,0.0
 2025-11-19T14:19:10.535648,Luxembourg,2.64,-1.94,2.32,3.3,95,20.376,chubasco de ligera intensidad,49.6116,6.1319,75,3000,0.36,0.0
 2025-11-19T22:18:13.049307,Luxembourg,2.56,-1.51,1.76,3.26,94,16.668,chubasco de ligera intensidad,49.6116,6.1319,75,9000,0.25,0.0
+2025-11-20T06:26:30.446590,Luxembourg,1.33,-2.37,0.65,2.15,93,12.96,muy nuboso,49.6116,6.1319,75,10000,0.0,0.0
