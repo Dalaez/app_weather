@@ -93,3 +93,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-20T06:26:04.315832,Arrondissement Brussel-Hoofdstad,1.45,-2.23,1.01,1.96,94,12.96,nubes dispersas,50.8503,4.3517,40,10000,0.0,0.0
 2025-11-20T14:18:40.804503,Arrondissement Brussel-Hoofdstad,3.07,0.55,2.32,3.77,91,9.251999999999999,muy nuboso,50.8503,4.3517,75,10000,0.0,0.0
 2025-11-20T22:17:35.514816,Brussels,1.98,-1.2,1.25,2.58,94,11.124,muy nuboso,50.8503,4.3517,75,10000,0.0,0.0
+2025-11-21T06:27:55.810024,City of Brussels,2.17,0,1.76,2.66,95,7.416,muy nuboso,50.8503,4.3517,75,8000,0.0,0.0
