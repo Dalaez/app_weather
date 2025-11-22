@@ -96,3 +96,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-21T06:31:00.074090,Santa Barbara Central,11.74,11.58,11.74,12.19,100,3.204,muy nuboso,4.711,-74.0721,77,10000,0.0,0.0
 2025-11-21T14:21:03.807450,Santa Barbara Central,15.3,15.11,14.97,15.99,85,11.268,nubes dispersas,4.711,-74.0721,40,7000,0.0,0.0
 2025-11-21T22:21:19.259792,Santa Barbara Central,11.13,10.91,10.99,11.19,100,4.824000000000001,muy nuboso,4.711,-74.0721,75,10000,0.0,0.0
+2025-11-22T06:26:49.192176,Santa Barbara Central,10.81,10.56,9.99,11.19,100,8.064000000000002,nubes dispersas,4.711,-74.0721,40,10000,0.0,0.0
