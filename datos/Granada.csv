@@ -107,3 +107,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-24T22:15:38.143921,Realejo-San Matías,10.45,9.95,9.88,10.46,92,3.708,llovizna ligera,37.1773,-3.5986,75,3000,0.0,0.0
 2025-11-25T06:26:26.334283,Realejo-San Matías,11.28,10.94,10.99,11.92,95,11.124,algo de nubes,37.1773,-3.5986,20,10000,0.0,0.0
 2025-11-25T14:17:16.892595,Realejo-San Matías,14.9,13.78,14.14,14.92,51,16.668,algo de nubes,37.1773,-3.5986,20,10000,0.0,0.0
+2025-11-25T22:16:27.192921,Realejo-San Matías,8.19,7.28,5.99,8.23,61,6.444,cielo claro,37.1773,-3.5986,0,10000,0.0,0.0
