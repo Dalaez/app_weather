@@ -56,3 +56,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-25T22:16:45.834557,Llinars del Vallès,8.65,8.65,6.93,10.57,48,1.62,cielo claro,41.6365,2.395,8,10000,0.0,0.0
 2025-11-26T06:26:21.068213,Llinars del Vallès,6.83,4.18,4.69,7.88,41,13.932,cielo claro,41.6365,2.395,0,10000,0.0,0.0
 2025-11-26T14:18:08.668516,Llinars del Vallès,14.49,12.67,13.56,15.07,26,17.712,cielo claro,41.6365,2.395,0,10000,0.0,0.0
+2025-11-26T22:16:27.619859,Llinars del Vallès,7.15,5.06,5.87,8.34,37,10.98,cielo claro,41.6365,2.395,0,10000,0.0,0.0
