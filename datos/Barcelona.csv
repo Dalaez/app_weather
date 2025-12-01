@@ -125,3 +125,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-11-30T22:15:07.598702,"Sant Pere, Santa Caterina i La Ribera",11.06,9.92,8.1,12.05,65,16.668,algo de nubes,41.3907,2.1745,20,10000,0.0,0.0
 2025-12-01T06:27:42.453945,"Sant Pere, Santa Caterina i La Ribera",9.39,6.69,5.92,10.87,57,19.296000000000003,algo de nubes,41.3851,2.1734,20,10000,0.0,0.0
 2025-12-01T14:17:43.522030,Eixample,14.92,14.16,12.73,15.85,65,18.503999999999998,cielo claro,41.3851,2.1734,0,10000,0.0,0.0
+2025-12-01T22:14:33.619870,Eixample,10.87,9.71,7.49,12.64,65,16.668,nubes dispersas,41.3851,2.1734,40,10000,0.0,0.0
