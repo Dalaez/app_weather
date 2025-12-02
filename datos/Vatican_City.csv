@@ -126,3 +126,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-12-01T06:31:07.330421,State of the Vatican City,8.01,6.82,5.71,10.84,70,7.416,cielo claro,41.9029,12.4534,0,10000,0.0,0.0
 2025-12-01T14:21:15.498489,Vatican City,14.7,13.98,13.66,15.71,67,5.5440000000000005,nubes dispersas,41.9029,12.4534,40,10000,0.0,0.0
 2025-12-01T22:17:58.091194,State of the Vatican City,12.36,11.74,9.81,13.47,80,16.668,lluvia ligera,41.9029,12.4534,40,10000,0.64,0.0
+2025-12-02T06:29:52.622071,Vatican City,9.71,9.04,8.25,10.78,96,6.444,lluvia de gran intensidad,41.9029,12.4534,75,6000,6.48,0.0
