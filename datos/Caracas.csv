@@ -138,3 +138,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-12-05T06:31:30.809346,Distrito Capital,20.8,21.1,18.52,20.8,83,3.708,nubes dispersas,10.4806,-66.9036,40,10000,0.0,0.0
 2025-12-05T14:22:50.660031,Distrito Capital,24.55,24.99,22.52,25.51,74,11.124,lluvia ligera,10.4806,-66.9036,40,10000,0.12,0.0
 2025-12-05T22:20:55.085175,Distrito Capital,22.05,22.71,21.35,22.74,92,14.832,lluvia ligera,10.4806,-66.9036,40,10000,0.51,0.0
+2025-12-06T06:28:15.140991,Distrito Capital,20.94,21.36,19.52,21.07,87,0.0,nubes dispersas,10.4806,-66.9036,40,10000,0.0,0.0
