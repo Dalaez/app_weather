@@ -160,3 +160,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-12-12T14:22:32.777676,Hacienda Rumipamba,12.33,11.16,12.33,12.33,59,3.708,muy nuboso,-0.1807,-78.4678,75,10000,0.0,0.0
 2025-12-12T22:21:53.243480,Hacienda Rumipamba,14.33,13.25,14.33,14.33,55,25.92,lluvia ligera,-0.1807,-78.4678,75,10000,0.33,0.0
 2025-12-13T06:30:15.247291,Hacienda Rumipamba,5.33,5.33,5.33,5.33,93,3.708,nubes dispersas,-0.1807,-78.4678,40,10000,0.0,0.0
+2025-12-13T14:21:06.723530,Hacienda Rumipamba,13.33,12.36,13.33,13.33,63,7.416,algo de nubes,-0.1807,-78.4678,20,10000,0.0,0.0
