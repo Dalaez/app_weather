@@ -170,3 +170,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-12-15T22:21:27.184011,Bright Hill Crescent,23.84,24.81,23.7,24.71,97,7.416,lluvia ligera,1.3521,103.8198,75,10000,0.33,0.0
 2025-12-16T06:32:13.801729,Bright Hill Crescent,27.39,30.74,26.38,28.66,81,16.668,chubasco de ligera intensidad,1.3521,103.8198,40,9000,1.22,0.0
 2025-12-16T14:25:05.333235,Bright Hill Crescent,24.71,25.69,24.67,25.92,94,9.251999999999999,muy nuboso,1.3521,103.8198,75,10000,0.0,0.0
+2025-12-16T22:21:30.701408,Bright Hill Crescent,23.7,24.74,23.6,23.72,100,7.416,muy nuboso,1.3521,103.8198,75,7000,0.0,0.0
