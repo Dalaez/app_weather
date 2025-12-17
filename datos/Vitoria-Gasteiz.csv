@@ -173,3 +173,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2025-12-16T22:18:37.497113,Vitoria-Gasteiz,8.13,8.13,7.84,8.56,95,1.836,muy nuboso,42.8467,-2.6731,75,9000,0.0,0.0
 2025-12-17T06:29:07.387607,Vitoria-Gasteiz,6.98,6.98,6.84,7.45,94,1.836,nubes dispersas,42.8467,-2.6731,40,9000,0.0,0.0
 2025-12-17T14:20:03.126242,Vitoria-Gasteiz,10.68,9.87,10.48,10.84,79,3.708,algo de nubes,42.8467,-2.6731,20,10000,0.0,0.0
+2025-12-17T22:18:36.355813,Vitoria-Gasteiz,9.33,8.36,8.84,9.92,85,7.416,cielo claro,42.8467,-2.6731,0,10000,0.0,0.0
