@@ -229,3 +229,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-01-04T14:16:15.486674,Palma de Mallorca,9.81,6.12,9.47,10.62,82,33.336,muy nuboso,39.5696,2.6502,75,10000,0.0,0.0
 2026-01-04T22:17:14.746734,Palma de Mallorca,9.44,6.02,8.4,10.03,76,27.791999999999998,muy nuboso,39.5696,2.6502,75,10000,0.0,0.0
 2026-01-05T06:33:43.121265,Palma de Mallorca,8.77,5.62,7.84,9.47,80,22.212,nubes dispersas,39.5696,2.6502,40,10000,0.0,0.0
+2026-01-05T14:21:53.530083,Palma de Mallorca,8.46,4.35,7.29,8.94,77,33.336,lluvia ligera,39.5696,2.6502,75,10000,0.8,0.0

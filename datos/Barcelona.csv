@@ -229,3 +229,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-01-04T14:15:04.972466,Eixample,8.48,6.34,7.43,9.39,74,12.96,muy nuboso,41.3851,2.1734,75,10000,0.0,0.0
 2026-01-04T22:16:03.448060,Eixample,6.58,3.74,5.18,8.09,73,14.832,muy nuboso,41.3851,2.1734,75,10000,0.0,0.0
 2026-01-05T06:32:30.248844,"Sant Pere, Santa Caterina i La Ribera",4.87,0.46,3.62,5.6,52,24.084000000000003,muy nuboso,41.3851,2.1734,75,10000,0.0,0.0
+2026-01-05T14:20:41.859947,"Sant Pere, Santa Caterina i La Ribera",4.9,0.7,3.77,5.87,66,22.212,nubes dispersas,41.3851,2.1734,40,10000,0.0,0.0
