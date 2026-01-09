@@ -241,3 +241,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-01-08T14:23:59.405750,Bruxelles-Capitale,2.81,0.24,2.08,3.77,94,9.251999999999999,muy nuboso,50.8503,4.3517,75,8000,0.0,0.0
 2026-01-08T22:19:37.133925,Arrondissement Brussel-Hoofdstad,4.35,0,3.17,5.7,95,22.212,muy nuboso,50.8503,4.3517,75,2500,0.0,0.0
 2026-01-09T06:30:14.766747,Arrondissement Brussel-Hoofdstad,4.97,-0.9,4.58,5.44,89,42.588,lluvia ligera,50.8503,4.3517,75,10000,1,0.0
+2026-01-09T14:22:46.957326,City of Brussels,3.04,-2.45,2.36,4.88,93,29.628000000000004,lluvia moderada,50.8503,4.3517,75,10000,1.31,0.0
