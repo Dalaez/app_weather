@@ -264,3 +264,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-01-16T06:34:34.799033,Medina De Rabat,12.37,12.12,12.37,12.37,94,16.668,nubes dispersas,34.0209,-6.8417,40,6000,0.0,0.0
 2026-01-16T14:26:20.103241,Medina De Rabat,13.37,13.37,13.37,13.37,100,22.212,lluvia ligera,34.0209,-6.8417,75,4000,0.58,0.0
 2026-01-16T22:24:12.855346,Medina De Rabat,12.37,11.93,12.37,12.37,87,16.668,lluvia moderada,34.0209,-6.8417,75,5000,2.25,0.0
+2026-01-17T06:31:07.779537,Medina De Rabat,10.37,9.89,10.37,10.37,93,7.416,lluvia moderada,34.0209,-6.8417,75,5000,1.07,0.0
