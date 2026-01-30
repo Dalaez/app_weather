@@ -305,3 +305,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-01-29T14:38:07.178341,Vitoria-Gasteiz,10.69,9.88,10.48,12.82,79,12.96,nubes dispersas,42.8467,-2.6731,40,10000,0.0,0.0
 2026-01-29T22:25:14.587141,Vitoria-Gasteiz,5.93,3.95,5.79,6.03,88,9.251999999999999,nubes dispersas,42.8467,-2.6731,40,10000,0.0,0.0
 2026-01-30T06:44:17.027974,Vitoria-Gasteiz,6.73,4.52,5.23,6.84,79,11.124,cielo claro,42.8467,-2.6731,0,10000,0.0,0.0
+2026-01-30T14:34:30.276238,Vitoria-Gasteiz,8.57,4.49,8.01,8.84,79,33.336,lluvia ligera,42.8467,-2.6731,75,7000,0.1,0.0
