@@ -320,3 +320,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-02-03T22:26:07.485155,Castellón de la Plana,9.02,7.23,9.02,9.02,65,11.448,nubes dispersas,39.9864,-0.0375,29,10000,0.0,0.0
 2026-02-04T06:44:15.369100,Castellón de la Plana,9.16,7.28,9.16,9.16,79,12.168,nubes,39.9864,-0.0375,100,10000,0.0,0.0
 2026-02-04T14:38:56.295004,Castellón de la Plana,18.05,17.01,18.05,18.05,42,23.291999999999998,muy nuboso,39.9864,-0.0375,72,10000,0.0,0.0
+2026-02-04T22:22:18.208667,Castellón de la Plana/Castelló de la Plana,13.41,12.48,13.41,13.41,64,11.916,nubes,39.9864,-0.0375,97,10000,0.0,0.0
