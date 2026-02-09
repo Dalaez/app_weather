@@ -334,3 +334,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-02-08T14:25:37.254687,Vitoria-Gasteiz,9.37,8.27,8.01,9.84,78,8.064000000000002,muy nuboso,42.8467,-2.6731,75,10000,0.0,0.0
 2026-02-08T22:23:49.833163,Vitoria-Gasteiz,3.54,3.54,2.84,5.79,92,0.0,algo de nubes,42.8467,-2.6731,20,10000,0.0,0.0
 2026-02-09T07:01:27.176277,Vitoria-Gasteiz,5.42,2.61,4.92,6.34,89,12.96,muy nuboso,42.8467,-2.6731,75,10000,0.0,0.0
+2026-02-09T14:49:48.553570,Vitoria-Gasteiz,8.54,6.15,7.84,9.36,96,14.832,lluvia de gran intensidad,42.8467,-2.6731,100,5000,4.21,0.0
