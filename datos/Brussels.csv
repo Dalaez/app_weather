@@ -345,3 +345,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-02-12T06:58:45.648356,Bruxelles-Capitale,7.8,4.21,7.36,8.2,95,24.084000000000003,muy nuboso,50.8503,4.3517,75,4000,0.0,0.0
 2026-02-12T14:46:08.568001,City of Brussels,10.32,9.6,9.9,10.99,84,20.376,muy nuboso,50.8503,4.3517,75,10000,0.0,0.0
 2026-02-12T22:30:22.563818,Arrondissement Brussel-Hoofdstad,7.74,4.7,7.06,8.14,91,18.503999999999998,muy nuboso,50.8503,4.3517,75,10000,0.0,0.0
+2026-02-13T06:57:29.411121,City of Brussels,6.12,6.12,5.4,7.03,94,3.708,llovizna ligera,50.8503,4.3517,75,6000,0.15,0.0
