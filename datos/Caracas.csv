@@ -369,3 +369,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-02-20T06:56:03.788568,Distrito Capital,20.51,20.24,18.52,20.51,62,0.0,cielo claro,10.4806,-66.9036,0,10000,0.0,0.0
 2026-02-20T14:42:28.686908,Distrito Capital,23.99,24.35,21.52,24.4,73,11.124,nubes dispersas,10.4806,-66.9036,40,10000,0.0,0.0
 2026-02-20T22:26:22.316327,Distrito Capital,21.61,21.99,21.61,21.61,83,22.212,lluvia ligera,10.4847,-66.8983,40,10000,0.25,0.0
+2026-02-21T06:41:43.992673,Distrito Capital,20.24,20.41,20.24,20.24,80,1.62,cielo claro,10.4806,-66.9036,8,10000,0.0,0.0
