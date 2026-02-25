@@ -381,3 +381,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-02-24T06:59:35.435324,Bright Hill Crescent,31.71,35.84,31.67,31.72,58,14.832,lluvia ligera,1.3521,103.8198,75,10000,0.7,0.0
 2026-02-24T14:50:43.835632,Bright Hill Crescent,23.99,24.85,23.7,25.82,92,5.5440000000000005,muy nuboso,1.3521,103.8198,75,8000,0.0,0.0
 2026-02-24T22:33:53.636146,Bright Hill Crescent,25.24,26.22,24.7,25.82,92,11.124,lluvia ligera,1.3521,103.8198,75,10000,0.41,0.0
+2026-02-25T07:02:02.671527,Bright Hill Crescent,31.71,35.57,29.15,31.72,57,7.416,lluvia moderada,1.3521,103.8198,75,9000,1.44,0.0
