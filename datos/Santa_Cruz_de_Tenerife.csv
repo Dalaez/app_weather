@@ -385,3 +385,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-02-25T14:46:12.362878,Santa Cruz de Tenerife,18.55,18.5,16.07,19.34,78,31.5,muy nuboso,28.4636,-16.2518,75,10000,0.0,0.0
 2026-02-25T22:29:51.883865,Santa Cruz de Tenerife,16.7,16.59,15.51,17.57,83,37.044,lluvia ligera,28.4636,-16.2518,75,10000,0.16,0.0
 2026-02-26T06:56:24.309830,Santa Cruz de Tenerife,15.39,15.23,14.31,16.07,86,20.916,lluvia ligera,28.4636,-16.2518,60,9355,0.25,0.0
+2026-02-26T14:45:01.871131,Santa Cruz de Tenerife,18.11,17.99,15.51,19.34,77,44.46,lluvia ligera,28.4636,-16.2518,75,10000,0.51,0.0
