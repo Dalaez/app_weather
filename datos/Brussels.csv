@@ -386,3 +386,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-02-25T22:30:40.527180,Bruxelles-Capitale,11.68,11.15,10.14,12.66,86,16.668,cielo claro,50.8503,4.3517,0,10000,0.0,0.0
 2026-02-26T06:57:12.921644,Arrondissement Brussel-Hoofdstad,9.43,7.8,7.65,10.09,94,10.98,nubes dispersas,50.8503,4.3517,27,10000,0.0,0.0
 2026-02-26T14:45:50.637328,Brussels Capital,18.03,17.51,17.36,18.79,62,29.628000000000004,algo de nubes,50.8503,4.3517,20,10000,0.0,0.0
+2026-02-26T22:31:34.496823,Brussels,12.15,11.61,10.7,13.08,84,22.212,cielo claro,50.8503,4.3517,0,10000,0.0,0.0
