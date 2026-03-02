@@ -397,3 +397,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-03-01T14:23:57.512755,State of the Vatican City,15.56,14.87,13.78,16.1,65,9.251999999999999,cielo claro,41.9029,12.4534,0,10000,0.0,0.0
 2026-03-01T22:23:07.991836,State of the Vatican City,11.87,11.25,10.71,12.21,82,5.5440000000000005,nubes dispersas,41.9029,12.4534,40,10000,0.0,0.0
 2026-03-02T06:55:19.404147,State of the Vatican City,11.11,10.52,10.47,11.99,86,3.708,cielo claro,41.9029,12.4534,0,10000,0.0,0.0
+2026-03-02T14:43:50.282912,State of the Vatican City,15.87,15.21,14.22,16.57,65,14.832,nubes dispersas,41.9029,12.4534,40,9000,0.0,0.0
