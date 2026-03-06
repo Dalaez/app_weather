@@ -410,3 +410,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-03-05T22:28:13.468670,Santa Cruz de Tenerife,16.82,16.96,15.45,18.12,92,25.92,llovizna de gran intensidad,28.4636,-16.2518,100,600,0.25,0.0
 2026-03-06T06:42:18.618337,Santa Cruz de Tenerife,16.28,16.18,16.28,16.28,85,40.392,nubes,28.4636,-16.2518,100,10000,0.0,0.0
 2026-03-06T14:35:34.544193,Santa Cruz de Tenerife,17.56,17.17,16.62,18.68,69,18.503999999999998,muy nuboso,28.4636,-16.2518,75,10000,0.0,0.0
+2026-03-06T22:25:00.880843,Santa Cruz de Tenerife,15.1,15.12,15.1,15.1,94,30.312,nubes,28.4636,-16.2518,100,10000,0.0,0.0
