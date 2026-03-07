@@ -411,3 +411,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-03-06T14:37:07.313197,Grímsstaðaholt,4.92,-0.31,3.94,4.92,92,33.336,lluvia de gran intensidad,64.1466,-21.9426,75,2000,6.48,0.0
 2026-03-06T22:26:33.365438,Grímsstaðaholt,2.54,-4.46,2.54,2.54,65,55.764,lluvia moderada,64.1466,-21.9426,79,10000,1.42,0.0
 2026-03-07T06:37:17.157675,Grímsstaðaholt,2.4,-4.6,2.4,2.4,82,55.044,lluvia moderada,64.1466,-21.9426,100,367,1.06,0.0
+2026-03-07T14:23:12.642272,Grímsstaðaholt,2.92,-2.78,2.83,2.92,75,31.5,muy nuboso,64.1466,-21.9426,75,2000,0.0,0.0
