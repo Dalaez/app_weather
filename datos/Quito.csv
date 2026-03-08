@@ -414,3 +414,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-03-07T06:40:06.957798,Hacienda Rumipamba,10.5,10.06,10.5,10.5,94,2.736,lluvia ligera,-0.1807,-78.4678,100,10000,0.11,0.0
 2026-03-07T14:25:58.814158,Hacienda Rumipamba,13.33,12.6,13.33,13.33,72,1.836,lluvia ligera,-0.1807,-78.4678,40,10000,0.26,0.0
 2026-03-07T22:24:32.250448,Hacienda Rumipamba,14.33,13.83,14.33,14.33,77,16.668,lluvia moderada,-0.1807,-78.4678,75,10000,1.24,0.0
+2026-03-08T06:43:00.381851,Hacienda Rumipamba,10.76,10.35,10.76,10.76,94,1.4040000000000001,lluvia ligera,-0.1807,-78.4678,99,4894,0.36,0.0
