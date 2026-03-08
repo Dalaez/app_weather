@@ -416,3 +416,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-03-07T22:20:57.709431,Brussels,7.67,6.01,7.08,8.58,93,9.251999999999999,niebla,50.8503,4.3517,61,2800,0.0,0.0
 2026-03-08T06:39:26.683474,Arrondissement Brussel-Hoofdstad,5.88,4.73,5.88,5.88,91,6.048,algo de nubes,50.8503,4.3517,24,10000,0.0,0.0
 2026-03-08T14:23:22.447362,Arrondissement Brussel-Hoofdstad,14.48,13.86,14.48,14.48,72,5.148,algo de nubes,50.8503,4.3517,11,10000,0.0,0.0
+2026-03-08T22:21:11.427371,City of Brussels,8.08,8.08,8.08,8.98,93,1.836,nubes dispersas,50.8503,4.3517,31,8000,0.0,0.0
