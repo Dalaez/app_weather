@@ -418,3 +418,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-03-08T14:21:06.265072,Eixample,14.52,13.72,14.52,14.52,65,11.916,nubes dispersas,41.3851,2.1734,50,10000,0.0,0.0
 2026-03-08T22:18:54.673189,Ciutat Vella,11.89,10.88,10.77,13.2,67,11.124,algo de nubes,41.3851,2.1734,20,10000,0.0,0.0
 2026-03-09T06:56:21.691401,"Sant Pere, Santa Caterina i La Ribera",10.29,8.81,8,11.42,55,14.832,algo de nubes,41.3851,2.1734,20,10000,0.0,0.0
+2026-03-09T14:45:19.995954,Ciutat Vella,15.62,14.73,14.81,16.58,57,12.96,algo de nubes,41.3851,2.1734,20,10000,0.0,0.0
