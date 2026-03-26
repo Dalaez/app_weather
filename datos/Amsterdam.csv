@@ -469,3 +469,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-03-25T14:56:49.853172,Amsterdam,8.51,4.54,7.74,9.47,70,31.5,nubes dispersas,52.3676,4.9041,40,10000,0.0,0.0
 2026-03-25T22:33:03.015687,Amsterdam,4.41,1.7,3.28,5.52,84,11.268,algo de nubes,52.3676,4.9041,20,10000,0.1,0.0
 2026-03-26T07:04:19.350155,Amsterdam,3.4,-0.38,2.72,4.39,77,16.092,algo de nubes,52.3676,4.9041,20,10000,0.0,0.0
+2026-03-26T15:01:14.220575,Amsterdam,6,1.25,4.95,7.81,61,31.5,chubasco de ligera intensidad,52.3676,4.9041,20,10000,1.27,0.0
