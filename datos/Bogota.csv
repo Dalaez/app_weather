@@ -468,3 +468,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-03-25T07:02:27.280835,Santa Barbara Central,13.49,13.32,13.12,13.86,93,8.064000000000002,nubes,4.711,-74.0721,100,10000,0.0,0.0
 2026-03-25T14:59:57.277742,Santa Barbara Central,16.74,16.35,16.74,18.88,72,11.268,nubes dispersas,4.711,-74.0721,40,8000,0.0,0.0
 2026-03-25T22:36:10.926458,Santa Barbara Central,16.99,16.89,16.99,16.99,82,11.124,muy nuboso,4.711,-74.0721,75,10000,0.0,0.0
+2026-03-26T07:07:21.588077,Santa Barbara Central,13.64,13.62,12.99,14.17,98,11.268,muy nuboso,4.711,-74.0721,75,9000,0.0,0.0

@@ -450,3 +450,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-03-25T06:59:22.259913,Andorra la Vella,6.14,6.14,5.91,6.57,64,1.62,algo de nubes,42.5063,1.5218,11,10000,0.0,0.0
 2026-03-25T14:56:52.306953,Andorra la Vella,11.7,9.89,10.45,11.93,37,1.62,nubes dispersas,42.5063,1.5218,43,10000,0.0,0.0
 2026-03-25T22:33:05.464416,Andorra la Vella,3.14,-0.7,3.14,3.6,79,16.092,muy nuboso,42.5063,1.5218,63,10000,0.0,0.0
+2026-03-26T07:04:21.685171,Andorra la Vella,-0.52,-5.52,-1.77,-0.29,76,17.712,nubes dispersas,42.5063,1.5218,27,10000,0.0,0.0
