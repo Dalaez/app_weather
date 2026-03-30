@@ -482,3 +482,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-03-29T22:29:04.302290,Luxembourg,6.45,2.87,5.69,7.04,67,20.376,chubasco de ligera intensidad,49.6116,6.1319,100,10000,0.42,0.0
 2026-03-30T07:24:06.463790,Luxembourg,6.79,4.28,5.34,7.59,82,12.96,algo de nubes,49.6116,6.1319,20,10000,0.0,0.0
 2026-03-30T15:02:00.094549,Luxembourg,5.79,2.26,5.22,7.75,83,18.503999999999998,chubasco de ligera intensidad,49.6116,6.1319,75,7000,0.15,0.0
+2026-03-30T22:33:22.835933,Luxembourg,2.06,2.06,0.53,2.56,88,1.62,algo de nubes,49.6116,6.1319,20,10000,0.0,0.0
