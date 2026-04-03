@@ -493,3 +493,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-04-02T14:53:14.610780,Amsterdam,8.4,5.15,7.72,8.92,73,22.212,muy nuboso,52.3676,4.9041,75,10000,0.0,0.0
 2026-04-02T22:29:31.853984,Amsterdam,4.53,4.53,3.28,5.53,72,3.708,nubes dispersas,52.3676,4.9041,40,10000,0.0,0.0
 2026-04-03T07:04:28.934523,Amsterdam,6.08,2.2,5.5,6.7,72,22.212,cielo claro,52.3676,4.9041,0,10000,0.0,0.0
+2026-04-03T14:40:59.439705,Gemeente Amsterdam,10.65,9.6,9.94,12.25,70,35.172,lluvia y llovizna ligera,52.3676,4.9041,75,7000,0.13,0.0
