@@ -495,3 +495,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-04-03T07:03:52.709467,Santa Cruz de Tenerife,15.48,14.57,14.96,18.35,57,11.124,cielo claro,28.4636,-16.2518,0,10000,0.0,0.0
 2026-04-03T14:40:26.512785,Santa Cruz de Tenerife,22.03,21.72,21.16,23.95,55,14.832,cielo claro,28.4636,-16.2518,0,10000,0.0,0.0
 2026-04-03T22:30:01.058886,Santa Cruz de Tenerife,17.63,17.67,16.01,18.94,85,16.092,cielo claro,28.4636,-16.2518,0,10000,0.0,0.0
+2026-04-04T06:56:39.259320,Santa Cruz de Tenerife,18.05,18.08,16.07,18.94,83,20.376,bruma,28.4636,-16.2518,75,900,0.0,0.0
