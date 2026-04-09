@@ -511,3 +511,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-04-08T15:08:02.425035,Bucharest,12.74,11.06,12.74,12.74,38,10.512,lluvia moderada,44.4268,26.1025,73,10000,2.49,0.0
 2026-04-08T22:36:56.117432,Grefoaicele,6.44,4.65,6.44,6.44,63,8.82,lluvia ligera,44.4268,26.1025,38,10000,0.48,0.0
 2026-04-09T07:18:05.621030,Bucharest,7.65,6.62,7.65,7.65,58,6.588,nubes dispersas,44.4268,26.1025,32,10000,0.0,0.0
+2026-04-09T15:20:38.550034,Grefoaicele,8.76,5.87,8.76,8.76,63,19.548,lluvia de gran intensidad,44.4268,26.1025,100,10000,5.62,0.0
