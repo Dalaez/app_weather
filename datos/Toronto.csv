@@ -556,3 +556,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-04-25T07:13:38.176483,Downtown Toronto,5.85,4.58,5.07,6.84,82,6.444,lluvia moderada,43.6532,-79.3832,100,6841,1.73,0.0
 2026-04-25T14:44:46.362586,Downtown Toronto,4.53,-1.37,4.15,5.2,91,40.752,lluvia moderada,43.6532,-79.3832,100,8047,0.65,0.0
 2026-04-25T22:37:36.979323,Downtown Toronto,9.72,9.72,8.87,10.55,81,1.62,nubes,43.6532,-79.3832,97,10000,0.0,0.0
+2026-04-26T07:28:06.655470,Downtown Toronto,3.85,1.57,2.95,5.12,92,8.856,muy nuboso,43.6532,-79.3832,59,10000,0.0,0.0
