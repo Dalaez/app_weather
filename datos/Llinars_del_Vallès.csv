@@ -555,3 +555,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-05-11T22:51:09.005997,Llinars del Vallès,16.45,15.93,15.23,17.69,68,10.584,cielo claro,41.6365,2.395,0,10000,0.0,0.0
 2026-05-12T08:33:47.676004,Llinars del Vallès,19.82,19.61,17.69,21.18,67,3.204,cielo claro,41.6365,2.395,0,10000,0.0,0.0
 2026-05-12T16:16:52.778875,Llinars del Vallès,15.71,15.48,14.52,17.14,82,8.064000000000002,lluvia de gran intensidad,41.6365,2.395,44,10000,4.21,0.0
+2026-05-12T22:56:56.226831,Llinars del Vallès,13.84,13.66,12.85,14.92,91,3.204,muy nuboso,41.6365,2.395,83,10000,0.0,0.0
