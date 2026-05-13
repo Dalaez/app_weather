@@ -612,3 +612,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-05-12T16:18:00.318530,Vitoria-Gasteiz,11.98,11.61,11.34,12.14,91,4.824000000000001,chubasco de ligera intensidad,42.8467,-2.6731,75,8000,0.41,0.0
 2026-05-12T22:58:02.633649,Vitoria-Gasteiz,9.08,8.07,8.84,9.36,88,7.416,muy nuboso,42.8467,-2.6731,75,10000,0.0,0.0
 2026-05-13T08:40:58.985608,Vitoria-Gasteiz,10.13,9.5,9.67,10.48,88,11.124,muy nuboso,42.8467,-2.6731,75,10000,0.0,0.0
+2026-05-13T16:17:08.459870,Vitoria-Gasteiz,13.83,13.15,11.9,13.84,72,22.212,muy nuboso,42.8467,-2.6731,75,10000,0.0,0.0
