@@ -632,3 +632,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-05-19T16:52:56.791526,Shanghai Municipality,22.88,23.52,22.88,22.88,88,10.8,cielo claro,31.2304,121.4737,0,10000,0.0,0.0
 2026-05-19T23:04:17.422340,Shanghai Municipality,22.88,23.68,22.88,22.88,94,7.2,cielo claro,31.2304,121.4737,0,10000,0.0,0.0
 2026-05-20T09:03:48.225908,Shanghai Municipality,25.88,26.85,25.88,25.88,89,10.8,chubasco de ligera intensidad,31.2304,121.4737,100,10000,0.2,0.0
+2026-05-20T16:55:57.842837,Shanghai Municipality,22.88,23.68,22.88,22.88,94,10.8,nubes,31.2304,121.4737,100,7000,0.0,0.0
