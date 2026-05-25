@@ -647,3 +647,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-05-24T08:23:44.638274,Castellón de la Plana,25.82,25.71,25.82,25.82,48,5.688000000000001,algo de nubes,39.9864,-0.0375,11,10000,0.0,0.0
 2026-05-24T14:59:31.655437,Castellón de la Plana,27.49,27.3,27.49,27.49,41,14.004000000000001,nubes dispersas,39.9864,-0.0375,28,10000,0.0,0.0
 2026-05-24T22:53:46.520475,Castellón de la Plana,20.82,20.55,20.82,20.82,61,2.16,cielo claro,39.9864,-0.0375,8,10000,0.0,0.0
+2026-05-25T09:56:56.715257,Castellón de la Plana/Castelló de la Plana,28.05,27.58,28.05,28.05,38,15.984000000000002,cielo claro,39.9864,-0.0375,9,10000,0.0,0.0
