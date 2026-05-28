@@ -648,3 +648,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-05-27T23:15:33.540072,Pushcha-Vodytsya,11.86,10.82,11.86,11.86,66,1.62,cielo claro,50.4501,30.5234,7,10000,0.0,0.0
 2026-05-28T09:57:00.034690,Pushcha-Vodytsya,10.75,10.2,10.75,10.75,89,3.204,nubes dispersas,50.4501,30.5234,38,10000,0.0,0.0
 2026-05-28T17:35:10.636498,Pushcha-Vodytsya,14.08,12.95,14.08,14.08,54,17.352,muy nuboso,50.4501,30.5234,63,10000,0.0,0.0
+2026-05-28T23:13:35.194356,Pushcha-Vodytsya,10.19,9.17,10.19,10.19,73,1.62,nubes dispersas,50.4501,30.5234,44,10000,0.0,0.0
