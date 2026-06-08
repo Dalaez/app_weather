@@ -688,3 +688,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-06-07T08:53:55.832479,Shanghai Municipality,27.5,27.56,27.5,27.5,45,16.704,nubes dispersas,31.2304,121.4737,41,10000,0.0,0.0
 2026-06-07T15:25:30.329385,Shanghai Municipality,23.32,23.54,23.32,23.32,70,11.879999999999999,nubes dispersas,31.2304,121.4737,48,10000,0.0,0.0
 2026-06-07T23:04:31.951996,Shanghai Municipality,22.22,22.43,22.22,22.22,74,15.444,nubes,31.2304,121.4737,100,10000,0.0,0.0
+2026-06-08T10:32:12.370968,Shanghai Municipality,21.28,20.8,21.28,21.28,51,3.42,lluvia ligera,31.2304,121.4737,100,10000,0.87,0.0
