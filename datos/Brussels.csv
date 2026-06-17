@@ -718,3 +718,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-06-16T23:22:25.040783,Arrondissement Brussel-Hoofdstad,16.18,16.13,14.88,16.81,87,5.4,muy nuboso,50.8503,4.3517,51,10000,0.0,0.0
 2026-06-17T10:48:35.740887,Arrondissement Brussel-Hoofdstad,22.96,23.24,22.36,23.84,74,18.324,nubes,50.8503,4.3517,91,10000,0.0,0.0
 2026-06-17T16:54:54.337011,Arrondissement Brussel-Hoofdstad,27.29,28.62,26.96,27.36,62,11.376000000000001,nubes,50.8503,4.3517,96,10000,0.0,0.0
+2026-06-17T23:22:08.960561,Brussels,19.68,19.95,18.43,20.51,86,7.02,nubes dispersas,50.8503,4.3517,41,10000,0.0,0.0
