@@ -730,3 +730,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-06-20T23:07:27.993746,"Parliament House, Delhi",34.53,35.07,34.53,34.53,35,14.76,muy nuboso,28.6139,77.209,54,10000,0.0,0.0
 2026-06-21T09:47:04.703187,"Parliament House, Delhi",41.69,41.47,41.69,41.69,19,7.02,cielo claro,28.6139,77.209,5,10000,0.0,0.0
 2026-06-21T15:52:37.939343,"Parliament House, Delhi",38.41,37.96,38.41,38.41,23,18.252000000000002,cielo claro,28.6139,77.209,9,10000,0.0,0.0
+2026-06-21T23:11:37.847953,"Parliament House, Delhi",34.07,34.36,34.07,34.07,35,4.5,algo de nubes,28.6139,77.209,24,10000,0.0,0.0
