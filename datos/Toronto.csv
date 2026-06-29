@@ -744,3 +744,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-06-28T08:51:05.972613,Downtown Toronto,15.82,15.7,14.42,16.79,86,8.172,cielo claro,43.6532,-79.3832,2,10000,0.0,0.0
 2026-06-28T15:19:48.710627,Downtown Toronto,26.58,26.58,26.1,27.14,53,3.204,algo de nubes,43.6532,-79.3832,16,10000,0.0,0.0
 2026-06-28T23:04:08.645086,Downtown Toronto,26.94,26.97,26.47,27.95,43,1.62,nubes dispersas,43.6532,-79.3832,38,10000,0.0,0.0
+2026-06-29T10:53:01.195093,Downtown Toronto,16.02,15.79,15.21,16.74,81,7.02,nubes dispersas,43.6532,-79.3832,50,10000,0.0,0.0
