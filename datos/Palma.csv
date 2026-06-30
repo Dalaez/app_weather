@@ -755,3 +755,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-06-29T10:48:44.246439,Palma de Mallorca,32.37,36.14,30.69,33.45,54,16.092,cielo claro,39.5696,2.6502,8,10000,0.0,0.0
 2026-06-29T16:52:16.019409,Palma de Mallorca,32.02,33.28,30.13,32.27,45,14.472,cielo claro,39.5696,2.6502,4,10000,0.0,0.0
 2026-06-29T22:53:15.846208,Palma de Mallorca,25.45,25.54,24.02,26.23,57,12.204,nubes dispersas,39.5696,2.6502,31,10000,0.0,0.0
+2026-06-30T09:26:43.624910,Palma de Mallorca,32.76,34.52,32.36,33.64,45,7.2,algo de nubes,39.5696,2.6502,22,10000,0.0,0.0
