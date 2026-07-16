@@ -803,3 +803,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-07-15T08:03:25.138358,Bright Hill Crescent,31.38,38.38,31.38,31.38,78,16.992,muy nuboso,1.3521,103.8198,83,10000,0.0,0.0
 2026-07-15T15:27:49.550730,Bright Hill Crescent,29.15,36.1,29.15,29.15,84,12.384,nubes,1.3521,103.8198,99,10000,0.0,0.0
 2026-07-15T22:59:28.672866,Bright Hill Crescent,28.04,33.7,28.04,28.04,89,3.06,nubes,1.3521,103.8198,100,10000,0.0,0.0
+2026-07-16T08:08:37.914004,Bright Hill Crescent,32,39,32,32,67,17.82,muy nuboso,1.3521,103.8198,84,10000,0.0,0.0
