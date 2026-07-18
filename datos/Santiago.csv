@@ -809,3 +809,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-07-17T08:07:29.004853,Barrio Brazil,10.35,9.87,8.43,12.21,93,3.204,lluvia moderada,-33.4489,-70.6693,100,4508,1.74,0.0
 2026-07-17T15:15:26.234848,Barrio Brazil,9.72,9.72,9.5,11.54,96,3.204,lluvia moderada,-33.4473,-70.6672,100,2854,2.37,0.0
 2026-07-17T22:49:29.927784,Barrio Brazil,9.54,9.3,8.64,9.54,93,4.824000000000001,lluvia moderada,-33.4489,-70.6693,100,4318,2.37,0.0
+2026-07-18T07:46:56.449179,Barrio Brazil,10.83,10.29,8.43,12.51,89,1.62,lluvia de gran intensidad,-33.4489,-70.6693,100,2724,4.21,0.0
