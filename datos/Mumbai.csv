@@ -826,3 +826,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-07-22T23:01:23.787778,Konkan Division,27.17,30.02,27.17,27.17,79,40.284,lluvia de gran intensidad,19.076,72.8777,100,6292,9.99,0.0
 2026-07-23T08:26:36.912092,Konkan Division,27.21,30.32,27.21,27.21,81,41.616,lluvia de gran intensidad,19.076,72.8777,100,9088,4.21,0.0
 2026-07-23T15:56:19.330402,Konkan Division,27.77,31.96,27.77,27.77,83,45.0,lluvia moderada,19.076,72.8777,100,10000,1.37,0.0
+2026-07-23T22:56:20.790043,Konkan Division,28.09,32.81,28.09,28.09,83,44.388,lluvia ligera,19.076,72.8777,100,10000,0.5,0.0
