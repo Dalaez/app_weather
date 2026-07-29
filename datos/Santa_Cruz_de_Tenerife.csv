@@ -844,3 +844,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-07-28T22:55:55.696793,Santa Cruz de Tenerife,23.01,23.53,22.12,23.85,83,14.472,algo de nubes,28.4636,-16.2518,21,10000,0.0,0.0
 2026-07-29T08:32:48.532715,Santa Cruz de Tenerife,23.34,23.79,23.23,24.23,79,20.916,nubes dispersas,28.4636,-16.2518,41,9717,0.0,0.0
 2026-07-29T15:48:44.841635,Santa Cruz de Tenerife,26.45,26.45,25.51,26.45,80,27.18,nubes dispersas,28.4636,-16.2518,33,10000,0.0,0.0
+2026-07-29T22:57:51.558089,Santa Cruz de Tenerife,23.17,23.71,22.67,24.23,83,22.536,nubes dispersas,28.4636,-16.2518,50,2445,0.0,0.0
