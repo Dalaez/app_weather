@@ -920,3 +920,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-08-24T14:40:38.862571,Ulaanbaatar Hot,11.98,10.96,11.98,11.98,66,3.6,nubes dispersas,47.918,106.9176,28,10000,0.0,0.0
 2026-08-24T22:24:52.194003,Ulaanbaatar Hot,0.98,0.98,0.98,0.98,93,3.6,cielo claro,47.918,106.9176,0,10000,0.0,0.0
 2026-08-25T06:42:10.163000,Ulaanbaatar Hot,21.98,20.83,21.98,21.98,23,7.2,cielo claro,47.918,106.9176,0,10000,0.0,0.0
+2026-08-25T14:44:20.404296,Ulaanbaatar Hot,11.98,10.85,11.98,11.98,62,0.0,cielo claro,47.918,106.9176,4,10000,0.0,0.0
