@@ -940,3 +940,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-08-31T00:14:23.676117,Konkan Division,28,32.57,28,28,83,20.376,lluvia ligera,19.076,72.8777,82,10000,0.31,0.0
 2026-08-31T12:33:52.981373,Konkan Division,30,36.04,28.95,30,74,22.212,lluvia ligera,19.076,72.8777,61,10000,0.25,0.0
 2026-08-31T19:53:01.627546,Konkan Division,28,32.57,28,28,83,16.668,lluvia ligera,19.076,72.8777,100,10000,0.31,0.0
+2026-09-01T01:01:30.819712,Konkan Division,28,31.8,28,28,78,18.503999999999998,lluvia moderada,19.076,72.8777,75,10000,1.12,0.0
