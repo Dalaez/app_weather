@@ -969,3 +969,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-09-09T17:31:47.497088,City of Brussels,15.76,15.43,14.88,17.32,78,20.376,nubes,50.8503,4.3517,90,10000,0.0,0.0
 2026-09-09T23:49:10.443204,City of Brussels,13.54,13.25,12.58,14.08,88,3.708,cielo claro,50.8503,4.3517,2,10000,0.0,0.0
 2026-09-10T10:29:04.092722,Arrondissement Brussel-Hoofdstad,19.41,19.03,18.43,20.44,62,9.972,algo de nubes,50.8503,4.3517,22,10000,0.0,0.0
+2026-09-10T17:29:11.801519,Arrondissement Brussel-Hoofdstad,20.73,20.16,19.84,21.08,50,9.251999999999999,nubes dispersas,50.8503,4.3517,50,10000,0.0,0.0
