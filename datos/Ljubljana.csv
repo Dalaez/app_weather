@@ -971,3 +971,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-09-10T10:29:25.915783,Ljubljana,14.89,14.99,14.36,16.05,98,11.124,lluvia de gran intensidad,46.0569,14.5058,100,4643,13.73,0.0
 2026-09-10T17:29:33.221482,Ljubljana,14.13,14.03,13.47,14.93,93,3.708,lluvia de gran intensidad,46.0569,14.5058,100,10000,4.86,0.0
 2026-09-10T23:41:04.483781,Ljubljana,12.32,12.14,11.67,12.79,97,1.836,lluvia de gran intensidad,46.0569,14.5058,100,10000,5.39,0.0
+2026-09-11T10:31:36.064903,Ljubljana,13.9,13.88,13.25,15.49,97,3.708,lluvia moderada,46.0569,14.5058,100,10000,3.16,0.0
