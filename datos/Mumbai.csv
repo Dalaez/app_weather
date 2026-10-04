@@ -1040,3 +1040,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-10-03T11:03:54.439524,Konkan Division,37,36.44,34.95,37,25,14.832,algo de nubes,19.076,72.8777,15,10000,0.0,0.0
 2026-10-03T17:48:18.899575,Konkan Division,33,32.8,33,33,35,9.251999999999999,algo de nubes,19.076,72.8777,13,10000,0.0,0.0
 2026-10-04T00:23:52.174304,Konkan Division,27,28.45,27,27,65,0.0,algo de nubes,19.076,72.8777,14,10000,0.0,0.0
+2026-10-04T11:45:40.079594,Konkan Division,34,35.43,31.95,34,40,16.668,cielo claro,19.076,72.8777,3,10000,0.0,0.0
