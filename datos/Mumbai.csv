@@ -1071,3 +1071,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-10-14T00:58:09.868640,Konkan Division,29,30.73,29,29,58,0.0,cielo claro,19.076,72.8777,2,10000,0.0,0.0
 2026-10-14T11:06:05.600176,Konkan Division,37,38.36,33.95,37,32,14.832,cielo claro,19.076,72.8777,4,10000,0.0,0.0
 2026-10-14T18:20:54.208965,Konkan Division,31,33.67,31,31,55,11.124,cielo claro,19.076,72.8777,7,10000,0.0,0.0
+2026-10-15T00:20:02.965604,Konkan Division,30,31.21,30,30,51,0.0,algo de nubes,19.076,72.8777,16,10000,0.0,0.0
