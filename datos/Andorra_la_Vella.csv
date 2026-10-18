@@ -1052,3 +1052,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-10-17T10:04:42.677261,Andorra la Vella,15.04,14.09,13.79,15.22,57,1.62,nubes dispersas,42.5063,1.5218,25,10000,0.0,0.0
 2026-10-17T16:50:35.229761,Andorra la Vella,12.58,12.01,12.58,12.68,81,6.444,lluvia ligera,42.5063,1.5218,100,4742,0.21,0.0
 2026-10-17T23:44:57.564962,Andorra la Vella,14.17,13.94,12.68,14.25,88,1.62,lluvia moderada,42.5063,1.5218,100,398,2.37,0.0
+2026-10-18T10:17:29.598229,Andorra la Vella,8.69,8.34,8.16,8.69,95,4.824000000000001,lluvia moderada,42.5063,1.5218,100,1367,2.84,0.0
