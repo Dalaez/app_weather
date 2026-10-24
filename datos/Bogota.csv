@@ -1098,3 +1098,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-10-23T00:26:19.598339,Santa Barbara Central,16.14,15.53,15.34,16.99,66,11.268,lluvia ligera,4.711,-74.0721,75,10000,0.51,0.0
 2026-10-23T10:59:47.117743,Santa Barbara Central,11.67,11.43,11.06,11.99,97,8.064000000000002,muy nuboso,4.711,-74.0721,75,10000,0.0,0.0
 2026-10-23T18:08:25.076980,Santa Barbara Central,20.3,20.06,19.78,20.63,64,14.832,lluvia ligera,4.711,-74.0721,40,10000,0.51,0.0
+2026-10-24T00:16:59.615188,Santa Barbara Central,16.99,16.89,16.99,16.99,82,9.251999999999999,nubes dispersas,4.711,-74.0721,40,10000,0.0,0.0
