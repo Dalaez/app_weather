@@ -1,37 +1,37 @@
 {
-  "generated_at": "2026-11-08T22:49:57.332174+00:00",
+  "generated_at": "2026-11-08T23:20:24.729066+00:00",
   "total_cities": 168,
-  "total_records": 192181,
+  "total_records": 192349,
   "global_extremes": {
     "hottest": {
       "ciudad": "Los Angeles",
       "country": "US",
-      "val": 30.2
+      "val": 29.4
     },
     "coldest": {
       "ciudad": "Ulaanbaatar",
       "country": "MN",
-      "val": -17.0
+      "val": -18.0
     },
     "windiest": {
-      "ciudad": "Cádiz",
-      "country": "ES",
-      "val": 33.3
+      "ciudad": "Hong Kong",
+      "country": "HK",
+      "val": 37.0
     },
     "wettest": {
       "ciudad": "Tokyo",
       "country": "JP",
-      "val": 5.62
+      "val": 3.65
     },
     "top_positive_anomaly": {
       "ciudad": "Santiago",
       "country": "CL",
-      "val": 11.4
+      "val": 9.4
     },
     "top_negative_anomaly": {
       "ciudad": "Ankara",
       "country": "TR",
-      "val": -15.0
+      "val": -14.8
     },
     "best_comfort": {
       "ciudad": "San Sebastián",
@@ -48,27 +48,27 @@
       "lat": 43.3623,
       "lon": -8.4115,
       "latest": {
-        "fecha_hora": "2026-11-08T22:43:30.884042",
+        "fecha_hora": "2026-11-08T23:13:55.323523",
         "temp": 19.1,
         "feels_like": 18.9,
         "humidity": 70,
-        "wind_kmh": 25.9,
-        "clouds": 75,
+        "wind_kmh": 24.1,
+        "clouds": 0,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "muy nuboso"
+        "description": "cielo claro"
       },
       "stats": {
-        "records": 1142,
+        "records": 1143,
         "days": 378,
-        "mean_30d_temp": 14.8,
-        "anomaly_30d_c": 4.3,
+        "mean_30d_temp": 14.9,
+        "anomaly_30d_c": 4.2,
         "all_time_max_c": 35.0,
         "all_time_min_c": -0.8,
         "avg_diurnal_range_c": 4.8,
         "rainy_days_30d": 8,
-        "comfort_index": 88,
+        "comfort_index": 91,
         "best_hour_utc": 14
       }
     },
@@ -80,19 +80,19 @@
       "lat": 38.9944,
       "lon": -1.8584,
       "latest": {
-        "fecha_hora": "2026-11-08T22:43:33.147710",
+        "fecha_hora": "2026-11-08T23:13:57.648266",
         "temp": 15.5,
         "feels_like": 15.7,
         "humidity": 100,
         "wind_kmh": 13.0,
-        "clouds": 75,
+        "clouds": 40,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "muy nuboso"
+        "description": "nubes dispersas"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 15.0,
         "anomaly_30d_c": 0.5,
@@ -100,7 +100,7 @@
         "all_time_min_c": -5.0,
         "avg_diurnal_range_c": 9.1,
         "rainy_days_30d": 2,
-        "comfort_index": 79,
+        "comfort_index": 81,
         "best_hour_utc": 14
       }
     },
@@ -112,19 +112,19 @@
       "lat": 38.3452,
       "lon": -0.481,
       "latest": {
-        "fecha_hora": "2026-11-08T22:43:35.456990",
+        "fecha_hora": "2026-11-08T23:13:59.930224",
         "temp": 18.4,
         "feels_like": 18.4,
-        "humidity": 79,
+        "humidity": 82,
         "wind_kmh": 9.3,
-        "clouds": 40,
+        "clouds": 20,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "nubes dispersas"
+        "description": "algo de nubes"
       },
       "stats": {
-        "records": 1144,
+        "records": 1145,
         "days": 378,
         "mean_30d_temp": 20.4,
         "anomaly_30d_c": -2.0,
@@ -132,7 +132,7 @@
         "all_time_min_c": 4.3,
         "avg_diurnal_range_c": 5.2,
         "rainy_days_30d": 7,
-        "comfort_index": 94,
+        "comfort_index": 93,
         "best_hour_utc": 14
       }
     },
@@ -144,11 +144,11 @@
       "lat": 36.834,
       "lon": -2.4637,
       "latest": {
-        "fecha_hora": "2026-11-08T22:43:37.779718",
+        "fecha_hora": "2026-11-08T23:14:02.282893",
         "temp": 21.0,
         "feels_like": 20.9,
         "humidity": 70,
-        "wind_kmh": 7.4,
+        "wind_kmh": 1.6,
         "clouds": 0,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -156,7 +156,7 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 21.7,
         "anomaly_30d_c": -0.7,
@@ -176,9 +176,9 @@
       "lat": 40.656,
       "lon": -4.6974,
       "latest": {
-        "fecha_hora": "2026-11-08T22:43:40.033042",
-        "temp": 11.2,
-        "feels_like": 10.4,
+        "fecha_hora": "2026-11-08T23:14:04.610559",
+        "temp": 11.0,
+        "feels_like": 10.3,
         "humidity": 80,
         "wind_kmh": 28.6,
         "clouds": 76,
@@ -188,10 +188,10 @@
         "description": "muy nuboso"
       },
       "stats": {
-        "records": 1125,
+        "records": 1126,
         "days": 378,
         "mean_30d_temp": 12.2,
-        "anomaly_30d_c": -1.0,
+        "anomaly_30d_c": -1.2,
         "all_time_max_c": 35.3,
         "all_time_min_c": -5.0,
         "avg_diurnal_range_c": 7.6,
@@ -208,10 +208,10 @@
       "lat": 38.8787,
       "lon": -6.9707,
       "latest": {
-        "fecha_hora": "2026-11-08T22:43:42.341944",
-        "temp": 17.3,
-        "feels_like": 17.4,
-        "humidity": 91,
+        "fecha_hora": "2026-11-08T23:14:06.907200",
+        "temp": 17.4,
+        "feels_like": 17.6,
+        "humidity": 92,
         "wind_kmh": 16.3,
         "clouds": 98,
         "visibility_km": 10.0,
@@ -220,10 +220,10 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 18.9,
-        "anomaly_30d_c": -1.6,
+        "anomaly_30d_c": -1.5,
         "all_time_max_c": 43.1,
         "all_time_min_c": 0.9,
         "avg_diurnal_range_c": 9.9,
@@ -240,27 +240,27 @@
       "lat": 41.3851,
       "lon": 2.1734,
       "latest": {
-        "fecha_hora": "2026-11-08T22:43:44.693499",
-        "temp": 17.2,
-        "feels_like": 17.0,
+        "fecha_hora": "2026-11-08T23:14:09.237444",
+        "temp": 17.1,
+        "feels_like": 16.9,
         "humidity": 78,
-        "wind_kmh": 9.3,
-        "clouds": 75,
+        "wind_kmh": 7.4,
+        "clouds": 40,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "muy nuboso"
+        "description": "nubes dispersas"
       },
       "stats": {
-        "records": 1142,
+        "records": 1143,
         "days": 378,
         "mean_30d_temp": 18.5,
-        "anomaly_30d_c": -1.3,
+        "anomaly_30d_c": -1.4,
         "all_time_max_c": 39.2,
         "all_time_min_c": -0.1,
         "avg_diurnal_range_c": 4.9,
         "rainy_days_30d": 2,
-        "comfort_index": 92,
+        "comfort_index": 93,
         "best_hour_utc": 14
       }
     },
@@ -272,27 +272,27 @@
       "lat": 43.263,
       "lon": -2.935,
       "latest": {
-        "fecha_hora": "2026-11-08T22:43:46.971628",
-        "temp": 18.0,
-        "feels_like": 17.4,
-        "humidity": 59,
-        "wind_kmh": 14.8,
-        "clouds": 20,
+        "fecha_hora": "2026-11-08T23:14:11.538481",
+        "temp": 17.6,
+        "feels_like": 17.0,
+        "humidity": 61,
+        "wind_kmh": 4.8,
+        "clouds": 100,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "algo de nubes"
+        "description": "nubes"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 16.0,
-        "anomaly_30d_c": 2.0,
+        "anomaly_30d_c": 1.6,
         "all_time_max_c": 41.1,
         "all_time_min_c": 0.0,
         "avg_diurnal_range_c": 6.3,
         "rainy_days_30d": 0,
-        "comfort_index": 99,
+        "comfort_index": 96,
         "best_hour_utc": 14
       }
     },
@@ -304,27 +304,27 @@
       "lat": 42.3439,
       "lon": -3.6969,
       "latest": {
-        "fecha_hora": "2026-11-08T22:43:49.287436",
-        "temp": 14.2,
-        "feels_like": 13.4,
-        "humidity": 67,
-        "wind_kmh": 29.6,
-        "clouds": 73,
+        "fecha_hora": "2026-11-08T23:14:13.878836",
+        "temp": 12.2,
+        "feels_like": 11.6,
+        "humidity": 82,
+        "wind_kmh": 18.5,
+        "clouds": 20,
         "visibility_km": 10.0,
-        "rain_1h": 1.15,
+        "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "lluvia moderada"
+        "description": "algo de nubes"
       },
       "stats": {
-        "records": 1146,
+        "records": 1147,
         "days": 378,
         "mean_30d_temp": 11.2,
-        "anomaly_30d_c": 3.0,
+        "anomaly_30d_c": 1.0,
         "all_time_max_c": 37.3,
         "all_time_min_c": -4.8,
         "avg_diurnal_range_c": 7.9,
         "rainy_days_30d": 3,
-        "comfort_index": 56,
+        "comfort_index": 77,
         "best_hour_utc": 14
       }
     },
@@ -336,9 +336,9 @@
       "lat": 39.4731,
       "lon": -6.3711,
       "latest": {
-        "fecha_hora": "2026-11-08T22:43:51.585993",
+        "fecha_hora": "2026-11-08T23:14:16.220746",
         "temp": 15.2,
-        "feels_like": 15.1,
+        "feels_like": 15.2,
         "humidity": 91,
         "wind_kmh": 23.3,
         "clouds": 91,
@@ -348,7 +348,7 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1145,
+        "records": 1146,
         "days": 378,
         "mean_30d_temp": 16.7,
         "anomaly_30d_c": -1.5,
@@ -368,19 +368,19 @@
       "lat": 36.5298,
       "lon": -6.2926,
       "latest": {
-        "fecha_hora": "2026-11-08T22:43:53.862619",
+        "fecha_hora": "2026-11-08T23:14:18.498453",
         "temp": 18.6,
         "feels_like": 17.6,
-        "humidity": 41,
-        "wind_kmh": 33.3,
+        "humidity": 43,
+        "wind_kmh": 27.8,
         "clouds": 75,
-        "visibility_km": 6.0,
+        "visibility_km": 10.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "llovizna"
+        "description": "muy nuboso"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 20.6,
         "anomaly_30d_c": -2.0,
@@ -388,7 +388,7 @@
         "all_time_min_c": 2.9,
         "avg_diurnal_range_c": 5.9,
         "rainy_days_30d": 2,
-        "comfort_index": 84,
+        "comfort_index": 89,
         "best_hour_utc": 6
       }
     },
@@ -400,27 +400,27 @@
       "lat": 39.9864,
       "lon": -0.0375,
       "latest": {
-        "fecha_hora": "2026-11-08T22:43:56.172090",
+        "fecha_hora": "2026-11-08T23:14:20.826181",
         "temp": 18.1,
-        "feels_like": 18.3,
-        "humidity": 92,
+        "feels_like": 18.2,
+        "humidity": 89,
         "wind_kmh": 2.8,
         "clouds": 91,
         "visibility_km": 10.0,
-        "rain_1h": 0.0,
+        "rain_1h": 0.22,
         "snow_1h": 0.0,
-        "description": "nubes"
+        "description": "lluvia ligera"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 20.0,
         "anomaly_30d_c": -1.9,
         "all_time_max_c": 38.0,
         "all_time_min_c": 1.9,
         "avg_diurnal_range_c": 5.8,
-        "rainy_days_30d": 2,
-        "comfort_index": 87,
+        "rainy_days_30d": 3,
+        "comfort_index": 75,
         "best_hour_utc": 14
       }
     },
@@ -432,19 +432,19 @@
       "lat": 35.8883,
       "lon": -5.3068,
       "latest": {
-        "fecha_hora": "2026-11-08T22:43:58.516797",
+        "fecha_hora": "2026-11-08T23:14:23.132309",
         "temp": 18.2,
-        "feels_like": 18.5,
-        "humidity": 95,
+        "feels_like": 18.6,
+        "humidity": 97,
         "wind_kmh": 14.5,
         "clouds": 100,
         "visibility_km": 2.8,
-        "rain_1h": 0.47,
+        "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "lluvia ligera"
+        "description": "nubes"
       },
       "stats": {
-        "records": 1143,
+        "records": 1144,
         "days": 378,
         "mean_30d_temp": 20.1,
         "anomaly_30d_c": -1.9,
@@ -452,7 +452,7 @@
         "all_time_min_c": 6.0,
         "avg_diurnal_range_c": 3.3,
         "rainy_days_30d": 2,
-        "comfort_index": 65,
+        "comfort_index": 80,
         "best_hour_utc": 14
       }
     },
@@ -464,10 +464,10 @@
       "lat": 38.9863,
       "lon": -3.9213,
       "latest": {
-        "fecha_hora": "2026-11-08T22:44:00.853681",
+        "fecha_hora": "2026-11-08T23:14:25.427568",
         "temp": 14.2,
-        "feels_like": 13.8,
-        "humidity": 81,
+        "feels_like": 13.9,
+        "humidity": 84,
         "wind_kmh": 1.6,
         "clouds": 85,
         "visibility_km": 2.6,
@@ -476,7 +476,7 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1147,
+        "records": 1148,
         "days": 378,
         "mean_30d_temp": 16.4,
         "anomaly_30d_c": -2.2,
@@ -484,7 +484,7 @@
         "all_time_min_c": -3.3,
         "avg_diurnal_range_c": 8.3,
         "rainy_days_30d": 0,
-        "comfort_index": 78,
+        "comfort_index": 77,
         "best_hour_utc": 14
       }
     },
@@ -496,11 +496,11 @@
       "lat": 37.8882,
       "lon": -4.7794,
       "latest": {
-        "fecha_hora": "2026-11-08T22:44:03.150110",
-        "temp": 14.7,
-        "feels_like": 14.7,
-        "humidity": 94,
-        "wind_kmh": 9.3,
+        "fecha_hora": "2026-11-08T23:14:27.761634",
+        "temp": 15.7,
+        "feels_like": 15.7,
+        "humidity": 88,
+        "wind_kmh": 7.4,
         "clouds": 100,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -508,15 +508,15 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1147,
+        "records": 1148,
         "days": 378,
         "mean_30d_temp": 17.6,
-        "anomaly_30d_c": -2.9,
+        "anomaly_30d_c": -1.9,
         "all_time_max_c": 43.2,
         "all_time_min_c": -3.3,
         "avg_diurnal_range_c": 10.3,
         "rainy_days_30d": 2,
-        "comfort_index": 79,
+        "comfort_index": 83,
         "best_hour_utc": 14
       }
     },
@@ -528,7 +528,7 @@
       "lat": 40.0704,
       "lon": -2.1374,
       "latest": {
-        "fecha_hora": "2026-11-08T22:44:05.482779",
+        "fecha_hora": "2026-11-08T23:14:30.079219",
         "temp": 11.1,
         "feels_like": 10.5,
         "humidity": 86,
@@ -540,7 +540,7 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1133,
+        "records": 1134,
         "days": 378,
         "mean_30d_temp": 13.8,
         "anomaly_30d_c": -2.7,
@@ -560,10 +560,10 @@
       "lat": 43.5357,
       "lon": -5.6615,
       "latest": {
-        "fecha_hora": "2026-11-08T22:44:07.793659",
-        "temp": 16.4,
-        "feels_like": 16.4,
-        "humidity": 89,
+        "fecha_hora": "2026-11-08T23:14:32.368636",
+        "temp": 18.6,
+        "feels_like": 18.5,
+        "humidity": 76,
         "wind_kmh": 12.2,
         "clouds": 100,
         "visibility_km": 10.0,
@@ -572,15 +572,15 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1094,
+        "records": 1095,
         "days": 366,
         "mean_30d_temp": 15.5,
-        "anomaly_30d_c": 0.9,
+        "anomaly_30d_c": 3.1,
         "all_time_max_c": 32.9,
         "all_time_min_c": 0.5,
         "avg_diurnal_range_c": 4.5,
         "rainy_days_30d": 0,
-        "comfort_index": 84,
+        "comfort_index": 93,
         "best_hour_utc": 14
       }
     },
@@ -592,27 +592,27 @@
       "lat": 41.9794,
       "lon": 2.8214,
       "latest": {
-        "fecha_hora": "2026-11-08T22:44:10.103955",
-        "temp": 15.0,
+        "fecha_hora": "2026-11-08T23:14:34.696092",
+        "temp": 15.1,
         "feels_like": 14.9,
         "humidity": 89,
-        "wind_kmh": 12.9,
-        "clouds": 89,
+        "wind_kmh": 11.1,
+        "clouds": 0,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "nubes"
+        "description": "cielo claro"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 15.8,
-        "anomaly_30d_c": -0.8,
+        "anomaly_30d_c": -0.7,
         "all_time_max_c": 38.2,
         "all_time_min_c": -2.7,
         "avg_diurnal_range_c": 7.9,
         "rainy_days_30d": 2,
-        "comfort_index": 82,
+        "comfort_index": 84,
         "best_hour_utc": 14
       }
     },
@@ -624,27 +624,27 @@
       "lat": 37.1773,
       "lon": -3.5986,
       "latest": {
-        "fecha_hora": "2026-11-08T22:44:12.416388",
-        "temp": 15.4,
-        "feels_like": 15.0,
-        "humidity": 74,
-        "wind_kmh": 3.7,
+        "fecha_hora": "2026-11-08T23:14:37.001969",
+        "temp": 14.9,
+        "feels_like": 14.4,
+        "humidity": 76,
+        "wind_kmh": 1.8,
         "clouds": 100,
         "visibility_km": 10.0,
-        "rain_1h": 0.0,
+        "rain_1h": 0.49,
         "snow_1h": 0.0,
-        "description": "nubes"
+        "description": "lluvia ligera"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 17.1,
-        "anomaly_30d_c": -1.7,
+        "anomaly_30d_c": -2.2,
         "all_time_max_c": 41.6,
         "all_time_min_c": -4.9,
         "avg_diurnal_range_c": 9.2,
         "rainy_days_30d": 3,
-        "comfort_index": 88,
+        "comfort_index": 70,
         "best_hour_utc": 14
       }
     },
@@ -656,27 +656,27 @@
       "lat": 40.633,
       "lon": -3.1654,
       "latest": {
-        "fecha_hora": "2026-11-08T22:44:14.707274",
-        "temp": 12.8,
-        "feels_like": 12.2,
-        "humidity": 78,
-        "wind_kmh": 2.2,
+        "fecha_hora": "2026-11-08T23:14:39.294627",
+        "temp": 12.6,
+        "feels_like": 12.0,
+        "humidity": 83,
+        "wind_kmh": 1.4,
         "clouds": 100,
         "visibility_km": 10.0,
-        "rain_1h": 0.2,
+        "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "lluvia ligera"
+        "description": "nubes"
       },
       "stats": {
-        "records": 1140,
+        "records": 1141,
         "days": 378,
         "mean_30d_temp": 14.7,
-        "anomaly_30d_c": -1.9,
+        "anomaly_30d_c": -2.1,
         "all_time_max_c": 38.5,
         "all_time_min_c": -5.6,
         "avg_diurnal_range_c": 7.6,
         "rainy_days_30d": 1,
-        "comfort_index": 67,
+        "comfort_index": 78,
         "best_hour_utc": 14
       }
     },
@@ -688,11 +688,11 @@
       "lat": 37.2614,
       "lon": -6.9447,
       "latest": {
-        "fecha_hora": "2026-11-08T22:44:17.033934",
+        "fecha_hora": "2026-11-08T23:14:41.635281",
         "temp": 18.8,
         "feels_like": 18.9,
-        "humidity": 83,
-        "wind_kmh": 22.5,
+        "humidity": 81,
+        "wind_kmh": 24.2,
         "clouds": 94,
         "visibility_km": 8.0,
         "rain_1h": 0.0,
@@ -700,7 +700,7 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1147,
+        "records": 1148,
         "days": 378,
         "mean_30d_temp": 20.1,
         "anomaly_30d_c": -1.3,
@@ -708,7 +708,7 @@
         "all_time_min_c": 2.8,
         "avg_diurnal_range_c": 5.7,
         "rainy_days_30d": 1,
-        "comfort_index": 85,
+        "comfort_index": 84,
         "best_hour_utc": 14
       }
     },
@@ -720,9 +720,9 @@
       "lat": 42.1402,
       "lon": -0.4087,
       "latest": {
-        "fecha_hora": "2026-11-08T22:44:19.370126",
-        "temp": 14.3,
-        "feels_like": 13.8,
+        "fecha_hora": "2026-11-08T23:14:43.902131",
+        "temp": 14.4,
+        "feels_like": 13.9,
         "humidity": 77,
         "wind_kmh": 14.8,
         "clouds": 0,
@@ -732,10 +732,10 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 14.1,
-        "anomaly_30d_c": 0.2,
+        "anomaly_30d_c": 0.3,
         "all_time_max_c": 38.7,
         "all_time_min_c": -3.7,
         "avg_diurnal_range_c": 8.3,
@@ -752,9 +752,9 @@
       "lat": 37.7692,
       "lon": -3.7903,
       "latest": {
-        "fecha_hora": "2026-11-08T22:44:21.703128",
-        "temp": 16.0,
-        "feels_like": 16.2,
+        "fecha_hora": "2026-11-08T23:14:46.213057",
+        "temp": 15.4,
+        "feels_like": 15.6,
         "humidity": 100,
         "wind_kmh": 0.3,
         "clouds": 96,
@@ -764,15 +764,15 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1145,
+        "records": 1146,
         "days": 378,
         "mean_30d_temp": 17.7,
-        "anomaly_30d_c": -1.7,
+        "anomaly_30d_c": -2.3,
         "all_time_max_c": 41.0,
         "all_time_min_c": -1.6,
         "avg_diurnal_range_c": 7.6,
         "rainy_days_30d": 2,
-        "comfort_index": 79,
+        "comfort_index": 78,
         "best_hour_utc": 14
       }
     },
@@ -784,11 +784,11 @@
       "lat": 42.5984,
       "lon": -5.5719,
       "latest": {
-        "fecha_hora": "2026-11-08T22:44:23.987177",
+        "fecha_hora": "2026-11-08T23:14:48.512571",
         "temp": 9.9,
-        "feels_like": 9.1,
+        "feels_like": 8.7,
         "humidity": 89,
-        "wind_kmh": 7.4,
+        "wind_kmh": 9.3,
         "clouds": 75,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -796,15 +796,15 @@
         "description": "muy nuboso"
       },
       "stats": {
-        "records": 1143,
+        "records": 1144,
         "days": 378,
-        "mean_30d_temp": 12.4,
-        "anomaly_30d_c": -2.5,
+        "mean_30d_temp": 12.3,
+        "anomaly_30d_c": -2.4,
         "all_time_max_c": 37.7,
         "all_time_min_c": -4.5,
         "avg_diurnal_range_c": 8.1,
         "rainy_days_30d": 0,
-        "comfort_index": 71,
+        "comfort_index": 70,
         "best_hour_utc": 14
       }
     },
@@ -816,10 +816,10 @@
       "lat": 41.6176,
       "lon": 0.62,
       "latest": {
-        "fecha_hora": "2026-11-08T22:44:26.319333",
+        "fecha_hora": "2026-11-08T23:14:50.816234",
         "temp": 14.9,
         "feels_like": 14.7,
-        "humidity": 85,
+        "humidity": 83,
         "wind_kmh": 16.7,
         "clouds": 0,
         "visibility_km": 10.0,
@@ -828,7 +828,7 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 15.4,
         "anomaly_30d_c": -0.5,
@@ -848,9 +848,9 @@
       "lat": 41.6365,
       "lon": 2.395,
       "latest": {
-        "fecha_hora": "2026-11-08T22:44:28.651878",
-        "temp": 15.1,
-        "feels_like": 14.9,
+        "fecha_hora": "2026-11-08T23:14:53.160422",
+        "temp": 14.9,
+        "feels_like": 14.8,
         "humidity": 89,
         "wind_kmh": 1.6,
         "clouds": 99,
@@ -860,10 +860,10 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1090,
+        "records": 1091,
         "days": 364,
-        "mean_30d_temp": 17.1,
-        "anomaly_30d_c": -2.0,
+        "mean_30d_temp": 17.0,
+        "anomaly_30d_c": -2.1,
         "all_time_max_c": 35.3,
         "all_time_min_c": -0.8,
         "avg_diurnal_range_c": 5.1,
@@ -880,11 +880,11 @@
       "lat": 42.4658,
       "lon": -2.4486,
       "latest": {
-        "fecha_hora": "2026-11-08T22:44:30.946245",
+        "fecha_hora": "2026-11-08T23:14:55.479761",
         "temp": 13.7,
         "feels_like": 13.2,
         "humidity": 77,
-        "wind_kmh": 22.2,
+        "wind_kmh": 20.4,
         "clouds": 0,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -892,15 +892,15 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1144,
+        "records": 1145,
         "days": 378,
-        "mean_30d_temp": 12.6,
-        "anomaly_30d_c": 1.1,
+        "mean_30d_temp": 12.7,
+        "anomaly_30d_c": 1.0,
         "all_time_max_c": 39.9,
         "all_time_min_c": -3.3,
         "avg_diurnal_range_c": 8.7,
         "rainy_days_30d": 2,
-        "comfort_index": 80,
+        "comfort_index": 81,
         "best_hour_utc": 14
       }
     },
@@ -912,11 +912,11 @@
       "lat": 43.0116,
       "lon": -7.556,
       "latest": {
-        "fecha_hora": "2026-11-08T22:44:33.270834",
-        "temp": 15.0,
-        "feels_like": 14.6,
-        "humidity": 80,
-        "wind_kmh": 11.3,
+        "fecha_hora": "2026-11-08T23:14:57.774585",
+        "temp": 16.1,
+        "feels_like": 15.8,
+        "humidity": 76,
+        "wind_kmh": 12.9,
         "clouds": 64,
         "visibility_km": 6.8,
         "rain_1h": 0.0,
@@ -924,15 +924,15 @@
         "description": "muy nuboso"
       },
       "stats": {
-        "records": 1146,
+        "records": 1147,
         "days": 378,
-        "mean_30d_temp": 12.8,
-        "anomaly_30d_c": 2.2,
+        "mean_30d_temp": 12.9,
+        "anomaly_30d_c": 3.2,
         "all_time_max_c": 37.0,
         "all_time_min_c": -2.5,
         "avg_diurnal_range_c": 7.3,
         "rainy_days_30d": 1,
-        "comfort_index": 86,
+        "comfort_index": 90,
         "best_hour_utc": 14
       }
     },
@@ -944,27 +944,27 @@
       "lat": 40.4168,
       "lon": -3.7038,
       "latest": {
-        "fecha_hora": "2026-11-08T22:44:35.538395",
-        "temp": 13.8,
-        "feels_like": 13.2,
-        "humidity": 79,
-        "wind_kmh": 6.4,
-        "clouds": 0,
-        "visibility_km": 10.0,
+        "fecha_hora": "2026-11-08T23:15:00.110145",
+        "temp": 13.6,
+        "feels_like": 13.1,
+        "humidity": 81,
+        "wind_kmh": 7.0,
+        "clouds": 20,
+        "visibility_km": 9.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "cielo claro"
+        "description": "algo de nubes"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 15.5,
-        "anomaly_30d_c": -1.7,
+        "anomaly_30d_c": -1.9,
         "all_time_max_c": 39.2,
         "all_time_min_c": -3.5,
         "avg_diurnal_range_c": 7.2,
         "rainy_days_30d": 0,
-        "comfort_index": 85,
+        "comfort_index": 83,
         "best_hour_utc": 14
       }
     },
@@ -976,27 +976,27 @@
       "lat": 36.7213,
       "lon": -4.4215,
       "latest": {
-        "fecha_hora": "2026-11-08T22:44:37.821094",
-        "temp": 19.0,
-        "feels_like": 19.3,
-        "humidity": 90,
-        "wind_kmh": 5.5,
-        "clouds": 75,
+        "fecha_hora": "2026-11-08T23:15:02.406884",
+        "temp": 18.7,
+        "feels_like": 18.9,
+        "humidity": 89,
+        "wind_kmh": 7.4,
+        "clouds": 100,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "muy nuboso"
+        "description": "nubes"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
-        "mean_30d_temp": 21.0,
-        "anomaly_30d_c": -2.0,
+        "mean_30d_temp": 20.9,
+        "anomaly_30d_c": -2.2,
         "all_time_max_c": 40.6,
         "all_time_min_c": 5.7,
         "avg_diurnal_range_c": 5.2,
         "rainy_days_30d": 1,
-        "comfort_index": 89,
+        "comfort_index": 88,
         "best_hour_utc": 14
       }
     },
@@ -1008,10 +1008,10 @@
       "lat": 35.2923,
       "lon": -2.9381,
       "latest": {
-        "fecha_hora": "2026-11-08T22:44:40.165227",
+        "fecha_hora": "2026-11-08T23:15:04.702046",
         "temp": 19.2,
-        "feels_like": 19.5,
-        "humidity": 88,
+        "feels_like": 19.3,
+        "humidity": 82,
         "wind_kmh": 5.5,
         "clouds": 0,
         "visibility_km": 10.0,
@@ -1020,15 +1020,15 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1146,
+        "records": 1147,
         "days": 378,
-        "mean_30d_temp": 21.4,
-        "anomaly_30d_c": -2.2,
+        "mean_30d_temp": 21.3,
+        "anomaly_30d_c": -2.1,
         "all_time_max_c": 33.2,
         "all_time_min_c": 6.2,
         "avg_diurnal_range_c": 3.8,
         "rainy_days_30d": 1,
-        "comfort_index": 91,
+        "comfort_index": 93,
         "best_hour_utc": 14
       }
     },
@@ -1040,27 +1040,27 @@
       "lat": 38.9159,
       "lon": -6.344,
       "latest": {
-        "fecha_hora": "2026-11-08T22:44:42.428972",
-        "temp": 16.7,
-        "feels_like": 16.8,
-        "humidity": 92,
+        "fecha_hora": "2026-11-08T23:15:06.993962",
+        "temp": 16.8,
+        "feels_like": 16.9,
+        "humidity": 93,
         "wind_kmh": 14.5,
         "clouds": 95,
         "visibility_km": 5.1,
-        "rain_1h": 0.21,
+        "rain_1h": 1.15,
         "snow_1h": 0.0,
-        "description": "lluvia ligera"
+        "description": "lluvia moderada"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 18.6,
-        "anomaly_30d_c": -1.9,
+        "anomaly_30d_c": -1.8,
         "all_time_max_c": 42.6,
         "all_time_min_c": 0.0,
         "avg_diurnal_range_c": 9.0,
         "rainy_days_30d": 1,
-        "comfort_index": 70,
+        "comfort_index": 63,
         "best_hour_utc": 14
       }
     },
@@ -1072,8 +1072,8 @@
       "lat": 37.9922,
       "lon": -1.1307,
       "latest": {
-        "fecha_hora": "2026-11-08T22:44:44.762296",
-        "temp": 17.0,
+        "fecha_hora": "2026-11-08T23:15:09.300141",
+        "temp": 17.1,
         "feels_like": 17.1,
         "humidity": 87,
         "wind_kmh": 12.9,
@@ -1084,10 +1084,10 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
-        "mean_30d_temp": 20.1,
-        "anomaly_30d_c": -3.1,
+        "mean_30d_temp": 20.0,
+        "anomaly_30d_c": -2.9,
         "all_time_max_c": 42.5,
         "all_time_min_c": 3.1,
         "avg_diurnal_range_c": 7.8,
@@ -1104,10 +1104,10 @@
       "lat": 42.3368,
       "lon": -7.8639,
       "latest": {
-        "fecha_hora": "2026-11-08T22:44:47.073699",
-        "temp": 16.5,
-        "feels_like": 16.4,
-        "humidity": 85,
+        "fecha_hora": "2026-11-08T23:15:11.575265",
+        "temp": 16.7,
+        "feels_like": 16.6,
+        "humidity": 84,
         "wind_kmh": 16.0,
         "clouds": 74,
         "visibility_km": 10.0,
@@ -1116,10 +1116,10 @@
         "description": "muy nuboso"
       },
       "stats": {
-        "records": 1145,
+        "records": 1146,
         "days": 378,
         "mean_30d_temp": 15.0,
-        "anomaly_30d_c": 1.5,
+        "anomaly_30d_c": 1.7,
         "all_time_max_c": 39.7,
         "all_time_min_c": -5.3,
         "avg_diurnal_range_c": 7.6,
@@ -1136,10 +1136,10 @@
       "lat": 43.3614,
       "lon": -5.8448,
       "latest": {
-        "fecha_hora": "2026-11-08T22:44:49.372026",
-        "temp": 17.9,
-        "feels_like": 17.6,
-        "humidity": 68,
+        "fecha_hora": "2026-11-08T23:15:13.911734",
+        "temp": 18.1,
+        "feels_like": 17.7,
+        "humidity": 67,
         "wind_kmh": 8.8,
         "clouds": 94,
         "visibility_km": 10.0,
@@ -1148,15 +1148,15 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1144,
+        "records": 1145,
         "days": 378,
-        "mean_30d_temp": 14.0,
-        "anomaly_30d_c": 3.9,
+        "mean_30d_temp": 14.1,
+        "anomaly_30d_c": 4.0,
         "all_time_max_c": 31.5,
         "all_time_min_c": -0.9,
         "avg_diurnal_range_c": 4.9,
         "rainy_days_30d": 0,
-        "comfort_index": 96,
+        "comfort_index": 97,
         "best_hour_utc": 14
       }
     },
@@ -1168,11 +1168,11 @@
       "lat": 42.0095,
       "lon": -4.5241,
       "latest": {
-        "fecha_hora": "2026-11-08T22:44:51.709772",
+        "fecha_hora": "2026-11-08T23:15:16.213513",
         "temp": 13.9,
         "feels_like": 13.2,
-        "humidity": 74,
-        "wind_kmh": 4.8,
+        "humidity": 73,
+        "wind_kmh": 6.4,
         "clouds": 100,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -1180,7 +1180,7 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1144,
+        "records": 1145,
         "days": 378,
         "mean_30d_temp": 13.8,
         "anomaly_30d_c": 0.1,
@@ -1188,7 +1188,7 @@
         "all_time_min_c": -3.7,
         "avg_diurnal_range_c": 8.3,
         "rainy_days_30d": 0,
-        "comfort_index": 84,
+        "comfort_index": 85,
         "best_hour_utc": 14
       }
     },
@@ -1200,11 +1200,11 @@
       "lat": 39.5696,
       "lon": 2.6502,
       "latest": {
-        "fecha_hora": "2026-11-08T22:44:54.003284",
-        "temp": 15.2,
-        "feels_like": 15.2,
-        "humidity": 94,
-        "wind_kmh": 5.5,
+        "fecha_hora": "2026-11-08T23:15:18.562424",
+        "temp": 15.6,
+        "feels_like": 15.6,
+        "humidity": 92,
+        "wind_kmh": 7.4,
         "clouds": 20,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -1212,15 +1212,15 @@
         "description": "algo de nubes"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 18.7,
-        "anomaly_30d_c": -3.5,
+        "anomaly_30d_c": -3.1,
         "all_time_max_c": 39.6,
         "all_time_min_c": 1.9,
         "avg_diurnal_range_c": 6.5,
         "rainy_days_30d": 3,
-        "comfort_index": 82,
+        "comfort_index": 84,
         "best_hour_utc": 14
       }
     },
@@ -1232,11 +1232,11 @@
       "lat": 42.8125,
       "lon": -1.6458,
       "latest": {
-        "fecha_hora": "2026-11-08T22:44:56.317207",
-        "temp": 14.9,
-        "feels_like": 14.2,
-        "humidity": 67,
-        "wind_kmh": 3.7,
+        "fecha_hora": "2026-11-08T23:15:20.887336",
+        "temp": 12.9,
+        "feels_like": 12.3,
+        "humidity": 76,
+        "wind_kmh": 9.3,
         "clouds": 0,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -1244,15 +1244,15 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 13.5,
-        "anomaly_30d_c": 1.4,
+        "anomaly_30d_c": -0.6,
         "all_time_max_c": 39.6,
         "all_time_min_c": -6.5,
         "avg_diurnal_range_c": 8.2,
         "rainy_days_30d": 1,
-        "comfort_index": 92,
+        "comfort_index": 84,
         "best_hour_utc": 14
       }
     },
@@ -1264,10 +1264,10 @@
       "lat": 42.431,
       "lon": -8.6444,
       "latest": {
-        "fecha_hora": "2026-11-08T22:44:58.653947",
+        "fecha_hora": "2026-11-08T23:15:23.235830",
         "temp": 20.5,
-        "feels_like": 20.5,
-        "humidity": 72,
+        "feels_like": 20.6,
+        "humidity": 76,
         "wind_kmh": 20.3,
         "clouds": 65,
         "visibility_km": 10.0,
@@ -1276,7 +1276,7 @@
         "description": "muy nuboso"
       },
       "stats": {
-        "records": 1140,
+        "records": 1141,
         "days": 377,
         "mean_30d_temp": 16.4,
         "anomaly_30d_c": 4.1,
@@ -1284,7 +1284,7 @@
         "all_time_min_c": 1.2,
         "avg_diurnal_range_c": 5.7,
         "rainy_days_30d": 1,
-        "comfort_index": 92,
+        "comfort_index": 91,
         "best_hour_utc": 14
       }
     },
@@ -1296,10 +1296,10 @@
       "lat": 42.8948,
       "lon": -4.9635,
       "latest": {
-        "fecha_hora": "2026-11-08T22:45:00.941275",
-        "temp": 8.8,
-        "feels_like": 6.4,
-        "humidity": 90,
+        "fecha_hora": "2026-11-08T23:15:25.548760",
+        "temp": 9.1,
+        "feels_like": 6.8,
+        "humidity": 88,
         "wind_kmh": 15.1,
         "clouds": 100,
         "visibility_km": 4.2,
@@ -1308,15 +1308,15 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1059,
+        "records": 1060,
         "days": 370,
         "mean_30d_temp": 9.9,
-        "anomaly_30d_c": -1.1,
+        "anomaly_30d_c": -0.8,
         "all_time_max_c": 34.6,
         "all_time_min_c": -6.5,
         "avg_diurnal_range_c": 8.2,
         "rainy_days_30d": 1,
-        "comfort_index": 65,
+        "comfort_index": 67,
         "best_hour_utc": 14
       }
     },
@@ -1328,11 +1328,11 @@
       "lat": 40.9688,
       "lon": -5.6639,
       "latest": {
-        "fecha_hora": "2026-11-08T22:45:03.266686",
+        "fecha_hora": "2026-11-08T23:15:27.893062",
         "temp": 12.8,
         "feels_like": 12.1,
         "humidity": 76,
-        "wind_kmh": 7.4,
+        "wind_kmh": 11.1,
         "clouds": 0,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -1340,7 +1340,7 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 12.8,
         "anomaly_30d_c": 0.0,
@@ -1360,7 +1360,7 @@
       "lat": 43.3183,
       "lon": -1.9812,
       "latest": {
-        "fecha_hora": "2026-11-08T22:45:05.587618",
+        "fecha_hora": "2026-11-08T23:15:30.199962",
         "temp": 20.9,
         "feels_like": 20.4,
         "humidity": 49,
@@ -1372,7 +1372,7 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 15.7,
         "anomaly_30d_c": 5.2,
@@ -1392,11 +1392,11 @@
       "lat": 28.4636,
       "lon": -16.2518,
       "latest": {
-        "fecha_hora": "2026-11-08T22:45:07.908806",
+        "fecha_hora": "2026-11-08T23:15:32.505222",
         "temp": 23.0,
         "feels_like": 23.3,
         "humidity": 74,
-        "wind_kmh": 19.3,
+        "wind_kmh": 20.4,
         "clouds": 0,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -1404,7 +1404,7 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 23.4,
         "anomaly_30d_c": -0.4,
@@ -1412,7 +1412,7 @@
         "all_time_min_c": 12.2,
         "avg_diurnal_range_c": 3.3,
         "rainy_days_30d": 14,
-        "comfort_index": 93,
+        "comfort_index": 92,
         "best_hour_utc": 6
       }
     },
@@ -1424,11 +1424,11 @@
       "lat": 43.4623,
       "lon": -3.8099,
       "latest": {
-        "fecha_hora": "2026-11-08T22:45:10.239832",
-        "temp": 19.9,
-        "feels_like": 19.2,
-        "humidity": 49,
-        "wind_kmh": 11.3,
+        "fecha_hora": "2026-11-08T23:15:34.814586",
+        "temp": 20.1,
+        "feels_like": 19.6,
+        "humidity": 52,
+        "wind_kmh": 11.1,
         "clouds": 0,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -1436,10 +1436,10 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1144,
+        "records": 1145,
         "days": 378,
         "mean_30d_temp": 16.0,
-        "anomaly_30d_c": 3.9,
+        "anomaly_30d_c": 4.1,
         "all_time_max_c": 33.9,
         "all_time_min_c": 0.9,
         "avg_diurnal_range_c": 3.5,
@@ -1456,10 +1456,10 @@
       "lat": 40.9429,
       "lon": -4.1203,
       "latest": {
-        "fecha_hora": "2026-11-08T22:45:12.576755",
+        "fecha_hora": "2026-11-08T23:15:37.145233",
         "temp": 13.3,
-        "feels_like": 12.6,
-        "humidity": 72,
+        "feels_like": 12.7,
+        "humidity": 77,
         "wind_kmh": 14.3,
         "clouds": 56,
         "visibility_km": 10.0,
@@ -1468,7 +1468,7 @@
         "description": "muy nuboso"
       },
       "stats": {
-        "records": 1126,
+        "records": 1127,
         "days": 378,
         "mean_30d_temp": 13.9,
         "anomaly_30d_c": -0.6,
@@ -1476,7 +1476,7 @@
         "all_time_min_c": -5.3,
         "avg_diurnal_range_c": 6.7,
         "rainy_days_30d": 0,
-        "comfort_index": 86,
+        "comfort_index": 84,
         "best_hour_utc": 14
       }
     },
@@ -1488,27 +1488,27 @@
       "lat": 37.3891,
       "lon": -5.9845,
       "latest": {
-        "fecha_hora": "2026-11-08T22:45:14.835555",
+        "fecha_hora": "2026-11-08T23:15:39.463540",
         "temp": 18.0,
-        "feels_like": 18.2,
+        "feels_like": 18.3,
         "humidity": 92,
-        "wind_kmh": 22.5,
+        "wind_kmh": 9.3,
         "clouds": 75,
-        "visibility_km": 6.0,
-        "rain_1h": 0.95,
+        "visibility_km": 7.0,
+        "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "chubasco"
+        "description": "muy nuboso"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
-        "mean_30d_temp": 21.1,
-        "anomaly_30d_c": -3.1,
+        "mean_30d_temp": 21.0,
+        "anomaly_30d_c": -3.0,
         "all_time_max_c": 43.9,
         "all_time_min_c": 1.1,
         "avg_diurnal_range_c": 8.3,
         "rainy_days_30d": 1,
-        "comfort_index": 62,
+        "comfort_index": 88,
         "best_hour_utc": 14
       }
     },
@@ -1520,10 +1520,10 @@
       "lat": 41.7636,
       "lon": -2.4676,
       "latest": {
-        "fecha_hora": "2026-11-08T22:45:17.194663",
+        "fecha_hora": "2026-11-08T23:15:41.808189",
         "temp": 11.7,
-        "feels_like": 10.7,
-        "humidity": 67,
+        "feels_like": 10.8,
+        "humidity": 71,
         "wind_kmh": 4.1,
         "clouds": 95,
         "visibility_km": 10.0,
@@ -1532,7 +1532,7 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1137,
+        "records": 1138,
         "days": 378,
         "mean_30d_temp": 11.6,
         "anomaly_30d_c": 0.1,
@@ -1540,7 +1540,7 @@
         "all_time_min_c": -4.9,
         "avg_diurnal_range_c": 8.2,
         "rainy_days_30d": 0,
-        "comfort_index": 82,
+        "comfort_index": 81,
         "best_hour_utc": 14
       }
     },
@@ -1552,10 +1552,10 @@
       "lat": 41.1189,
       "lon": 1.2445,
       "latest": {
-        "fecha_hora": "2026-11-08T22:45:19.485281",
+        "fecha_hora": "2026-11-08T23:15:44.115760",
         "temp": 17.0,
         "feels_like": 17.1,
-        "humidity": 91,
+        "humidity": 89,
         "wind_kmh": 3.7,
         "clouds": 75,
         "visibility_km": 9.0,
@@ -1564,7 +1564,7 @@
         "description": "muy nuboso"
       },
       "stats": {
-        "records": 1146,
+        "records": 1147,
         "days": 378,
         "mean_30d_temp": 18.6,
         "anomaly_30d_c": -1.6,
@@ -1572,7 +1572,7 @@
         "all_time_min_c": 1.6,
         "avg_diurnal_range_c": 5.0,
         "rainy_days_30d": 3,
-        "comfort_index": 86,
+        "comfort_index": 87,
         "best_hour_utc": 14
       }
     },
@@ -1584,7 +1584,7 @@
       "lat": 40.3456,
       "lon": -1.1065,
       "latest": {
-        "fecha_hora": "2026-11-08T22:45:21.775276",
+        "fecha_hora": "2026-11-08T23:15:46.475972",
         "temp": 11.6,
         "feels_like": 11.2,
         "humidity": 93,
@@ -1596,7 +1596,7 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 12.9,
         "anomaly_30d_c": -1.3,
@@ -1616,10 +1616,10 @@
       "lat": 39.8628,
       "lon": -4.0273,
       "latest": {
-        "fecha_hora": "2026-11-08T22:45:24.053943",
+        "fecha_hora": "2026-11-08T23:15:48.820073",
         "temp": 15.5,
-        "feels_like": 15.2,
-        "humidity": 81,
+        "feels_like": 15.1,
+        "humidity": 78,
         "wind_kmh": 6.0,
         "clouds": 100,
         "visibility_km": 10.0,
@@ -1628,15 +1628,15 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
-        "mean_30d_temp": 16.9,
-        "anomaly_30d_c": -1.4,
+        "mean_30d_temp": 16.8,
+        "anomaly_30d_c": -1.3,
         "all_time_max_c": 42.1,
         "all_time_min_c": -0.4,
         "avg_diurnal_range_c": 7.4,
         "rainy_days_30d": 0,
-        "comfort_index": 85,
+        "comfort_index": 86,
         "best_hour_utc": 14
       }
     },
@@ -1648,11 +1648,11 @@
       "lat": 39.4699,
       "lon": -0.3763,
       "latest": {
-        "fecha_hora": "2026-11-08T22:45:26.351753",
+        "fecha_hora": "2026-11-08T23:15:51.125777",
         "temp": 17.3,
         "feels_like": 17.4,
         "humidity": 88,
-        "wind_kmh": 5.5,
+        "wind_kmh": 9.3,
         "clouds": 75,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -1660,7 +1660,7 @@
         "description": "muy nuboso"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 19.4,
         "anomaly_30d_c": -2.1,
@@ -1680,11 +1680,11 @@
       "lat": 41.6521,
       "lon": -4.7286,
       "latest": {
-        "fecha_hora": "2026-11-08T22:45:28.631962",
-        "temp": 15.6,
-        "feels_like": 15.1,
-        "humidity": 74,
-        "wind_kmh": 20.4,
+        "fecha_hora": "2026-11-08T23:15:53.471706",
+        "temp": 16.1,
+        "feels_like": 15.6,
+        "humidity": 71,
+        "wind_kmh": 18.5,
         "clouds": 0,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -1692,15 +1692,15 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 13.7,
-        "anomaly_30d_c": 1.9,
+        "anomaly_30d_c": 2.4,
         "all_time_max_c": 40.0,
         "all_time_min_c": -4.1,
         "avg_diurnal_range_c": 8.3,
         "rainy_days_30d": 1,
-        "comfort_index": 86,
+        "comfort_index": 90,
         "best_hour_utc": 14
       }
     },
@@ -1712,10 +1712,10 @@
       "lat": 41.4044,
       "lon": -4.4266,
       "latest": {
-        "fecha_hora": "2026-11-08T22:45:30.918405",
-        "temp": 13.0,
-        "feels_like": 12.2,
-        "humidity": 70,
+        "fecha_hora": "2026-11-08T23:15:55.778693",
+        "temp": 12.8,
+        "feels_like": 12.1,
+        "humidity": 74,
         "wind_kmh": 19.3,
         "clouds": 46,
         "visibility_km": 10.0,
@@ -1724,15 +1724,15 @@
         "description": "nubes dispersas"
       },
       "stats": {
-        "records": 1143,
+        "records": 1144,
         "days": 378,
         "mean_30d_temp": 13.2,
-        "anomaly_30d_c": -0.2,
+        "anomaly_30d_c": -0.4,
         "all_time_max_c": 37.9,
         "all_time_min_c": -3.0,
         "avg_diurnal_range_c": 8.1,
         "rainy_days_30d": 3,
-        "comfort_index": 83,
+        "comfort_index": 81,
         "best_hour_utc": 14
       }
     },
@@ -1744,27 +1744,27 @@
       "lat": 42.8467,
       "lon": -2.6731,
       "latest": {
-        "fecha_hora": "2026-11-08T22:45:33.178669",
-        "temp": 12.8,
-        "feels_like": 12.3,
-        "humidity": 82,
-        "wind_kmh": 13.0,
-        "clouds": 0,
+        "fecha_hora": "2026-11-08T23:15:58.116841",
+        "temp": 13.7,
+        "feels_like": 13.2,
+        "humidity": 79,
+        "wind_kmh": 9.6,
+        "clouds": 98,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "cielo claro"
+        "description": "nubes"
       },
       "stats": {
-        "records": 1139,
+        "records": 1140,
         "days": 378,
         "mean_30d_temp": 12.6,
-        "anomaly_30d_c": 0.2,
+        "anomaly_30d_c": 1.1,
         "all_time_max_c": 38.2,
         "all_time_min_c": -6.2,
         "avg_diurnal_range_c": 8.2,
         "rainy_days_30d": 0,
-        "comfort_index": 81,
+        "comfort_index": 82,
         "best_hour_utc": 14
       }
     },
@@ -1776,9 +1776,9 @@
       "lat": 41.5035,
       "lon": -5.7455,
       "latest": {
-        "fecha_hora": "2026-11-08T22:45:35.481403",
-        "temp": 13.4,
-        "feels_like": 12.9,
+        "fecha_hora": "2026-11-08T23:16:00.458238",
+        "temp": 13.6,
+        "feels_like": 13.1,
         "humidity": 80,
         "wind_kmh": 9.9,
         "clouds": 80,
@@ -1788,10 +1788,10 @@
         "description": "muy nuboso"
       },
       "stats": {
-        "records": 1146,
+        "records": 1147,
         "days": 378,
         "mean_30d_temp": 13.6,
-        "anomaly_30d_c": -0.2,
+        "anomaly_30d_c": 0.0,
         "all_time_max_c": 40.0,
         "all_time_min_c": -1.3,
         "avg_diurnal_range_c": 8.2,
@@ -1808,19 +1808,19 @@
       "lat": 41.6488,
       "lon": -0.8891,
       "latest": {
-        "fecha_hora": "2026-11-08T22:45:37.768793",
+        "fecha_hora": "2026-11-08T23:16:02.763215",
         "temp": 15.0,
         "feels_like": 14.2,
-        "humidity": 66,
-        "wind_kmh": 3.7,
-        "clouds": 20,
+        "humidity": 65,
+        "wind_kmh": 7.4,
+        "clouds": 40,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "algo de nubes"
+        "description": "nubes dispersas"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 16.0,
         "anomaly_30d_c": -1.0,
@@ -1828,7 +1828,7 @@
         "all_time_min_c": -0.1,
         "avg_diurnal_range_c": 7.8,
         "rainy_days_30d": 3,
-        "comfort_index": 92,
+        "comfort_index": 93,
         "best_hour_utc": 14
       }
     },
@@ -1840,27 +1840,27 @@
       "lat": 52.3676,
       "lon": 4.9041,
       "latest": {
-        "fecha_hora": "2026-11-08T22:45:40.030211",
-        "temp": 6.1,
-        "feels_like": 5.2,
-        "humidity": 95,
-        "wind_kmh": 5.5,
-        "clouds": 8,
+        "fecha_hora": "2026-11-08T23:16:05.091787",
+        "temp": 6.0,
+        "feels_like": 4.7,
+        "humidity": 97,
+        "wind_kmh": 6.4,
+        "clouds": 20,
         "visibility_km": 7.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "cielo claro"
+        "description": "bruma"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 10.8,
-        "anomaly_30d_c": -4.7,
+        "anomaly_30d_c": -4.8,
         "all_time_max_c": 36.1,
         "all_time_min_c": -6.7,
         "avg_diurnal_range_c": 4.9,
         "rainy_days_30d": 7,
-        "comfort_index": 61,
+        "comfort_index": 59,
         "best_hour_utc": 14
       }
     },
@@ -1872,7 +1872,7 @@
       "lat": 42.5063,
       "lon": 1.5218,
       "latest": {
-        "fecha_hora": "2026-11-08T22:45:42.321274",
+        "fecha_hora": "2026-11-08T23:16:07.439741",
         "temp": 10.8,
         "feels_like": 10.0,
         "humidity": 77,
@@ -1884,7 +1884,7 @@
         "description": "muy nuboso"
       },
       "stats": {
-        "records": 1117,
+        "records": 1118,
         "days": 378,
         "mean_30d_temp": 11.3,
         "anomaly_30d_c": -0.5,
@@ -1904,11 +1904,11 @@
       "lat": 37.9838,
       "lon": 23.7275,
       "latest": {
-        "fecha_hora": "2026-11-08T22:45:44.612467",
-        "temp": 10.4,
-        "feels_like": 9.4,
+        "fecha_hora": "2026-11-08T23:16:09.739711",
+        "temp": 10.3,
+        "feels_like": 9.3,
         "humidity": 73,
-        "wind_kmh": 11.3,
+        "wind_kmh": 8.1,
         "clouds": 20,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -1916,9 +1916,9 @@
         "description": "algo de nubes"
       },
       "stats": {
-        "records": 1147,
+        "records": 1148,
         "days": 378,
-        "mean_30d_temp": 17.0,
+        "mean_30d_temp": 16.9,
         "anomaly_30d_c": -6.6,
         "all_time_max_c": 37.7,
         "all_time_min_c": 0.9,
@@ -1936,27 +1936,27 @@
       "lat": 52.52,
       "lon": 13.405,
       "latest": {
-        "fecha_hora": "2026-11-08T22:45:46.910088",
-        "temp": 3.6,
+        "fecha_hora": "2026-11-08T23:16:12.087993",
+        "temp": 3.2,
         "feels_like": 1.2,
-        "humidity": 91,
-        "wind_kmh": 9.3,
+        "humidity": 92,
+        "wind_kmh": 7.4,
         "clouds": 100,
-        "visibility_km": 9.0,
+        "visibility_km": 6.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
         "description": "nubes"
       },
       "stats": {
-        "records": 1146,
+        "records": 1147,
         "days": 378,
-        "mean_30d_temp": 9.2,
-        "anomaly_30d_c": -5.6,
+        "mean_30d_temp": 9.1,
+        "anomaly_30d_c": -5.9,
         "all_time_max_c": 40.6,
         "all_time_min_c": -11.2,
         "avg_diurnal_range_c": 6.1,
         "rainy_days_30d": 5,
-        "comfort_index": 51,
+        "comfort_index": 50,
         "best_hour_utc": 14
       }
     },
@@ -1968,27 +1968,27 @@
       "lat": 46.948,
       "lon": 7.4474,
       "latest": {
-        "fecha_hora": "2026-11-08T22:45:49.192729",
-        "temp": 7.1,
-        "feels_like": 5.7,
+        "fecha_hora": "2026-11-08T23:16:14.434322",
+        "temp": 7.3,
+        "feels_like": 7.3,
         "humidity": 92,
-        "wind_kmh": 7.4,
-        "clouds": 75,
+        "wind_kmh": 2.8,
+        "clouds": 90,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "muy nuboso"
+        "description": "nubes"
       },
       "stats": {
-        "records": 1145,
+        "records": 1146,
         "days": 378,
         "mean_30d_temp": 9.1,
-        "anomaly_30d_c": -2.0,
+        "anomaly_30d_c": -1.8,
         "all_time_max_c": 36.0,
         "all_time_min_c": -13.2,
         "avg_diurnal_range_c": 7.2,
         "rainy_days_30d": 6,
-        "comfort_index": 63,
+        "comfort_index": 64,
         "best_hour_utc": 14
       }
     },
@@ -2000,27 +2000,27 @@
       "lat": 48.1486,
       "lon": 17.1077,
       "latest": {
-        "fecha_hora": "2026-11-08T22:45:51.472692",
-        "temp": 1.0,
-        "feels_like": -2.8,
+        "fecha_hora": "2026-11-08T23:16:16.740735",
+        "temp": 1.8,
+        "feels_like": -0.9,
         "humidity": 93,
-        "wind_kmh": 13.0,
+        "wind_kmh": 9.3,
         "clouds": 75,
-        "visibility_km": 7.0,
+        "visibility_km": 9.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
         "description": "muy nuboso"
       },
       "stats": {
-        "records": 1147,
+        "records": 1148,
         "days": 378,
-        "mean_30d_temp": 10.0,
-        "anomaly_30d_c": -9.0,
+        "mean_30d_temp": 9.9,
+        "anomaly_30d_c": -8.1,
         "all_time_max_c": 40.4,
         "all_time_min_c": -9.0,
         "avg_diurnal_range_c": 6.6,
         "rainy_days_30d": 3,
-        "comfort_index": 42,
+        "comfort_index": 45,
         "best_hour_utc": 14
       }
     },
@@ -2032,9 +2032,9 @@
       "lat": 50.8503,
       "lon": 4.3517,
       "latest": {
-        "fecha_hora": "2026-11-08T22:45:53.759445",
-        "temp": 5.6,
-        "feels_like": 2.8,
+        "fecha_hora": "2026-11-08T23:16:19.088905",
+        "temp": 5.1,
+        "feels_like": 2.2,
         "humidity": 88,
         "wind_kmh": 13.0,
         "clouds": 20,
@@ -2044,15 +2044,15 @@
         "description": "algo de nubes"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
-        "mean_30d_temp": 10.5,
-        "anomaly_30d_c": -4.9,
+        "mean_30d_temp": 10.4,
+        "anomaly_30d_c": -5.3,
         "all_time_max_c": 38.2,
         "all_time_min_c": -4.9,
         "avg_diurnal_range_c": 6.4,
         "rainy_days_30d": 3,
-        "comfort_index": 60,
+        "comfort_index": 58,
         "best_hour_utc": 14
       }
     },
@@ -2064,10 +2064,10 @@
       "lat": 44.4268,
       "lon": 26.1025,
       "latest": {
-        "fecha_hora": "2026-11-08T22:45:56.022676",
-        "temp": 3.0,
-        "feels_like": 3.0,
-        "humidity": 84,
+        "fecha_hora": "2026-11-08T23:16:21.437655",
+        "temp": 2.7,
+        "feels_like": 2.7,
+        "humidity": 87,
         "wind_kmh": 1.8,
         "clouds": 0,
         "visibility_km": 7.0,
@@ -2076,15 +2076,15 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
-        "mean_30d_temp": 11.6,
-        "anomaly_30d_c": -8.6,
+        "mean_30d_temp": 11.5,
+        "anomaly_30d_c": -8.8,
         "all_time_max_c": 37.3,
         "all_time_min_c": -11.1,
         "avg_diurnal_range_c": 6.3,
         "rainy_days_30d": 22,
-        "comfort_index": 57,
+        "comfort_index": 55,
         "best_hour_utc": 14
       }
     },
@@ -2096,11 +2096,11 @@
       "lat": 47.4979,
       "lon": 19.0402,
       "latest": {
-        "fecha_hora": "2026-11-08T22:45:58.291401",
+        "fecha_hora": "2026-11-08T23:16:23.780134",
         "temp": 4.4,
-        "feels_like": 3.5,
+        "feels_like": 3.4,
         "humidity": 79,
-        "wind_kmh": 4.8,
+        "wind_kmh": 5.0,
         "clouds": 51,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -2108,7 +2108,7 @@
         "description": "muy nuboso"
       },
       "stats": {
-        "records": 1147,
+        "records": 1148,
         "days": 378,
         "mean_30d_temp": 10.7,
         "anomaly_30d_c": -6.3,
@@ -2128,11 +2128,11 @@
       "lat": 55.6761,
       "lon": 12.5683,
       "latest": {
-        "fecha_hora": "2026-11-08T22:46:00.587688",
-        "temp": 6.2,
-        "feels_like": 4.3,
-        "humidity": 82,
-        "wind_kmh": 9.3,
+        "fecha_hora": "2026-11-08T23:16:26.086317",
+        "temp": 5.8,
+        "feels_like": 4.2,
+        "humidity": 85,
+        "wind_kmh": 7.4,
         "clouds": 100,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -2140,15 +2140,15 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 9.8,
-        "anomaly_30d_c": -3.6,
+        "anomaly_30d_c": -4.0,
         "all_time_max_c": 31.4,
         "all_time_min_c": -12.8,
         "avg_diurnal_range_c": 4.3,
         "rainy_days_30d": 9,
-        "comfort_index": 63,
+        "comfort_index": 61,
         "best_hour_utc": 14
       }
     },
@@ -2160,27 +2160,27 @@
       "lat": 53.3498,
       "lon": -6.2603,
       "latest": {
-        "fecha_hora": "2026-11-08T22:46:02.839494",
-        "temp": 5.3,
-        "feels_like": 3.7,
-        "humidity": 93,
-        "wind_kmh": 7.4,
-        "clouds": 0,
-        "visibility_km": 10.0,
+        "fecha_hora": "2026-11-08T23:16:28.371333",
+        "temp": 6.0,
+        "feels_like": 6.0,
+        "humidity": 92,
+        "wind_kmh": 1.1,
+        "clouds": 96,
+        "visibility_km": 0.3,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "cielo claro"
+        "description": "nubes"
       },
       "stats": {
-        "records": 1147,
+        "records": 1148,
         "days": 378,
         "mean_30d_temp": 11.0,
-        "anomaly_30d_c": -5.7,
+        "anomaly_30d_c": -5.0,
         "all_time_max_c": 29.0,
         "all_time_min_c": -2.6,
         "avg_diurnal_range_c": 4.2,
         "rainy_days_30d": 5,
-        "comfort_index": 58,
+        "comfort_index": 56,
         "best_hour_utc": 14
       }
     },
@@ -2192,22 +2192,22 @@
       "lat": 60.1699,
       "lon": 24.9384,
       "latest": {
-        "fecha_hora": "2026-11-08T22:46:05.157695",
-        "temp": 3.4,
-        "feels_like": 0.5,
-        "humidity": 98,
-        "wind_kmh": 11.1,
+        "fecha_hora": "2026-11-08T23:16:30.712619",
+        "temp": 3.5,
+        "feels_like": 0.6,
+        "humidity": 99,
+        "wind_kmh": 11.3,
         "clouds": 40,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "nubes dispersas"
+        "description": "bruma"
       },
       "stats": {
-        "records": 1143,
+        "records": 1144,
         "days": 378,
         "mean_30d_temp": 7.7,
-        "anomaly_30d_c": -4.3,
+        "anomaly_30d_c": -4.2,
         "all_time_max_c": 28.2,
         "all_time_min_c": -22.6,
         "avg_diurnal_range_c": 4.1,
@@ -2224,11 +2224,11 @@
       "lat": 41.0082,
       "lon": 28.9784,
       "latest": {
-        "fecha_hora": "2026-11-08T22:46:07.451007",
-        "temp": 7.2,
-        "feels_like": 5.5,
-        "humidity": 96,
-        "wind_kmh": 9.3,
+        "fecha_hora": "2026-11-08T23:16:32.971333",
+        "temp": 7.1,
+        "feels_like": 4.9,
+        "humidity": 94,
+        "wind_kmh": 11.1,
         "clouds": 0,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -2236,9 +2236,9 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
-        "mean_30d_temp": 15.5,
+        "mean_30d_temp": 15.4,
         "anomaly_30d_c": -8.3,
         "all_time_max_c": 34.1,
         "all_time_min_c": -1.3,
@@ -2256,7 +2256,7 @@
       "lat": 50.4501,
       "lon": 30.5234,
       "latest": {
-        "fecha_hora": "2026-11-08T22:46:09.742194",
+        "fecha_hora": "2026-11-08T23:16:35.257556",
         "temp": 4.6,
         "feels_like": 3.1,
         "humidity": 89,
@@ -2268,10 +2268,10 @@
         "description": "muy nuboso"
       },
       "stats": {
-        "records": 1138,
+        "records": 1139,
         "days": 378,
-        "mean_30d_temp": 10.0,
-        "anomaly_30d_c": -5.4,
+        "mean_30d_temp": 9.9,
+        "anomaly_30d_c": -5.3,
         "all_time_max_c": 36.9,
         "all_time_min_c": -21.7,
         "avg_diurnal_range_c": 5.4,
@@ -2288,27 +2288,27 @@
       "lat": 38.7223,
       "lon": -9.1393,
       "latest": {
-        "fecha_hora": "2026-11-08T22:46:12.055633",
-        "temp": 19.6,
-        "feels_like": 19.9,
-        "humidity": 88,
-        "wind_kmh": 31.5,
-        "clouds": 75,
-        "visibility_km": 10.0,
+        "fecha_hora": "2026-11-08T23:16:37.534411",
+        "temp": 20.3,
+        "feels_like": 20.7,
+        "humidity": 89,
+        "wind_kmh": 20.9,
+        "clouds": 99,
+        "visibility_km": 3.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "muy nuboso"
+        "description": "nubes"
       },
       "stats": {
-        "records": 1146,
+        "records": 1147,
         "days": 378,
         "mean_30d_temp": 18.7,
-        "anomaly_30d_c": 0.9,
+        "anomaly_30d_c": 1.6,
         "all_time_max_c": 40.4,
         "all_time_min_c": 3.5,
         "avg_diurnal_range_c": 5.3,
         "rainy_days_30d": 1,
-        "comfort_index": 76,
+        "comfort_index": 78,
         "best_hour_utc": 14
       }
     },
@@ -2320,10 +2320,10 @@
       "lat": 46.0569,
       "lon": 14.5058,
       "latest": {
-        "fecha_hora": "2026-11-08T22:46:14.365217",
-        "temp": 2.8,
-        "feels_like": 2.8,
-        "humidity": 92,
+        "fecha_hora": "2026-11-08T23:16:39.836798",
+        "temp": 3.4,
+        "feels_like": 3.4,
+        "humidity": 93,
         "wind_kmh": 1.4,
         "clouds": 1,
         "visibility_km": 10.0,
@@ -2332,15 +2332,15 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1147,
+        "records": 1148,
         "days": 378,
         "mean_30d_temp": 9.5,
-        "anomaly_30d_c": -6.7,
+        "anomaly_30d_c": -6.1,
         "all_time_max_c": 36.6,
         "all_time_min_c": -12.5,
         "avg_diurnal_range_c": 8.0,
         "rainy_days_30d": 5,
-        "comfort_index": 53,
+        "comfort_index": 55,
         "best_hour_utc": 14
       }
     },
@@ -2352,27 +2352,27 @@
       "lat": 51.5072,
       "lon": -0.1276,
       "latest": {
-        "fecha_hora": "2026-11-08T22:46:16.638619",
-        "temp": 5.7,
-        "feels_like": 5.7,
+        "fecha_hora": "2026-11-08T23:16:42.171050",
+        "temp": 5.2,
+        "feels_like": 5.2,
         "humidity": 93,
-        "wind_kmh": 3.7,
+        "wind_kmh": 3.0,
         "clouds": 100,
-        "visibility_km": 2.1,
+        "visibility_km": 0.2,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "niebla"
+        "description": "nubes"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
-        "mean_30d_temp": 11.6,
-        "anomaly_30d_c": -5.9,
+        "mean_30d_temp": 11.5,
+        "anomaly_30d_c": -6.3,
         "all_time_max_c": 37.8,
         "all_time_min_c": -5.3,
         "avg_diurnal_range_c": 5.4,
         "rainy_days_30d": 10,
-        "comfort_index": 54,
+        "comfort_index": 52,
         "best_hour_utc": 14
       }
     },
@@ -2384,11 +2384,11 @@
       "lat": 49.6116,
       "lon": 6.1319,
       "latest": {
-        "fecha_hora": "2026-11-08T22:46:18.943687",
+        "fecha_hora": "2026-11-08T23:16:44.447592",
         "temp": 5.5,
-        "feels_like": 3.9,
-        "humidity": 96,
-        "wind_kmh": 7.4,
+        "feels_like": 4.5,
+        "humidity": 94,
+        "wind_kmh": 5.5,
         "clouds": 75,
         "visibility_km": 3.0,
         "rain_1h": 0.0,
@@ -2396,15 +2396,15 @@
         "description": "niebla"
       },
       "stats": {
-        "records": 1147,
+        "records": 1148,
         "days": 378,
-        "mean_30d_temp": 9.1,
-        "anomaly_30d_c": -3.6,
+        "mean_30d_temp": 9.0,
+        "anomaly_30d_c": -3.5,
         "all_time_max_c": 41.1,
         "all_time_min_c": -5.5,
         "avg_diurnal_range_c": 6.6,
         "rainy_days_30d": 6,
-        "comfort_index": 57,
+        "comfort_index": 58,
         "best_hour_utc": 14
       }
     },
@@ -2416,19 +2416,19 @@
       "lat": 43.7384,
       "lon": 7.4246,
       "latest": {
-        "fecha_hora": "2026-11-08T22:46:21.271535",
+        "fecha_hora": "2026-11-08T23:16:46.750330",
         "temp": 12.4,
         "feels_like": 12.2,
         "humidity": 96,
-        "wind_kmh": 5.5,
+        "wind_kmh": 11.1,
         "clouds": 75,
-        "visibility_km": 5.0,
+        "visibility_km": 10.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
         "description": "muy nuboso"
       },
       "stats": {
-        "records": 1145,
+        "records": 1146,
         "days": 378,
         "mean_30d_temp": 17.5,
         "anomaly_30d_c": -5.1,
@@ -2448,7 +2448,7 @@
       "lat": 55.7558,
       "lon": 37.6173,
       "latest": {
-        "fecha_hora": "2026-11-08T22:46:23.588094",
+        "fecha_hora": "2026-11-08T23:16:49.091822",
         "temp": 4.8,
         "feels_like": 2.7,
         "humidity": 62,
@@ -2460,7 +2460,7 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1142,
+        "records": 1143,
         "days": 378,
         "mean_30d_temp": 8.0,
         "anomaly_30d_c": -3.2,
@@ -2480,27 +2480,27 @@
       "lat": 35.1856,
       "lon": 33.3823,
       "latest": {
-        "fecha_hora": "2026-11-08T22:46:25.909161",
-        "temp": 9.9,
-        "feels_like": 9.1,
-        "humidity": 62,
-        "wind_kmh": 7.4,
-        "clouds": 40,
+        "fecha_hora": "2026-11-08T23:16:51.372954",
+        "temp": 8.9,
+        "feels_like": 8.4,
+        "humidity": 66,
+        "wind_kmh": 5.5,
+        "clouds": 20,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "nubes dispersas"
+        "description": "algo de nubes"
       },
       "stats": {
-        "records": 1143,
+        "records": 1144,
         "days": 378,
-        "mean_30d_temp": 19.5,
-        "anomaly_30d_c": -9.6,
+        "mean_30d_temp": 19.4,
+        "anomaly_30d_c": -10.5,
         "all_time_max_c": 38.9,
         "all_time_min_c": -1.1,
         "avg_diurnal_range_c": 8.5,
         "rainy_days_30d": 3,
-        "comfort_index": 81,
+        "comfort_index": 79,
         "best_hour_utc": 14
       }
     },
@@ -2512,7 +2512,7 @@
       "lat": 59.9139,
       "lon": 10.7522,
       "latest": {
-        "fecha_hora": "2026-11-08T22:46:28.223301",
+        "fecha_hora": "2026-11-08T23:16:53.728965",
         "temp": -0.8,
         "feels_like": -0.8,
         "humidity": 84,
@@ -2524,10 +2524,10 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1113,
+        "records": 1114,
         "days": 377,
-        "mean_30d_temp": 6.4,
-        "anomaly_30d_c": -7.2,
+        "mean_30d_temp": 6.3,
+        "anomaly_30d_c": -7.1,
         "all_time_max_c": 34.2,
         "all_time_min_c": -18.6,
         "avg_diurnal_range_c": 5.4,
@@ -2544,27 +2544,27 @@
       "lat": 48.8566,
       "lon": 2.3522,
       "latest": {
-        "fecha_hora": "2026-11-08T22:46:30.516256",
-        "temp": 6.0,
-        "feels_like": 3.4,
-        "humidity": 92,
+        "fecha_hora": "2026-11-08T23:16:56.033265",
+        "temp": 5.8,
+        "feels_like": 3.0,
+        "humidity": 94,
         "wind_kmh": 13.0,
-        "clouds": 20,
+        "clouds": 0,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "algo de nubes"
+        "description": "cielo claro"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
-        "mean_30d_temp": 11.6,
-        "anomaly_30d_c": -5.6,
+        "mean_30d_temp": 11.5,
+        "anomaly_30d_c": -5.7,
         "all_time_max_c": 41.1,
         "all_time_min_c": -7.3,
         "avg_diurnal_range_c": 6.2,
         "rainy_days_30d": 4,
-        "comfort_index": 60,
+        "comfort_index": 58,
         "best_hour_utc": 14
       }
     },
@@ -2576,27 +2576,27 @@
       "lat": 50.0755,
       "lon": 14.4378,
       "latest": {
-        "fecha_hora": "2026-11-08T22:46:32.846267",
-        "temp": 1.5,
-        "feels_like": -0.1,
-        "humidity": 91,
-        "wind_kmh": 5.5,
+        "fecha_hora": "2026-11-08T23:16:58.326022",
+        "temp": 2.0,
+        "feels_like": -0.7,
+        "humidity": 89,
+        "wind_kmh": 9.3,
         "clouds": 100,
-        "visibility_km": 5.0,
+        "visibility_km": 8.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "niebla"
+        "description": "nubes"
       },
       "stats": {
-        "records": 1147,
+        "records": 1148,
         "days": 378,
-        "mean_30d_temp": 8.0,
-        "anomaly_30d_c": -6.5,
+        "mean_30d_temp": 7.9,
+        "anomaly_30d_c": -5.9,
         "all_time_max_c": 38.0,
         "all_time_min_c": -11.5,
         "avg_diurnal_range_c": 6.1,
         "rainy_days_30d": 4,
-        "comfort_index": 45,
+        "comfort_index": 46,
         "best_hour_utc": 14
       }
     },
@@ -2608,11 +2608,11 @@
       "lat": 64.1466,
       "lon": -21.9426,
       "latest": {
-        "fecha_hora": "2026-11-08T22:46:35.175982",
+        "fecha_hora": "2026-11-08T23:17:00.671639",
         "temp": 4.9,
-        "feels_like": 3.2,
+        "feels_like": 3.8,
         "humidity": 87,
-        "wind_kmh": 7.4,
+        "wind_kmh": 5.5,
         "clouds": 100,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -2620,7 +2620,7 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1142,
+        "records": 1143,
         "days": 378,
         "mean_30d_temp": 5.7,
         "anomaly_30d_c": -0.8,
@@ -2628,7 +2628,7 @@
         "all_time_min_c": -11.1,
         "avg_diurnal_range_c": 2.9,
         "rainy_days_30d": 7,
-        "comfort_index": 57,
+        "comfort_index": 58,
         "best_hour_utc": 22
       }
     },
@@ -2640,11 +2640,11 @@
       "lat": 56.9496,
       "lon": 24.1052,
       "latest": {
-        "fecha_hora": "2026-11-08T22:46:37.465022",
+        "fecha_hora": "2026-11-08T23:17:02.959336",
         "temp": 6.0,
-        "feels_like": 4.4,
-        "humidity": 81,
-        "wind_kmh": 7.4,
+        "feels_like": 6.0,
+        "humidity": 75,
+        "wind_kmh": 3.7,
         "clouds": 100,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -2652,15 +2652,15 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1146,
+        "records": 1147,
         "days": 378,
-        "mean_30d_temp": 8.2,
-        "anomaly_30d_c": -2.2,
+        "mean_30d_temp": 8.1,
+        "anomaly_30d_c": -2.1,
         "all_time_max_c": 31.1,
         "all_time_min_c": -24.0,
         "avg_diurnal_range_c": 4.6,
         "rainy_days_30d": 0,
-        "comfort_index": 63,
+        "comfort_index": 67,
         "best_hour_utc": 14
       }
     },
@@ -2672,10 +2672,10 @@
       "lat": 41.9028,
       "lon": 12.4964,
       "latest": {
-        "fecha_hora": "2026-11-08T22:46:39.757443",
-        "temp": 11.5,
-        "feels_like": 10.8,
-        "humidity": 79,
+        "fecha_hora": "2026-11-08T23:17:05.262609",
+        "temp": 11.2,
+        "feels_like": 10.5,
+        "humidity": 80,
         "wind_kmh": 1.8,
         "clouds": 0,
         "visibility_km": 10.0,
@@ -2684,15 +2684,15 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
-        "mean_30d_temp": 16.9,
-        "anomaly_30d_c": -5.4,
+        "mean_30d_temp": 16.8,
+        "anomaly_30d_c": -5.6,
         "all_time_max_c": 38.1,
         "all_time_min_c": -1.7,
         "avg_diurnal_range_c": 6.0,
         "rainy_days_30d": 5,
-        "comfort_index": 79,
+        "comfort_index": 78,
         "best_hour_utc": 14
       }
     },
@@ -2704,7 +2704,7 @@
       "lat": 43.9424,
       "lon": 12.4578,
       "latest": {
-        "fecha_hora": "2026-11-08T22:46:42.068682",
+        "fecha_hora": "2026-11-08T23:17:07.581240",
         "temp": 8.0,
         "feels_like": 8.0,
         "humidity": 89,
@@ -2716,7 +2716,7 @@
         "description": "muy nuboso"
       },
       "stats": {
-        "records": 1146,
+        "records": 1147,
         "days": 378,
         "mean_30d_temp": 12.5,
         "anomaly_30d_c": -4.5,
@@ -2736,11 +2736,11 @@
       "lat": 43.8563,
       "lon": 18.4131,
       "latest": {
-        "fecha_hora": "2026-11-08T22:46:44.349383",
+        "fecha_hora": "2026-11-08T23:17:09.924492",
         "temp": 4.7,
         "feels_like": 4.7,
         "humidity": 100,
-        "wind_kmh": 3.7,
+        "wind_kmh": 1.8,
         "clouds": 75,
         "visibility_km": 4.0,
         "rain_1h": 0.0,
@@ -2748,10 +2748,10 @@
         "description": "niebla"
       },
       "stats": {
-        "records": 1144,
+        "records": 1145,
         "days": 378,
-        "mean_30d_temp": 8.6,
-        "anomaly_30d_c": -3.9,
+        "mean_30d_temp": 8.5,
+        "anomaly_30d_c": -3.8,
         "all_time_max_c": 35.7,
         "all_time_min_c": -13.3,
         "avg_diurnal_range_c": 8.5,
@@ -2768,22 +2768,22 @@
       "lat": 41.9981,
       "lon": 21.4254,
       "latest": {
-        "fecha_hora": "2026-11-08T22:46:46.649200",
+        "fecha_hora": "2026-11-08T23:17:12.223356",
         "temp": 6.9,
         "feels_like": 6.9,
         "humidity": 93,
-        "wind_kmh": 1.8,
+        "wind_kmh": 3.7,
         "clouds": 100,
-        "visibility_km": 7.0,
+        "visibility_km": 10.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "llovizna ligera"
+        "description": "llovizna"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
-        "mean_30d_temp": 11.9,
-        "anomaly_30d_c": -5.0,
+        "mean_30d_temp": 11.8,
+        "anomaly_30d_c": -4.9,
         "all_time_max_c": 39.9,
         "all_time_min_c": -11.1,
         "avg_diurnal_range_c": 9.5,
@@ -2800,11 +2800,11 @@
       "lat": 42.6977,
       "lon": 23.3219,
       "latest": {
-        "fecha_hora": "2026-11-08T22:46:48.926254",
+        "fecha_hora": "2026-11-08T23:17:14.535503",
         "temp": 2.3,
         "feels_like": 2.3,
         "humidity": 85,
-        "wind_kmh": 3.7,
+        "wind_kmh": 1.8,
         "clouds": 99,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -2812,10 +2812,10 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
-        "mean_30d_temp": 10.0,
-        "anomaly_30d_c": -7.7,
+        "mean_30d_temp": 9.9,
+        "anomaly_30d_c": -7.6,
         "all_time_max_c": 35.8,
         "all_time_min_c": -11.2,
         "avg_diurnal_range_c": 6.8,
@@ -2832,11 +2832,11 @@
       "lat": 59.3293,
       "lon": 18.0686,
       "latest": {
-        "fecha_hora": "2026-11-08T22:46:51.243938",
-        "temp": 1.5,
-        "feels_like": -1.3,
+        "fecha_hora": "2026-11-08T23:17:16.821976",
+        "temp": 1.7,
+        "feels_like": -0.6,
         "humidity": 98,
-        "wind_kmh": 9.3,
+        "wind_kmh": 7.4,
         "clouds": 100,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -2844,15 +2844,15 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1145,
+        "records": 1146,
         "days": 378,
-        "mean_30d_temp": 7.9,
-        "anomaly_30d_c": -6.4,
+        "mean_30d_temp": 7.8,
+        "anomaly_30d_c": -6.1,
         "all_time_max_c": 29.1,
         "all_time_min_c": -16.6,
         "avg_diurnal_range_c": 4.8,
         "rainy_days_30d": 9,
-        "comfort_index": 41,
+        "comfort_index": 42,
         "best_hour_utc": 14
       }
     },
@@ -2864,11 +2864,11 @@
       "lat": 59.437,
       "lon": 24.7536,
       "latest": {
-        "fecha_hora": "2026-11-08T22:46:53.525426",
+        "fecha_hora": "2026-11-08T23:17:19.135493",
         "temp": 5.4,
-        "feels_like": 2.3,
-        "humidity": 93,
-        "wind_kmh": 14.8,
+        "feels_like": 2.9,
+        "humidity": 97,
+        "wind_kmh": 11.1,
         "clouds": 75,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -2876,7 +2876,7 @@
         "description": "muy nuboso"
       },
       "stats": {
-        "records": 1146,
+        "records": 1147,
         "days": 378,
         "mean_30d_temp": 8.4,
         "anomaly_30d_c": -3.0,
@@ -2884,7 +2884,7 @@
         "all_time_min_c": -21.8,
         "avg_diurnal_range_c": 4.4,
         "rainy_days_30d": 5,
-        "comfort_index": 56,
+        "comfort_index": 55,
         "best_hour_utc": 14
       }
     },
@@ -2896,11 +2896,11 @@
       "lat": 41.3275,
       "lon": 19.8187,
       "latest": {
-        "fecha_hora": "2026-11-08T22:46:55.808813",
-        "temp": 14.7,
-        "feels_like": 14.4,
+        "fecha_hora": "2026-11-08T23:17:21.470906",
+        "temp": 14.6,
+        "feels_like": 14.3,
         "humidity": 86,
-        "wind_kmh": 9.3,
+        "wind_kmh": 7.4,
         "clouds": 75,
         "visibility_km": 10.0,
         "rain_1h": 0.24,
@@ -2908,10 +2908,10 @@
         "description": "lluvia ligera"
       },
       "stats": {
-        "records": 1146,
+        "records": 1147,
         "days": 378,
         "mean_30d_temp": 16.4,
-        "anomaly_30d_c": -1.7,
+        "anomaly_30d_c": -1.8,
         "all_time_max_c": 40.4,
         "all_time_min_c": -5.5,
         "avg_diurnal_range_c": 8.3,
@@ -2928,10 +2928,10 @@
       "lat": 47.141,
       "lon": 9.5215,
       "latest": {
-        "fecha_hora": "2026-11-08T22:46:58.140407",
-        "temp": 6.7,
-        "feels_like": 6.7,
-        "humidity": 83,
+        "fecha_hora": "2026-11-08T23:17:23.766075",
+        "temp": 6.6,
+        "feels_like": 6.6,
+        "humidity": 84,
         "wind_kmh": 1.8,
         "clouds": 43,
         "visibility_km": 10.0,
@@ -2940,15 +2940,15 @@
         "description": "nubes dispersas"
       },
       "stats": {
-        "records": 1090,
+        "records": 1091,
         "days": 376,
-        "mean_30d_temp": 10.2,
+        "mean_30d_temp": 10.1,
         "anomaly_30d_c": -3.5,
         "all_time_max_c": 36.5,
         "all_time_min_c": -9.7,
         "avg_diurnal_range_c": 6.7,
         "rainy_days_30d": 6,
-        "comfort_index": 68,
+        "comfort_index": 67,
         "best_hour_utc": 14
       }
     },
@@ -2960,22 +2960,22 @@
       "lat": 35.8989,
       "lon": 14.5146,
       "latest": {
-        "fecha_hora": "2026-11-08T22:47:00.416108",
+        "fecha_hora": "2026-11-08T23:17:26.057542",
         "temp": 16.3,
         "feels_like": 16.0,
         "humidity": 77,
         "wind_kmh": 9.3,
-        "clouds": 0,
+        "clouds": 20,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "cielo claro"
+        "description": "algo de nubes"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
-        "mean_30d_temp": 20.9,
-        "anomaly_30d_c": -4.6,
+        "mean_30d_temp": 20.8,
+        "anomaly_30d_c": -4.5,
         "all_time_max_c": 37.3,
         "all_time_min_c": 7.3,
         "avg_diurnal_range_c": 3.7,
@@ -2992,9 +2992,9 @@
       "lat": 41.9029,
       "lon": 12.4534,
       "latest": {
-        "fecha_hora": "2026-11-08T22:47:02.699960",
-        "temp": 11.6,
-        "feels_like": 10.9,
+        "fecha_hora": "2026-11-08T23:17:28.389341",
+        "temp": 11.3,
+        "feels_like": 10.6,
         "humidity": 80,
         "wind_kmh": 1.8,
         "clouds": 0,
@@ -3004,10 +3004,10 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 17.0,
-        "anomaly_30d_c": -5.4,
+        "anomaly_30d_c": -5.7,
         "all_time_max_c": 38.2,
         "all_time_min_c": -1.5,
         "avg_diurnal_range_c": 6.0,
@@ -3024,11 +3024,11 @@
       "lat": 48.2082,
       "lon": 16.3738,
       "latest": {
-        "fecha_hora": "2026-11-08T22:47:04.996111",
-        "temp": 2.7,
-        "feels_like": 1.2,
-        "humidity": 88,
-        "wind_kmh": 5.5,
+        "fecha_hora": "2026-11-08T23:17:30.684294",
+        "temp": 2.9,
+        "feels_like": 2.9,
+        "humidity": 90,
+        "wind_kmh": 1.8,
         "clouds": 0,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -3036,15 +3036,15 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1145,
+        "records": 1146,
         "days": 378,
-        "mean_30d_temp": 10.1,
-        "anomaly_30d_c": -7.4,
+        "mean_30d_temp": 10.0,
+        "anomaly_30d_c": -7.1,
         "all_time_max_c": 39.9,
         "all_time_min_c": -9.6,
         "avg_diurnal_range_c": 6.2,
         "rainy_days_30d": 2,
-        "comfort_index": 53,
+        "comfort_index": 54,
         "best_hour_utc": 14
       }
     },
@@ -3056,10 +3056,10 @@
       "lat": 54.6872,
       "lon": 25.2797,
       "latest": {
-        "fecha_hora": "2026-11-08T22:47:07.269704",
+        "fecha_hora": "2026-11-08T23:17:33.011936",
         "temp": 5.2,
         "feels_like": 4.1,
-        "humidity": 83,
+        "humidity": 84,
         "wind_kmh": 5.5,
         "clouds": 100,
         "visibility_km": 10.0,
@@ -3068,7 +3068,7 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 8.0,
         "anomaly_30d_c": -2.8,
@@ -3088,27 +3088,27 @@
       "lat": 52.2297,
       "lon": 21.0122,
       "latest": {
-        "fecha_hora": "2026-11-08T22:47:09.552419",
+        "fecha_hora": "2026-11-08T23:17:35.327774",
         "temp": -0.9,
-        "feels_like": -3.6,
-        "humidity": 90,
-        "wind_kmh": 7.4,
+        "feels_like": -4.2,
+        "humidity": 91,
+        "wind_kmh": 9.3,
         "clouds": 1,
-        "visibility_km": 8.0,
+        "visibility_km": 9.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
-        "mean_30d_temp": 8.3,
-        "anomaly_30d_c": -9.2,
+        "mean_30d_temp": 8.2,
+        "anomaly_30d_c": -9.1,
         "all_time_max_c": 38.4,
         "all_time_min_c": -19.0,
         "avg_diurnal_range_c": 5.7,
         "rainy_days_30d": 2,
-        "comfort_index": 40,
+        "comfort_index": 39,
         "best_hour_utc": 14
       }
     },
@@ -3120,27 +3120,27 @@
       "lat": 45.815,
       "lon": 15.9819,
       "latest": {
-        "fecha_hora": "2026-11-08T22:47:11.851052",
+        "fecha_hora": "2026-11-08T23:17:37.619055",
         "temp": 7.0,
         "feels_like": 7.0,
         "humidity": 81,
         "wind_kmh": 1.8,
-        "clouds": 75,
+        "clouds": 40,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "muy nuboso"
+        "description": "nubes dispersas"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
-        "mean_30d_temp": 11.8,
-        "anomaly_30d_c": -4.8,
+        "mean_30d_temp": 11.7,
+        "anomaly_30d_c": -4.7,
         "all_time_max_c": 38.1,
         "all_time_min_c": -14.3,
         "avg_diurnal_range_c": 7.3,
         "rainy_days_30d": 5,
-        "comfort_index": 68,
+        "comfort_index": 69,
         "best_hour_utc": 14
       }
     },
@@ -3152,7 +3152,7 @@
       "lat": 39.9334,
       "lon": 32.8597,
       "latest": {
-        "fecha_hora": "2026-11-08T22:47:14.123156",
+        "fecha_hora": "2026-11-08T23:17:39.937320",
         "temp": -2.2,
         "feels_like": -2.2,
         "humidity": 74,
@@ -3164,10 +3164,10 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1136,
+        "records": 1137,
         "days": 378,
-        "mean_30d_temp": 12.8,
-        "anomaly_30d_c": -15.0,
+        "mean_30d_temp": 12.6,
+        "anomaly_30d_c": -14.8,
         "all_time_max_c": 35.4,
         "all_time_min_c": -13.6,
         "avg_diurnal_range_c": 6.6,
@@ -3184,7 +3184,7 @@
       "lat": 53.4839,
       "lon": -2.2446,
       "latest": {
-        "fecha_hora": "2026-11-08T22:47:16.452923",
+        "fecha_hora": "2026-11-08T23:17:42.278251",
         "temp": 6.8,
         "feels_like": 6.8,
         "humidity": 90,
@@ -3196,10 +3196,10 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
-        "mean_30d_temp": 10.6,
-        "anomaly_30d_c": -3.8,
+        "mean_30d_temp": 10.5,
+        "anomaly_30d_c": -3.7,
         "all_time_max_c": 36.4,
         "all_time_min_c": -6.8,
         "avg_diurnal_range_c": 5.3,
@@ -3216,9 +3216,9 @@
       "lat": 48.1351,
       "lon": 11.582,
       "latest": {
-        "fecha_hora": "2026-11-08T22:47:18.695940",
-        "temp": 1.6,
-        "feels_like": 1.6,
+        "fecha_hora": "2026-11-08T23:17:44.594544",
+        "temp": 2.2,
+        "feels_like": 2.2,
         "humidity": 94,
         "wind_kmh": 3.6,
         "clouds": 100,
@@ -3228,15 +3228,15 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1139,
+        "records": 1140,
         "days": 378,
-        "mean_30d_temp": 8.3,
-        "anomaly_30d_c": -6.7,
+        "mean_30d_temp": 8.2,
+        "anomaly_30d_c": -6.0,
         "all_time_max_c": 37.0,
         "all_time_min_c": -15.6,
         "avg_diurnal_range_c": 7.6,
         "rainy_days_30d": 7,
-        "comfort_index": 41,
+        "comfort_index": 43,
         "best_hour_utc": 14
       }
     },
@@ -3248,11 +3248,11 @@
       "lat": 45.4642,
       "lon": 9.19,
       "latest": {
-        "fecha_hora": "2026-11-08T22:47:20.974760",
-        "temp": 7.4,
-        "feels_like": 7.4,
+        "fecha_hora": "2026-11-08T23:17:46.917686",
+        "temp": 7.5,
+        "feels_like": 7.5,
         "humidity": 93,
-        "wind_kmh": 3.7,
+        "wind_kmh": 1.8,
         "clouds": 0,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -3260,15 +3260,15 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
-        "mean_30d_temp": 13.8,
-        "anomaly_30d_c": -6.4,
+        "mean_30d_temp": 13.7,
+        "anomaly_30d_c": -6.2,
         "all_time_max_c": 42.2,
         "all_time_min_c": -3.6,
         "avg_diurnal_range_c": 6.1,
         "rainy_days_30d": 5,
-        "comfort_index": 65,
+        "comfort_index": 66,
         "best_hour_utc": 14
       }
     },
@@ -3280,10 +3280,10 @@
       "lat": 45.764,
       "lon": 4.8357,
       "latest": {
-        "fecha_hora": "2026-11-08T22:47:23.297347",
-        "temp": 10.2,
-        "feels_like": 9.6,
-        "humidity": 91,
+        "fecha_hora": "2026-11-08T23:17:49.199904",
+        "temp": 10.4,
+        "feels_like": 9.8,
+        "humidity": 90,
         "wind_kmh": 11.3,
         "clouds": 100,
         "visibility_km": 10.0,
@@ -3292,15 +3292,15 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 11.3,
-        "anomaly_30d_c": -1.1,
+        "anomaly_30d_c": -0.9,
         "all_time_max_c": 40.1,
         "all_time_min_c": -6.8,
         "avg_diurnal_range_c": 7.3,
         "rainy_days_30d": 5,
-        "comfort_index": 69,
+        "comfort_index": 70,
         "best_hour_utc": 14
       }
     },
@@ -3312,22 +3312,22 @@
       "lat": 53.5511,
       "lon": 9.9937,
       "latest": {
-        "fecha_hora": "2026-11-08T22:47:25.579223",
-        "temp": 6.1,
-        "feels_like": 4.8,
-        "humidity": 90,
-        "wind_kmh": 6.4,
-        "clouds": 20,
+        "fecha_hora": "2026-11-08T23:17:51.481452",
+        "temp": 5.7,
+        "feels_like": 5.7,
+        "humidity": 93,
+        "wind_kmh": 3.7,
+        "clouds": 0,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "algo de nubes"
+        "description": "cielo claro"
       },
       "stats": {
-        "records": 1147,
+        "records": 1148,
         "days": 378,
-        "mean_30d_temp": 9.7,
-        "anomaly_30d_c": -3.6,
+        "mean_30d_temp": 9.6,
+        "anomaly_30d_c": -3.9,
         "all_time_max_c": 35.6,
         "all_time_min_c": -13.4,
         "avg_diurnal_range_c": 5.5,
@@ -3344,10 +3344,10 @@
       "lat": 13.7563,
       "lon": 100.5018,
       "latest": {
-        "fecha_hora": "2026-11-08T22:47:27.902455",
-        "temp": 25.0,
-        "feels_like": 25.8,
-        "humidity": 88,
+        "fecha_hora": "2026-11-08T23:17:53.813564",
+        "temp": 25.5,
+        "feels_like": 26.3,
+        "humidity": 87,
         "wind_kmh": 1.6,
         "clouds": 39,
         "visibility_km": 10.0,
@@ -3356,15 +3356,15 @@
         "description": "nubes dispersas"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
-        "mean_30d_temp": 28.7,
-        "anomaly_30d_c": -3.7,
+        "mean_30d_temp": 28.6,
+        "anomaly_30d_c": -3.1,
         "all_time_max_c": 39.4,
         "all_time_min_c": 16.9,
         "avg_diurnal_range_c": 5.9,
         "rainy_days_30d": 26,
-        "comfort_index": 88,
+        "comfort_index": 87,
         "best_hour_utc": 6
       }
     },
@@ -3376,10 +3376,10 @@
       "lat": 39.9042,
       "lon": 116.4074,
       "latest": {
-        "fecha_hora": "2026-11-08T22:47:30.231430",
-        "temp": -4.1,
-        "feels_like": -4.1,
-        "humidity": 64,
+        "fecha_hora": "2026-11-08T23:17:56.110679",
+        "temp": -3.1,
+        "feels_like": -3.1,
+        "humidity": 73,
         "wind_kmh": 2.5,
         "clouds": 0,
         "visibility_km": 10.0,
@@ -3388,10 +3388,10 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1146,
+        "records": 1147,
         "days": 378,
-        "mean_30d_temp": 9.2,
-        "anomaly_30d_c": -13.3,
+        "mean_30d_temp": 9.1,
+        "anomaly_30d_c": -12.2,
         "all_time_max_c": 39.1,
         "all_time_min_c": -16.1,
         "avg_diurnal_range_c": 9.0,
@@ -3408,9 +3408,9 @@
       "lat": 33.5138,
       "lon": 36.2765,
       "latest": {
-        "fecha_hora": "2026-11-08T22:47:32.543307",
-        "temp": 9.1,
-        "feels_like": 8.8,
+        "fecha_hora": "2026-11-08T23:17:58.360870",
+        "temp": 8.8,
+        "feels_like": 8.5,
         "humidity": 50,
         "wind_kmh": 4.8,
         "clouds": 71,
@@ -3420,15 +3420,15 @@
         "description": "muy nuboso"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
-        "mean_30d_temp": 20.9,
-        "anomaly_30d_c": -11.8,
+        "mean_30d_temp": 20.8,
+        "anomaly_30d_c": -12.0,
         "all_time_max_c": 40.0,
         "all_time_min_c": -2.6,
         "avg_diurnal_range_c": 8.3,
         "rainy_days_30d": 0,
-        "comfort_index": 79,
+        "comfort_index": 78,
         "best_hour_utc": 14
       }
     },
@@ -3440,11 +3440,11 @@
       "lat": 23.8103,
       "lon": 90.4125,
       "latest": {
-        "fecha_hora": "2026-11-08T22:47:34.832555",
+        "fecha_hora": "2026-11-08T23:18:00.690283",
         "temp": 26.0,
         "feels_like": 26.0,
         "humidity": 83,
-        "wind_kmh": 5.5,
+        "wind_kmh": 0.0,
         "clouds": 40,
         "visibility_km": 3.5,
         "rain_1h": 0.0,
@@ -3452,7 +3452,7 @@
         "description": "niebla"
       },
       "stats": {
-        "records": 1147,
+        "records": 1148,
         "days": 378,
         "mean_30d_temp": 27.3,
         "anomaly_30d_c": -1.3,
@@ -3472,27 +3472,27 @@
       "lat": 21.0278,
       "lon": 105.8342,
       "latest": {
-        "fecha_hora": "2026-11-08T22:47:37.165442",
+        "fecha_hora": "2026-11-08T23:18:03.017758",
         "temp": 20.0,
         "feels_like": 20.2,
-        "humidity": 83,
+        "humidity": 84,
         "wind_kmh": 31.9,
         "clouds": 100,
         "visibility_km": 10.0,
-        "rain_1h": 2.05,
+        "rain_1h": 2.37,
         "snow_1h": 0.0,
         "description": "lluvia moderada"
       },
       "stats": {
-        "records": 1147,
+        "records": 1148,
         "days": 378,
-        "mean_30d_temp": 27.1,
-        "anomaly_30d_c": -7.1,
+        "mean_30d_temp": 27.0,
+        "anomaly_30d_c": -7.0,
         "all_time_max_c": 39.6,
         "all_time_min_c": 10.0,
         "avg_diurnal_range_c": 5.1,
         "rainy_days_30d": 11,
-        "comfort_index": 48,
+        "comfort_index": 45,
         "best_hour_utc": 6
       }
     },
@@ -3504,11 +3504,11 @@
       "lat": 22.3193,
       "lon": 114.1694,
       "latest": {
-        "fecha_hora": "2026-11-08T22:47:39.481314",
-        "temp": 23.6,
-        "feels_like": 23.6,
+        "fecha_hora": "2026-11-08T23:18:05.287274",
+        "temp": 23.1,
+        "feels_like": 23.0,
         "humidity": 60,
-        "wind_kmh": 32.2,
+        "wind_kmh": 37.0,
         "clouds": 25,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -3516,15 +3516,15 @@
         "description": "nubes dispersas"
       },
       "stats": {
-        "records": 1147,
+        "records": 1148,
         "days": 378,
-        "mean_30d_temp": 26.6,
-        "anomaly_30d_c": -3.0,
+        "mean_30d_temp": 26.5,
+        "anomaly_30d_c": -3.4,
         "all_time_max_c": 37.9,
         "all_time_min_c": 9.3,
         "avg_diurnal_range_c": 2.9,
         "rainy_days_30d": 0,
-        "comfort_index": 86,
+        "comfort_index": 81,
         "best_hour_utc": 14
       }
     },
@@ -3536,9 +3536,9 @@
       "lat": 33.6844,
       "lon": 73.0479,
       "latest": {
-        "fecha_hora": "2026-11-08T22:47:41.767904",
-        "temp": 16.0,
-        "feels_like": 15.8,
+        "fecha_hora": "2026-11-08T23:18:07.633369",
+        "temp": 16.6,
+        "feels_like": 16.4,
         "humidity": 80,
         "wind_kmh": 8.5,
         "clouds": 0,
@@ -3548,15 +3548,15 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
-        "mean_30d_temp": 20.6,
-        "anomaly_30d_c": -4.6,
+        "mean_30d_temp": 20.5,
+        "anomaly_30d_c": -3.9,
         "all_time_max_c": 43.0,
         "all_time_min_c": 4.3,
         "avg_diurnal_range_c": 8.3,
         "rainy_days_30d": 7,
-        "comfort_index": 89,
+        "comfort_index": 91,
         "best_hour_utc": 14
       }
     },
@@ -3568,11 +3568,11 @@
       "lat": -6.2088,
       "lon": 106.8456,
       "latest": {
-        "fecha_hora": "2026-11-08T22:47:44.090012",
-        "temp": 27.6,
-        "feels_like": 31.0,
+        "fecha_hora": "2026-11-08T23:18:09.922574",
+        "temp": 27.8,
+        "feels_like": 31.4,
         "humidity": 79,
-        "wind_kmh": 1.6,
+        "wind_kmh": 5.5,
         "clouds": 40,
         "visibility_km": 5.0,
         "rain_1h": 0.0,
@@ -3580,10 +3580,10 @@
         "description": "niebla"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 29.1,
-        "anomaly_30d_c": -1.5,
+        "anomaly_30d_c": -1.3,
         "all_time_max_c": 36.2,
         "all_time_min_c": 22.8,
         "avg_diurnal_range_c": 5.3,
@@ -3600,11 +3600,11 @@
       "lat": 31.7683,
       "lon": 35.2137,
       "latest": {
-        "fecha_hora": "2026-11-08T22:47:46.416753",
+        "fecha_hora": "2026-11-08T23:18:12.199294",
         "temp": 11.6,
         "feels_like": 10.8,
-        "humidity": 76,
-        "wind_kmh": 6.5,
+        "humidity": 78,
+        "wind_kmh": 2.2,
         "clouds": 3,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -3612,15 +3612,15 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1144,
+        "records": 1145,
         "days": 378,
-        "mean_30d_temp": 19.3,
-        "anomaly_30d_c": -7.7,
+        "mean_30d_temp": 19.2,
+        "anomaly_30d_c": -7.6,
         "all_time_max_c": 33.9,
         "all_time_min_c": 3.9,
         "avg_diurnal_range_c": 5.8,
         "rainy_days_30d": 6,
-        "comfort_index": 81,
+        "comfort_index": 80,
         "best_hour_utc": 14
       }
     },
@@ -3632,9 +3632,9 @@
       "lat": 34.5553,
       "lon": 69.2075,
       "latest": {
-        "fecha_hora": "2026-11-08T22:47:48.698017",
+        "fecha_hora": "2026-11-08T23:18:14.539233",
         "temp": 10.2,
-        "feels_like": 8.3,
+        "feels_like": 8.2,
         "humidity": 39,
         "wind_kmh": 2.1,
         "clouds": 83,
@@ -3644,15 +3644,15 @@
         "description": "muy nuboso"
       },
       "stats": {
-        "records": 1145,
+        "records": 1146,
         "days": 378,
-        "mean_30d_temp": 13.9,
-        "anomaly_30d_c": -3.7,
+        "mean_30d_temp": 13.8,
+        "anomaly_30d_c": -3.6,
         "all_time_max_c": 36.4,
         "all_time_min_c": -17.5,
         "avg_diurnal_range_c": 7.8,
         "rainy_days_30d": 2,
-        "comfort_index": 80,
+        "comfort_index": 79,
         "best_hour_utc": 14
       }
     },
@@ -3664,10 +3664,10 @@
       "lat": 27.7172,
       "lon": 85.324,
       "latest": {
-        "fecha_hora": "2026-11-08T22:47:51.014342",
-        "temp": 11.2,
-        "feels_like": 10.8,
-        "humidity": 93,
+        "fecha_hora": "2026-11-08T23:18:16.861071",
+        "temp": 10.2,
+        "feels_like": 9.8,
+        "humidity": 100,
         "wind_kmh": 5.5,
         "clouds": 20,
         "visibility_km": 7.0,
@@ -3676,15 +3676,15 @@
         "description": "algo de nubes"
       },
       "stats": {
-        "records": 1146,
+        "records": 1147,
         "days": 378,
-        "mean_30d_temp": 17.0,
-        "anomaly_30d_c": -5.8,
+        "mean_30d_temp": 16.9,
+        "anomaly_30d_c": -6.7,
         "all_time_max_c": 31.5,
         "all_time_min_c": 4.2,
         "avg_diurnal_range_c": 7.3,
         "rainy_days_30d": 15,
-        "comfort_index": 73,
+        "comfort_index": 68,
         "best_hour_utc": 14
       }
     },
@@ -3696,27 +3696,27 @@
       "lat": 3.139,
       "lon": 101.6869,
       "latest": {
-        "fecha_hora": "2026-11-08T22:47:53.347004",
+        "fecha_hora": "2026-11-08T23:18:19.139711",
         "temp": 23.4,
-        "feels_like": 24.3,
-        "humidity": 97,
+        "feels_like": 24.4,
+        "humidity": 99,
         "wind_kmh": 0.0,
         "clouds": 20,
-        "visibility_km": 8.0,
+        "visibility_km": 9.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
         "description": "algo de nubes"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
-        "mean_30d_temp": 26.2,
-        "anomaly_30d_c": -2.8,
+        "mean_30d_temp": 26.1,
+        "anomaly_30d_c": -2.7,
         "all_time_max_c": 36.9,
         "all_time_min_c": 22.9,
         "avg_diurnal_range_c": 5.5,
         "rainy_days_30d": 26,
-        "comfort_index": 87,
+        "comfort_index": 86,
         "best_hour_utc": 22
       }
     },
@@ -3728,11 +3728,11 @@
       "lat": 14.5995,
       "lon": 120.9842,
       "latest": {
-        "fecha_hora": "2026-11-08T22:47:55.630294",
-        "temp": 26.2,
-        "feels_like": 26.2,
-        "humidity": 85,
-        "wind_kmh": 1.8,
+        "fecha_hora": "2026-11-08T23:18:21.472710",
+        "temp": 28.8,
+        "feels_like": 32.5,
+        "humidity": 71,
+        "wind_kmh": 5.5,
         "clouds": 20,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -3740,15 +3740,15 @@
         "description": "algo de nubes"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 28.9,
-        "anomaly_30d_c": -2.7,
+        "anomaly_30d_c": -0.1,
         "all_time_max_c": 37.0,
         "all_time_min_c": 21.2,
         "avg_diurnal_range_c": 4.2,
         "rainy_days_30d": 11,
-        "comfort_index": 87,
+        "comfort_index": 84,
         "best_hour_utc": 22
       }
     },
@@ -3760,11 +3760,11 @@
       "lat": 19.076,
       "lon": 72.8777,
       "latest": {
-        "fecha_hora": "2026-11-08T22:47:57.946710",
+        "fecha_hora": "2026-11-08T23:18:23.783710",
         "temp": 28.0,
         "feels_like": 27.3,
         "humidity": 34,
-        "wind_kmh": 9.3,
+        "wind_kmh": 7.4,
         "clouds": 0,
         "visibility_km": 2.5,
         "rain_1h": 0.0,
@@ -3772,7 +3772,7 @@
         "description": "humo"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 31.1,
         "anomaly_30d_c": -3.1,
@@ -3792,7 +3792,7 @@
       "lat": 28.6139,
       "lon": 77.209,
       "latest": {
-        "fecha_hora": "2026-11-08T22:48:00.276762",
+        "fecha_hora": "2026-11-08T23:18:26.111780",
         "temp": 18.0,
         "feels_like": 18.3,
         "humidity": 94,
@@ -3804,7 +3804,7 @@
         "description": "bruma"
       },
       "stats": {
-        "records": 1147,
+        "records": 1148,
         "days": 378,
         "mean_30d_temp": 22.7,
         "anomaly_30d_c": -4.7,
@@ -3824,9 +3824,9 @@
       "lat": 39.0392,
       "lon": 125.7625,
       "latest": {
-        "fecha_hora": "2026-11-08T22:48:02.602941",
-        "temp": 0.7,
-        "feels_like": -1.6,
+        "fecha_hora": "2026-11-08T23:18:28.447311",
+        "temp": 0.8,
+        "feels_like": -1.4,
         "humidity": 79,
         "wind_kmh": 7.0,
         "clouds": 46,
@@ -3836,15 +3836,15 @@
         "description": "nubes dispersas"
       },
       "stats": {
-        "records": 1144,
+        "records": 1145,
         "days": 378,
-        "mean_30d_temp": 10.9,
-        "anomaly_30d_c": -10.2,
+        "mean_30d_temp": 10.8,
+        "anomaly_30d_c": -10.0,
         "all_time_max_c": 36.0,
         "all_time_min_c": -15.0,
         "avg_diurnal_range_c": 5.6,
         "rainy_days_30d": 4,
-        "comfort_index": 49,
+        "comfort_index": 50,
         "best_hour_utc": 6
       }
     },
@@ -3856,10 +3856,10 @@
       "lat": 24.7136,
       "lon": 46.6753,
       "latest": {
-        "fecha_hora": "2026-11-08T22:48:04.897691",
-        "temp": 24.9,
-        "feels_like": 24.9,
-        "humidity": 56,
+        "fecha_hora": "2026-11-08T23:18:30.751812",
+        "temp": 23.9,
+        "feels_like": 24.0,
+        "humidity": 61,
         "wind_kmh": 5.5,
         "clouds": 4,
         "visibility_km": 10.0,
@@ -3868,15 +3868,15 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
-        "mean_30d_temp": 29.2,
-        "anomaly_30d_c": -4.3,
+        "mean_30d_temp": 29.1,
+        "anomaly_30d_c": -5.2,
         "all_time_max_c": 45.9,
         "all_time_min_c": 5.9,
         "avg_diurnal_range_c": 9.0,
         "rainy_days_30d": 0,
-        "comfort_index": 98,
+        "comfort_index": 100,
         "best_hour_utc": 22
       }
     },
@@ -3888,22 +3888,22 @@
       "lat": 37.5665,
       "lon": 126.978,
       "latest": {
-        "fecha_hora": "2026-11-08T22:48:07.231847",
+        "fecha_hora": "2026-11-08T23:18:33.082506",
         "temp": 4.8,
-        "feels_like": 1.5,
+        "feels_like": 2.1,
         "humidity": 100,
-        "wind_kmh": 14.8,
-        "clouds": 0,
+        "wind_kmh": 11.1,
+        "clouds": 75,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "cielo claro"
+        "description": "muy nuboso"
       },
       "stats": {
-        "records": 1147,
+        "records": 1148,
         "days": 378,
-        "mean_30d_temp": 12.0,
-        "anomaly_30d_c": -7.2,
+        "mean_30d_temp": 11.9,
+        "anomaly_30d_c": -7.1,
         "all_time_max_c": 38.3,
         "all_time_min_c": -14.2,
         "avg_diurnal_range_c": 7.1,
@@ -3920,11 +3920,11 @@
       "lat": 31.2304,
       "lon": 121.4737,
       "latest": {
-        "fecha_hora": "2026-11-08T22:48:09.525266",
-        "temp": 12.7,
-        "feels_like": 12.4,
+        "fecha_hora": "2026-11-08T23:18:35.430135",
+        "temp": 12.1,
+        "feels_like": 11.8,
         "humidity": 92,
-        "wind_kmh": 32.4,
+        "wind_kmh": 28.8,
         "clouds": 75,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -3932,15 +3932,15 @@
         "description": "muy nuboso"
       },
       "stats": {
-        "records": 1147,
+        "records": 1148,
         "days": 378,
-        "mean_30d_temp": 20.0,
-        "anomaly_30d_c": -7.3,
+        "mean_30d_temp": 19.9,
+        "anomaly_30d_c": -7.8,
         "all_time_max_c": 37.8,
         "all_time_min_c": -2.1,
         "avg_diurnal_range_c": 4.9,
         "rainy_days_30d": 7,
-        "comfort_index": 62,
+        "comfort_index": 64,
         "best_hour_utc": 14
       }
     },
@@ -3952,11 +3952,11 @@
       "lat": 1.3521,
       "lon": 103.8198,
       "latest": {
-        "fecha_hora": "2026-11-08T22:48:11.818782",
-        "temp": 26.2,
-        "feels_like": 26.2,
-        "humidity": 92,
-        "wind_kmh": 5.5,
+        "fecha_hora": "2026-11-08T23:18:37.731438",
+        "temp": 26.3,
+        "feels_like": 26.3,
+        "humidity": 91,
+        "wind_kmh": 3.7,
         "clouds": 75,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -3964,10 +3964,10 @@
         "description": "muy nuboso"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 27.8,
-        "anomaly_30d_c": -1.6,
+        "anomaly_30d_c": -1.5,
         "all_time_max_c": 34.8,
         "all_time_min_c": 21.7,
         "avg_diurnal_range_c": 4.1,
@@ -3984,27 +3984,27 @@
       "lat": 25.033,
       "lon": 121.5654,
       "latest": {
-        "fecha_hora": "2026-11-08T22:48:14.117057",
-        "temp": 23.9,
-        "feels_like": 24.3,
-        "humidity": 78,
-        "wind_kmh": 13.0,
+        "fecha_hora": "2026-11-08T23:18:40.073854",
+        "temp": 23.8,
+        "feels_like": 23.8,
+        "humidity": 61,
+        "wind_kmh": 6.4,
         "clouds": 75,
         "visibility_km": 10.0,
-        "rain_1h": 0.12,
+        "rain_1h": 0.23,
         "snow_1h": 0.0,
         "description": "lluvia ligera"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 25.0,
-        "anomaly_30d_c": -1.1,
+        "anomaly_30d_c": -1.2,
         "all_time_max_c": 36.9,
         "all_time_min_c": 7.9,
         "avg_diurnal_range_c": 3.3,
         "rainy_days_30d": 7,
-        "comfort_index": 80,
+        "comfort_index": 85,
         "best_hour_utc": 14
       }
     },
@@ -4016,10 +4016,10 @@
       "lat": 41.2995,
       "lon": 69.2401,
       "latest": {
-        "fecha_hora": "2026-11-08T22:48:16.442885",
-        "temp": 19.0,
+        "fecha_hora": "2026-11-08T23:18:42.409580",
+        "temp": 18.9,
         "feels_like": 17.4,
-        "humidity": 20,
+        "humidity": 21,
         "wind_kmh": 8.0,
         "clouds": 99,
         "visibility_km": 10.0,
@@ -4028,10 +4028,10 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1147,
+        "records": 1148,
         "days": 378,
-        "mean_30d_temp": 16.3,
-        "anomaly_30d_c": 2.7,
+        "mean_30d_temp": 16.4,
+        "anomaly_30d_c": 2.5,
         "all_time_max_c": 45.3,
         "all_time_min_c": -5.3,
         "avg_diurnal_range_c": 7.1,
@@ -4048,11 +4048,11 @@
       "lat": 35.6892,
       "lon": 51.389,
       "latest": {
-        "fecha_hora": "2026-11-08T22:48:18.742288",
+        "fecha_hora": "2026-11-08T23:18:44.714371",
         "temp": 11.6,
         "feels_like": 10.7,
         "humidity": 71,
-        "wind_kmh": 7.4,
+        "wind_kmh": 0.0,
         "clouds": 75,
         "visibility_km": 10.0,
         "rain_1h": 1.89,
@@ -4060,10 +4060,10 @@
         "description": "lluvia moderada"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
-        "mean_30d_temp": 19.9,
-        "anomaly_30d_c": -8.3,
+        "mean_30d_temp": 19.8,
+        "anomaly_30d_c": -8.2,
         "all_time_max_c": 40.5,
         "all_time_min_c": -4.5,
         "avg_diurnal_range_c": 5.4,
@@ -4080,27 +4080,27 @@
       "lat": 35.6762,
       "lon": 139.6503,
       "latest": {
-        "fecha_hora": "2026-11-08T22:48:21.070399",
+        "fecha_hora": "2026-11-08T23:18:47.052951",
         "temp": 9.7,
-        "feels_like": 6.4,
-        "humidity": 91,
-        "wind_kmh": 25.9,
+        "feels_like": 6.8,
+        "humidity": 90,
+        "wind_kmh": 22.2,
         "clouds": 75,
-        "visibility_km": 7.0,
-        "rain_1h": 5.62,
+        "visibility_km": 10.0,
+        "rain_1h": 3.65,
         "snow_1h": 0.0,
-        "description": "chubasco de ligera intensidad"
+        "description": "lluvia moderada"
       },
       "stats": {
-        "records": 1146,
+        "records": 1147,
         "days": 378,
-        "mean_30d_temp": 18.3,
-        "anomaly_30d_c": -8.6,
+        "mean_30d_temp": 18.2,
+        "anomaly_30d_c": -8.5,
         "all_time_max_c": 36.0,
         "all_time_min_c": -5.1,
         "avg_diurnal_range_c": 4.6,
         "rainy_days_30d": 9,
-        "comfort_index": 23,
+        "comfort_index": 27,
         "best_hour_utc": 6
       }
     },
@@ -4112,11 +4112,11 @@
       "lat": 47.918,
       "lon": 106.9176,
       "latest": {
-        "fecha_hora": "2026-11-08T22:48:23.364822",
-        "temp": -17.0,
-        "feels_like": -22.3,
+        "fecha_hora": "2026-11-08T23:18:49.393294",
+        "temp": -18.0,
+        "feels_like": -18.0,
         "humidity": 78,
-        "wind_kmh": 7.2,
+        "wind_kmh": 3.6,
         "clouds": 0,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -4124,10 +4124,10 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1143,
+        "records": 1144,
         "days": 378,
-        "mean_30d_temp": -7.5,
-        "anomaly_30d_c": -9.5,
+        "mean_30d_temp": -7.6,
+        "anomaly_30d_c": -10.4,
         "all_time_max_c": 31.8,
         "all_time_min_c": -41.0,
         "avg_diurnal_range_c": 10.3,
@@ -4144,11 +4144,11 @@
       "lat": -33.8688,
       "lon": 151.2093,
       "latest": {
-        "fecha_hora": "2026-11-08T22:48:25.662521",
-        "temp": 15.7,
-        "feels_like": 14.9,
-        "humidity": 63,
-        "wind_kmh": 3.2,
+        "fecha_hora": "2026-11-08T23:18:51.685551",
+        "temp": 16.8,
+        "feels_like": 16.2,
+        "humidity": 61,
+        "wind_kmh": 4.8,
         "clouds": 94,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -4156,15 +4156,15 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 18.6,
-        "anomaly_30d_c": -2.9,
+        "anomaly_30d_c": -1.8,
         "all_time_max_c": 42.2,
         "all_time_min_c": 4.5,
         "avg_diurnal_range_c": 4.8,
         "rainy_days_30d": 12,
-        "comfort_index": 92,
+        "comfort_index": 95,
         "best_hour_utc": 22
       }
     },
@@ -4176,11 +4176,11 @@
       "lat": -37.8136,
       "lon": 144.9631,
       "latest": {
-        "fecha_hora": "2026-11-08T22:48:27.991832",
-        "temp": 14.9,
-        "feels_like": 14.0,
-        "humidity": 59,
-        "wind_kmh": 1.6,
+        "fecha_hora": "2026-11-08T23:18:54.010995",
+        "temp": 16.4,
+        "feels_like": 15.6,
+        "humidity": 55,
+        "wind_kmh": 7.4,
         "clouds": 1,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -4188,15 +4188,15 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 15.9,
-        "anomaly_30d_c": -1.0,
+        "anomaly_30d_c": 0.5,
         "all_time_max_c": 44.4,
         "all_time_min_c": 3.1,
         "avg_diurnal_range_c": 5.4,
         "rainy_days_30d": 9,
-        "comfort_index": 92,
+        "comfort_index": 96,
         "best_hour_utc": 6
       }
     },
@@ -4208,10 +4208,10 @@
       "lat": -41.2865,
       "lon": 174.7762,
       "latest": {
-        "fecha_hora": "2026-11-08T22:48:30.273718",
+        "fecha_hora": "2026-11-08T23:18:56.343820",
         "temp": 15.9,
-        "feels_like": 15.8,
-        "humidity": 88,
+        "feels_like": 15.7,
+        "humidity": 85,
         "wind_kmh": 24.1,
         "clouds": 75,
         "visibility_km": 10.0,
@@ -4220,7 +4220,7 @@
         "description": "muy nuboso"
       },
       "stats": {
-        "records": 1146,
+        "records": 1147,
         "days": 378,
         "mean_30d_temp": 13.7,
         "anomaly_30d_c": 2.2,
@@ -4228,7 +4228,7 @@
         "all_time_min_c": 2.0,
         "avg_diurnal_range_c": 3.3,
         "rainy_days_30d": 3,
-        "comfort_index": 78,
+        "comfort_index": 79,
         "best_hour_utc": 22
       }
     },
@@ -4240,28 +4240,28 @@
       "lat": -36.8485,
       "lon": 174.7633,
       "latest": {
-        "fecha_hora": "2026-11-08T22:48:32.564920",
-        "temp": 19.4,
-        "feels_like": 19.7,
-        "humidity": 89,
-        "wind_kmh": 16.1,
-        "clouds": 100,
+        "fecha_hora": "2026-11-08T23:18:58.645224",
+        "temp": 18.8,
+        "feels_like": 19.0,
+        "humidity": 90,
+        "wind_kmh": 24.1,
+        "clouds": 75,
         "visibility_km": 10.0,
-        "rain_1h": 0.0,
+        "rain_1h": 2.34,
         "snow_1h": 0.0,
-        "description": "nubes"
+        "description": "lluvia moderada"
       },
       "stats": {
-        "records": 1147,
+        "records": 1148,
         "days": 378,
         "mean_30d_temp": 15.8,
-        "anomaly_30d_c": 3.6,
+        "anomaly_30d_c": 3.0,
         "all_time_max_c": 27.4,
         "all_time_min_c": 3.2,
         "avg_diurnal_range_c": 4.6,
-        "rainy_days_30d": 2,
-        "comfort_index": 87,
-        "best_hour_utc": 22
+        "rainy_days_30d": 3,
+        "comfort_index": 51,
+        "best_hour_utc": 6
       }
     },
     {
@@ -4272,10 +4272,10 @@
       "lat": -34.6037,
       "lon": -58.3816,
       "latest": {
-        "fecha_hora": "2026-11-08T22:48:34.889591",
-        "temp": 17.6,
-        "feels_like": 16.9,
-        "humidity": 56,
+        "fecha_hora": "2026-11-08T23:19:00.987893",
+        "temp": 17.3,
+        "feels_like": 16.6,
+        "humidity": 55,
         "wind_kmh": 14.8,
         "clouds": 0,
         "visibility_km": 10.0,
@@ -4284,15 +4284,15 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1146,
+        "records": 1147,
         "days": 378,
         "mean_30d_temp": 16.6,
-        "anomaly_30d_c": 1.0,
+        "anomaly_30d_c": 0.7,
         "all_time_max_c": 36.9,
         "all_time_min_c": -0.0,
         "avg_diurnal_range_c": 4.9,
         "rainy_days_30d": 14,
-        "comfort_index": 99,
+        "comfort_index": 98,
         "best_hour_utc": 22
       }
     },
@@ -4304,27 +4304,27 @@
       "lat": 4.711,
       "lon": -74.0721,
       "latest": {
-        "fecha_hora": "2026-11-08T22:48:37.150030",
-        "temp": 17.2,
+        "fecha_hora": "2026-11-08T23:19:03.327766",
+        "temp": 17.0,
         "feels_like": 16.2,
-        "humidity": 49,
-        "wind_kmh": 7.0,
-        "clouds": 69,
+        "humidity": 55,
+        "wind_kmh": 14.8,
+        "clouds": 20,
         "visibility_km": 10.0,
         "rain_1h": 0.15,
         "snow_1h": 0.0,
         "description": "lluvia ligera"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 14.8,
-        "anomaly_30d_c": 2.4,
+        "anomaly_30d_c": 2.2,
         "all_time_max_c": 24.0,
         "all_time_min_c": 5.5,
         "avg_diurnal_range_c": 4.4,
         "rainy_days_30d": 26,
-        "comfort_index": 83,
+        "comfort_index": 84,
         "best_hour_utc": 22
       }
     },
@@ -4336,11 +4336,11 @@
       "lat": -15.7942,
       "lon": -47.8825,
       "latest": {
-        "fecha_hora": "2026-11-08T22:48:39.441936",
+        "fecha_hora": "2026-11-08T23:19:05.693274",
         "temp": 26.8,
-        "feels_like": 26.9,
-        "humidity": 44,
-        "wind_kmh": 5.5,
+        "feels_like": 27.2,
+        "humidity": 50,
+        "wind_kmh": 7.4,
         "clouds": 0,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -4348,7 +4348,7 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 25.3,
         "anomaly_30d_c": 1.5,
@@ -4356,7 +4356,7 @@
         "all_time_min_c": 8.6,
         "avg_diurnal_range_c": 7.4,
         "rainy_days_30d": 19,
-        "comfort_index": 94,
+        "comfort_index": 93,
         "best_hour_utc": 14
       }
     },
@@ -4368,10 +4368,10 @@
       "lat": 10.4806,
       "lon": -66.9036,
       "latest": {
-        "fecha_hora": "2026-11-08T22:48:41.785797",
-        "temp": 27.6,
-        "feels_like": 31.1,
-        "humidity": 80,
+        "fecha_hora": "2026-11-08T23:19:07.980831",
+        "temp": 27.4,
+        "feels_like": 30.1,
+        "humidity": 75,
         "wind_kmh": 3.7,
         "clouds": 100,
         "visibility_km": 10.0,
@@ -4380,15 +4380,15 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1140,
+        "records": 1141,
         "days": 378,
         "mean_30d_temp": 25.1,
-        "anomaly_30d_c": 2.5,
+        "anomaly_30d_c": 2.3,
         "all_time_max_c": 33.8,
         "all_time_min_c": 17.5,
         "avg_diurnal_range_c": 5.1,
         "rainy_days_30d": 19,
-        "comfort_index": 80,
+        "comfort_index": 84,
         "best_hour_utc": 6
       }
     },
@@ -4400,11 +4400,11 @@
       "lat": 23.1136,
       "lon": -82.3666,
       "latest": {
-        "fecha_hora": "2026-11-08T22:48:44.098502",
-        "temp": 28.3,
-        "feels_like": 31.2,
-        "humidity": 69,
-        "wind_kmh": 18.5,
+        "fecha_hora": "2026-11-08T23:19:10.313896",
+        "temp": 26.3,
+        "feels_like": 26.3,
+        "humidity": 78,
+        "wind_kmh": 13.0,
         "clouds": 20,
         "visibility_km": 9.0,
         "rain_1h": 0.0,
@@ -4412,15 +4412,15 @@
         "description": "algo de nubes"
       },
       "stats": {
-        "records": 1146,
+        "records": 1147,
         "days": 378,
         "mean_30d_temp": 26.2,
-        "anomaly_30d_c": 2.1,
+        "anomaly_30d_c": 0.1,
         "all_time_max_c": 35.4,
         "all_time_min_c": 7.3,
         "avg_diurnal_range_c": 6.6,
         "rainy_days_30d": 8,
-        "comfort_index": 84,
+        "comfort_index": 90,
         "best_hour_utc": 6
       }
     },
@@ -4432,27 +4432,27 @@
       "lat": 17.9712,
       "lon": -76.7936,
       "latest": {
-        "fecha_hora": "2026-11-08T22:48:46.397526",
+        "fecha_hora": "2026-11-08T23:19:12.649557",
         "temp": 26.1,
         "feels_like": 26.1,
-        "humidity": 93,
-        "wind_kmh": 4.0,
+        "humidity": 94,
+        "wind_kmh": 1.6,
         "clouds": 42,
         "visibility_km": 9.1,
-        "rain_1h": 0.0,
+        "rain_1h": 0.12,
         "snow_1h": 0.0,
-        "description": "nubes dispersas"
+        "description": "lluvia ligera"
       },
       "stats": {
-        "records": 1147,
+        "records": 1148,
         "days": 378,
-        "mean_30d_temp": 28.2,
-        "anomaly_30d_c": -2.1,
+        "mean_30d_temp": 28.1,
+        "anomaly_30d_c": -2.0,
         "all_time_max_c": 36.6,
         "all_time_min_c": 19.3,
         "avg_diurnal_range_c": 4.6,
         "rainy_days_30d": 21,
-        "comfort_index": 84,
+        "comfort_index": 71,
         "best_hour_utc": 6
       }
     },
@@ -4464,11 +4464,11 @@
       "lat": -16.4897,
       "lon": -68.1193,
       "latest": {
-        "fecha_hora": "2026-11-08T22:48:48.723316",
-        "temp": 13.6,
-        "feels_like": 12.6,
-        "humidity": 62,
-        "wind_kmh": 7.4,
+        "fecha_hora": "2026-11-08T23:19:14.975649",
+        "temp": 12.6,
+        "feels_like": 11.6,
+        "humidity": 66,
+        "wind_kmh": 20.4,
         "clouds": 75,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -4476,15 +4476,15 @@
         "description": "muy nuboso"
       },
       "stats": {
-        "records": 1146,
+        "records": 1147,
         "days": 378,
         "mean_30d_temp": 13.5,
-        "anomaly_30d_c": 0.1,
+        "anomaly_30d_c": -0.9,
         "all_time_max_c": 21.6,
         "all_time_min_c": -2.3,
         "avg_diurnal_range_c": 8.1,
         "rainy_days_30d": 15,
-        "comfort_index": 88,
+        "comfort_index": 81,
         "best_hour_utc": 22
       }
     },
@@ -4496,27 +4496,27 @@
       "lat": -12.0464,
       "lon": -77.0428,
       "latest": {
-        "fecha_hora": "2026-11-08T22:48:50.986532",
-        "temp": 24.9,
-        "feels_like": 25.2,
-        "humidity": 69,
-        "wind_kmh": 24.1,
-        "clouds": 40,
+        "fecha_hora": "2026-11-08T23:19:17.309434",
+        "temp": 23.8,
+        "feels_like": 24.3,
+        "humidity": 78,
+        "wind_kmh": 25.9,
+        "clouds": 0,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "nubes dispersas"
+        "description": "cielo claro"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 23.6,
-        "anomaly_30d_c": 1.3,
+        "anomaly_30d_c": 0.2,
         "all_time_max_c": 30.2,
         "all_time_min_c": 15.6,
         "avg_diurnal_range_c": 2.6,
         "rainy_days_30d": 0,
-        "comfort_index": 89,
+        "comfort_index": 86,
         "best_hour_utc": 14
       }
     },
@@ -4528,27 +4528,27 @@
       "lat": 19.4326,
       "lon": -99.1332,
       "latest": {
-        "fecha_hora": "2026-11-08T22:48:53.277521",
-        "temp": 20.5,
-        "feels_like": 19.7,
-        "humidity": 40,
-        "wind_kmh": 27.8,
+        "fecha_hora": "2026-11-08T23:19:19.630663",
+        "temp": 20.6,
+        "feels_like": 19.8,
+        "humidity": 43,
+        "wind_kmh": 18.5,
         "clouds": 100,
-        "visibility_km": 9.7,
+        "visibility_km": 10.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
         "description": "tormenta"
       },
       "stats": {
-        "records": 1144,
+        "records": 1145,
         "days": 378,
         "mean_30d_temp": 17.7,
-        "anomaly_30d_c": 2.8,
+        "anomaly_30d_c": 2.9,
         "all_time_max_c": 30.9,
         "all_time_min_c": 2.9,
         "avg_diurnal_range_c": 9.4,
         "rainy_days_30d": 9,
-        "comfort_index": 87,
+        "comfort_index": 95,
         "best_hour_utc": 22
       }
     },
@@ -4560,11 +4560,11 @@
       "lat": -34.9011,
       "lon": -56.1645,
       "latest": {
-        "fecha_hora": "2026-11-08T22:48:55.614830",
+        "fecha_hora": "2026-11-08T23:19:21.942969",
         "temp": 14.6,
-        "feels_like": 13.4,
-        "humidity": 51,
-        "wind_kmh": 11.1,
+        "feels_like": 13.5,
+        "humidity": 54,
+        "wind_kmh": 6.4,
         "clouds": 0,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -4572,7 +4572,7 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1146,
+        "records": 1147,
         "days": 378,
         "mean_30d_temp": 15.7,
         "anomaly_30d_c": -1.1,
@@ -4580,7 +4580,7 @@
         "all_time_min_c": 2.8,
         "avg_diurnal_range_c": 4.2,
         "rainy_days_30d": 12,
-        "comfort_index": 91,
+        "comfort_index": 92,
         "best_hour_utc": 22
       }
     },
@@ -4592,11 +4592,11 @@
       "lat": 40.7128,
       "lon": -74.006,
       "latest": {
-        "fecha_hora": "2026-11-08T22:48:57.906908",
-        "temp": 13.9,
-        "feels_like": 12.7,
+        "fecha_hora": "2026-11-08T23:19:24.278929",
+        "temp": 13.7,
+        "feels_like": 12.5,
         "humidity": 53,
-        "wind_kmh": 19.3,
+        "wind_kmh": 20.4,
         "clouds": 0,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -4604,15 +4604,15 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1147,
+        "records": 1148,
         "days": 378,
         "mean_30d_temp": 15.4,
-        "anomaly_30d_c": -1.5,
+        "anomaly_30d_c": -1.7,
         "all_time_max_c": 39.4,
         "all_time_min_c": -15.4,
         "avg_diurnal_range_c": 5.5,
         "rainy_days_30d": 3,
-        "comfort_index": 86,
+        "comfort_index": 85,
         "best_hour_utc": 22
       }
     },
@@ -4624,22 +4624,22 @@
       "lat": 34.0522,
       "lon": -118.2437,
       "latest": {
-        "fecha_hora": "2026-11-08T22:49:00.188320",
-        "temp": 30.2,
-        "feels_like": 28.5,
-        "humidity": 22,
-        "wind_kmh": 13.0,
-        "clouds": 20,
+        "fecha_hora": "2026-11-08T23:19:26.598100",
+        "temp": 29.4,
+        "feels_like": 28.0,
+        "humidity": 25,
+        "wind_kmh": 18.5,
+        "clouds": 0,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "algo de nubes"
+        "description": "cielo claro"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
-        "mean_30d_temp": 21.6,
-        "anomaly_30d_c": 8.6,
+        "mean_30d_temp": 21.7,
+        "anomaly_30d_c": 7.7,
         "all_time_max_c": 40.9,
         "all_time_min_c": 4.5,
         "avg_diurnal_range_c": 8.4,
@@ -4656,11 +4656,11 @@
       "lat": 41.8781,
       "lon": -87.6298,
       "latest": {
-        "fecha_hora": "2026-11-08T22:49:02.514095",
-        "temp": 15.3,
-        "feels_like": 14.3,
-        "humidity": 53,
-        "wind_kmh": 16.7,
+        "fecha_hora": "2026-11-08T23:19:28.920802",
+        "temp": 14.4,
+        "feels_like": 13.3,
+        "humidity": 55,
+        "wind_kmh": 14.8,
         "clouds": 20,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -4668,15 +4668,15 @@
         "description": "algo de nubes"
       },
       "stats": {
-        "records": 1143,
+        "records": 1144,
         "days": 378,
         "mean_30d_temp": 15.4,
-        "anomaly_30d_c": -0.1,
+        "anomaly_30d_c": -1.0,
         "all_time_max_c": 36.1,
         "all_time_min_c": -23.8,
         "avg_diurnal_range_c": 6.1,
         "rainy_days_30d": 3,
-        "comfort_index": 92,
+        "comfort_index": 91,
         "best_hour_utc": 22
       }
     },
@@ -4688,10 +4688,10 @@
       "lat": 29.7604,
       "lon": -95.3698,
       "latest": {
-        "fecha_hora": "2026-11-08T22:49:04.808604",
+        "fecha_hora": "2026-11-08T23:19:31.223938",
         "temp": 17.3,
-        "feels_like": 16.8,
-        "humidity": 63,
+        "feels_like": 16.7,
+        "humidity": 62,
         "wind_kmh": 20.4,
         "clouds": 0,
         "visibility_km": 10.0,
@@ -4700,7 +4700,7 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 23.6,
         "anomaly_30d_c": -6.3,
@@ -4720,11 +4720,11 @@
       "lat": 43.6532,
       "lon": -79.3832,
       "latest": {
-        "fecha_hora": "2026-11-08T22:49:07.099593",
+        "fecha_hora": "2026-11-08T23:19:33.575733",
         "temp": 9.4,
-        "feels_like": 6.1,
-        "humidity": 83,
-        "wind_kmh": 25.9,
+        "feels_like": 6.6,
+        "humidity": 85,
+        "wind_kmh": 20.4,
         "clouds": 100,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -4732,7 +4732,7 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1140,
+        "records": 1141,
         "days": 378,
         "mean_30d_temp": 12.3,
         "anomaly_30d_c": -2.9,
@@ -4740,7 +4740,7 @@
         "all_time_min_c": -19.4,
         "avg_diurnal_range_c": 5.8,
         "rainy_days_30d": 5,
-        "comfort_index": 60,
+        "comfort_index": 64,
         "best_hour_utc": 22
       }
     },
@@ -4752,11 +4752,11 @@
       "lat": 49.2827,
       "lon": -123.1207,
       "latest": {
-        "fecha_hora": "2026-11-08T22:49:09.426133",
-        "temp": 13.2,
-        "feels_like": 12.5,
-        "humidity": 72,
-        "wind_kmh": 11.3,
+        "fecha_hora": "2026-11-08T23:19:35.903336",
+        "temp": 12.7,
+        "feels_like": 12.0,
+        "humidity": 76,
+        "wind_kmh": 8.1,
         "clouds": 38,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -4764,15 +4764,15 @@
         "description": "nubes dispersas"
       },
       "stats": {
-        "records": 1136,
+        "records": 1137,
         "days": 378,
-        "mean_30d_temp": 10.6,
-        "anomaly_30d_c": 2.6,
+        "mean_30d_temp": 10.7,
+        "anomaly_30d_c": 2.0,
         "all_time_max_c": 35.8,
         "all_time_min_c": -3.5,
         "avg_diurnal_range_c": 5.2,
         "rainy_days_30d": 8,
-        "comfort_index": 86,
+        "comfort_index": 83,
         "best_hour_utc": 6
       }
     },
@@ -4784,27 +4784,27 @@
       "lat": 45.4215,
       "lon": -75.6972,
       "latest": {
-        "fecha_hora": "2026-11-08T22:49:11.715042",
-        "temp": 8.6,
-        "feels_like": 7.1,
-        "humidity": 69,
+        "fecha_hora": "2026-11-08T23:19:38.188239",
+        "temp": 7.7,
+        "feels_like": 6.1,
+        "humidity": 85,
         "wind_kmh": 9.3,
         "clouds": 100,
         "visibility_km": 10.0,
-        "rain_1h": 0.92,
+        "rain_1h": 0.56,
         "snow_1h": 0.0,
         "description": "chubasco de ligera intensidad"
       },
       "stats": {
-        "records": 1146,
+        "records": 1147,
         "days": 378,
         "mean_30d_temp": 9.2,
-        "anomaly_30d_c": -0.6,
+        "anomaly_30d_c": -1.5,
         "all_time_max_c": 33.4,
         "all_time_min_c": -26.8,
         "avg_diurnal_range_c": 6.6,
         "rainy_days_30d": 6,
-        "comfort_index": 55,
+        "comfort_index": 49,
         "best_hour_utc": 22
       }
     },
@@ -4816,10 +4816,10 @@
       "lat": 8.9824,
       "lon": -79.5199,
       "latest": {
-        "fecha_hora": "2026-11-08T22:49:14.000742",
-        "temp": 29.6,
-        "feels_like": 36.3,
-        "humidity": 79,
+        "fecha_hora": "2026-11-08T23:19:40.536543",
+        "temp": 28.1,
+        "feels_like": 32.9,
+        "humidity": 84,
         "wind_kmh": 16.1,
         "clouds": 40,
         "visibility_km": 10.0,
@@ -4828,15 +4828,15 @@
         "description": "nubes dispersas"
       },
       "stats": {
-        "records": 1145,
+        "records": 1146,
         "days": 378,
         "mean_30d_temp": 27.6,
-        "anomaly_30d_c": 2.0,
+        "anomaly_30d_c": 0.5,
         "all_time_max_c": 35.7,
         "all_time_min_c": 22.0,
         "avg_diurnal_range_c": 4.7,
         "rainy_days_30d": 25,
-        "comfort_index": 75,
+        "comfort_index": 78,
         "best_hour_utc": 6
       }
     },
@@ -4848,11 +4848,11 @@
       "lat": -0.1807,
       "lon": -78.4678,
       "latest": {
-        "fecha_hora": "2026-11-08T22:49:16.270096",
-        "temp": 19.3,
-        "feels_like": 18.2,
-        "humidity": 35,
-        "wind_kmh": 13.0,
+        "fecha_hora": "2026-11-08T23:19:42.858929",
+        "temp": 16.3,
+        "feels_like": 15.1,
+        "humidity": 42,
+        "wind_kmh": 7.4,
         "clouds": 20,
         "visibility_km": 10.0,
         "rain_1h": 0.19,
@@ -4860,15 +4860,15 @@
         "description": "lluvia ligera"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 13.2,
-        "anomaly_30d_c": 6.1,
+        "anomaly_30d_c": 3.1,
         "all_time_max_c": 23.3,
         "all_time_min_c": 2.3,
         "avg_diurnal_range_c": 7.6,
         "rainy_days_30d": 30,
-        "comfort_index": 86,
+        "comfort_index": 82,
         "best_hour_utc": 14
       }
     },
@@ -4880,27 +4880,27 @@
       "lat": 9.9281,
       "lon": -84.0907,
       "latest": {
-        "fecha_hora": "2026-11-08T22:49:18.549886",
-        "temp": 20.3,
-        "feels_like": 20.9,
-        "humidity": 95,
-        "wind_kmh": 9.3,
+        "fecha_hora": "2026-11-08T23:19:45.162233",
+        "temp": 20.6,
+        "feels_like": 21.2,
+        "humidity": 92,
+        "wind_kmh": 5.5,
         "clouds": 75,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "llovizna ligera"
+        "description": "muy nuboso"
       },
       "stats": {
-        "records": 1143,
+        "records": 1144,
         "days": 378,
         "mean_30d_temp": 21.5,
-        "anomaly_30d_c": -1.2,
+        "anomaly_30d_c": -0.9,
         "all_time_max_c": 29.5,
         "all_time_min_c": 14.3,
         "avg_diurnal_range_c": 4.3,
         "rainy_days_30d": 27,
-        "comfort_index": 87,
+        "comfort_index": 88,
         "best_hour_utc": 14
       }
     },
@@ -4912,11 +4912,11 @@
       "lat": -33.4489,
       "lon": -70.6693,
       "latest": {
-        "fecha_hora": "2026-11-08T22:49:20.835498",
-        "temp": 29.1,
-        "feels_like": 28.2,
-        "humidity": 34,
-        "wind_kmh": 24.1,
+        "fecha_hora": "2026-11-08T23:19:47.467752",
+        "temp": 27.2,
+        "feels_like": 26.9,
+        "humidity": 37,
+        "wind_kmh": 18.5,
         "clouds": 0,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -4924,15 +4924,15 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
-        "mean_30d_temp": 17.7,
-        "anomaly_30d_c": 11.4,
+        "mean_30d_temp": 17.8,
+        "anomaly_30d_c": 9.4,
         "all_time_max_c": 33.8,
         "all_time_min_c": -0.4,
         "avg_diurnal_range_c": 6.4,
         "rainy_days_30d": 14,
-        "comfort_index": 82,
+        "comfort_index": 90,
         "best_hour_utc": 14
       }
     },
@@ -4944,27 +4944,27 @@
       "lat": -23.5505,
       "lon": -46.6333,
       "latest": {
-        "fecha_hora": "2026-11-08T22:49:23.148339",
-        "temp": 14.8,
-        "feels_like": 14.8,
-        "humidity": 93,
-        "wind_kmh": 14.8,
-        "clouds": 100,
-        "visibility_km": 3.0,
-        "rain_1h": 0.51,
+        "fecha_hora": "2026-11-08T23:19:49.804416",
+        "temp": 14.7,
+        "feels_like": 14.5,
+        "humidity": 90,
+        "wind_kmh": 18.5,
+        "clouds": 75,
+        "visibility_km": 10.0,
+        "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "llovizna ligera"
+        "description": "muy nuboso"
       },
       "stats": {
-        "records": 1141,
+        "records": 1142,
         "days": 378,
-        "mean_30d_temp": 20.3,
+        "mean_30d_temp": 20.2,
         "anomaly_30d_c": -5.5,
         "all_time_max_c": 33.9,
         "all_time_min_c": 7.7,
         "avg_diurnal_range_c": 5.8,
         "rainy_days_30d": 18,
-        "comfort_index": 63,
+        "comfort_index": 79,
         "best_hour_utc": 14
       }
     },
@@ -4976,10 +4976,10 @@
       "lat": 38.9072,
       "lon": -77.0369,
       "latest": {
-        "fecha_hora": "2026-11-08T22:49:25.466331",
-        "temp": 13.7,
-        "feels_like": 12.7,
-        "humidity": 60,
+        "fecha_hora": "2026-11-08T23:19:52.143305",
+        "temp": 12.7,
+        "feels_like": 11.7,
+        "humidity": 64,
         "wind_kmh": 13.0,
         "clouds": 0,
         "visibility_km": 10.0,
@@ -4988,15 +4988,15 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1147,
+        "records": 1148,
         "days": 378,
         "mean_30d_temp": 15.5,
-        "anomaly_30d_c": -1.8,
+        "anomaly_30d_c": -2.8,
         "all_time_max_c": 38.9,
         "all_time_min_c": -12.9,
         "avg_diurnal_range_c": 7.3,
         "rainy_days_30d": 3,
-        "comfort_index": 90,
+        "comfort_index": 87,
         "best_hour_utc": 22
       }
     },
@@ -5008,7 +5008,7 @@
       "lat": 9.0765,
       "lon": 7.3986,
       "latest": {
-        "fecha_hora": "2026-11-08T22:49:27.754704",
+        "fecha_hora": "2026-11-08T23:19:54.483819",
         "temp": 25.9,
         "feels_like": 25.9,
         "humidity": 55,
@@ -5020,7 +5020,7 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 27.7,
         "anomaly_30d_c": -1.8,
@@ -5040,19 +5040,19 @@
       "lat": 5.6037,
       "lon": -0.187,
       "latest": {
-        "fecha_hora": "2026-11-08T22:49:30.039725",
+        "fecha_hora": "2026-11-08T23:19:56.814816",
         "temp": 28.1,
         "feels_like": 31.9,
         "humidity": 78,
-        "wind_kmh": 13.0,
-        "clouds": 40,
+        "wind_kmh": 16.7,
+        "clouds": 20,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
-        "description": "nubes dispersas"
+        "description": "algo de nubes"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 28.7,
         "anomaly_30d_c": -0.6,
@@ -5060,7 +5060,7 @@
         "all_time_min_c": 22.5,
         "avg_diurnal_range_c": 3.9,
         "rainy_days_30d": 14,
-        "comfort_index": 82,
+        "comfort_index": 81,
         "best_hour_utc": 6
       }
     },
@@ -5072,11 +5072,11 @@
       "lat": 36.7762,
       "lon": 3.0599,
       "latest": {
-        "fecha_hora": "2026-11-08T22:49:32.347840",
-        "temp": 23.8,
-        "feels_like": 23.4,
-        "humidity": 43,
-        "wind_kmh": 1.8,
+        "fecha_hora": "2026-11-08T23:19:59.201689",
+        "temp": 21.8,
+        "feels_like": 21.4,
+        "humidity": 49,
+        "wind_kmh": 7.4,
         "clouds": 0,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -5084,10 +5084,10 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1147,
+        "records": 1148,
         "days": 378,
         "mean_30d_temp": 19.9,
-        "anomaly_30d_c": 3.9,
+        "anomaly_30d_c": 1.9,
         "all_time_max_c": 35.8,
         "all_time_min_c": 0.8,
         "avg_diurnal_range_c": 5.8,
@@ -5104,27 +5104,27 @@
       "lat": 30.0444,
       "lon": 31.2357,
       "latest": {
-        "fecha_hora": "2026-11-08T22:49:34.659881",
-        "temp": 18.3,
-        "feels_like": 17.6,
+        "fecha_hora": "2026-11-08T23:20:01.550246",
+        "temp": 17.9,
+        "feels_like": 17.2,
         "humidity": 55,
-        "wind_kmh": 13.0,
+        "wind_kmh": 2.5,
         "clouds": 3,
-        "visibility_km": 6.0,
+        "visibility_km": 10.0,
         "rain_1h": 0.0,
         "snow_1h": 0.0,
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 23.7,
-        "anomaly_30d_c": -5.4,
+        "anomaly_30d_c": -5.8,
         "all_time_max_c": 40.3,
         "all_time_min_c": 9.0,
         "avg_diurnal_range_c": 7.3,
         "rainy_days_30d": 0,
-        "comfort_index": 100,
+        "comfort_index": 99,
         "best_hour_utc": 22
       }
     },
@@ -5136,11 +5136,11 @@
       "lat": -33.9249,
       "lon": 18.4241,
       "latest": {
-        "fecha_hora": "2026-11-08T22:49:36.942571",
-        "temp": 18.8,
-        "feels_like": 18.5,
-        "humidity": 68,
-        "wind_kmh": 11.1,
+        "fecha_hora": "2026-11-08T23:20:03.874091",
+        "temp": 19.2,
+        "feels_like": 18.9,
+        "humidity": 66,
+        "wind_kmh": 9.6,
         "clouds": 0,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -5148,15 +5148,15 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
-        "mean_30d_temp": 17.7,
-        "anomaly_30d_c": 1.1,
+        "mean_30d_temp": 17.8,
+        "anomaly_30d_c": 1.4,
         "all_time_max_c": 38.2,
         "all_time_min_c": 8.0,
         "avg_diurnal_range_c": 4.5,
         "rainy_days_30d": 5,
-        "comfort_index": 99,
+        "comfort_index": 100,
         "best_hour_utc": 22
       }
     },
@@ -5168,11 +5168,11 @@
       "lat": 33.5731,
       "lon": -7.5898,
       "latest": {
-        "fecha_hora": "2026-11-08T22:49:39.223909",
+        "fecha_hora": "2026-11-08T23:20:06.193436",
         "temp": 22.9,
         "feels_like": 22.8,
         "humidity": 60,
-        "wind_kmh": 5.5,
+        "wind_kmh": 1.8,
         "clouds": 97,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -5180,7 +5180,7 @@
         "description": "nubes"
       },
       "stats": {
-        "records": 1144,
+        "records": 1145,
         "days": 378,
         "mean_30d_temp": 21.4,
         "anomaly_30d_c": 1.5,
@@ -5200,10 +5200,10 @@
       "lat": 14.7167,
       "lon": -17.4677,
       "latest": {
-        "fecha_hora": "2026-11-08T22:49:41.492273",
+        "fecha_hora": "2026-11-08T23:20:08.536623",
         "temp": 29.4,
-        "feels_like": 34.2,
-        "humidity": 73,
+        "feels_like": 35.1,
+        "humidity": 77,
         "wind_kmh": 3.7,
         "clouds": 0,
         "visibility_km": 10.0,
@@ -5212,7 +5212,7 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 29.4,
         "anomaly_30d_c": 0.0,
@@ -5220,7 +5220,7 @@
         "all_time_min_c": 16.9,
         "avg_diurnal_range_c": 2.8,
         "rainy_days_30d": 4,
-        "comfort_index": 81,
+        "comfort_index": 78,
         "best_hour_utc": 22
       }
     },
@@ -5232,11 +5232,11 @@
       "lat": -26.2041,
       "lon": 28.0473,
       "latest": {
-        "fecha_hora": "2026-11-08T22:49:43.778070",
-        "temp": 9.2,
-        "feels_like": 8.7,
+        "fecha_hora": "2026-11-08T23:20:10.871744",
+        "temp": 9.1,
+        "feels_like": 8.1,
         "humidity": 89,
-        "wind_kmh": 5.5,
+        "wind_kmh": 7.4,
         "clouds": 32,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -5244,16 +5244,16 @@
         "description": "nubes dispersas"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
-        "mean_30d_temp": 21.5,
+        "mean_30d_temp": 21.4,
         "anomaly_30d_c": -12.3,
         "all_time_max_c": 32.7,
         "all_time_min_c": 2.1,
         "avg_diurnal_range_c": 7.9,
         "rainy_days_30d": 6,
-        "comfort_index": 71,
-        "best_hour_utc": 22
+        "comfort_index": 70,
+        "best_hour_utc": 6
       }
     },
     {
@@ -5264,7 +5264,7 @@
       "lat": 6.5244,
       "lon": 3.3792,
       "latest": {
-        "fecha_hora": "2026-11-08T22:49:46.058932",
+        "fecha_hora": "2026-11-08T23:20:13.213319",
         "temp": 26.7,
         "feels_like": 26.7,
         "humidity": 85,
@@ -5276,7 +5276,7 @@
         "description": "algo de nubes"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 28.7,
         "anomaly_30d_c": -2.0,
@@ -5296,11 +5296,11 @@
       "lat": -1.2921,
       "lon": 36.8219,
       "latest": {
-        "fecha_hora": "2026-11-08T22:49:48.325976",
+        "fecha_hora": "2026-11-08T23:20:15.538591",
         "temp": 17.7,
         "feels_like": 17.7,
         "humidity": 82,
-        "wind_kmh": 5.5,
+        "wind_kmh": 11.1,
         "clouds": 20,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -5308,7 +5308,7 @@
         "description": "algo de nubes"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 21.5,
         "anomaly_30d_c": -3.8,
@@ -5328,11 +5328,11 @@
       "lat": 34.0209,
       "lon": -6.8417,
       "latest": {
-        "fecha_hora": "2026-11-08T22:49:50.596983",
+        "fecha_hora": "2026-11-08T23:20:17.874583",
         "temp": 23.4,
         "feels_like": 23.5,
         "humidity": 68,
-        "wind_kmh": 14.8,
+        "wind_kmh": 13.0,
         "clouds": 75,
         "visibility_km": 5.0,
         "rain_1h": 0.11,
@@ -5340,7 +5340,7 @@
         "description": "lluvia ligera"
       },
       "stats": {
-        "records": 1146,
+        "records": 1147,
         "days": 378,
         "mean_30d_temp": 20.2,
         "anomaly_30d_c": 3.2,
@@ -5360,10 +5360,10 @@
       "lat": 32.8872,
       "lon": 13.1913,
       "latest": {
-        "fecha_hora": "2026-11-08T22:49:52.902254",
-        "temp": 20.9,
-        "feels_like": 20.7,
-        "humidity": 60,
+        "fecha_hora": "2026-11-08T23:20:20.207282",
+        "temp": 19.9,
+        "feels_like": 19.7,
+        "humidity": 64,
         "wind_kmh": 9.3,
         "clouds": 0,
         "visibility_km": 6.0,
@@ -5372,10 +5372,10 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
-        "mean_30d_temp": 24.1,
-        "anomaly_30d_c": -3.2,
+        "mean_30d_temp": 24.0,
+        "anomaly_30d_c": -4.1,
         "all_time_max_c": 39.9,
         "all_time_min_c": 7.9,
         "avg_diurnal_range_c": 4.2,
@@ -5392,11 +5392,11 @@
       "lat": 36.8065,
       "lon": 10.1815,
       "latest": {
-        "fecha_hora": "2026-11-08T22:49:55.173188",
-        "temp": 17.0,
-        "feels_like": 17.2,
-        "humidity": 94,
-        "wind_kmh": 5.5,
+        "fecha_hora": "2026-11-08T23:20:22.531274",
+        "temp": 16.0,
+        "feels_like": 16.3,
+        "humidity": 100,
+        "wind_kmh": 3.7,
         "clouds": 0,
         "visibility_km": 10.0,
         "rain_1h": 0.0,
@@ -5404,15 +5404,15 @@
         "description": "cielo claro"
       },
       "stats": {
-        "records": 1148,
+        "records": 1149,
         "days": 378,
         "mean_30d_temp": 20.5,
-        "anomaly_30d_c": -3.5,
+        "anomaly_30d_c": -4.5,
         "all_time_max_c": 44.9,
         "all_time_min_c": 6.0,
         "avg_diurnal_range_c": 6.9,
         "rainy_days_30d": 6,
-        "comfort_index": 86,
+        "comfort_index": 82,
         "best_hour_utc": 14
       }
     }
