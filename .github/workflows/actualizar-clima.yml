@@ -7,9 +7,9 @@ permissions:
 on:
   push: # Se ejecuta cuando subes código
     branches: [ "main" ]
-  schedule: # Se ejecuta en un horario
-    # Ejecuta cada día a las 6:00 UTC (8:00 en España en verano)
-    - cron: '0 6,14,22 * * *'
+  schedule: # Se ejecuta en horario UTC
+    - cron: '0 6,14 * * *'
+    - cron: '0 22 * * *'
   workflow_dispatch: # Botón para ejecutarlo manualmente
 
 jobs:
@@ -34,6 +34,11 @@ jobs:
           OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
         run: python read_weather.py
 
+      - name: 4b. Generar derivados compactos (Data Truth Pipeline)
+        if: github.event.schedule == '0 22 * * *' || github.event_name == 'workflow_dispatch'
+        continue-on-error: true
+        run: python build_derived.py --source datos --out derived --month-log
+
       - name: 5. Guardar cambios (Commit & Push)
         run: |
           git config user.name 'github-actions[bot]'
@@ -41,4 +46,5 @@ jobs:
           git add .
           # Comprueba si hay cambios antes de hacer commit
           git diff --staged --quiet || git commit -m "Actualización automática de datos climáticos 🤖"
+          git pull --rebase --autostash
           git push

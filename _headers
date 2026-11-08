@@ -1,0 +1,11 @@
+/derived/*
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=1800
+
+/*.json
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=1800
+
+/datos/*
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=1800
