@@ -35,7 +35,6 @@ jobs:
         run: python read_weather.py
 
       - name: 4b. Generar derivados compactos (Data Truth Pipeline)
-        if: github.event.schedule == '0 22 * * *' || github.event_name == 'workflow_dispatch'
         continue-on-error: true
         run: python build_derived.py --source datos --out derived --month-log
 

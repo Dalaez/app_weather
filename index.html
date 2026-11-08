@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Datalaria - Weather Intelligence v3.0 | Observatorio Climático & Laboratorio ML</title>
-    <link rel="manifest" href="/apps/weather/manifest.json">
+    <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0b0f17">
-    <link rel="apple-touch-icon" href="/apps/weather/icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -2429,6 +2429,8 @@
         let lastDataFreshnessIso = null;
         let climatologyCache = null;
         let deferredPrompt = null;
+        let derivedIndexSet = new Set();
+        let derivedIndexLoaded = false;
 
 
         const BLOG_LINKS = {
@@ -2458,48 +2460,45 @@
         // HELPERS v3.0: REMOTE-FIRST, PWA, ACCORDIONS & DATA SUFFICIENCY
         // ====================================================================
 
-        // INV-WEATHER-7: Remote-First Data Transport con Fallback Local
+        // INV-WEATHER-7: Remote-First Data Transport con Fallback Local (Zero-404 & No Duplicate Retries)
         async function fetchJSONRemoteFirst(path, options = {}) {
             const timeoutMs = options.timeoutMs || 6000;
             const cleanPath = path.startsWith('/') ? path.slice(1) : path;
             const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:';
-            const firstUrl = isLocal ? (LOCAL_BASE + cleanPath) : (REMOTE_BASE + cleanPath);
-            const secondUrl = isLocal ? (REMOTE_BASE + cleanPath) : (LOCAL_BASE + cleanPath);
-            const firstSource = isLocal ? 'local' : 'remote';
-            const secondSource = isLocal ? 'remote' : 'local';
 
-            // Intento 1
-            try {
-                const controller = new AbortController();
-                const timer = setTimeout(() => controller.abort(), timeoutMs);
-                const res = await fetch(firstUrl + (firstUrl.includes('?') ? '&' : '?') + 't=' + Date.now(), {
-                    signal: controller.signal
-                });
-                clearTimeout(timer);
-                if (res.ok) {
-                    const data = await res.json();
-                    return { data, source: firstSource };
+            if (isLocal) {
+                // En localhost: peticion directa a LOCAL_BASE sin golpear REMOTE_BASE (evita CORS y 404 remotos)
+                const url = LOCAL_BASE + cleanPath + (cleanPath.includes('?') ? '&' : '?') + 't=' + Date.now();
+                try {
+                    const controller = new AbortController();
+                    const timer = setTimeout(() => controller.abort(), timeoutMs);
+                    const res = await fetch(url, { signal: controller.signal });
+                    clearTimeout(timer);
+                    if (res.ok) {
+                        const data = await res.json();
+                        return { data, source: 'local' };
+                    }
+                } catch (err) {
+                    // Silencioso
                 }
-            } catch (err) {
-                // Fallback al siguiente intento
-            }
-
-            // En localhost, si el segundo intento es a Netlify sin CORS, omitir para evitar errores rojos en consola
-            if (isLocal && secondSource === 'remote') {
                 return { data: null, source: 'none' };
             }
 
-            // Intento 2
+            // En producción: una única petición directa contra LOCAL_BASE + cleanPath
+            // (aprovecha la CDN y el proxy /apps/weather/* -> Netlify sin duplicar peticiones 404)
+            const prodUrl = LOCAL_BASE + cleanPath;
             try {
-                const res = await fetch(secondUrl + (secondUrl.includes('?') ? '&' : '?') + 't=' + Date.now());
+                const controller = new AbortController();
+                const timer = setTimeout(() => controller.abort(), timeoutMs);
+                const res = await fetch(prodUrl, { signal: controller.signal });
+                clearTimeout(timer);
                 if (res.ok) {
                     const data = await res.json();
-                    return { data, source: secondSource };
+                    return { data, source: 'local' };
                 }
             } catch (err) {
                 // Silencioso
             }
-
             return { data: null, source: 'none' };
         }
 
@@ -2513,6 +2512,64 @@
                 .replace(/[\s_]+/g, '-')
                 .replace(/-+/g, '-')
                 .replace(/^-+|-+$/g, '');
+        }
+
+        async function loadDerivedIndex() {
+            try {
+                const res = await fetchJSONRemoteFirst('derived/index.json');
+                if (res.data && Array.isArray(res.data.cities)) {
+                    derivedIndexSet = new Set(res.data.cities.map(c => c.slug || slugifyJS(c.ciudad || '')));
+                    derivedIndexLoaded = true;
+                }
+            } catch (err) {
+                console.warn('No se pudo cargar derived/index.json:', err);
+            }
+        }
+
+        function getCityPrediction(cityName, fullValue = '') {
+            if (!allPredictionsCache) return null;
+            if (fullValue && allPredictionsCache[fullValue]) return allPredictionsCache[fullValue];
+            if (cityName && allPredictionsCache[cityName]) return allPredictionsCache[cityName];
+
+            const cleanName = (cityName || '').trim().toLowerCase();
+            const foundKey = Object.keys(allPredictionsCache).find(k => {
+                const kClean = k.split(',')[0].trim().toLowerCase();
+                return kClean === cleanName || slugifyJS(kClean) === slugifyJS(cleanName);
+            });
+            return foundKey ? allPredictionsCache[foundKey] : null;
+        }
+
+        function resolveChoiceValuesForCities(cityNames) {
+            if (!cityNames || cityNames.length === 0) return [];
+            const resolved = [];
+            cityNames.forEach(raw => {
+                const clean = (typeof raw === 'string' ? raw.split(',')[0].trim() : String(raw)).toLowerCase();
+                const found = cityOptionsList.find(opt => {
+                    const optCity = opt.label?.toLowerCase() || opt.value.split(',')[0].trim().toLowerCase();
+                    return optCity === clean || opt.value.toLowerCase() === (typeof raw === 'string' ? raw.toLowerCase() : '');
+                });
+                if (found) {
+                    resolved.push(found.value);
+                } else if (raw) {
+                    resolved.push(raw);
+                }
+            });
+            return resolved;
+        }
+
+        function selectCitiesInChoices(cityList) {
+            if (!choicesInstance) return;
+            const resolved = resolveChoiceValuesForCities(cityList);
+            if (resolved.length === 0) return;
+            isProgrammaticSelection = true;
+            try {
+                choicesInstance.removeActiveItems();
+                choicesInstance.setChoiceByValue(resolved);
+            } finally {
+                isProgrammaticSelection = false;
+            }
+            updateDashboard();
+            fitMapToSelected(resolved.map(t => t.split(',')[0].trim()));
         }
 
         function updateFreshnessBadge(isoDate) {
@@ -2731,7 +2788,7 @@
 
         function buildFallbackSummary() {
             const cities = cityLocationsCache.map(loc => {
-                const pred = allPredictionsCache[loc.ciudad] || {};
+                const pred = getCityPrediction(loc.ciudad) || {};
                 const t = loc.temp || 15.0;
                 const cIdx = computeComfortIndexJS(t, t, 50, 10, 20, 10000, 0, 0);
                 return {
@@ -2797,11 +2854,9 @@
             }
             const cityNameClean = ciudadQuery.split(',')[0].trim();
             const slug = slugifyJS(cityNameClean);
-            const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:';
 
-            // En localhost: datos pesados excluidos de /static/ (INV-WEATHER-6).
-            // Población instantánea en memoria sin peticiones de red ni 404s en consola.
-            if (isLocal) {
+            // Zero-404 Guard: Si el índice derivado está cargado y NO contiene este slug, construir desde memoria
+            if (derivedIndexLoaded && derivedIndexSet.size > 0 && !derivedIndexSet.has(slug)) {
                 const citySummary = globalSummaryData?.cities?.find(c => c.ciudad === cityNameClean || c.query === ciudadQuery);
                 const fallbackData = {
                     records: [],
@@ -2811,7 +2866,7 @@
                 return fallbackData;
             }
 
-            // En producción: Ingesta Remote-First de daily JSON derivado (~15 KB)
+            // Ingesta de daily JSON derivado (~15 KB) tanto en local como en producción
             const dailyRes = await fetchJSONRemoteFirst(DERIVED_DAILY_URL + slug + '.json');
             if (dailyRes.data && dailyRes.data.rows && dailyRes.data.rows.length > 0) {
                 const parsed = processDerivedDailyRows(dailyRes.data, ciudadQuery);
@@ -2819,36 +2874,14 @@
                 return parsed;
             }
 
-            // Intento 2: Fallback a CSV remoto / local (PapaParse) en producción
-            return new Promise((resolve) => {
-                const fileName = cityNameClean.replace(/ /g, '_') + '.csv';
-                const remoteUrl = REMOTE_DATA_FALLBACK_URL + fileName;
-                const localUrl = DATA_FOLDER_URL + fileName;
-
-                Papa.parse(remoteUrl, {
-                    download: true, header: true, dynamicTyping: true, skipEmptyLines: true,
-                    complete: (remResults) => {
-                        const parsed = processCSVResults(remResults.data, ciudadQuery);
-                        allDataCache[ciudadQuery] = parsed;
-                        resolve(parsed);
-                    },
-                    error: () => {
-                        Papa.parse(localUrl, {
-                            download: true, header: true, dynamicTyping: true, skipEmptyLines: true,
-                            complete: (locResults) => {
-                                const parsed = processCSVResults(locResults.data, ciudadQuery);
-                                allDataCache[ciudadQuery] = parsed;
-                                resolve(parsed);
-                            },
-                            error: (locErr) => {
-                                const fallbackEmpty = { records: [], stats: {} };
-                                allDataCache[ciudadQuery] = fallbackEmpty;
-                                resolve(fallbackEmpty);
-                            }
-                        });
-                    }
-                });
-            });
+            // Fallback limpio en memoria sin peticiones 404 a ciegas
+            const citySummary = globalSummaryData?.cities?.find(c => c.ciudad === cityNameClean || c.query === ciudadQuery);
+            const fallbackData = {
+                records: [],
+                stats: citySummary?.stats ? { ...citySummary.stats } : {}
+            };
+            allDataCache[ciudadQuery] = fallbackData;
+            return fallbackData;
         }
 
         function loadCSV(ciudadQuery) {
@@ -3190,24 +3223,36 @@
             requestAnimationFrame(step);
         }
 
-        // --- Renderizado de Super-Cards (Observatorio) ---
-        function updateKPIs(cityDataMap, metric) {
+        // --- Renderizado de Super-Cards (Observatorio) con Instant 0ms Mode ---
+        function updateKPIs(cityDataMap = {}, metric = 'temp', explicitSelectedValues = null) {
             const container = document.getElementById('kpi-container');
             container.innerHTML = '';
             const metricMap = getMetricMap();
             const metricInfo = metricMap[metric] || metricMap['temp'];
 
-            const cityNames = Object.keys(cityDataMap);
-            if (cityNames.length === 0) {
+            let cityValues = explicitSelectedValues;
+            if (!cityValues || cityValues.length === 0) {
+                cityValues = choicesInstance ? choicesInstance.getValue(true) : [];
+            }
+            if ((!cityValues || cityValues.length === 0) && cityDataMap && Object.keys(cityDataMap).length > 0) {
+                cityValues = Object.keys(cityDataMap);
+            }
+
+            if (!cityValues || cityValues.length === 0) {
                 container.innerHTML = `<p style="grid-column:1/-1; text-align:center; color:var(--text-secondary);">${translations[currentLang].kpiEmpty}</p>`;
                 return;
             }
 
-            cityNames.forEach((ciudad, idx) => {
-                const data = cityDataMap[ciudad];
+            cityValues.forEach((fullVal, idx) => {
+                const ciudad = typeof fullVal === 'string' ? fullVal.split(',')[0].trim() : String(fullVal);
+                const data = cityDataMap ? (cityDataMap[fullVal] || cityDataMap[ciudad]) : null;
                 const stats = data?.stats || {};
                 let latest = stats.latest;
-                const citySummary = globalSummaryData?.cities?.find(c => c.ciudad === ciudad || c.query === ciudad || c.ciudad === ciudad.split(',')[0].trim());
+                const citySummary = globalSummaryData?.cities?.find(c => 
+                    c.ciudad.toLowerCase() === ciudad.toLowerCase() || 
+                    (c.query && c.query.toLowerCase() === (typeof fullVal === 'string' ? fullVal.toLowerCase() : '')) || 
+                    (c.slug && c.slug === slugifyJS(ciudad))
+                );
 
                 if (!latest && citySummary?.latest) {
                     latest = {
@@ -3235,7 +3280,6 @@
                 if (comfortIdx >= 75) { comfortClass = 'comfort-optimal'; comfortText = translations[currentLang].comfortOptimal; }
                 else if (comfortIdx < 50) { comfortClass = 'comfort-unfavorable'; comfortText = translations[currentLang].comfortUnfavorable; }
 
-                
                 const isFav = getFavoriteCities().includes(ciudad);
                 const favBtnHtml = `<button class="card-fav-btn ${isFav ? 'active' : ''}" data-city="${ciudad}" title="${translations[currentLang].menuFavs}">${isFav ? '★' : '☆'}</button>`;
 
@@ -3263,7 +3307,7 @@
                 const valId = `super-val-${ciudad.replace(/ /g, '_')}-${metric}`;
                 const sparkId = `spark-${ciudad.replace(/ /g, '_')}-${metric}`;
 
-                const predData = allPredictionsCache[ciudad];
+                const predData = getCityPrediction(ciudad, fullVal);
                 const forecastList = predData?.pred_owm_5day || [];
                 const iaPred = predData?.pred_ia;
                 const modelMetrics = predData?.model_metrics;
@@ -3312,13 +3356,14 @@
                     toggleFavoriteCity(ciudad);
                 });
 
-
                 const elVal = document.getElementById(valId);
                 if (elVal) {
                     animateCountUp(elVal, Number(displayedVal) || 0, 700, (metric === 'rain' ? 2 : 1));
                 }
 
-                renderSparkline(sparkId, data.records, metricInfo.key, COLOR_PALETTE[idx % COLOR_PALETTE.length], metricInfo.divider);
+                if (data?.records && data.records.length > 0) {
+                    renderSparkline(sparkId, data.records, metricInfo.key, COLOR_PALETTE[idx % COLOR_PALETTE.length], metricInfo.divider);
+                }
             });
 
             feather.replace();
@@ -3462,7 +3507,7 @@
                 });
 
                 // Proyección OWM si es temperatura
-                const predData = allPredictionsCache[ciudad];
+                const predData = getCityPrediction(ciudad);
                 if (metric === 'temp' && hourFilter === 'all' && predData?.pred_owm_5day) {
                     const fcPts = predData.pred_owm_5day.map(d => ({
                         x: new Date(d.date + 'T12:00:00Z'),
@@ -3631,14 +3676,14 @@
             // Si hay seleccionadas, muestra esas primero; sino top 30
             let cityList = Object.keys(allPredictionsCache);
             if (selectedNames.length > 0) {
-                const prioritized = selectedNames.filter(n => allPredictionsCache[n]);
+                const prioritized = selectedNames.filter(n => Boolean(getCityPrediction(n)));
                 const rest = cityList.filter(n => !selectedNames.includes(n));
                 cityList = [...prioritized, ...rest];
             }
 
             let rank = 1;
             cityList.slice(0, 30).forEach(cityName => {
-                const item = allPredictionsCache[cityName];
+                const item = getCityPrediction(cityName);
                 if (!item) return;
 
                 const summaryCity = globalSummaryData?.cities?.find(c => c.ciudad === cityName);
@@ -3818,14 +3863,20 @@
             emitWeatherEvent('weather_export_data', { format: format, count: exportList.length });
         }
 
-        // --- Actualización Global del Dashboard ---
+        // --- Actualización Global del Dashboard (Instant 0ms KPI Render) ---
         async function updateDashboard() {
             const selectedValues = choicesInstance ? choicesInstance.getValue(true) : [];
             const checkedMetric = document.querySelector('input[name="metric"]:checked')?.value || 'temp';
             const checkedHour = document.querySelector('input[name="hour-filter"]:checked')?.value || 'all';
 
+            // RENDERIZADO INSTANTÁNEO (0 ms): Super-Cards en memoria sin esperar a la red
+            updateKPIs({}, checkedMetric, selectedValues);
+
+            // Carga asíncrona de las series históricas
             const cityDataMap = await loadDataForCities(selectedValues);
-            updateKPIs(cityDataMap, checkedMetric);
+
+            // Actualización suave con sparklines y series históricas
+            updateKPIs(cityDataMap, checkedMetric, selectedValues);
             updateCharts(cityDataMap, checkedMetric, checkedHour);
             renderMonthlySeasonality(cityDataMap);
             renderMapMarkers();
@@ -3991,7 +4042,7 @@
         function registerPwaServiceWorker() {
             if ('serviceWorker' in navigator) {
                 window.addEventListener('load', () => {
-                    navigator.serviceWorker.register('/apps/weather/sw.js', { scope: '/apps/weather/' })
+                    navigator.serviceWorker.register('sw.js')
                         .then(reg => console.log('[PWA] Service Worker registrado:', reg.scope))
                         .catch(err => console.warn('[PWA] Error SW:', err));
                 });
@@ -4053,9 +4104,12 @@
             let lang = urlParams.lang || localStorage.getItem('lang') || 'es';
             translatePage(lang);
 
-            // 3. Cargar Predicciones y Resumen Global
-            await loadPredictions();
-            await loadGlobalSummary();
+            // 3. Cargar Predicciones, Resumen Global e Índice de Derivados en paralelo
+            await Promise.all([
+                loadPredictions(),
+                loadGlobalSummary(),
+                loadDerivedIndex()
+            ]);
 
             // 4. Instanciar Choices.js
             const citySelectEl = document.getElementById('city-select');
@@ -4188,9 +4242,7 @@
             document.getElementById('btn-favs-quick')?.addEventListener('click', () => {
                 const favs = getFavoriteCities();
                 if (favs.length > 0) {
-                    selectedCities = favs.slice(0, 5);
-                    if (choicesInstance) choicesInstance.setChoiceByValue(selectedCities);
-                    updateDashboard();
+                    selectCitiesInChoices(favs.slice(0, 5));
                 }
             });
 
@@ -4199,8 +4251,7 @@
             if (initialParams.mine === '1') {
                 const favs = getFavoriteCities();
                 if (favs.length > 0) {
-                    selectedCities = favs.slice(0, 5);
-                    if (choicesInstance) choicesInstance.setChoiceByValue(selectedCities);
+                    selectCitiesInChoices(favs.slice(0, 5));
                 }
             }
 
