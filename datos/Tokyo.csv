@@ -1146,3 +1146,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-11-08T22:40:24.063255,Tokyo,9.65,6.43,8.68,10.59,91,25.92,chubasco de ligera intensidad,35.6762,139.6503,75,7000,5.62,0.0
 2026-11-08T22:48:21.070399,Tokyo,9.65,6.43,8.68,10.59,91,25.92,chubasco de ligera intensidad,35.6762,139.6503,75,7000,5.62,0.0
 2026-11-08T23:18:47.052951,Tokyo,9.71,6.82,8.68,10.81,90,22.212,lluvia moderada,35.6762,139.6503,75,10000,3.65,0.0
+2026-11-09T15:45:40.227394,Tokyo,10.45,9.87,9.22,11.49,89,1.62,lluvia de gran intensidad,35.6762,139.6503,100,10000,5.62,0.0
