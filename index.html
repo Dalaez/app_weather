@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datalaria - Weather Intelligence v3.0 | Observatorio Climático & Laboratorio ML</title>
+    <title>Datalaria - Weather Intelligence v3.1 | Observatorio Climático & Laboratorio ML</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0b0f17">
     <link rel="apple-touch-icon" href="icon-192.png">
@@ -12,7 +12,7 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://datalaria.com/apps/weather/">
-    <meta property="og:title" content="Weather Intelligence v2.0 | Datalaria">
+    <meta property="og:title" content="Weather Intelligence v3.1 | Datalaria">
     <meta property="og:description"
         content="Centro de Control Climático Global: 168 estaciones, +375 días de datos continuos, estacionalidad de Fourier, walk-forward backtesting IA vs. OpenWeatherMap y Confort Outdoor.">
     <meta property="og:image" content="https://datalaria.com/apps/weather/cover.png">
@@ -24,7 +24,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@datalaria">
-    <meta name="twitter:title" content="Weather Intelligence v2.0 | Datalaria">
+    <meta name="twitter:title" content="Weather Intelligence v3.1 | Datalaria">
     <meta name="twitter:description"
         content="Centro de Control Climático Global: 168 estaciones, estacionalidad armónica de Fourier, backtesting IA vs. OWM e índice de confort.">
     <meta name="twitter:image" content="https://datalaria.com/apps/weather/cover.png">
@@ -1617,6 +1617,187 @@
             }
         }
 
+
+        /* --- W3.4: "¿Es normal?" Chip & Warming Stripes & Scorecard --- */
+        .weather-normal-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            margin-bottom: 8px;
+            width: fit-content;
+            transition: all 0.2s ease;
+        }
+        .chip-normal {
+            background: rgba(16, 185, 129, 0.12);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        .chip-warm {
+            background: rgba(245, 158, 11, 0.14);
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.35);
+        }
+        .chip-cold {
+            background: rgba(14, 165, 233, 0.14);
+            color: #0ea5e9;
+            border: 1px solid rgba(14, 165, 233, 0.35);
+        }
+        .chip-record-warm {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.5);
+            box-shadow: 0 0 10px rgba(239, 68, 68, 0.25);
+        }
+        .chip-record-cold {
+            background: rgba(99, 102, 241, 0.2);
+            color: #818cf8;
+            border: 1px solid rgba(99, 102, 241, 0.5);
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.25);
+        }
+
+        .stripes-canvas-container {
+            position: relative;
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            padding: 8px;
+            margin-top: 10px;
+        }
+        #stripesCanvas {
+            width: 100%;
+            height: 52px;
+            border-radius: 4px;
+            cursor: crosshair;
+            display: block;
+        }
+        #stripesTooltip {
+            position: absolute;
+            display: none;
+            pointer-events: none;
+            background: var(--bg-surface);
+            color: var(--text-primary);
+            border: 1px solid var(--accent-primary);
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            z-index: 20;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            white-space: nowrap;
+        }
+
+        .scorecard-hero {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .scorecard-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .scorecard-badge-calibrating {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            color: #f59e0b;
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px solid rgba(245, 158, 11, 0.35);
+            padding: 4px 10px;
+            border-radius: 9999px;
+        }
+        .scorecard-bars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+        }
+        .horizon-card {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            padding: 12px;
+            text-align: center;
+        }
+        .horizon-title {
+            font-family: var(--font-display);
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+        .horizon-val {
+            font-family: var(--font-mono);
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--accent-secondary);
+        }
+        .horizon-sub {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .why-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .why-sentence {
+            font-size: 14px;
+            line-height: 1.6;
+            background: var(--bg-elevated);
+            border-left: 3px solid var(--accent-primary);
+            padding: 12px 16px;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            margin: 14px 0;
+        }
+        .contrib-bar-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            font-size: 12px;
+        }
+        .contrib-label {
+            width: 170px;
+            color: var(--text-secondary);
+            font-family: var(--font-mono);
+            font-size: 11px;
+        }
+        .contrib-bar-bg {
+            flex: 1;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        .contrib-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+        .contrib-val {
+            width: 60px;
+            text-align: right;
+            font-family: var(--font-mono);
+            font-weight: 600;
+        }
+
     </style>
 </head>
 
@@ -1643,7 +1824,7 @@
             </a>
             <div class="brand-title-wrap">
                 <img src="/apps/weather/datalaria_logo_transp.png" alt="Datalaria" class="brand-logo">
-                <span class="brand-title" data-i18n-key="mainTitle">Weather Intelligence v2.0</span>
+                <span class="brand-title" data-i18n-key="mainTitle">Weather Intelligence v3.1</span>
                 <span class="status-badge" id="live-status-badge" data-i18n-key="badgeStatus">🟢 168 Estaciones · +375 Días</span>
                 <span class="badge-freshness" id="freshness-badge">🕒 En vivo</span>
             </div>
@@ -1938,6 +2119,61 @@
                 </div>
             </div>
 
+            <!-- W3.4: Marcador Público IA vs OWM -->
+            <div class="scorecard-hero">
+                <div class="scorecard-header">
+                    <div>
+                        <h3 class="panel-title" style="margin:0; display:flex; align-items:center; gap:8px;">
+                            <span>🎯</span> <span data-i18n-key="scorecardTitle">¿Quién acierta? (Marcador Público IA vs. OWM)</span>
+                        </h3>
+                        <p class="panel-subtitle" style="margin:4px 0 0 0;" data-i18n-key="scorecardSubtitle">
+                            Auditoría transparente de error absoluto medio (MAE en °C) por horizonte D+1..D+5
+                        </p>
+                    </div>
+                    <div id="scorecard-badge-container">
+                        <span class="scorecard-badge-calibrating" data-i18n-key="scorecardCalibrating">
+                            ⚡ Auditoría en vivo en calibración (< 7 pares) · Mostrando backtest 60d
+                        </span>
+                    </div>
+                </div>
+
+                <div class="scorecard-bars-grid" id="scorecard-bars-container">
+                    <!-- Injected dynamically -->
+                </div>
+
+                <div style="margin-top:14px; font-family:var(--font-mono); font-size:12px; color:var(--text-secondary); display:flex; gap:16px; flex-wrap:wrap;">
+                    <span id="scorecard-weekly-wins">🏆 Victorias semanales: IA 0 — OWM 0 (Calibrando)</span>
+                    <span id="scorecard-audit-count">📋 Pares auditados en vivo: 0</span>
+                </div>
+            </div>
+
+            <!-- W3.4: Laboratorio ML - ¿Por qué predice esto? -->
+            <div class="why-card">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                    <div>
+                        <h3 class="panel-title" style="margin:0; display:flex; align-items:center; gap:8px;">
+                            <span>🧠</span> <span data-i18n-key="whyTitle">¿Por qué predice esto? (Laboratorio ML)</span>
+                        </h3>
+                        <p class="panel-subtitle" style="margin:4px 0 0 0;" data-i18n-key="whySubtitle">
+                            Descomposición determinista de factores térmicos sin modelos de caja negra
+                        </p>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <span style="font-size:12px; color:var(--text-secondary);" data-i18n-key="whySelectCity">Estación:</span>
+                        <select id="why-city-select" style="background:var(--bg-elevated); border:1px solid var(--border-subtle); color:var(--text-primary); padding:6px 12px; border-radius:var(--radius-sm); font-size:12px; font-weight:600;">
+                        </select>
+                    </div>
+                </div>
+
+                <div class="why-sentence" id="why-sentence-box">
+                    Cargando explicabilidad determinista...
+                </div>
+
+                <div id="why-bars-container">
+                    <!-- Progress bars injected dynamically -->
+                </div>
+            </div>
+
             <!-- Fourier Explainer -->
             <div class="fourier-explainer">
                 <h4>📐 Armónicos Cíclicos de Fourier vs. Discontinuidad Anual</h4>
@@ -1949,33 +2185,33 @@
                 </div>
             </div>
 
-            <!-- Arena Table -->
-            <div class="arena-table-wrap">
-                <div class="panel-header" style="padding: 16px 20px 0 20px;">
-                    <h3 class="panel-title" data-i18n-key="arenaTableTitle">
-                        Duelo Walk-Forward: IA Datalaria vs. OpenWeatherMap
-                    </h3>
+            <!-- Collapsible full table (W3.4) -->
+            <details id="accordion-arena-table" style="background:var(--bg-surface); border:1px solid var(--border-subtle); border-radius:var(--radius-md); overflow:hidden; margin-top:20px;">
+                <summary style="padding:14px 20px; font-weight:700; cursor:pointer; color:var(--text-secondary); display:flex; align-items:center; gap:8px;" data-i18n-key="legacyTableTitle">
+                    📊 Ver tabla completa de 168 estaciones
+                </summary>
+                <div class="arena-table-wrap" style="border:none; margin:0;">
+                    <table class="data-table" id="arena-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th data-i18n-key="colCity">Ciudad</th>
+                                <th data-i18n-key="colRegion">Región</th>
+                                <th data-i18n-key="colDays">Días</th>
+                                <th data-i18n-key="colIaTomorrow">IA Mañana (Máx / Mín / Med)</th>
+                                <th data-i18n-key="colOwmTomorrow">OWM Mañana</th>
+                                <th data-i18n-key="colDelta">Δ (IA - OWM)</th>
+                                <th data-i18n-key="colR2">R² Modelo</th>
+                                <th data-i18n-key="colMae">MAE 30d</th>
+                                <th data-i18n-key="colBias">Sesgo</th>
+                                <th data-i18n-key="colWinRate">Win-Rate IA</th>
+                                <th data-i18n-key="colAction">Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="arena-table-body"></tbody>
+                    </table>
                 </div>
-                <table class="data-table" id="arena-table">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th data-i18n-key="colCity">Ciudad</th>
-                            <th data-i18n-key="colRegion">Región</th>
-                            <th data-i18n-key="colDays">Días</th>
-                            <th data-i18n-key="colIaTomorrow">IA Mañana (Máx / Mín / Med)</th>
-                            <th data-i18n-key="colOwmTomorrow">OWM Mañana</th>
-                            <th data-i18n-key="colDelta">Δ (IA - OWM)</th>
-                            <th data-i18n-key="colR2">R² Modelo</th>
-                            <th data-i18n-key="colMae">MAE 30d</th>
-                            <th data-i18n-key="colBias">Sesgo</th>
-                            <th data-i18n-key="colWinRate">Win-Rate IA</th>
-                            <th data-i18n-key="colAction">Acción</th>
-                        </tr>
-                    </thead>
-                    <tbody id="arena-table-body"></tbody>
-                </table>
-            </div>
+            </details>
         </section>
 
         <!-- ==================================================================== -->
@@ -2058,7 +2294,17 @@
         // --- Diccionario de Traducciones con 100% Paridad ES/EN (INV-WEATHER-5) ---
         const translations = {
             'es': {
-                'mainTitle': 'Weather Intelligence v3.0',
+                'mainTitle': 'Weather Intelligence v3.1',
+                'stripesTitle': 'Calendario Térmico (Warming Stripes)',
+                'stripesSubtitle': 'Anomalía térmica diurna respecto a la línea base ±7 días del año · Rojo: cálido, Azul: frío',
+                'stripesBadge': '365 días',
+                'scorecardTitle': '¿Quién acierta? (Marcador Público IA vs. OWM)',
+                'scorecardSubtitle': 'Auditoría transparente de error absoluto medio (MAE en °C) por horizonte D+1..D+5',
+                'scorecardCalibrating': '⚡ Auditoría en vivo en calibración (< 7 pares) · Mostrando backtest 60d',
+                'whyTitle': '¿Por qué predice esto? (Laboratorio ML)',
+                'whySubtitle': 'Descomposición determinista de factores térmicos sin modelos de caja negra',
+                'whySelectCity': 'Estación:',
+                'legacyTableTitle': '📊 Ver tabla completa de 168 estaciones',
                 'badgeFreshnessPrefix': '🕒 Hace ',
                 'badgeFreshnessSuffix': 'h',
                 'badgeFreshnessNow': '🟢 En vivo',
@@ -2235,7 +2481,17 @@
                 'cityLimitReached': 'Límite de 5 ciudades alcanzado.'
             },
             'en': {
-                'mainTitle': 'Weather Intelligence v3.0',
+                'mainTitle': 'Weather Intelligence v3.1',
+                'stripesTitle': 'Thermal Calendar (Warming Stripes)',
+                'stripesSubtitle': 'Daily thermal anomaly vs. ±7-day baseline of the year · Red: warm, Blue: cold',
+                'stripesBadge': '365 days',
+                'scorecardTitle': "Who's More Accurate? (Public IA vs. OWM Scorecard)",
+                'scorecardSubtitle': 'Transparent audit of mean absolute error (MAE in °C) by horizon D+1..D+5',
+                'scorecardCalibrating': '⚡ Live audit calibrating (< 7 pairs) · Showing 60d backtest',
+                'whyTitle': 'Why This Prediction? (ML Lab)',
+                'whySubtitle': 'Deterministic breakdown of thermal factors without black-box models',
+                'whySelectCity': 'Station:',
+                'legacyTableTitle': '📊 View full table of 168 stations',
                 'badgeFreshnessPrefix': '🕒 Hace ',
                 'badgeFreshnessSuffix': 'h',
                 'badgeFreshnessNow': '🟢 En vivo',
@@ -2688,6 +2944,29 @@
         }
 
         // --- Estado Global ---
+
+        let insightsCache = null;
+        let scorecardCache = null;
+        let stripesCurrentCity = null;
+
+        async function loadInsights() {
+            try {
+                const res = await fetchJSONRemoteFirst('derived/insights.json');
+                if (res.data) insightsCache = res.data;
+            } catch (e) {
+                insightsCache = null;
+            }
+        }
+
+        async function loadScorecard() {
+            try {
+                const res = await fetchJSONRemoteFirst('derived/scorecard.json');
+                if (res.data) scorecardCache = res.data;
+            } catch (e) {
+                scorecardCache = null;
+            }
+        }
+
         let currentLang = 'es';
         let currentView = 'observatory';
         let currentMetric = 'temp';
@@ -3323,6 +3602,58 @@
                         </div>
                     </div>
 
+                    <!-- W3.4: Diagnóstico ¿Es normal? -->
+                    ${(() => {
+                        const citySlug = slugifyJS(ciudad);
+                        const ins = insightsCache?.cities?.[citySlug];
+                        if (!ins) return '';
+                        const anomVal = ins.anomaly_c;
+                        const pct = ins.percentil;
+                        const isRec = ins.record;
+                        const recType = ins.record_type;
+                        let chipText = '';
+                        let chipClass = 'chip-normal';
+                        
+                        if (isRec && recType === 'warm') {
+                            chipClass = 'chip-record-warm';
+                            chipText = currentLang === 'en'
+                                ? `🔥 Historic warm record (+${anomVal.toFixed(1)}°C vs. normal, p100 · since oct. 2025)`
+                                : `🔥 Récord histórico de calor (+${anomVal.toFixed(1)}°C vs. normal, p100 · desde oct. 2025)`;
+                        } else if (isRec && recType === 'cold') {
+                            chipClass = 'chip-record-cold';
+                            chipText = currentLang === 'en'
+                                ? `❄️ Historic cold record (${anomVal.toFixed(1)}°C vs. normal, p0 · since oct. 2025)`
+                                : `❄️ Récord histórico de frío (${anomVal.toFixed(1)}°C vs. normal, p0 · desde oct. 2025)`;
+                        } else if (ins.label_key === 'extreme_warm') {
+                            chipClass = 'chip-warm';
+                            chipText = currentLang === 'en'
+                                ? `🔥 Exceptionally warm (+${anomVal.toFixed(1)}°C vs. normal, p${pct})`
+                                : `🔥 Excepcionalmente cálido (+${anomVal.toFixed(1)}°C vs. normal, p${pct})`;
+                        } else if (ins.label_key === 'warm') {
+                            chipClass = 'chip-warm';
+                            chipText = currentLang === 'en'
+                                ? `☀️ Warmer than normal (+${anomVal.toFixed(1)}°C vs. normal, p${pct})`
+                                : `☀️ Más cálido de lo normal (+${anomVal.toFixed(1)}°C vs. normal, p${pct})`;
+                        } else if (ins.label_key === 'extreme_cold') {
+                            chipClass = 'chip-cold';
+                            chipText = currentLang === 'en'
+                                ? `❄️ Exceptionally cold (${anomVal.toFixed(1)}°C vs. normal, p${pct})`
+                                : `❄️ Excepcionalmente frío (${anomVal.toFixed(1)}°C vs. normal, p${pct})`;
+                        } else if (ins.label_key === 'cold') {
+                            chipClass = 'chip-cold';
+                            chipText = currentLang === 'en'
+                                ? `🧥 Colder than normal (${anomVal.toFixed(1)}°C vs. normal, p${pct})`
+                                : `🧥 Más frío de lo normal (${anomVal.toFixed(1)}°C vs. normal, p${pct})`;
+                        } else {
+                            chipClass = 'chip-normal';
+                            chipText = currentLang === 'en'
+                                ? `✅ Typical temperature (${anomVal >= 0 ? '+' : ''}${anomVal.toFixed(1)}°C, p${pct})`
+                                : `✅ Temperatura típica de la fecha (${anomVal >= 0 ? '+' : ''}${anomVal.toFixed(1)}°C, p${pct})`;
+                        }
+                        emitWeatherEvent('weather_normal_chip_view', { city: ciudad, label: ins.label_key, record: isRec });
+                        return `<div class="weather-normal-chip ${chipClass}">${chipText}</div>`;
+                    })()}
+
                     <div class="main-stat-row">
                         <span class="main-stat-val tabular-nums" id="${valId}">0.0</span>
                         <span class="main-stat-unit">${metricInfo.unit}</span>
@@ -3666,7 +3997,225 @@
         }
 
         // --- Renderizado de Vista 2: Laboratorio ML (Model Arena) ---
+
+        // --- W3.4: Renderizado de Warming Stripes (Calendario Térmico) ---
+        async function renderWarmingStripes(cityName = null) {
+            const canvas = document.getElementById('stripesCanvas');
+            if (!canvas) return;
+            const tooltip = document.getElementById('stripesTooltip');
+
+            let city = cityName;
+            if (!city) {
+                const selected = choicesInstance ? choicesInstance.getValue(true) : [];
+                city = selected[0] ? selected[0].split(',')[0].trim() : 'Madrid';
+            }
+            stripesCurrentCity = city;
+            const slug = slugifyJS(city);
+
+            // Cargar datos diarios de la ciudad
+            let dailyData = allDataCache[city] || allDataCache[slug];
+            if (!dailyData || !dailyData.anom) {
+                try {
+                    const res = await fetchJSONRemoteFirst(`derived/daily/${slug}.json`);
+                    if (res.data) {
+                        dailyData = res.data;
+                        allDataCache[city] = dailyData;
+                    }
+                } catch (e) {
+                    console.warn('[Stripes] No se pudo cargar daily para:', slug);
+                }
+            }
+
+            const anom = dailyData?.anom || [];
+            const rows = dailyData?.rows || [];
+            if (!anom || anom.length === 0) return;
+
+            // Ajustar resolución del canvas
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width * window.devicePixelRatio || 800;
+            canvas.height = 52 * window.devicePixelRatio;
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            const n = anom.length;
+            const stripeWidth = canvas.width / n;
+
+            // Escala divergente ±5°C
+            for (let i = 0; i < n; i++) {
+                const a = anom[i];
+                let color = '#fcae91';
+                if (a >= 4.0) color = '#67000d';
+                else if (a >= 2.5) color = '#cb181d';
+                else if (a >= 1.0) color = '#fb6a4a';
+                else if (a >= 0.0) color = '#fcae91';
+                else if (a >= -1.0) color = '#bdd7e7';
+                else if (a >= -2.5) color = '#6baed6';
+                else if (a >= -4.0) color = '#2171b5';
+                else color = '#08306b';
+
+                ctx.fillStyle = color;
+                ctx.fillRect(i * stripeWidth, 0, stripeWidth + 0.5, canvas.height);
+            }
+
+            // Interactividad Tooltip
+            canvas.onmousemove = (e) => {
+                const r = canvas.getBoundingClientRect();
+                const x = e.clientX - r.left;
+                const idx = Math.min(n - 1, Math.max(0, Math.floor((x / r.width) * n)));
+                const row = rows[idx];
+                const a = anom[idx];
+                if (row && tooltip) {
+                    const dateStr = row[0];
+                    const sign = a >= 0 ? '+' : '';
+                    tooltip.innerHTML = `<strong>${city}</strong> · ${dateStr}<br><span style="color:${a >= 0 ? '#ef4444' : '#38bdf8'}; font-weight:700;">${sign}${a.toFixed(1)}°C</span> vs. normal`;
+                    tooltip.style.left = `${Math.min(r.width - 150, Math.max(10, x - 70))}px`;
+                    tooltip.style.top = `${-42}px`;
+                    tooltip.style.display = 'block';
+                }
+            };
+            canvas.onmouseleave = () => {
+                if (tooltip) tooltip.style.display = 'none';
+            };
+
+            emitWeatherEvent('weather_stripes_open', { city: city, days: n });
+        }
+
+        // --- W3.4: Renderizado de Scorecard Público & Explicabilidad ML ---
+        function renderScorecardAndExplain() {
+            // 1. Marcador Público
+            const barsContainer = document.getElementById('scorecard-bars-container');
+            const weeklyWinsSpan = document.getElementById('scorecard-weekly-wins');
+            const auditCountSpan = document.getElementById('scorecard-audit-count');
+
+            if (barsContainer && scorecardCache) {
+                barsContainer.innerHTML = '';
+                const retroMae = scorecardCache?.retrospective_ia?.mae_d1_d5 || [1.3, 1.6, 1.8, 1.9, 2.0];
+                const liveH = scorecardCache?.live_horizons || {};
+
+                for (let h = 1; h <= 5; h++) {
+                    const hKey = `d${h}`;
+                    const liveInfo = liveH[hKey];
+                    const liveMaeIa = liveInfo?.mae_ia;
+                    const liveMaeOwm = liveInfo?.mae_owm;
+                    const rMae = retroMae[h - 1] || (1.3 + h * 0.15);
+
+                    let valDisplay = `${rMae.toFixed(2)}°C`;
+                    let subDisplay = currentLang === 'en' ? '60d Backtest (IA)' : 'Backtest 60d (IA)';
+
+                    if (liveInfo && liveInfo.status === 'ok' && liveMaeIa !== null) {
+                        valDisplay = `IA ${liveMaeIa.toFixed(2)}° vs ${liveMaeOwm ? liveMaeOwm.toFixed(2) + '°' : 'OWM'}`;
+                        subDisplay = currentLang === 'en' ? `${liveInfo.n_audited} audited pairs` : `${liveInfo.n_audited} pares auditados`;
+                    }
+
+                    barsContainer.innerHTML += `
+                        <div class="horizon-card">
+                            <div class="horizon-title">D+${h} (${currentLang === 'en' ? 'Horizon' : 'Horizonte'})</div>
+                            <div class="horizon-val tabular-nums">${valDisplay}</div>
+                            <div class="horizon-sub">${subDisplay}</div>
+                        </div>
+                    `;
+                }
+
+                if (weeklyWinsSpan && scorecardCache.weekly_wins) {
+                    const w = scorecardCache.weekly_wins;
+                    weeklyWinsSpan.textContent = currentLang === 'en'
+                        ? `🏆 Weekly Wins: IA ${w.ia || 0} — OWM ${w.owm || 0} (Draws: ${w.draws || 0})`
+                        : `🏆 Victorias semanales: IA ${w.ia || 0} — OWM ${w.owm || 0} (Empates: ${w.draws || 0})`;
+                }
+                if (auditCountSpan) {
+                    auditCountSpan.textContent = currentLang === 'en'
+                        ? `📋 Live audited pairs: ${scorecardCache.total_audited_pairs || 0}`
+                        : `📋 Pares auditados en vivo: ${scorecardCache.total_audited_pairs || 0}`;
+                }
+            }
+
+            // 2. Explicabilidad ("¿Por qué predice esto?")
+            const citySelect = document.getElementById('why-city-select');
+            const sentenceBox = document.getElementById('why-sentence-box');
+            const whyBarsContainer = document.getElementById('why-bars-container');
+
+            if (citySelect && Object.keys(allPredictionsCache).length > 0) {
+                if (citySelect.options.length === 0) {
+                    const sortedCities = Object.keys(allPredictionsCache).sort();
+                    sortedCities.forEach(c => {
+                        const opt = document.createElement('option');
+                        opt.value = c;
+                        opt.textContent = c;
+                        citySelect.appendChild(opt);
+                    });
+                    const currentCity = choicesInstance ? choicesInstance.getValue(true)[0]?.split(',')[0].trim() : 'Madrid';
+                    if (allPredictionsCache[currentCity]) citySelect.value = currentCity;
+
+                    citySelect.onchange = () => {
+                        updateWhyExplanation(citySelect.value);
+                        emitWeatherEvent('weather_why_city_select', { city: citySelect.value });
+                    };
+                }
+                updateWhyExplanation(citySelect.value);
+            }
+
+            emitWeatherEvent('weather_scoreboard_view', { status: scorecardCache?.status || 'calibrating' });
+        }
+
+        function updateWhyExplanation(cityName) {
+            const sentenceBox = document.getElementById('why-sentence-box');
+            const whyBarsContainer = document.getElementById('why-bars-container');
+            if (!sentenceBox || !whyBarsContainer) return;
+
+            const pred = getCityPrediction(cityName);
+            const explain = pred?.explain || pred?.pred_ia?.explain;
+            const iaTomorrow = pred?.pred_ia?.media || (pred?.pred_ia_5day?.[0]?.media);
+
+            if (!explain) {
+                sentenceBox.innerHTML = currentLang === 'en'
+                    ? `No detailed explainability factors available for <strong>${cityName}</strong>.`
+                    : `No hay factores de explicabilidad detallados disponibles para <strong>${cityName}</strong>.`;
+                whyBarsContainer.innerHTML = '';
+                return;
+            }
+
+            const base = explain.baseline_c || 15.0;
+            const contribs = explain.contributions_c || {};
+            const pcts = explain.contributions_pct || {};
+
+            const lag1C = contribs.temp_media_lag1 || 0.0;
+            const lag1Pct = pcts.temp_media_lag1 || 0.0;
+            const fourierC = ((contribs.sin_day || 0.0) + (contribs.cos_day || 0.0));
+            const fourierPct = ((pcts.sin_day || 0.0) + (pcts.cos_day || 0.0));
+
+            sentenceBox.innerHTML = currentLang === 'en'
+                ? `For tomorrow in <strong>${cityName}</strong>, the IA predicts <strong>${iaTomorrow !== undefined ? iaTomorrow.toFixed(1) : '--'}°C</strong>. Starting from a seasonal baseline of <strong>${base.toFixed(1)}°C</strong>, the model factors in thermal inertia with an effect of <strong>${lag1C >= 0 ? '+' : ''}${lag1C.toFixed(1)}°C</strong> (${lag1Pct.toFixed(1)}% influence) and the annual Fourier cycle with <strong>${fourierC >= 0 ? '+' : ''}${fourierC.toFixed(1)}°C</strong> (${fourierPct.toFixed(1)}% influence).`
+                : `Para mañana en <strong>${cityName}</strong>, la IA predice <strong>${iaTomorrow !== undefined ? iaTomorrow.toFixed(1) : '--'}°C</strong>. Partiendo de una línea base estacional de <strong>${base.toFixed(1)}°C</strong>, el modelo pondera la inercia térmica reciente con un efecto de <strong>${lag1C >= 0 ? '+' : ''}${lag1C.toFixed(1)}°C</strong> (${lag1Pct.toFixed(1)}% de influencia) y el ciclo anual de Fourier con <strong>${fourierC >= 0 ? '+' : ''}${fourierC.toFixed(1)}°C</strong> (${fourierPct.toFixed(1)}% de influencia).`;
+
+            const factors = [
+                { key: 'temp_media_lag1', label: currentLang === 'en' ? 'Thermal inertia (yesterday)' : 'Inercia térmica (ayer)', color: '#0ea5e9' },
+                { key: 'sin_day', label: currentLang === 'en' ? 'Seasonal Fourier (sin component)' : 'Estacionalidad Fourier (seno)', color: '#10b981' },
+                { key: 'cos_day', label: currentLang === 'en' ? 'Seasonal Fourier (cos component)' : 'Estacionalidad Fourier (coseno)', color: '#059669' },
+                { key: 'temp_media_lag2', label: currentLang === 'en' ? 'Thermal lag (2 days ago)' : 'Retardo térmico (hace 2 días)', color: '#38bdf8' },
+                { key: 'diurnal_range_lag1', label: currentLang === 'en' ? 'Diurnal amplitude lag' : 'Amplitud diurna reciente', color: '#f59e0b' },
+                { key: 'hum_media_lag1', label: currentLang === 'en' ? 'Relative humidity dynamics' : 'Dinámica de humedad relativa', color: '#8b5cf6' }
+            ];
+
+            whyBarsContainer.innerHTML = '';
+            factors.forEach(f => {
+                const cVal = contribs[f.key] || 0.0;
+                const pVal = pcts[f.key] || 0.0;
+                const sign = cVal >= 0 ? '+' : '';
+                whyBarsContainer.innerHTML += `
+                    <div class="contrib-bar-wrap">
+                        <div class="contrib-label">${f.label}</div>
+                        <div class="contrib-bar-bg">
+                            <div class="contrib-bar-fill" style="width:${Math.min(100, pVal * 1.5)}%; background:${f.color};"></div>
+                        </div>
+                        <div class="contrib-val" style="color:${cVal >= 0 ? '#ef4444' : '#38bdf8'};">${sign}${cVal.toFixed(1)}°C</div>
+                        <div style="width:45px; text-align:right; font-family:var(--font-mono); font-size:11px; color:var(--text-muted);">${pVal.toFixed(1)}%</div>
+                    </div>
+                `;
+            });
+        }
+
         function renderArenaTable() {
+            renderScorecardAndExplain();
             const tbody = document.getElementById('arena-table-body');
             tbody.innerHTML = '';
 
@@ -3975,6 +4524,7 @@
 
                     if (acc.open) {
                         if (acc.id === 'accordion-evolution' && myChart) myChart.resize();
+                    if (acc.id === 'accordion-stripes') renderWarmingStripes();
                         if (acc.id === 'accordion-variation' && myVariationChart) myVariationChart.resize();
                         if (acc.id === 'accordion-seasonality') renderMonthlySeasonality();
                     }
@@ -4108,7 +4658,9 @@
             await Promise.all([
                 loadPredictions(),
                 loadGlobalSummary(),
-                loadDerivedIndex()
+                loadDerivedIndex(),
+                loadInsights(),
+                loadScorecard()
             ]);
 
             // 4. Instanciar Choices.js

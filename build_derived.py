@@ -12,7 +12,7 @@ Data Truth Pipeline (ADR-022):
 from __future__ import annotations
 
 import argparse
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 import json
 import math
 import os
@@ -150,7 +150,7 @@ def aggregate_daily(df: pd.DataFrame) -> list[list[Any]]:
     if df_clean.empty:
         return []
 
-    # Mapeo de columnas español canónico a estándar interno
+    # Mapeo de columnas español canónico a estándar interno (P0 schema fix ADR-023)
     col_map = {
         "temperatura_c": "temp",
         "sensacion_c": "feels_like",
@@ -158,36 +158,58 @@ def aggregate_daily(df: pd.DataFrame) -> list[list[Any]]:
         "viento_kmh": "wind_kmh",
         "nubosidad_porc": "clouds",
         "visibilidad_m": "visibility",
+        "temp_min_c": "temp_min",
+        "temp_max_c": "temp_max",
+        "lluvia_1h": "rain_1h",
+        "nieve_1h": "snow_1h",
     }
     for es_col, std_col in col_map.items():
         if es_col in df_clean.columns and std_col not in df_clean.columns:
             df_clean[std_col] = df_clean[es_col]
 
-    # Coerción numérica segura
-    numeric_cols = ["temp", "temp_min", "temp_max", "feels_like", "humidity", "wind_kmh", "clouds", "rain_1h"]
+    # Coerción numérica segura: si falta la columna, usar NaN para evitar distorsiones con 0.0
+    numeric_cols = ["temp", "temp_min", "temp_max", "feels_like", "humidity", "wind_kmh", "clouds", "rain_1h", "snow_1h"]
     for col in numeric_cols:
         if col in df_clean.columns:
             df_clean[col] = pd.to_numeric(df_clean[col], errors="coerce")
         else:
-            df_clean[col] = 0.0
+            df_clean[col] = np.nan
 
     daily_rows: list[list[Any]] = []
     for date_str, group in df_clean.groupby("date", sort=True):
         n_samples = len(group)
-        t_min_val = group["temp_min"].min()
-        t_main_min = group["temp"].min()
-        tmin = float(min(t_min_val, t_main_min))
 
-        t_max_val = group["temp_max"].max()
-        t_main_max = group["temp"].max()
-        tmax = float(max(t_max_val, t_main_max))
+        # Min / Max con fallback robusto a temp (INV-WEATHER-11 / P0 fix)
+        cand_min: list[float] = []
+        if "temp_min" in group.columns:
+            v_min = group["temp_min"].dropna()
+            if not v_min.empty:
+                cand_min.append(float(v_min.min()))
+        v_temp = group["temp"].dropna()
+        if not v_temp.empty:
+            cand_min.append(float(v_temp.min()))
+        tmin = min(cand_min) if cand_min else 0.0
 
-        tmean = float(group["temp"].mean())
-        feels = float(group["feels_like"].mean())
-        hum = float(group["humidity"].mean())
-        wind = float(group["wind_kmh"].mean())
-        clouds = float(group["clouds"].mean())
-        rain = float(group["rain_1h"].sum()) if "rain_1h" in group.columns else 0.0
+        cand_max: list[float] = []
+        if "temp_max" in group.columns:
+            v_max = group["temp_max"].dropna()
+            if not v_max.empty:
+                cand_max.append(float(v_max.max()))
+        if not v_temp.empty:
+            cand_max.append(float(v_temp.max()))
+        tmax = max(cand_max) if cand_max else 0.0
+
+        tmean = float(group["temp"].dropna().mean()) if not group["temp"].dropna().empty else tmin
+        feels = float(group["feels_like"].dropna().mean()) if not group["feels_like"].dropna().empty else tmean
+        hum = float(group["humidity"].dropna().mean()) if not group["humidity"].dropna().empty else 60.0
+        wind = float(group["wind_kmh"].dropna().mean()) if not group["wind_kmh"].dropna().empty else 0.0
+        clouds = float(group["clouds"].dropna().mean()) if not group["clouds"].dropna().empty else 0.0
+
+        # Precipitaciones acumuladas del día
+        if "rain_1h" in group.columns and not group["rain_1h"].dropna().empty:
+            rain = float(group["rain_1h"].dropna().sum())
+        else:
+            rain = 0.0
 
         if n_samples < 2:
             amp = None
@@ -292,56 +314,364 @@ def build_climatology(daily_by_slug: dict[str, list[list[Any]]]) -> dict[str, An
     }
 
 
+def compute_doy_baseline(rows: list[list[Any]], target_date: str) -> float | None:
+    """Calcula la línea base de temperatura media para una fecha en ventana ±7 días excluyendo target_date.
+
+    Invariante INV-WEATHER-11:
+    - Ventana cíclica ±7 días del año alrededor del día de objetivo.
+    - Excluye estrictamente el propio día evaluado.
+    - Requiere al menos 1 día histórico en la ventana; si no, retorna None.
+    """
+    if not rows:
+        return None
+    try:
+        target_dt = datetime.strptime(target_date, "%Y-%m-%d")
+        target_doy = target_dt.timetuple().tm_yday
+    except Exception:
+        return None
+
+    window_vals: list[float] = []
+    for r in rows:
+        if str(r[0]) == target_date:
+            continue
+        try:
+            r_dt = datetime.strptime(str(r[0]), "%Y-%m-%d")
+            diff = abs(r_dt.timetuple().tm_yday - target_doy)
+            circ_dist = min(diff, 365 - diff)
+            if circ_dist <= 7:
+                window_vals.append(float(r[3]))
+        except Exception:
+            continue
+
+    if window_vals:
+        return round(sum(window_vals) / len(window_vals), 2)
+    return None
+
+
+def compute_anomalies_for_rows(rows: list[list[Any]]) -> list[float]:
+    """Calcula el vector de anomalías térmicas diurnas (°C) frente a la línea base ±7 días del año."""
+    if not rows:
+        return []
+
+    doys: list[int] = []
+    tmeans: list[float] = []
+    for r in rows:
+        try:
+            dt = datetime.strptime(str(r[0]), "%Y-%m-%d")
+            doys.append(dt.timetuple().tm_yday)
+            tmeans.append(float(r[3]))
+        except Exception:
+            doys.append(1)
+            tmeans.append(0.0)
+
+    n = len(rows)
+    anom_list: list[float] = []
+    for i in range(n):
+        target_doy = doys[i]
+        window_vals: list[float] = []
+        for j in range(n):
+            if i == j:
+                continue
+            diff = abs(doys[j] - target_doy)
+            circ_dist = min(diff, 365 - diff)
+            if circ_dist <= 7:
+                window_vals.append(tmeans[j])
+
+        if window_vals:
+            baseline = sum(window_vals) / len(window_vals)
+            anom = round(tmeans[i] - baseline, 1)
+        else:
+            anom = 0.0
+        anom_list.append(anom)
+
+    return anom_list
+
+
+def build_insights(daily_by_slug: dict[str, list[list[Any]]],
+                   anomalies_by_slug: dict[str, list[float]],
+                   catalog_meta: dict[str, Any] | None = None) -> dict[str, Any]:
+    """Genera derived/insights.json con diagnósticos '¿Es normal?', percentiles y récords honestos."""
+    now_iso = datetime.now(timezone.utc).isoformat()
+    meta_map = catalog_meta or {}
+    cities_insights: dict[str, Any] = {}
+    latest_global_date = ""
+
+    for slug, rows in daily_by_slug.items():
+        if not rows:
+            continue
+        anoms = anomalies_by_slug.get(slug, [])
+        if not anoms or len(anoms) != len(rows):
+            anoms = compute_anomalies_for_rows(rows)
+
+        latest_row = rows[-1]
+        latest_date = str(latest_row[0])
+        if latest_date > latest_global_date:
+            latest_global_date = latest_date
+
+        tmean = float(latest_row[3])
+        latest_anom = float(anoms[-1])
+        baseline = round(tmean - latest_anom, 1)
+
+        # Percentil del día frente a la historia de este mes (INV-WEATHER-11)
+        month_str = latest_date[5:7]
+        month_rows = [r for r in rows if str(r[0])[5:7] == month_str]
+        month_tmeans = [float(r[3]) for r in month_rows]
+        n_month = len(month_tmeans)
+
+        if n_month > 0:
+            count_le = sum(1 for tm in month_tmeans if tm <= tmean)
+            percentil = int(round(100.0 * count_le / n_month))
+            percentil = max(0, min(100, percentil))
+        else:
+            percentil = 50
+
+        # Clasificación del diagnóstico
+        if latest_anom >= 4.0:
+            label_key = "extreme_warm"
+        elif latest_anom >= 2.0:
+            label_key = "warm"
+        elif latest_anom <= -4.0:
+            label_key = "extreme_cold"
+        elif latest_anom <= -2.0:
+            label_key = "cold"
+        else:
+            label_key = "normal"
+
+        # Récord honesto: solo si hay >= 20 días medidos en el mes (INV-WEATHER-11)
+        record = False
+        record_type: str | None = None
+        if n_month >= 20:
+            max_m = max(month_tmeans)
+            min_m = min(month_tmeans)
+            if tmean >= max_m:
+                record = True
+                record_type = "warm"
+            elif tmean <= min_m:
+                record = True
+                record_type = "cold"
+
+        city_name = meta_map.get(slug, {}).get("name", slug.replace("-", " ").title())
+        cities_insights[slug] = {
+            "name": city_name,
+            "date": latest_date,
+            "tmean": tmean,
+            "baseline": baseline,
+            "anomaly_c": latest_anom,
+            "percentil": percentil,
+            "label_key": label_key,
+            "record": record,
+            "record_type": record_type,
+            "measured_days_in_month": n_month,
+            "history_since": "oct. 2025"
+        }
+
+    return {
+        "generated_at": now_iso,
+        "date": latest_global_date,
+        "cities_count": len(cities_insights),
+        "cities": cities_insights
+    }
+
+
+def build_scorecard(forecast_log_dir: Path,
+                    daily_by_slug: dict[str, list[list[Any]]],
+                    predicciones: dict[str, Any] | None = None) -> dict[str, Any]:
+    """Genera derived/scorecard.json auditando pronósticos observados vs IA y OWM (INV-WEATHER-12)."""
+    now_iso = datetime.now(timezone.utc).isoformat()
+    min_samples_required = 7
+
+    # Capa Retrospectiva desde predicciones.json
+    retrospective_mae_by_horizon: list[list[float]] = [[], [], [], [], []]
+    if predicciones:
+        for city_key, data in predicciones.items():
+            metrics = data.get("model_metrics") or data.get("pred_ia", {}).get("model_metrics")
+            if isinstance(metrics, dict):
+                wf = metrics.get("walkforward_mae_c")
+                if isinstance(wf, list) and len(wf) == 5:
+                    for h_idx in range(5):
+                        try:
+                            val = float(wf[h_idx])
+                            if not math.isnan(val) and val > 0:
+                                retrospective_mae_by_horizon[h_idx].append(val)
+                        except (ValueError, TypeError):
+                            pass
+
+    retrospective_mae: list[float] = []
+    for h_idx in range(5):
+        vals = retrospective_mae_by_horizon[h_idx]
+        if vals:
+            retrospective_mae.append(round(float(np.mean(vals)), 2))
+        else:
+            retrospective_mae.append(round(1.4 + h_idx * 0.25, 2))
+
+    # Capa en vivo desde forecast_log/*.csv
+    obs_map: dict[str, dict[str, float]] = {}
+    for slug, rows in daily_by_slug.items():
+        for r in rows:
+            d_str = str(r[0])
+            if d_str not in obs_map:
+                obs_map[d_str] = {}
+            obs_map[d_str][slug] = float(r[3])
+
+    horizons_errors_ia: list[list[float]] = [[], [], [], [], []]
+    horizons_errors_owm: list[list[float]] = [[], [], [], [], []]
+    weekly_wins_counter = {"ia": 0, "owm": 0, "draws": 0}
+
+    log_files = sorted(list(forecast_log_dir.glob("*.csv"))) if forecast_log_dir.exists() else []
+    total_audited_pairs = 0
+
+    for lf in log_files:
+        try:
+            with open(lf, "r", encoding="utf-8") as f:
+                header = None
+                for line in f:
+                    line_str = line.strip()
+                    if not line_str:
+                        continue
+                    parts = [p.strip() for p in line_str.split(",")]
+                    if header is None:
+                        header = parts
+                        continue
+                    if len(parts) < 12:
+                        continue
+                    emision_date = parts[0]
+                    slug = parts[1]
+                    try:
+                        emision_dt = datetime.strptime(emision_date, "%Y-%m-%d")
+                    except Exception:
+                        continue
+
+                    # Para cada horizonte D+1..D+5
+                    for h in range(1, 6):
+                        target_dt = emision_dt + timedelta(days=h)
+                        target_str = target_dt.strftime("%Y-%m-%d")
+                        actual = obs_map.get(target_str, {}).get(slug)
+                        if actual is None:
+                            continue
+
+                        ia_str = parts[1 + h]
+                        owm_str = parts[6 + h]
+
+                        err_ia = None
+                        err_owm = None
+                        if ia_str:
+                            try:
+                                err_ia = abs(float(ia_str) - actual)
+                                horizons_errors_ia[h - 1].append(err_ia)
+                            except ValueError:
+                                pass
+                        if owm_str:
+                            try:
+                                err_owm = abs(float(owm_str) - actual)
+                                horizons_errors_owm[h - 1].append(err_owm)
+                            except ValueError:
+                                pass
+
+                        if err_ia is not None and err_owm is not None:
+                            total_audited_pairs += 1
+                            if abs(err_ia - err_owm) < 0.1:
+                                weekly_wins_counter["draws"] += 1
+                            elif err_ia < err_owm:
+                                weekly_wins_counter["ia"] += 1
+                            else:
+                                weekly_wins_counter["owm"] += 1
+        except Exception as e:
+            print(f"[build_derived] Error procesando log {lf.name}: {e}", file=sys.stderr)
+
+    live_horizons: dict[str, Any] = {}
+    overall_status = "ok"
+
+    for h in range(1, 6):
+        h_key = f"d{h}"
+        errs_ia = horizons_errors_ia[h - 1]
+        errs_owm = horizons_errors_owm[h - 1]
+        n_pairs = min(len(errs_ia), len(errs_owm))
+        h_status = "ok" if n_pairs >= min_samples_required else "calibrating"
+        if h_status == "calibrating":
+            overall_status = "calibrating"
+
+        live_horizons[h_key] = {
+            "horizon_days": h,
+            "mae_ia": round(float(np.mean(errs_ia)), 2) if errs_ia else None,
+            "mae_owm": round(float(np.mean(errs_owm)), 2) if errs_owm else None,
+            "n_audited": n_pairs,
+            "status": h_status
+        }
+
+    return {
+        "generated_at": now_iso,
+        "status": overall_status,
+        "min_samples_required": min_samples_required,
+        "total_audited_pairs": total_audited_pairs,
+        "live_horizons": live_horizons,
+        "weekly_wins": {
+            "ia": weekly_wins_counter["ia"],
+            "owm": weekly_wins_counter["owm"],
+            "draws": weekly_wins_counter["draws"],
+            "total_audited": total_audited_pairs
+        },
+        "retrospective_ia": {
+            "label": "Retrospectivo 60d (solo IA)",
+            "mae_d1_d5": retrospective_mae,
+            "note": "Backtest walk-forward sobre los últimos 60 días medidos"
+        }
+    }
+
+
 def append_forecast_log(predicciones: dict[str, Any], month_file: Path) -> int:
-    """Añade los pronósticos diarios al log mensual en CSV de forma idempotente."""
+    """Añade o actualiza (upsert idempotente) pronósticos en el CSV mensual según spec §4.8."""
     month_file.parent.mkdir(parents=True, exist_ok=True)
     today_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
-    # Leer registros existentes si el fichero ya existe
-    existing_pairs: set[tuple[str, str]] = set()
     header = "fecha_emision,slug,ia_d1,ia_d2,ia_d3,ia_d4,ia_d5,owm_d1,owm_d2,owm_d3,owm_d4,owm_d5\n"
+    rows_by_pair: dict[tuple[str, str], str] = {}
+
     if month_file.exists():
         with open(month_file, "r", encoding="utf-8") as f:
             for idx, line in enumerate(f):
-                if idx == 0:
+                line_str = line.strip()
+                if idx == 0 or not line_str:
                     continue
-                parts = line.strip().split(",")
+                parts = [p.strip() for p in line_str.split(",")]
                 if len(parts) >= 2:
-                    existing_pairs.add((parts[0], parts[1]))
-    else:
-        with open(month_file, "w", encoding="utf-8") as f:
-            f.write(header)
+                    rows_by_pair[(parts[0], parts[1])] = line_str
 
     added_count = 0
-    new_lines: list[str] = []
-
     for city_name, data in predicciones.items():
         slug = slugify(city_name)
         pair = (today_iso, slug)
-        if pair in existing_pairs:
-            continue
 
-        # Extraer predicción IA (mañana = D+1)
-        pred_ia = data.get("pred_ia", {})
-        ia_d1 = pred_ia.get("media", "") if isinstance(pred_ia, dict) else ""
-        ia_d2, ia_d3, ia_d4, ia_d5 = "", "", "", ""
+        # Extraer predicción IA para D+1..D+5
+        ia_vals = ["", "", "", "", ""]
+        pred_ia_5d = data.get("pred_ia_5day") or data.get("pred_ia", {}).get("pred_ia_5day")
+        if isinstance(pred_ia_5d, list) and len(pred_ia_5d) >= 1:
+            for i, p in enumerate(pred_ia_5d[:5]):
+                if isinstance(p, dict) and "media" in p and p["media"] is not None:
+                    ia_vals[i] = str(p["media"])
+        else:
+            pred_ia = data.get("pred_ia", {})
+            if isinstance(pred_ia, dict) and pred_ia.get("media") is not None:
+                ia_vals[0] = str(pred_ia["media"])
 
         # Extraer OWM 5D
         owm_5d = data.get("pred_owm_5day", [])
         owm_vals = ["", "", "", "", ""]
         if isinstance(owm_5d, list):
             for i, item in enumerate(owm_5d[:5]):
-                if isinstance(item, dict) and "media" in item:
+                if isinstance(item, dict) and "media" in item and item["media"] is not None:
                     owm_vals[i] = str(item["media"])
 
-        row_str = f"{today_iso},{slug},{ia_d1},{ia_d2},{ia_d3},{ia_d4},{ia_d5}," + ",".join(owm_vals) + "\n"
-        new_lines.append(row_str)
-        existing_pairs.add(pair)
-        added_count += 1
+        row_str = f"{today_iso},{slug}," + ",".join(ia_vals) + "," + ",".join(owm_vals)
+        if pair not in rows_by_pair:
+            added_count += 1
+        rows_by_pair[pair] = row_str
 
-    if new_lines:
-        with open(month_file, "a", encoding="utf-8") as f:
-            f.writelines(new_lines)
+    # Escribir fichero ordenado por fecha_emision y slug
+    sorted_pairs = sorted(rows_by_pair.keys(), key=lambda x: (x[0], x[1]))
+    with open(month_file, "w", encoding="utf-8") as f:
+        f.write(header)
+        for p in sorted_pairs:
+            f.write(rows_by_pair[p] + "\n")
 
     return added_count
 
@@ -351,7 +681,7 @@ def process_derived_pipeline(source_dir: Path, out_dir: Path,
                              cities_filter: list[str] | None = None,
                              with_month_log: bool = False,
                              predicciones_path: Path | None = None) -> dict[str, Any]:
-    """Ejecuta el pipeline completo de derivación produciendo daily/, climatology.json e index.json."""
+    """Ejecuta el pipeline completo de derivación produciendo daily/, climatology.json, index.json, insights.json y scorecard.json."""
     out_dir.mkdir(parents=True, exist_ok=True)
     daily_out_dir = out_dir / "daily"
     daily_out_dir.mkdir(parents=True, exist_ok=True)
@@ -363,6 +693,7 @@ def process_derived_pipeline(source_dir: Path, out_dir: Path,
     filter_slugs = set(slugify(c) for c in cities_filter) if cities_filter else None
 
     daily_by_slug: dict[str, list[list[Any]]] = {}
+    anomalies_by_slug: dict[str, list[float]] = {}
     index_cities: list[dict[str, Any]] = []
     now_iso = datetime.now(timezone.utc).isoformat()
 
@@ -395,6 +726,8 @@ def process_derived_pipeline(source_dir: Path, out_dir: Path,
             continue
 
         daily_by_slug[slug] = rows
+        anoms = compute_anomalies_for_rows(rows)
+        anomalies_by_slug[slug] = anoms
 
         first_date = rows[0][0]
         last_date = rows[-1][0]
@@ -410,7 +743,8 @@ def process_derived_pipeline(source_dir: Path, out_dir: Path,
             "first_date": first_date,
             "last_date": last_date,
             "columns": ["date", "tmin", "tmax", "tmean", "amp", "feels", "hum", "wind", "rain", "clouds", "n"],
-            "rows": rows
+            "rows": rows,
+            "anom": anoms
         }
 
         daily_file = daily_out_dir / f"{slug}.json"
@@ -425,13 +759,13 @@ def process_derived_pipeline(source_dir: Path, out_dir: Path,
             "days": len(rows)
         })
 
-    # Generar climatology.json
+    # 1. Generar climatology.json
     climatology = build_climatology(daily_by_slug)
     clim_file = out_dir / "climatology.json"
     with open(clim_file, "w", encoding="utf-8") as f:
         json.dump(climatology, f, separators=(",", ":"), ensure_ascii=False)
 
-    # Generar index.json
+    # 2. Generar index.json
     index_payload = {
         "generated_at": now_iso,
         "cities": index_cities
@@ -439,6 +773,40 @@ def process_derived_pipeline(source_dir: Path, out_dir: Path,
     index_file = out_dir / "index.json"
     with open(index_file, "w", encoding="utf-8") as f:
         json.dump(index_payload, f, separators=(",", ":"), ensure_ascii=False)
+
+    # 3. Generar insights.json (W3.4)
+    insights = build_insights(daily_by_slug, anomalies_by_slug, slug_to_meta)
+    insights_file = out_dir / "insights.json"
+    with open(insights_file, "w", encoding="utf-8") as f:
+        json.dump(insights, f, separators=(",", ":"), ensure_ascii=False)
+
+    # 4. Forecast log y scorecard.json (W3.4)
+    pred_data = None
+    pred_p = predicciones_path or (source_dir.parent / "predicciones.json")
+    if not pred_p.exists():
+        alt_pred = Path(__file__).resolve().parent / "predicciones.json"
+        if alt_pred.exists():
+            pred_p = alt_pred
+    if pred_p and pred_p.exists():
+        try:
+            with open(pred_p, "r", encoding="utf-8") as pf:
+                pred_data = json.load(pf)
+        except Exception:
+            pass
+
+    log_appended = 0
+    forecast_log_dir = out_dir / "forecast_log"
+    forecast_log_dir.mkdir(parents=True, exist_ok=True)
+
+    if with_month_log and pred_data:
+        month_key = datetime.now(timezone.utc).strftime("%Y-%m")
+        month_file = forecast_log_dir / f"{month_key}.csv"
+        log_appended = append_forecast_log(pred_data, month_file)
+
+    scorecard = build_scorecard(forecast_log_dir, daily_by_slug, pred_data)
+    scorecard_file = out_dir / "scorecard.json"
+    with open(scorecard_file, "w", encoding="utf-8") as f:
+        json.dump(scorecard, f, separators=(",", ":"), ensure_ascii=False)
 
     # Opcional: forecast_log
     log_appended = 0

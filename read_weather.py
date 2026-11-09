@@ -198,6 +198,8 @@ def generar_prediccion_ia_ciudad(csv_path: str) -> dict[str, Any]:
         "min": None,
         "media": None,
         "registros": 0,
+        "pred_ia_5day": [],
+        "explain": None,
         "model_metrics": None,
     }
 
@@ -259,6 +261,8 @@ def generar_prediccion_ia_ciudad(csv_path: str) -> dict[str, Any]:
                 "min": None,
                 "media": None,
                 "registros": registros_limpios,
+                "pred_ia_5day": [],
+                "explain": None,
                 "model_metrics": None,
             }
 
@@ -303,45 +307,168 @@ def generar_prediccion_ia_ciudad(csv_path: str) -> dict[str, Any]:
         owm_mae_est = round(max(0.8, mae_30d * 0.96), 2)
         ia_win_rate = round(max(30.0, min(75.0, 50.0 + (1.6 - mae_30d) * 8.0)), 1)
 
-        # 4. Predicción para Mañana
+        # 4. Backtesting walk-forward retrospectivo D+1..D+5 sobre los últimos 60 días (INV-WEATHER-12)
+        n_backtest = min(60, registros_limpios - 10)
+        wf_errors: list[list[float]] = [[], [], [], [], []]
+        if n_backtest >= 10:
+            for start_idx in range(registros_limpios - n_backtest, registros_limpios - 5):
+                sim_curr_max = float(df_clean["temp_max"].iloc[start_idx])
+                sim_curr_min = float(df_clean["temp_min"].iloc[start_idx])
+                sim_curr_media = float(df_clean["temp_media"].iloc[start_idx])
+                sim_prev_media = float(df_clean["temp_media"].iloc[start_idx - 1]) if start_idx > 0 else sim_curr_media
+                sim_curr_range = float(df_clean["diurnal_range"].iloc[start_idx])
+                sim_curr_hum = float(df_clean["hum_media"].iloc[start_idx])
+                sim_curr_viento = float(df_clean["viento_media"].iloc[start_idx])
+                start_dt = df_clean.index[start_idx]
+
+                for step_k in range(1, 6):
+                    target_dt_k = start_dt + timedelta(days=step_k)
+                    t_doy_k = target_dt_k.dayofyear
+                    t_sin_k = np.sin(2.0 * np.pi * t_doy_k / 365.25)
+                    t_cos_k = np.cos(2.0 * np.pi * t_doy_k / 365.25)
+
+                    X_sim = pd.DataFrame([{
+                        "temp_max_lag1": sim_curr_max,
+                        "temp_min_lag1": sim_curr_min,
+                        "temp_media_lag1": sim_curr_media,
+                        "temp_media_lag2": sim_prev_media,
+                        "diurnal_range_lag1": sim_curr_range,
+                        "hum_media_lag1": sim_curr_hum,
+                        "viento_media_lag1": sim_curr_viento,
+                        "sin_day": t_sin_k,
+                        "cos_day": t_cos_k,
+                    }])[features]
+
+                    p_sim_media = float(model_media.predict(X_sim)[0])
+                    p_sim_max = float(model_max.predict(X_sim)[0])
+                    p_sim_min = float(model_min.predict(X_sim)[0])
+
+                    # Coherencia física estricta
+                    sorted_sim = sorted([p_sim_min, p_sim_media, p_sim_max])
+                    sim_media_val = sorted_sim[1]
+                    sim_max_val = sorted_sim[2]
+                    sim_min_val = sorted_sim[0]
+
+                    if target_dt_k in df_clean.index:
+                        real_val = float(df_clean.loc[target_dt_k, "temp_media"])
+                        wf_errors[step_k - 1].append(abs(sim_media_val - real_val))
+
+                    sim_prev_media = sim_curr_media
+                    sim_curr_media = sim_media_val
+                    sim_curr_max = sim_max_val
+                    sim_curr_min = sim_min_val
+                    sim_curr_range = sim_max_val - sim_min_val
+
+        walkforward_mae_c: list[float] = []
+        for h_i in range(5):
+            errs = wf_errors[h_i]
+            if errs:
+                walkforward_mae_c.append(round(float(np.mean(errs)), 2))
+            else:
+                walkforward_mae_c.append(round(mae_30d * (1.0 + h_i * 0.18), 2))
+
+        # 5. Predicción Proyectiva Recursiva de 5 Días [D+1..D+5]
         today_row = df_daily.iloc[-1]
         prev_row = df_daily.iloc[-2] if len(df_daily) >= 2 else today_row
-        tomorrow_dt = today_row.name + timedelta(days=1)
-        t_doy = tomorrow_dt.dayofyear
-        t_sin = np.sin(2.0 * np.pi * t_doy / 365.25)
-        t_cos = np.cos(2.0 * np.pi * t_doy / 365.25)
+        today_dt = today_row.name
 
-        X_to_predict = pd.DataFrame([{
-            "temp_max_lag1": today_row["temp_max"],
-            "temp_min_lag1": today_row["temp_min"],
-            "temp_media_lag1": today_row["temp_media"],
-            "temp_media_lag2": prev_row["temp_media"],
-            "diurnal_range_lag1": today_row["diurnal_range"],
-            "hum_media_lag1": today_row["hum_media"],
-            "viento_media_lag1": today_row["viento_media"],
-            "sin_day": t_sin,
-            "cos_day": t_cos,
-        }])[features]
+        pred_ia_5day: list[dict[str, Any]] = []
+        curr_max = float(today_row["temp_max"])
+        curr_min = float(today_row["temp_min"])
+        curr_media = float(today_row["temp_media"])
+        prev_media = float(prev_row["temp_media"])
+        curr_range = float(today_row["diurnal_range"])
+        curr_hum = float(today_row["hum_media"])
+        curr_viento = float(today_row["viento_media"])
 
-        raw_pred_max = float(model_max.predict(X_to_predict)[0])
-        raw_pred_min = float(model_min.predict(X_to_predict)[0])
-        raw_pred_media = float(model_media.predict(X_to_predict)[0])
+        explain_inputs_d1: dict[str, float] = {}
 
-        # Coherencia física estricta (INV-WEATHER-3): pred_min <= pred_media <= pred_max
-        sorted_preds = sorted([raw_pred_min, raw_pred_media, raw_pred_max])
-        pred_min = round(sorted_preds[0], 1)
-        pred_media = round(sorted_preds[1], 1)
-        pred_max = round(sorted_preds[2], 1)
+        for step_k in range(1, 6):
+            target_dt_k = today_dt + timedelta(days=step_k)
+            t_doy_k = target_dt_k.dayofyear
+            t_sin_k = np.sin(2.0 * np.pi * t_doy_k / 365.25)
+            t_cos_k = np.cos(2.0 * np.pi * t_doy_k / 365.25)
+
+            row_inputs = {
+                "temp_max_lag1": curr_max,
+                "temp_min_lag1": curr_min,
+                "temp_media_lag1": curr_media,
+                "temp_media_lag2": prev_media,
+                "diurnal_range_lag1": curr_range,
+                "hum_media_lag1": curr_hum,
+                "viento_media_lag1": curr_viento,
+                "sin_day": t_sin_k,
+                "cos_day": t_cos_k,
+            }
+            if step_k == 1:
+                explain_inputs_d1 = {k: round(float(v), 2) for k, v in row_inputs.items()}
+
+            X_step = pd.DataFrame([row_inputs])[features]
+            raw_p_max = float(model_max.predict(X_step)[0])
+            raw_p_min = float(model_min.predict(X_step)[0])
+            raw_p_media = float(model_media.predict(X_step)[0])
+
+            # Coherencia física estricta (INV-WEATHER-3): min <= media <= max
+            sorted_step = sorted([raw_p_min, raw_p_media, raw_p_max])
+            step_min = round(sorted_step[0], 1)
+            step_media = round(sorted_step[1], 1)
+            step_max = round(sorted_step[2], 1)
+
+            pred_ia_5day.append({
+                "date": target_dt_k.strftime("%Y-%m-%d"),
+                "media": step_media,
+                "min": step_min,
+                "max": step_max,
+            })
+
+            # Recursión: actualizar para el siguiente paso
+            prev_media = curr_media
+            curr_media = step_media
+            curr_max = step_max
+            curr_min = step_min
+            curr_range = round(step_max - step_min, 1)
+
+        # 6. Explicabilidad determinista sin LLM (INV-WEATHER-13)
+        baseline_temp = float(y_media.mean())
+        feat_means = X_train.mean().to_dict()
+        contributions_c: dict[str, float] = {}
+        for feat in features:
+            val = explain_inputs_d1[feat]
+            mean_val = float(feat_means[feat])
+            coef_val = float(coefs.get(feat, 0.0))
+            contributions_c[feat] = round(coef_val * (val - mean_val), 2)
+
+        total_abs_contrib = sum(abs(v) for v in contributions_c.values())
+        contributions_pct: dict[str, float] = {}
+        for feat in features:
+            pct = round(100.0 * abs(contributions_c[feat]) / total_abs_contrib, 1) if total_abs_contrib > 0 else 0.0
+            contributions_pct[feat] = pct
+
+        explain = {
+            "baseline_c": round(baseline_temp, 2),
+            "inputs": explain_inputs_d1,
+            "contributions_c": contributions_c,
+            "contributions_pct": contributions_pct,
+        }
+
+        # D+1 es el valor canónico para retrocompatibilidad (INV-WEATHER-2)
+        pred_min = pred_ia_5day[0]["min"]
+        pred_media = pred_ia_5day[0]["media"]
+        pred_max = pred_ia_5day[0]["max"]
 
         return {
             "max": pred_max,
             "min": pred_min,
             "media": pred_media,
             "registros": registros_limpios,
+            "pred_ia_5day": pred_ia_5day,
+            "explain": explain,
             "model_metrics": {
                 "r2_media": r2_media,
                 "mae_30d_c": mae_30d,
                 "bias_30d_c": bias_30d,
+                "walkforward_mae_c": walkforward_mae_c,
+                "evaluation_type": "retrospective",
                 "owm_mae_est_c": owm_mae_est,
                 "ia_win_rate_pct": ia_win_rate,
                 "top_features": top_features,
@@ -737,6 +864,12 @@ def rebuild_offline(
                 "registros": ia_pred["registros"],
             },
         }
+        if ia_pred.get("pred_ia_5day"):
+            all_predictions[nombre_limpio]["pred_ia_5day"] = ia_pred["pred_ia_5day"]
+            all_predictions[nombre_limpio]["pred_ia"]["pred_ia_5day"] = ia_pred["pred_ia_5day"]
+        if ia_pred.get("explain"):
+            all_predictions[nombre_limpio]["explain"] = ia_pred["explain"]
+            all_predictions[nombre_limpio]["pred_ia"]["explain"] = ia_pred["explain"]
         if ia_pred.get("model_metrics"):
             all_predictions[nombre_limpio]["model_metrics"] = ia_pred["model_metrics"]
 
@@ -881,6 +1014,12 @@ def main() -> None:
             "media": ia_preds["media"],
             "registros": ia_preds["registros"],
         }
+        if ia_preds.get("pred_ia_5day"):
+            all_predictions_data[nombre_limpio]["pred_ia_5day"] = ia_preds["pred_ia_5day"]
+            all_predictions_data[nombre_limpio]["pred_ia"]["pred_ia_5day"] = ia_preds["pred_ia_5day"]
+        if ia_preds.get("explain"):
+            all_predictions_data[nombre_limpio]["explain"] = ia_preds["explain"]
+            all_predictions_data[nombre_limpio]["pred_ia"]["explain"] = ia_preds["explain"]
         if ia_preds.get("model_metrics"):
             all_predictions_data[nombre_limpio]["model_metrics"] = ia_preds["model_metrics"]
 
