@@ -1,5 +1,5 @@
-// sw.js - Service Worker para Weather Intelligence v3.3 (INV-WEATHER-10)
-const CACHE_NAME = 'weather-v3.3.0';
+// sw.js - Service Worker para Weather Intelligence v3.3.1 (INV-WEATHER-10)
+const CACHE_NAME = 'weather-v3.3.1';
 const SHELL_ASSETS = [
     './',
     'index.html',

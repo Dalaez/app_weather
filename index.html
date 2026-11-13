@@ -464,23 +464,101 @@
             display: block;
         }
 
-        /* Controls Bar (Observatory) */
+        /* Controls Bar (Observatory) — W3.6-UX Workbench Layout */
         .controls-bar {
             background: var(--bg-surface);
             border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md);
-            padding: 12px 16px;
+            border-radius: var(--radius-lg);
+            padding: 14px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .controls-cities-row {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 100%;
+        }
+
+        .cities-header-bar {
             display: flex;
             align-items: center;
-            gap: 16px;
+            justify-content: space-between;
+            gap: 10px;
             flex-wrap: wrap;
-            margin-bottom: 20px;
+        }
+
+        .cities-meta-actions {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .city-count-badge {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 9px;
+            border-radius: 9999px;
+            background: var(--bg-canvas);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+        }
+
+        .city-count-badge.is-full {
+            background: rgba(14, 165, 233, 0.14);
+            border-color: rgba(14, 165, 233, 0.45);
+            color: var(--accent-primary);
+        }
+
+        .btn-clear-cities {
+            padding: 3px 10px;
+            font-size: 11px;
+            font-weight: 600;
+            font-family: var(--font-sans);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-elevated);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.16s ease;
+        }
+
+        .btn-clear-cities:hover:not(:disabled) {
+            background: rgba(239, 68, 68, 0.14);
+            border-color: rgba(239, 68, 68, 0.5);
+            color: var(--status-danger);
+        }
+
+        .btn-clear-cities:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .controls-filters-row {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px 18px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-subtle);
+            width: 100%;
         }
 
         .control-group {
             display: flex;
             align-items: center;
             gap: 8px;
+        }
+
+        .controls-filters-row .control-group {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 6px;
         }
 
         .control-label {
@@ -490,10 +568,17 @@
             white-space: nowrap;
         }
 
+        .controls-filters-row .control-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
         #city-select-container {
-            min-width: 280px;
-            max-width: 380px;
-            flex-grow: 1;
+            width: 100%;
+            min-width: 0;
+            max-width: none;
         }
 
         .choices {
@@ -502,18 +587,98 @@
         }
 
         .choices__inner {
+            background: var(--bg-canvas);
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            padding: 5px 10px;
+            min-height: 42px;
+            color: var(--text-primary);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 4px;
+            transition: border-color 0.18s ease, box-shadow 0.18s ease;
+        }
+
+        .choices.is-focused .choices__inner,
+        #city-select-container:focus-within .choices__inner {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.16);
+        }
+
+        #city-select-container .choices__input,
+        #city-select-container .choices__input--cloned {
+            background-color: transparent !important;
+            color: var(--text-primary) !important;
+            font-family: var(--font-sans);
+            font-size: 13px;
+            margin: 2px 0 !important;
+            padding: 4px 6px !important;
+            min-width: 180px;
+        }
+
+        #city-select-container .choices__input::placeholder {
+            color: var(--text-secondary);
+            opacity: 0.85;
+        }
+
+        #city-select-container .choices__list--multiple {
+            display: inline-flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px;
+        }
+
+        #city-select-container .choices__list--multiple .choices__item {
             background: var(--bg-elevated);
             border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-sm);
-            padding: 4px 8px;
-            min-height: 38px;
+            border-left: 3px solid var(--chip-accent, var(--accent-primary));
             color: var(--text-primary);
+            border-radius: 7px;
+            padding: 4px 8px 4px 10px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin: 0;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+            transition: border-color 0.16s ease;
+        }
+
+        #city-select-container .choices[data-type*="select-multiple"] .choices__button {
+            border-left: 1px solid var(--border-subtle);
+            margin: 0 0 0 4px;
+            padding-left: 6px;
+            width: 18px;
+            height: 16px;
+            opacity: 0.72;
+            background-size: 8px;
+            transition: opacity 0.15s ease;
+        }
+
+        body.light-mode #city-select-container .choices[data-type*="select-multiple"] .choices__button {
+            filter: invert(1) brightness(0.35);
+        }
+
+        #city-select-container .choices[data-type*="select-multiple"] .choices__button:hover {
+            opacity: 1;
         }
 
         .choices__list--dropdown {
             background: var(--bg-surface);
             border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
             color: var(--text-primary);
+            margin-top: 4px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+            z-index: 60;
+        }
+
+        .choices__list--dropdown .choices__item--selectable,
+        .choices__list--dropdown .choices__notice {
+            color: var(--text-secondary);
+            background: var(--bg-surface);
         }
 
         .choices__item--choice {
@@ -528,10 +693,12 @@
         /* Segmented selector groups */
         .seg-group {
             display: inline-flex;
-            background: var(--bg-elevated);
+            flex-wrap: wrap;
+            background: var(--bg-canvas);
             border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-sm);
-            overflow: hidden;
+            border-radius: 9px;
+            padding: 3px;
+            gap: 2px;
         }
 
         .seg-group input {
@@ -545,43 +712,40 @@
             font-weight: 600;
             color: var(--text-secondary);
             cursor: pointer;
-            border-right: 1px solid var(--border-subtle);
-            transition: all 0.15s ease;
+            border: none;
+            border-radius: 6px;
+            transition: all 0.16s ease;
             background: transparent;
-            border-top: none;
-            border-bottom: none;
-            border-left: none;
             font-family: var(--font-sans);
             display: inline-flex;
             align-items: center;
             gap: 4px;
-        }
-
-        .seg-group label:last-child,
-        .seg-btn:last-child {
-            border-right: none;
+            white-space: nowrap;
         }
 
         .seg-group input:checked + label,
         .seg-btn.active {
             background: var(--accent-primary);
             color: #ffffff;
+            box-shadow: 0 2px 8px rgba(14, 165, 233, 0.28);
         }
 
-        .seg-group label:hover:not(.active),
-        .seg-btn:hover:not(.active) {
+        .seg-group input:not(:checked) + label:hover,
+        .seg-btn:not(.active):hover {
             color: var(--text-primary);
+            background: rgba(148, 163, 184, 0.12);
         }
 
         #custom-range-container {
             display: none;
             align-items: center;
             gap: 8px;
-            background: var(--bg-elevated);
+            background: var(--bg-canvas);
             border: 1px solid var(--border-subtle);
-            padding: 4px 10px;
+            padding: 5px 10px;
             border-radius: var(--radius-sm);
             font-size: 12px;
+            align-self: flex-end;
         }
 
         #custom-range-container input[type="date"] {
@@ -1615,6 +1779,21 @@
                 left: 16px;
                 max-width: none;
             }
+            .controls-filters-row {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+            .controls-filters-row .control-group {
+                width: 100%;
+            }
+            .seg-group {
+                width: 100%;
+            }
+            .card-mini-btn.card-remove-btn {
+                min-width: 30px;
+                min-height: 28px;
+            }
         }
 
 
@@ -2067,6 +2246,63 @@
             border-color: var(--accent-primary);
             color: var(--accent-primary);
         }
+        .card-mini-btn.card-remove-btn {
+            margin-left: 3px;
+            font-weight: 700;
+        }
+        .card-mini-btn.card-remove-btn:hover,
+        .card-mini-btn.card-remove-btn:focus-visible {
+            background: rgba(239, 68, 68, 0.14);
+            border-color: rgba(239, 68, 68, 0.55);
+            color: var(--status-danger);
+            outline: none;
+        }
+        .kpi-empty-state {
+            grid-column: 1 / -1;
+            background: var(--bg-surface);
+            border: 1px dashed var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 36px 24px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .kpi-empty-icon {
+            font-size: 32px;
+            line-height: 1;
+        }
+        .kpi-empty-title {
+            font-family: var(--font-display);
+            font-size: 16px;
+            font-weight: 700;
+            margin: 0;
+            color: var(--text-primary);
+        }
+        .kpi-empty-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin: 0 0 6px 0;
+            max-width: 440px;
+        }
+        .btn-empty-load {
+            background: var(--accent-primary);
+            color: #ffffff;
+            border: none;
+            border-radius: var(--radius-sm);
+            padding: 9px 16px;
+            font-family: var(--font-sans);
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(14, 165, 233, 0.28);
+            transition: opacity 0.16s ease, transform 0.16s ease;
+        }
+        .btn-empty-load:hover {
+            opacity: 0.92;
+            transform: translateY(-1px);
+        }
         .w36-modal-backdrop {
             position: fixed;
             inset: 0;
@@ -2279,64 +2515,74 @@
         <section id="view-observatory" class="view-panel active">
             <!-- Controls Bar -->
             <div class="controls-bar" id="controls-container">
-                <div id="city-select-container">
-                    <label for="city-select" class="control-label" data-i18n-key="citySelectLabel">Selecciona hasta 5 ciudades:</label>
-                    <select id="city-select" multiple></select>
-                </div>
-
-                <!-- 7 Metrics Selector -->
-                <div class="control-group" id="metric-select">
-                    <span class="control-label" data-i18n-key="metricLegend">Métrica:</span>
-                    <div class="seg-group">
-                        <input type="radio" name="metric" value="temp" id="m-temp" checked>
-                        <label for="m-temp" data-i18n-key="metricTemp">Temperatura</label>
-                        <input type="radio" name="metric" value="feels_like" id="m-feels">
-                        <label for="m-feels" data-i18n-key="metricFeels">Sensación</label>
-                        <input type="radio" name="metric" value="humidity" id="m-hum">
-                        <label for="m-hum" data-i18n-key="metricHum">Humedad</label>
-                        <input type="radio" name="metric" value="wind" id="m-wind">
-                        <label for="m-wind" data-i18n-key="metricWind">Viento</label>
-                        <input type="radio" name="metric" value="clouds" id="m-clouds">
-                        <label for="m-clouds" data-i18n-key="metricClouds">Nubosidad</label>
-                        <input type="radio" name="metric" value="rain" id="m-rain">
-                        <label for="m-rain" data-i18n-key="metricRain">Lluvia</label>
-                        <input type="radio" name="metric" value="visibility" id="m-vis">
-                        <label for="m-vis" data-i18n-key="metricVisibility">Visibilidad</label>
+                <div class="controls-cities-row">
+                    <div class="cities-header-bar">
+                        <label for="city-select" class="control-label" data-i18n-key="citySelectLabel">📍 Ciudades comparadas (máx. 5):</label>
+                        <div class="cities-meta-actions">
+                            <span id="city-count-badge" class="city-count-badge tabular-nums">0/5</span>
+                            <button type="button" id="btn-clear-cities" class="btn-clear-cities" data-i18n-key="btnClearCities" disabled>✕ Limpiar</button>
+                        </div>
+                    </div>
+                    <div id="city-select-container">
+                        <select id="city-select" multiple></select>
                     </div>
                 </div>
 
-                <!-- Time Range Selector -->
-                <div class="control-group" id="time-range-select">
-                    <span class="control-label" data-i18n-key="rangeLegend">Rango:</span>
-                    <div class="seg-group">
-                        <button class="seg-btn" data-range="7" data-i18n-key="range7D">7D</button>
-                        <button class="seg-btn active" data-range="30" data-i18n-key="range30D">30D</button>
-                        <button class="seg-btn" data-range="90" data-i18n-key="range90D">90D</button>
-                        <button class="seg-btn" data-range="365" data-i18n-key="range1Y">1A</button>
-                        <button class="seg-btn" data-range="all" data-i18n-key="rangeAll">Todo</button>
-                        <button class="seg-btn" data-range="custom" data-i18n-key="rangeCustom">Personalizado</button>
+                <div class="controls-filters-row">
+                    <!-- 7 Metrics Selector -->
+                    <div class="control-group" id="metric-select">
+                        <span class="control-label" data-i18n-key="metricLegend">Métrica:</span>
+                        <div class="seg-group">
+                            <input type="radio" name="metric" value="temp" id="m-temp" checked>
+                            <label for="m-temp" data-i18n-key="metricTemp">Temperatura</label>
+                            <input type="radio" name="metric" value="feels_like" id="m-feels">
+                            <label for="m-feels" data-i18n-key="metricFeels">Sensación</label>
+                            <input type="radio" name="metric" value="humidity" id="m-hum">
+                            <label for="m-hum" data-i18n-key="metricHum">Humedad</label>
+                            <input type="radio" name="metric" value="wind" id="m-wind">
+                            <label for="m-wind" data-i18n-key="metricWind">Viento</label>
+                            <input type="radio" name="metric" value="clouds" id="m-clouds">
+                            <label for="m-clouds" data-i18n-key="metricClouds">Nubosidad</label>
+                            <input type="radio" name="metric" value="rain" id="m-rain">
+                            <label for="m-rain" data-i18n-key="metricRain">Lluvia</label>
+                            <input type="radio" name="metric" value="visibility" id="m-vis">
+                            <label for="m-vis" data-i18n-key="metricVisibility">Visibilidad</label>
+                        </div>
                     </div>
-                </div>
 
-                <div id="custom-range-container">
-                    <span data-i18n-key="customRangeFrom">Desde:</span>
-                    <input type="date" id="start-date">
-                    <span data-i18n-key="customRangeTo">Hasta:</span>
-                    <input type="date" id="end-date">
-                </div>
+                    <!-- Time Range Selector -->
+                    <div class="control-group" id="time-range-select">
+                        <span class="control-label" data-i18n-key="rangeLegend">Rango:</span>
+                        <div class="seg-group">
+                            <button class="seg-btn" data-range="7" data-i18n-key="range7D">7D</button>
+                            <button class="seg-btn active" data-range="30" data-i18n-key="range30D">30D</button>
+                            <button class="seg-btn" data-range="90" data-i18n-key="range90D">90D</button>
+                            <button class="seg-btn" data-range="365" data-i18n-key="range1Y">1A</button>
+                            <button class="seg-btn" data-range="all" data-i18n-key="rangeAll">Todo</button>
+                            <button class="seg-btn" data-range="custom" data-i18n-key="rangeCustom">Personalizado</button>
+                        </div>
+                    </div>
 
-                <!-- Hour Filter -->
-                <div class="control-group" id="hour-filter-select">
-                    <span class="control-label" data-i18n-key="hourLegend">Hora:</span>
-                    <div class="seg-group">
-                        <input type="radio" name="hour-filter" value="all" id="h-all" checked>
-                        <label for="h-all" data-i18n-key="hourAll">Todas</label>
-                        <input type="radio" name="hour-filter" value="6" id="h-6">
-                        <label for="h-6" data-i18n-key="hourMorning">06h</label>
-                        <input type="radio" name="hour-filter" value="14" id="h-14">
-                        <label for="h-14" data-i18n-key="hourAfternoon">14h</label>
-                        <input type="radio" name="hour-filter" value="22" id="h-22">
-                        <label for="h-22" data-i18n-key="hourNight">22h</label>
+                    <div id="custom-range-container">
+                        <span data-i18n-key="customRangeFrom">Desde:</span>
+                        <input type="date" id="start-date">
+                        <span data-i18n-key="customRangeTo">Hasta:</span>
+                        <input type="date" id="end-date">
+                    </div>
+
+                    <!-- Hour Filter -->
+                    <div class="control-group" id="hour-filter-select">
+                        <span class="control-label" data-i18n-key="hourLegend">Hora:</span>
+                        <div class="seg-group">
+                            <input type="radio" name="hour-filter" value="all" id="h-all" checked>
+                            <label for="h-all" data-i18n-key="hourAll">Todas</label>
+                            <input type="radio" name="hour-filter" value="6" id="h-6">
+                            <label for="h-6" data-i18n-key="hourMorning">06h</label>
+                            <input type="radio" name="hour-filter" value="14" id="h-14">
+                            <label for="h-14" data-i18n-key="hourAfternoon">14h</label>
+                            <input type="radio" name="hour-filter" value="22" id="h-22">
+                            <label for="h-22" data-i18n-key="hourNight">22h</label>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2829,7 +3075,7 @@
                 'tickerColdest': 'Récord Frío',
                 'tickerAnomaly': 'Anomalía 30d',
                 'tickerComfort': 'Mejor Confort',
-                'citySelectLabel': 'Selecciona hasta 5 ciudades:',
+                'citySelectLabel': '📍 Ciudades comparadas (máx. 5):',
                 'metricLegend': 'Métrica:',
                 'metricTemp': 'Temperatura',
                 'metricFeels': 'Sensación',
@@ -2992,7 +3238,15 @@
                 'embedLangLabel': 'Idioma',
                 'embedCopyBtn': '📋 Copiar código HTML',
                 'embedCopiedToast': '📋 Código HTML embebible copiado al portapapeles.',
-                'embedCloseBtn': 'Cerrar'
+                'embedCloseBtn': 'Cerrar',
+                'btnClearCities': '✕ Limpiar',
+                'btnRemoveCity': 'Quitar ciudad de la comparativa',
+                'cityRemoved': 'retirada de la comparativa.',
+                'citiesCleared': 'Selección vaciada.',
+                'kpiEmptyTitle': 'Sin ciudades seleccionadas',
+                'btnLoadSpainPreset': '⚡ Cargar Capitales ES',
+                'choicesMaxItems': 'Máximo 5 ciudades seleccionadas',
+                'choicesNoResults': 'Sin estaciones coincidentes'
             },
             'en': {
                 'mainTitle': 'Weather Intelligence v3.3',
@@ -3067,7 +3321,7 @@
                 'tickerColdest': 'Coldest',
                 'tickerAnomaly': '30d Anomaly',
                 'tickerComfort': 'Best Comfort',
-                'citySelectLabel': 'Select up to 5 cities:',
+                'citySelectLabel': '📍 Compared cities (max 5):',
                 'metricLegend': 'Metric:',
                 'metricTemp': 'Temperature',
                 'metricFeels': 'Feels Like',
@@ -3230,7 +3484,15 @@
                 'embedLangLabel': 'Language',
                 'embedCopyBtn': '📋 Copy HTML snippet',
                 'embedCopiedToast': '📋 Embed HTML snippet copied to clipboard.',
-                'embedCloseBtn': 'Close'
+                'embedCloseBtn': 'Close',
+                'btnClearCities': '✕ Clear',
+                'btnRemoveCity': 'Remove city from comparison',
+                'cityRemoved': 'removed from comparison.',
+                'citiesCleared': 'Selection cleared.',
+                'kpiEmptyTitle': 'No cities selected',
+                'btnLoadSpainPreset': '⚡ Load Spain Capitals',
+                'choicesMaxItems': 'Maximum 5 cities selected',
+                'choicesNoResults': 'No matching stations'
             }
         };
 
@@ -3383,6 +3645,38 @@
             return resolved;
         }
 
+        let lastCityDataMap = {};
+
+        function updateCitySelectionMeta(selectedValues = null) {
+            const vals = Array.isArray(selectedValues)
+                ? selectedValues
+                : (choicesInstance ? choicesInstance.getValue(true) : []);
+            const count = vals.length;
+            const badge = document.getElementById('city-count-badge');
+            if (badge) {
+                badge.textContent = `${count}/5`;
+                badge.classList.toggle('is-full', count >= 5);
+            }
+            const clearBtn = document.getElementById('btn-clear-cities');
+            if (clearBtn) {
+                clearBtn.disabled = count === 0;
+            }
+        }
+
+        function syncChoiceChipAccents(selectedValues = null) {
+            const container = document.getElementById('city-select-container');
+            if (!container) return;
+            const vals = Array.isArray(selectedValues)
+                ? selectedValues
+                : (choicesInstance ? choicesInstance.getValue(true) : []);
+            const chips = container.querySelectorAll('.choices__list--multiple .choices__item');
+            chips.forEach((chip, idx) => {
+                const val = chip.getAttribute('data-value');
+                const palIdx = val && vals.indexOf(val) >= 0 ? vals.indexOf(val) : idx;
+                chip.style.setProperty('--chip-accent', COLOR_PALETTE[palIdx % COLOR_PALETTE.length]);
+            });
+        }
+
         function selectCitiesInChoices(cityList) {
             if (!choicesInstance) return;
             const resolved = resolveChoiceValuesForCities(cityList);
@@ -3394,8 +3688,72 @@
             } finally {
                 isProgrammaticSelection = false;
             }
+            updateCitySelectionMeta(resolved);
+            syncChoiceChipAccents(resolved);
             updateDashboard();
             fitMapToSelected(resolved.map(t => t.split(',')[0].trim()));
+        }
+
+        async function removeCityFromSelection(fullVal, cityLabel = '') {
+            if (!choicesInstance) return;
+            const label = cityLabel || (typeof fullVal === 'string' ? fullVal.split(',')[0].trim() : String(fullVal));
+            let remaining = [];
+            isProgrammaticSelection = true;
+            try {
+                if (typeof choicesInstance.removeActiveItemsByValue === 'function') {
+                    choicesInstance.removeActiveItemsByValue(fullVal);
+                }
+                const after = choicesInstance.getValue(true);
+                if (after.includes(fullVal) || after.some(v => v.split(',')[0].trim() === label)) {
+                    remaining = after.filter(v => v !== fullVal && v.split(',')[0].trim() !== label);
+                    choicesInstance.removeActiveItems();
+                    if (remaining.length > 0) choicesInstance.setChoiceByValue(remaining);
+                } else {
+                    remaining = after;
+                }
+            } finally {
+                isProgrammaticSelection = false;
+            }
+
+            document.querySelectorAll('.preset-pill').forEach(btn => btn.classList.remove('active'));
+            updateCitySelectionMeta(remaining);
+            syncChoiceChipAccents(remaining);
+            await updateDashboard();
+
+            if (remaining.length > 0) {
+                fitMapToSelected(remaining.map(t => t.split(',')[0].trim()));
+            } else if (map) {
+                map.flyTo([25, 0], 2, { duration: 0.7 });
+            }
+
+            const t = translations[currentLang] || translations.es;
+            showToast(`🗑️ ${label} ${t.cityRemoved || 'retirada.'}`);
+            emitWeatherEvent('weather_city_remove', {
+                city: label,
+                source: 'super_card',
+                remaining: remaining.length
+            });
+        }
+
+        async function clearAllCities() {
+            if (!choicesInstance) return;
+            const prevCount = choicesInstance.getValue(true).length;
+            if (prevCount === 0) return;
+            isProgrammaticSelection = true;
+            try {
+                choicesInstance.removeActiveItems();
+            } finally {
+                isProgrammaticSelection = false;
+            }
+            document.querySelectorAll('.preset-pill').forEach(btn => btn.classList.remove('active'));
+            updateCitySelectionMeta([]);
+            syncChoiceChipAccents([]);
+            await updateDashboard();
+            if (map) map.flyTo([25, 0], 2, { duration: 0.7 });
+
+            const t = translations[currentLang] || translations.es;
+            showToast(`🧹 ${t.citiesCleared || 'Selección vaciada.'}`);
+            emitWeatherEvent('weather_city_clear', { previous_count: prevCount });
         }
 
         function updateFreshnessBadge(isoDate) {
@@ -4100,16 +4458,26 @@
             const metricMap = getMetricMap();
             const metricInfo = metricMap[metric] || metricMap['temp'];
 
-            let cityValues = explicitSelectedValues;
-            if (!cityValues || cityValues.length === 0) {
+            let cityValues = Array.isArray(explicitSelectedValues) ? explicitSelectedValues : null;
+            if (cityValues === null) {
                 cityValues = choicesInstance ? choicesInstance.getValue(true) : [];
-            }
-            if ((!cityValues || cityValues.length === 0) && cityDataMap && Object.keys(cityDataMap).length > 0) {
-                cityValues = Object.keys(cityDataMap);
+                if (cityValues.length === 0 && cityDataMap && Object.keys(cityDataMap).length > 0) {
+                    cityValues = Object.keys(cityDataMap);
+                }
             }
 
             if (!cityValues || cityValues.length === 0) {
-                container.innerHTML = `<p style="grid-column:1/-1; text-align:center; color:var(--text-secondary);">${translations[currentLang].kpiEmpty}</p>`;
+                const t = translations[currentLang] || translations.es;
+                const emptyBox = document.createElement('div');
+                emptyBox.className = 'kpi-empty-state';
+                emptyBox.innerHTML = `
+                    <div class="kpi-empty-icon">🌍</div>
+                    <h4 class="kpi-empty-title" data-i18n-key="kpiEmptyTitle">${t.kpiEmptyTitle}</h4>
+                    <p class="kpi-empty-desc" data-i18n-key="kpiEmpty">${t.kpiEmpty}</p>
+                    <button type="button" id="btn-empty-load-spain" class="btn-empty-load" data-i18n-key="btnLoadSpainPreset">${t.btnLoadSpainPreset}</button>
+                `;
+                container.appendChild(emptyBox);
+                emptyBox.querySelector('#btn-empty-load-spain')?.addEventListener('click', () => applyPreset('spain'));
                 return;
             }
 
@@ -4139,7 +4507,25 @@
                 }
 
                 if (!latest) {
-                    container.innerHTML += `<div class="super-card"><h3>${ciudad}</h3><p>${translations[currentLang].kpiNoData}</p></div>`;
+                    const fallbackCard = document.createElement('div');
+                    fallbackCard.className = 'super-card';
+                    fallbackCard.style.borderLeftColor = COLOR_PALETTE[idx % COLOR_PALETTE.length];
+                    fallbackCard.innerHTML = `
+                        <div class="card-top">
+                            <div><h4 class="card-city">${ciudad}</h4></div>
+                            <div class="card-top-right">
+                                <div class="card-actions-inline">
+                                    <button type="button" class="card-mini-btn card-remove-btn" title="${translations[currentLang].btnRemoveCity}" aria-label="${translations[currentLang].btnRemoveCity} (${ciudad})">✕</button>
+                                </div>
+                            </div>
+                        </div>
+                        <p style="color:var(--text-secondary); font-size:13px;">${translations[currentLang].kpiNoData}</p>
+                    `;
+                    container.appendChild(fallbackCard);
+                    fallbackCard.querySelector('.card-remove-btn')?.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        removeCityFromSelection(fullVal, ciudad);
+                    });
                     return;
                 }
                 const comfortIdx = citySummary?.stats?.comfort_index || computeComfortIndexJS(latest.temperatura_c, latest.sensacion_c, latest.humedad_porc, latest.viento_kmh, latest.nubosidad_porc, latest.visibilidad_m, latest.lluvia_1h, latest.nieve_1h);
@@ -4199,6 +4585,7 @@
                                 <button type="button" class="card-mini-btn card-share-png-btn" title="${translations[currentLang].btnShareCard}" aria-label="${translations[currentLang].btnShareCard}">📸</button>
                                 <button type="button" class="card-mini-btn card-embed-btn" title="${translations[currentLang].btnEmbedCard}" aria-label="${translations[currentLang].btnEmbedCard}">&lt;/&gt;</button>
                                 <a class="card-mini-btn card-seo-link" href="${seoCityHref}" target="_blank" rel="noopener" title="${translations[currentLang].btnExploreCity}" aria-label="${translations[currentLang].btnExploreCity}">🌐</a>
+                                <button type="button" class="card-mini-btn card-remove-btn" title="${translations[currentLang].btnRemoveCity}" aria-label="${translations[currentLang].btnRemoveCity} (${ciudad})">✕</button>
                             </div>
                         </div>
                     </div>
@@ -4306,6 +4693,11 @@
                 card.querySelector('.card-embed-btn')?.addEventListener('click', (e) => {
                     e.stopPropagation();
                     openEmbedModal(ciudad, cardSlug);
+                });
+
+                card.querySelector('.card-remove-btn')?.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    removeCityFromSelection(fullVal, ciudad);
                 });
 
                 const elVal = document.getElementById(valId);
@@ -4565,9 +4957,9 @@
         }
 
         // --- Matriz de Perfil Estacional Mensual (12 Meses) ---
-        function renderMonthlySeasonality(cityDataMap) {
+        function renderMonthlySeasonality(cityDataMap = lastCityDataMap || {}) {
             const container = document.getElementById('monthlySeasonalityContainer');
-            const cityNames = Object.keys(cityDataMap);
+            const cityNames = Object.keys(cityDataMap || {});
             if (cityNames.length === 0) {
                 container.innerHTML = '';
                 return;
@@ -5753,17 +6145,22 @@
             const checkedMetric = document.querySelector('input[name="metric"]:checked')?.value || 'temp';
             const checkedHour = document.querySelector('input[name="hour-filter"]:checked')?.value || 'all';
 
+            updateCitySelectionMeta(selectedValues);
+            syncChoiceChipAccents(selectedValues);
+
             // RENDERIZADO INSTANTÁNEO (0 ms): Super-Cards en memoria sin esperar a la red
             updateKPIs({}, checkedMetric, selectedValues);
 
             // Carga asíncrona de las series históricas
             const cityDataMap = await loadDataForCities(selectedValues);
+            lastCityDataMap = cityDataMap || {};
 
             // Actualización suave con sparklines y series históricas
             updateKPIs(cityDataMap, checkedMetric, selectedValues);
             updateCharts(cityDataMap, checkedMetric, checkedHour);
             renderMonthlySeasonality(cityDataMap);
             renderMapMarkers();
+            syncChoiceChipAccents(selectedValues);
 
             syncUrlParams({
                 metric: checkedMetric,
@@ -5848,6 +6245,11 @@
             if (choicesInstance && choicesInstance.input) {
                 choicesInstance.input.placeholder = translations[lang].choicesPlaceholder;
             }
+            if (choicesInstance && choicesInstance.config) {
+                choicesInstance.config.noResultsText = translations[lang].choicesNoResults;
+                choicesInstance.config.maxItemText = () => translations[lang].choicesMaxItems;
+            }
+            updateCitySelectionMeta();
 
             if (climatologyCache) {
                 populateW35Selectors();
@@ -6023,6 +6425,9 @@
                 removeItemButton: true,
                 placeholder: true,
                 placeholderValue: translations[currentLang].choicesPlaceholder,
+                itemSelectText: '',
+                noResultsText: translations[currentLang].choicesNoResults,
+                maxItemText: () => translations[currentLang].choicesMaxItems,
                 searchResultLimit: 12
             });
 
@@ -6094,11 +6499,13 @@
                 btn.addEventListener('click', () => applyPreset(btn.dataset.preset));
             });
 
-            // City select change
+            // City select change & clear button
             citySelectEl.addEventListener('change', () => {
                 if (isProgrammaticSelection) return;
+                document.querySelectorAll('.preset-pill').forEach(btn => btn.classList.remove('active'));
                 updateDashboard();
             });
+            document.getElementById('btn-clear-cities')?.addEventListener('click', () => clearAllCities());
 
             // Metric radios
             document.querySelectorAll('input[name="metric"]').forEach(r => {
