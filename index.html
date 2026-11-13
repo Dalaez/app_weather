@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datalaria - Weather Intelligence v3.1 | Observatorio Climático & Laboratorio ML</title>
+    <title>Datalaria - Weather Intelligence v3.2 | Observatorio Climático & Laboratorio ML</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0b0f17">
     <link rel="apple-touch-icon" href="icon-192.png">
@@ -12,7 +12,7 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://datalaria.com/apps/weather/">
-    <meta property="og:title" content="Weather Intelligence v3.1 | Datalaria">
+    <meta property="og:title" content="Weather Intelligence v3.2 | Datalaria">
     <meta property="og:description"
         content="Centro de Control Climático Global: 168 estaciones, +375 días de datos continuos, estacionalidad de Fourier, walk-forward backtesting IA vs. OpenWeatherMap y Confort Outdoor.">
     <meta property="og:image" content="https://datalaria.com/apps/weather/cover.png">
@@ -24,7 +24,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@datalaria">
-    <meta name="twitter:title" content="Weather Intelligence v3.1 | Datalaria">
+    <meta name="twitter:title" content="Weather Intelligence v3.2 | Datalaria">
     <meta name="twitter:description"
         content="Centro de Control Climático Global: 168 estaciones, estacionalidad armónica de Fourier, backtesting IA vs. OWM e índice de confort.">
     <meta name="twitter:image" content="https://datalaria.com/apps/weather/cover.png">
@@ -1798,6 +1798,242 @@
             font-weight: 600;
         }
 
+        /* --- W3.5: Atlas Sub-Nav, Buscador de Destinos & Clima Gemelo --- */
+        .atlas-subnav {
+            display: inline-flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 5px;
+            margin-bottom: 18px;
+        }
+        .atlas-sub-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--text-secondary);
+            padding: 8px 14px;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-sans);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.18s ease;
+        }
+        .atlas-sub-btn:hover {
+            color: var(--text-primary);
+            background: var(--bg-elevated);
+        }
+        .atlas-sub-btn.active {
+            background: var(--accent-primary);
+            color: #ffffff;
+            border-color: var(--accent-primary);
+            box-shadow: 0 2px 10px rgba(14, 165, 233, 0.28);
+        }
+        .w35-panel-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 18px;
+            margin-bottom: 18px;
+        }
+        .w35-panel-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .w35-panel-title {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0 0 4px 0;
+        }
+        .w35-panel-subtitle {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        .w35-controls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+            gap: 12px;
+            align-items: end;
+        }
+        .w35-field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .w35-field label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .w35-field select, .w35-field input[type="range"] {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            border-radius: var(--radius-sm);
+            padding: 8px 10px;
+            font-size: 13px;
+            font-family: var(--font-sans);
+        }
+        .w35-field input[type="range"] {
+            padding: 6px 0;
+            accent-color: var(--accent-primary);
+            cursor: pointer;
+        }
+        .w35-range-val {
+            font-family: var(--font-mono);
+            font-variant-numeric: tabular-nums;
+            color: var(--accent-primary);
+            font-weight: 700;
+        }
+        .w35-ref-banner {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            border-left: 3px solid var(--accent-secondary);
+            border-radius: var(--radius-sm);
+            padding: 12px 16px;
+            margin-top: 14px;
+            font-size: 13px;
+            color: var(--text-primary);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            align-items: center;
+            font-variant-numeric: tabular-nums;
+        }
+        .w35-summary-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 12px 0;
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-family: var(--font-mono);
+        }
+        .w35-result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 14px;
+        }
+        .w35-result-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .w35-result-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-1px);
+        }
+        .w35-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .w35-city-title {
+            font-family: var(--font-display);
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .w35-city-meta {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+        .w35-score-badge {
+            font-family: var(--font-mono);
+            font-variant-numeric: tabular-nums;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 5px 10px;
+            border-radius: 9999px;
+            white-space: nowrap;
+        }
+        .w35-score-high { background: rgba(16, 185, 129, 0.16); color: var(--status-success); border: 1px solid rgba(16, 185, 129, 0.35); }
+        .w35-score-mid { background: rgba(245, 158, 11, 0.16); color: var(--status-warning); border: 1px solid rgba(245, 158, 11, 0.35); }
+        .w35-score-low { background: rgba(239, 68, 68, 0.14); color: var(--status-danger); border: 1px solid rgba(239, 68, 68, 0.35); }
+        .w35-metrics-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+            background: var(--bg-elevated);
+            border-radius: var(--radius-sm);
+            padding: 8px;
+            font-variant-numeric: tabular-nums;
+        }
+        .w35-metric-cell {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .w35-metric-lbl { font-size: 10px; color: var(--text-secondary); text-transform: uppercase; }
+        .w35-metric-val { font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--text-primary); }
+        .w35-deltas-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .w35-delta-chip {
+            font-family: var(--font-mono);
+            font-variant-numeric: tabular-nums;
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 9999px;
+            background: var(--bg-elevated);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-subtle);
+        }
+        .w35-card-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: auto;
+            padding-top: 4px;
+        }
+        .w35-btn-obs {
+            flex: 1;
+            background: var(--accent-primary);
+            color: #ffffff;
+            border: none;
+            border-radius: var(--radius-sm);
+            padding: 8px 10px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+        }
+        .w35-btn-obs:hover { opacity: 0.92; }
+        .w35-btn-copy {
+            background: var(--bg-elevated);
+            color: var(--text-primary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            padding: 8px 10px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .w35-btn-copy:hover { border-color: var(--accent-primary); color: var(--accent-primary); }
+
     </style>
 </head>
 
@@ -1824,7 +2060,7 @@
             </a>
             <div class="brand-title-wrap">
                 <img src="/apps/weather/datalaria_logo_transp.png" alt="Datalaria" class="brand-logo">
-                <span class="brand-title" data-i18n-key="mainTitle">Weather Intelligence v3.1</span>
+                <span class="brand-title" data-i18n-key="mainTitle">Weather Intelligence v3.2</span>
                 <span class="status-badge" id="live-status-badge" data-i18n-key="badgeStatus">🟢 168 Estaciones · +375 Días</span>
                 <span class="badge-freshness" id="freshness-badge">🕒 En vivo</span>
             </div>
@@ -2218,6 +2454,14 @@
         <!-- VISTA 3: ATLAS GLOBAL (168 CIUDADES) -->
         <!-- ==================================================================== -->
         <section id="view-atlas" class="view-panel">
+            <!-- W3.5: Sub-navegación segmentada dentro de Atlas (cero botones extra en cabecera) -->
+            <div class="atlas-subnav" id="atlas-subnav" role="tablist">
+                <button type="button" class="atlas-sub-btn active" data-atlas-mode="ranking" data-i18n-key="atlasTabRanking">🏆 Ranking Hoy (168)</button>
+                <button type="button" class="atlas-sub-btn" data-atlas-mode="finder" data-i18n-key="atlasTabFinder">✈️ Buscador de Destinos</button>
+                <button type="button" class="atlas-sub-btn" data-atlas-mode="twin" data-i18n-key="atlasTabTwin">🧬 Clima Gemelo</button>
+            </div>
+
+            <div id="atlas-pane-ranking">
             <!-- Toolbar -->
             <div class="atlas-toolbar">
                 <div class="search-box">
@@ -2267,6 +2511,95 @@
                     <tbody id="atlas-table-body"></tbody>
                 </table>
             </div>
+            </div>
+
+            <!-- W3.5 Pane 2: Buscador de Destinos ("¿Dónde se está mejor en...?") -->
+            <div id="atlas-pane-finder" hidden>
+                <div class="w35-panel-card">
+                    <div class="w35-panel-header">
+                        <div>
+                            <h3 class="w35-panel-title" data-i18n-key="finderTitle">✈️ ¿Dónde se está mejor en…? (Buscador de Destinos)</h3>
+                            <p class="w35-panel-subtitle" data-i18n-key="finderSubtitle">Ranking bioclimático determinista de las 168 estaciones calculado con la climatología mensual medida.</p>
+                        </div>
+                        <button type="button" id="btn-share-finder" class="w35-btn-copy" data-i18n-key="finderShareBtn">🔗 Compartir búsqueda</button>
+                    </div>
+                    <div class="w35-controls-grid">
+                        <div class="w35-field">
+                            <label for="finder-month" data-i18n-key="finderMonthLabel">Mes objetivo</label>
+                            <select id="finder-month"></select>
+                        </div>
+                        <div class="w35-field">
+                            <label for="finder-temp-ideal">
+                                <span data-i18n-key="finderTempLabel">Temp. ideal</span>
+                                <span id="finder-temp-val" class="w35-range-val">22 °C</span>
+                            </label>
+                            <input type="range" id="finder-temp-ideal" min="5" max="35" step="1" value="22">
+                        </div>
+                        <div class="w35-field">
+                            <label for="finder-rain-pref" data-i18n-key="finderRainLabel">Tolerancia a la lluvia</label>
+                            <select id="finder-rain-pref">
+                                <option value="dry" data-i18n-key="finderRainDry">Muy seco (≤ 10 % días)</option>
+                                <option value="low" selected data-i18n-key="finderRainLow">Poca lluvia (≤ 20 % días)</option>
+                                <option value="any" data-i18n-key="finderRainAny">Indiferente</option>
+                            </select>
+                        </div>
+                        <div class="w35-field">
+                            <label for="finder-wind-pref" data-i18n-key="finderWindLabel">Viento preferido</label>
+                            <select id="finder-wind-pref">
+                                <option value="calm" selected data-i18n-key="finderWindCalm">Poco viento (≤ 15 km/h)</option>
+                                <option value="breezy" data-i18n-key="finderWindBreezy">Brisa moderada</option>
+                                <option value="any" data-i18n-key="finderWindAny">Indiferente</option>
+                            </select>
+                        </div>
+                        <div class="w35-field">
+                            <label for="finder-region" data-i18n-key="finderRegionLabel">Región</label>
+                            <select id="finder-region">
+                                <option value="all" data-i18n-key="atlasRegionAll">Todas (168)</option>
+                                <option value="spain" data-i18n-key="atlasRegionSpain">🇪🇸 España (56)</option>
+                                <option value="europe" data-i18n-key="atlasRegionEurope">🇪🇺 Europa (47)</option>
+                                <option value="asia" data-i18n-key="atlasRegionAsia">🌏 Asia (25)</option>
+                                <option value="americas" data-i18n-key="atlasRegionAmericas">🌎 América (23)</option>
+                                <option value="africa" data-i18n-key="atlasRegionAfrica">🌍 África (13)</option>
+                                <option value="oceania" data-i18n-key="atlasRegionOceania">🇦🇺 Oceanía (4)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="w35-summary-bar">
+                    <span id="finder-summary"></span>
+                    <button type="button" id="btn-finder-show-all" class="w35-btn-copy" data-i18n-key="finderShowAll">Ver las 168 estaciones</button>
+                </div>
+                <div id="finder-results" class="w35-result-grid"></div>
+            </div>
+
+            <!-- W3.5 Pane 3: Clima Gemelo (Distancia Euclídea Z-Score) -->
+            <div id="atlas-pane-twin" hidden>
+                <div class="w35-panel-card">
+                    <div class="w35-panel-header">
+                        <div>
+                            <h3 class="w35-panel-title" data-i18n-key="twinTitle">🧬 Clima Gemelo (Distancia Euclídea Z-Score)</h3>
+                            <p class="w35-panel-subtitle" data-i18n-key="twinSubtitle">¿Qué ciudad tiene en el mes candidato el clima que disfruta tu ciudad referencia en su mejor época?</p>
+                        </div>
+                        <button type="button" id="btn-share-twin" class="w35-btn-copy" data-i18n-key="twinShareBtn">🔗 Compartir gemelo</button>
+                    </div>
+                    <div class="w35-controls-grid">
+                        <div class="w35-field">
+                            <label for="twin-city-select" data-i18n-key="twinRefCityLabel">Ciudad de referencia</label>
+                            <select id="twin-city-select"></select>
+                        </div>
+                        <div class="w35-field">
+                            <label for="twin-month-select" data-i18n-key="twinRefMonthLabel">Mes de referencia</label>
+                            <select id="twin-month-select"></select>
+                        </div>
+                        <div class="w35-field">
+                            <label for="twin-cand-month-select" data-i18n-key="twinCandMonthLabel">Buscar equivalencia en el mes</label>
+                            <select id="twin-cand-month-select"></select>
+                        </div>
+                    </div>
+                    <div id="twin-ref-banner" class="w35-ref-banner"></div>
+                </div>
+                <div id="twin-results" class="w35-result-grid"></div>
+            </div>
         </section>
 
         <!-- PLG Footer Banner -->
@@ -2274,7 +2607,7 @@
             <div class="plg-content">
                 <h3 class="plg-title" data-i18n-key="plgTitle">Explota la Inteligencia Climática y los Modelos Cuantitativos</h3>
                 <p class="plg-desc" data-i18n-key="plgDesc">
-                    Weather Service v2.0 combina ingestión serverless 3x/día, estacionalidad cíclica de Fourier y arquitectura de datos de coste cero.
+                    Weather Intelligence v3.2 combina ingestión serverless 3x/día, estacionalidad cíclica de Fourier, buscador bioclimático y arquitectura de datos de coste cero.
                 </p>
             </div>
             <div class="plg-actions">
@@ -2294,7 +2627,7 @@
         // --- Diccionario de Traducciones con 100% Paridad ES/EN (INV-WEATHER-5) ---
         const translations = {
             'es': {
-                'mainTitle': 'Weather Intelligence v3.1',
+                'mainTitle': 'Weather Intelligence v3.2',
                 'stripesTitle': 'Calendario Térmico (Warming Stripes)',
                 'stripesSubtitle': 'Anomalía térmica diurna respecto a la línea base ±7 días del año · Rojo: cálido, Azul: frío',
                 'stripesBadge': '365 días',
@@ -2473,15 +2806,55 @@
                 'colHumWind': 'Humedad / Viento',
                 'colComfort': 'Confort Outdoor',
                 'plgTitle': 'Explota la Inteligencia Climática y los Modelos Cuantitativos',
-                'plgDesc': 'Weather Service v2.0 combina ingestión serverless 3x/día, estacionalidad cíclica de Fourier y arquitectura de datos de coste cero.',
+                'plgDesc': 'Weather Intelligence v3.2 combina ingestión serverless 3x/día, estacionalidad cíclica de Fourier, buscador bioclimático y arquitectura de datos de coste cero.',
                 'plgBtnTechSheet': 'Ver Ficha Técnica',
                 'plgBtnKits': 'Explorar Kits B2B en Recursos',
                 'exportSuccess': 'Datos exportados correctamente.',
                 'cityAdded': 'añadida al Observatorio.',
-                'cityLimitReached': 'Límite de 5 ciudades alcanzado.'
+                'cityLimitReached': 'Límite de 5 ciudades alcanzado.',
+                'atlasTabRanking': '🏆 Ranking Hoy (168)',
+                'atlasTabFinder': '✈️ Buscador de Destinos',
+                'atlasTabTwin': '🧬 Clima Gemelo',
+                'finderTitle': '✈️ ¿Dónde se está mejor en…? (Buscador de Destinos)',
+                'finderSubtitle': 'Ranking bioclimático determinista de las 168 estaciones calculado con la climatología mensual medida.',
+                'finderMonthLabel': 'Mes objetivo',
+                'finderTempLabel': 'Temp. ideal',
+                'finderRainLabel': 'Tolerancia a la lluvia',
+                'finderRainDry': 'Muy seco (≤ 10 % días)',
+                'finderRainLow': 'Poca lluvia (≤ 20 % días)',
+                'finderRainAny': 'Indiferente',
+                'finderWindLabel': 'Viento preferido',
+                'finderWindCalm': 'Poco viento (≤ 15 km/h)',
+                'finderWindBreezy': 'Brisa moderada',
+                'finderWindAny': 'Indiferente',
+                'finderRegionLabel': 'Región',
+                'finderShareBtn': '🔗 Compartir búsqueda',
+                'finderShowAll': 'Ver las 168 estaciones',
+                'finderShowTop': 'Ver Top 25',
+                'finderCountPrefix': 'Estaciones evaluadas:',
+                'finderScoreLabel': 'Confort',
+                'finderNoResults': 'No hay estaciones con datos suficientes para este mes/filtro.',
+                'twinTitle': '🧬 Clima Gemelo (Distancia Euclídea Z-Score)',
+                'twinSubtitle': '¿Qué ciudad tiene en el mes candidato el clima que disfruta tu ciudad referencia en su mes objetivo?',
+                'twinRefCityLabel': 'Ciudad de referencia',
+                'twinRefMonthLabel': 'Mes de referencia',
+                'twinCandMonthLabel': 'Buscar equivalencia en el mes',
+                'twinCandAnyMonth': 'Cualquier mes del año',
+                'twinShareBtn': '🔗 Compartir gemelo',
+                'twinRefProfilePrefix': 'Perfil medido de referencia:',
+                'twinSimilarityLabel': 'similitud',
+                'twinNoResults': 'No hay suficientes datos mensuales para comparar este perfil.',
+                'btnAnswerCard': 'Tarjeta Respuesta →',
+                'btnCopyDeepLink': '🔗 Deep-link',
+                'linkCopiedToast': '🔗 Enlace compartible copiado al portapapeles.',
+                'metricRainDaysPct': 'Lluvia',
+                'metricDiurnalAmp': 'Amplitud',
+                'month1': 'Enero', 'month2': 'Febrero', 'month3': 'Marzo', 'month4': 'Abril',
+                'month5': 'Mayo', 'month6': 'Junio', 'month7': 'Julio', 'month8': 'Agosto',
+                'month9': 'Septiembre', 'month10': 'Octubre', 'month11': 'Noviembre', 'month12': 'Diciembre'
             },
             'en': {
-                'mainTitle': 'Weather Intelligence v3.1',
+                'mainTitle': 'Weather Intelligence v3.2',
                 'stripesTitle': 'Thermal Calendar (Warming Stripes)',
                 'stripesSubtitle': 'Daily thermal anomaly vs. ±7-day baseline of the year · Red: warm, Blue: cold',
                 'stripesBadge': '365 days',
@@ -2660,12 +3033,52 @@
                 'colHumWind': 'Humidity / Wind',
                 'colComfort': 'Outdoor Comfort',
                 'plgTitle': 'Harness Climate Intelligence and Quantitative Models',
-                'plgDesc': 'Weather Service v2.0 combines 3x/day serverless ingestion, cyclic Fourier seasonality, and zero-cost data architecture.',
+                'plgDesc': 'Weather Intelligence v3.2 combines 3x/day serverless ingestion, cyclic Fourier seasonality, a bioclimatic destination finder, and zero-cost architecture.',
                 'plgBtnTechSheet': 'View Technical Sheet',
                 'plgBtnKits': 'Explore B2B Kits in Resources',
                 'exportSuccess': 'Data exported successfully.',
                 'cityAdded': 'added to Observatory.',
-                'cityLimitReached': 'Maximum of 5 cities reached.'
+                'cityLimitReached': 'Maximum of 5 cities reached.',
+                'atlasTabRanking': "🏆 Today's Ranking (168)",
+                'atlasTabFinder': '✈️ Destination Finder',
+                'atlasTabTwin': '🧬 Twin Climate',
+                'finderTitle': '✈️ Where is the weather best in…? (Destination Finder)',
+                'finderSubtitle': 'Deterministic bioclimatic ranking across 168 stations computed from measured monthly climatology.',
+                'finderMonthLabel': 'Target month',
+                'finderTempLabel': 'Ideal temp',
+                'finderRainLabel': 'Rain tolerance',
+                'finderRainDry': 'Very dry (≤ 10 % days)',
+                'finderRainLow': 'Low rain (≤ 20 % days)',
+                'finderRainAny': 'Any',
+                'finderWindLabel': 'Wind preference',
+                'finderWindCalm': 'Low wind (≤ 15 km/h)',
+                'finderWindBreezy': 'Moderate breeze',
+                'finderWindAny': 'Any',
+                'finderRegionLabel': 'Region',
+                'finderShareBtn': '🔗 Share search',
+                'finderShowAll': 'Show all 168 stations',
+                'finderShowTop': 'Show Top 25',
+                'finderCountPrefix': 'Evaluated stations:',
+                'finderScoreLabel': 'Comfort',
+                'finderNoResults': 'No stations with sufficient data match this month/filter.',
+                'twinTitle': '🧬 Twin Climate (Z-Score Euclidean Distance)',
+                'twinSubtitle': 'Which city in your candidate month matches the measured climate your reference city enjoys in its target month?',
+                'twinRefCityLabel': 'Reference city',
+                'twinRefMonthLabel': 'Reference month',
+                'twinCandMonthLabel': 'Match in month',
+                'twinCandAnyMonth': 'Any month of the year',
+                'twinShareBtn': '🔗 Share twin query',
+                'twinRefProfilePrefix': 'Measured reference profile:',
+                'twinSimilarityLabel': 'match',
+                'twinNoResults': 'Insufficient monthly data to compare this profile.',
+                'btnAnswerCard': 'Answer Card →',
+                'btnCopyDeepLink': '🔗 Deep-link',
+                'linkCopiedToast': '🔗 Shareable link copied to clipboard.',
+                'metricRainDaysPct': 'Rain days',
+                'metricDiurnalAmp': 'Range',
+                'month1': 'January', 'month2': 'February', 'month3': 'March', 'month4': 'April',
+                'month5': 'May', 'month6': 'June', 'month7': 'July', 'month8': 'August',
+                'month9': 'September', 'month10': 'October', 'month11': 'November', 'month12': 'December'
             }
         };
 
@@ -2934,13 +3347,26 @@
             };
         }
 
-        async function loadClimatology() {
-            try {
-                const res = await fetchJSONRemoteFirst(CLIMATOLOGY_URL);
-                if (res.data) climatologyCache = res.data;
-            } catch (e) {
-                climatologyCache = null;
+        let climatologyPromise = null;
+
+        async function ensureClimatologyLoaded() {
+            if (climatologyCache) return climatologyCache;
+            if (!climatologyPromise) {
+                climatologyPromise = (async () => {
+                    try {
+                        const res = await fetchJSONRemoteFirst(CLIMATOLOGY_URL);
+                        if (res.data) climatologyCache = res.data;
+                    } catch (e) {
+                        climatologyCache = null;
+                    }
+                    return climatologyCache;
+                })();
             }
+            return climatologyPromise;
+        }
+
+        async function loadClimatology() {
+            return ensureClimatologyLoaded();
         }
 
         // --- Estado Global ---
@@ -3475,10 +3901,18 @@
             } else if (viewId === 'arena') {
                 renderArenaTable();
             } else if (viewId === 'atlas') {
-                renderAtlasTable();
+                renderAtlasActivePane();
             }
 
-            syncUrlParams({ view: viewId });
+            if (viewId !== 'atlas') {
+                syncUrlParams({
+                    view: viewId,
+                    atlasMode: null, month: null, tOpt: null, rainPref: null,
+                    windPref: null, region: null, twinCity: null, twinMonth: null, candMonth: null
+                });
+            } else {
+                syncUrlParams({ view: viewId });
+            }
             emitWeatherEvent('weather_view_switch', { view: viewId });
         }
 
@@ -4353,6 +4787,502 @@
             });
         }
 
+        // --- W3.5: Sub-navegación Atlas, Buscador de Destinos & Clima Gemelo ---
+        let currentAtlasMode = 'ranking';
+        let finderShowAllStations = false;
+
+        function getCityMetaMapBySlug() {
+            const map = {};
+            if (globalSummaryData?.cities) {
+                globalSummaryData.cities.forEach(c => {
+                    const slug = slugifyJS(c.ciudad || '');
+                    map[slug] = {
+                        slug,
+                        name: c.ciudad,
+                        country: c.country || '',
+                        region: c.region || 'europe',
+                        query: c.query || (c.country ? `${c.ciudad},${c.country}` : c.ciudad)
+                    };
+                });
+            }
+            if (Array.isArray(cityOptionsList)) {
+                cityOptionsList.forEach(opt => {
+                    const name = (opt.label || opt.value.split(',')[0]).trim();
+                    const slug = slugifyJS(name);
+                    if (!map[slug]) {
+                        const country = opt.value.includes(',') ? opt.value.split(',')[1].trim() : '';
+                        map[slug] = { slug, name, country, region: 'europe', query: opt.value };
+                    }
+                });
+            }
+            return map;
+        }
+
+        function getMonthLabel(m) {
+            const t = translations[currentLang] || translations.es;
+            return t[`month${m}`] || String(m);
+        }
+
+        function computeCustomComfortScore(monthData, prefs) {
+            if (!monthData) return 0;
+            const tmean = Number(monthData.tmean ?? 0);
+            const hum = Number(monthData.hum ?? 50);
+            const wind = Number(monthData.wind ?? 10);
+            const nDays = Math.max(1, Number(monthData.n_days ?? 30));
+            const rainPct = monthData.rain_pct != null
+                ? Number(monthData.rain_pct)
+                : (100 * Number(monthData.rain_days ?? 0) / nDays);
+
+            let score = 100.0;
+            const tDiff = Math.abs(tmean - Number(prefs.idealTemp ?? 22));
+            score -= Math.min(55.0, Math.pow(tDiff, 1.25) * 3.2);
+
+            if (prefs.rainPref === 'dry') {
+                score -= Math.min(30.0, Math.max(0.0, rainPct - 5.0) * 1.1);
+            } else if (prefs.rainPref === 'low') {
+                score -= Math.min(22.0, Math.max(0.0, rainPct - 15.0) * 0.75);
+            } else {
+                score -= Math.min(12.0, Math.max(0.0, rainPct - 35.0) * 0.4);
+            }
+
+            if (prefs.windPref === 'calm') {
+                score -= Math.min(25.0, Math.max(0.0, wind - 12.0) * 1.4);
+            } else if (prefs.windPref === 'breezy') {
+                score -= Math.min(18.0, Math.max(0.0, wind - 22.0) * 0.9);
+            } else {
+                score -= Math.min(8.0, Math.max(0.0, wind - 35.0) * 0.4);
+            }
+
+            if (hum > 75.0) score -= Math.min(10.0, (hum - 75.0) * 0.4);
+            else if (hum < 25.0) score -= Math.min(5.0, (25.0 - hum) * 0.3);
+
+            return Math.max(0, Math.min(100, Math.round(score)));
+        }
+
+        function copyShareableDeepLink(urlStr, contextTag = 'city') {
+            const finish = () => {
+                showToast(translations[currentLang].linkCopiedToast || '🔗 Enlace copiado.');
+                emitWeatherEvent('weather_deeplink_copy', { target: contextTag });
+            };
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(urlStr).then(finish).catch(() => {
+                    fallbackCopyText(urlStr);
+                    finish();
+                });
+            } else {
+                fallbackCopyText(urlStr);
+                finish();
+            }
+        }
+
+        function fallbackCopyText(text) {
+            try {
+                const ta = document.createElement('textarea');
+                ta.value = text;
+                ta.style.position = 'fixed';
+                ta.style.opacity = '0';
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+            } catch (e) {}
+        }
+
+        function buildCityObservatoryDeepLink(cityQuery) {
+            const url = new URL(window.location.origin + window.location.pathname);
+            url.searchParams.set('cities', cityQuery);
+            url.searchParams.set('view', 'observatory');
+            url.searchParams.set('lang', currentLang);
+            return url.toString();
+        }
+
+        function focusCityInObservatory(cityQueryOrName) {
+            const resolved = resolveChoiceValuesForCities([cityQueryOrName]);
+            const targetVal = resolved[0] || cityQueryOrName;
+            const currentVals = choicesInstance ? choicesInstance.getValue(true) : [];
+            const merged = [targetVal, ...currentVals.filter(v => v !== targetVal)].slice(0, 5);
+            selectCitiesInChoices(merged);
+            switchView('observatory');
+            emitWeatherEvent('weather_finder_open_city', { city: cityQueryOrName, source: currentAtlasMode });
+            setTimeout(() => {
+                const el = document.getElementById('kpi-grid');
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 120);
+        }
+
+        function populateW35Selectors() {
+            const t = translations[currentLang] || translations.es;
+            const monthSelects = [
+                document.getElementById('finder-month'),
+                document.getElementById('twin-month-select')
+            ];
+            monthSelects.forEach(sel => {
+                if (!sel) return;
+                const prev = sel.value;
+                sel.innerHTML = '';
+                for (let m = 1; m <= 12; m++) {
+                    const opt = document.createElement('option');
+                    opt.value = String(m);
+                    opt.textContent = getMonthLabel(m);
+                    sel.appendChild(opt);
+                }
+                if (prev) sel.value = prev;
+            });
+
+            const fMonth = document.getElementById('finder-month');
+            if (fMonth && !fMonth.dataset.initialized) {
+                fMonth.value = String(new Date().getMonth() + 1);
+                fMonth.dataset.initialized = '1';
+            }
+            const tMonth = document.getElementById('twin-month-select');
+            if (tMonth && !tMonth.dataset.initialized) {
+                tMonth.value = '5';
+                tMonth.dataset.initialized = '1';
+            }
+
+            const candSel = document.getElementById('twin-cand-month-select');
+            if (candSel) {
+                const prevCand = candSel.value || (candSel.dataset.initialized ? 'any' : '12');
+                candSel.innerHTML = '';
+                const anyOpt = document.createElement('option');
+                anyOpt.value = 'any';
+                anyOpt.textContent = t.twinCandAnyMonth || 'Any month';
+                candSel.appendChild(anyOpt);
+                for (let m = 1; m <= 12; m++) {
+                    const opt = document.createElement('option');
+                    opt.value = String(m);
+                    opt.textContent = getMonthLabel(m);
+                    candSel.appendChild(opt);
+                }
+                candSel.value = prevCand;
+                candSel.dataset.initialized = '1';
+            }
+
+            const citySel = document.getElementById('twin-city-select');
+            if (citySel && climatologyCache?.cities) {
+                const prevCity = citySel.value || (citySel.dataset.initialized ? '' : 'madrid');
+                const metaMap = getCityMetaMapBySlug();
+                const slugs = Object.keys(climatologyCache.cities).sort((a, b) => {
+                    const na = metaMap[a]?.name || a;
+                    const nb = metaMap[b]?.name || b;
+                    return na.localeCompare(nb);
+                });
+                citySel.innerHTML = '';
+                slugs.forEach(s => {
+                    const meta = metaMap[s];
+                    const opt = document.createElement('option');
+                    opt.value = s;
+                    opt.textContent = meta?.country ? `${meta.name} (${meta.country})` : (meta?.name || s);
+                    citySel.appendChild(opt);
+                });
+                if (prevCity && climatologyCache.cities[prevCity]) citySel.value = prevCity;
+                citySel.dataset.initialized = '1';
+            }
+        }
+
+        function setAtlasMode(mode, options = { syncUrl: true }) {
+            if (!['ranking', 'finder', 'twin'].includes(mode)) mode = 'ranking';
+            currentAtlasMode = mode;
+
+            document.querySelectorAll('#atlas-subnav .atlas-sub-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.atlasMode === mode);
+            });
+
+            const pRanking = document.getElementById('atlas-pane-ranking');
+            const pFinder = document.getElementById('atlas-pane-finder');
+            const pTwin = document.getElementById('atlas-pane-twin');
+            if (pRanking) pRanking.hidden = mode !== 'ranking';
+            if (pFinder) pFinder.hidden = mode !== 'finder';
+            if (pTwin) pTwin.hidden = mode !== 'twin';
+
+            renderAtlasActivePane(options.syncUrl !== false);
+        }
+
+        async function renderAtlasActivePane(shouldSyncUrl = true) {
+            if (currentAtlasMode === 'ranking') {
+                renderAtlasTable();
+                if (shouldSyncUrl && currentView === 'atlas') {
+                    syncUrlParams({
+                        view: 'atlas',
+                        atlasMode: null, month: null, tOpt: null, rainPref: null,
+                        windPref: null, region: null, twinCity: null, twinMonth: null, candMonth: null
+                    });
+                }
+                return;
+            }
+            await ensureClimatologyLoaded();
+            populateW35Selectors();
+            if (currentAtlasMode === 'finder') {
+                renderDestinationFinder(shouldSyncUrl);
+            } else if (currentAtlasMode === 'twin') {
+                renderTwinClimate(shouldSyncUrl);
+            }
+        }
+
+        function renderDestinationFinder(shouldSyncUrl = true) {
+            const container = document.getElementById('finder-results');
+            const summaryEl = document.getElementById('finder-summary');
+            const showAllBtn = document.getElementById('btn-finder-show-all');
+            if (!container || !climatologyCache?.cities) return;
+
+            const t = translations[currentLang] || translations.es;
+            const month = document.getElementById('finder-month')?.value || String(new Date().getMonth() + 1);
+            const idealTemp = Number(document.getElementById('finder-temp-ideal')?.value ?? 22);
+            const rainPref = document.getElementById('finder-rain-pref')?.value || 'low';
+            const windPref = document.getElementById('finder-wind-pref')?.value || 'calm';
+            const regionFilter = document.getElementById('finder-region')?.value || 'all';
+
+            const valSpan = document.getElementById('finder-temp-val');
+            if (valSpan) valSpan.textContent = `${idealTemp} °C`;
+
+            const metaMap = getCityMetaMapBySlug();
+            const ranked = [];
+
+            Object.entries(climatologyCache.cities).forEach(([slug, cObj]) => {
+                const mData = cObj?.months?.[String(month)];
+                if (!mData) return;
+                const meta = metaMap[slug] || { slug, name: slug, country: '', region: 'europe', query: slug };
+                if (regionFilter !== 'all' && meta.region !== regionFilter) return;
+
+                const score = computeCustomComfortScore(mData, { idealTemp, rainPref, windPref });
+                const nDays = Math.max(1, Number(mData.n_days ?? 30));
+                const rainPct = mData.rain_pct != null ? Number(mData.rain_pct) : Math.round((1000 * Number(mData.rain_days ?? 0)) / nDays) / 10;
+                ranked.push({
+                    slug,
+                    meta,
+                    mData,
+                    rainPct,
+                    score
+                });
+            });
+
+            ranked.sort((a, b) => {
+                if (b.score !== a.score) return b.score - a.score;
+                if ((b.mData.comfort || 0) !== (a.mData.comfort || 0)) return (b.mData.comfort || 0) - (a.mData.comfort || 0);
+                return a.slug.localeCompare(b.slug);
+            });
+
+            if (summaryEl) {
+                summaryEl.textContent = `${t.finderCountPrefix || 'Stations:'} ${ranked.length} · ${getMonthLabel(month)} · ${idealTemp} °C`;
+            }
+            if (showAllBtn) {
+                showAllBtn.hidden = ranked.length <= 25;
+                showAllBtn.textContent = finderShowAllStations ? (t.finderShowTop || 'Top 25') : (t.finderShowAll || 'All 168');
+            }
+
+            container.innerHTML = '';
+            const visible = finderShowAllStations ? ranked : ranked.slice(0, 25);
+            if (visible.length === 0) {
+                container.innerHTML = `<div class="w35-panel-card">${t.finderNoResults}</div>`;
+            } else {
+                visible.forEach((item, idx) => {
+                    const cls = item.score >= 75 ? 'w35-score-high' : (item.score >= 50 ? 'w35-score-mid' : 'w35-score-low');
+                    const queryArg = item.meta.query.replace(/'/g, "\\'");
+                    const dl = buildCityObservatoryDeepLink(item.meta.query);
+                    const card = document.createElement('article');
+                    card.className = 'w35-result-card';
+                    card.innerHTML = `
+                        <div class="w35-card-top">
+                            <div>
+                                <div class="w35-city-title">#${idx + 1} · ${item.meta.name} ${item.meta.country ? `<span style="opacity:0.65;font-size:12px;">(${item.meta.country})</span>` : ''}</div>
+                                <div class="w35-city-meta">${(item.meta.region || '').toUpperCase()} · ${getMonthLabel(month)} (${item.mData.n_days}d)</div>
+                            </div>
+                            <span class="w35-score-badge ${cls}">${item.score}/100</span>
+                        </div>
+                        <div class="w35-metrics-row">
+                            <div class="w35-metric-cell">
+                                <span class="w35-metric-lbl">${t.kpiMedia || 'Mean'}</span>
+                                <span class="w35-metric-val">${Number(item.mData.tmean).toFixed(1)} °C</span>
+                            </div>
+                            <div class="w35-metric-cell">
+                                <span class="w35-metric-lbl">${t.kpiMin || 'Min'}/${t.kpiMax || 'Max'}</span>
+                                <span class="w35-metric-val">${Number(item.mData.tmin).toFixed(0)}..${Number(item.mData.tmax).toFixed(0)}°</span>
+                            </div>
+                            <div class="w35-metric-cell">
+                                <span class="w35-metric-lbl">${t.metricRainDaysPct || 'Rain'}</span>
+                                <span class="w35-metric-val">${item.rainPct.toFixed(0)} %</span>
+                            </div>
+                            <div class="w35-metric-cell">
+                                <span class="w35-metric-lbl">${t.metricWind || 'Wind'}</span>
+                                <span class="w35-metric-val">${Number(item.mData.wind ?? 0).toFixed(1)} km/h</span>
+                            </div>
+                        </div>
+                        <div class="w35-card-actions">
+                            <button type="button" class="w35-btn-obs" onclick="focusCityInObservatory('${queryArg}')">${t.btnAnswerCard || 'Answer Card →'}</button>
+                            <button type="button" class="w35-btn-copy" onclick="copyShareableDeepLink('${dl.replace(/'/g, "\\'")}', 'finder_city')">${t.btnCopyDeepLink || '🔗 Deep-link'}</button>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+
+            if (shouldSyncUrl && currentView === 'atlas') {
+                syncUrlParams({
+                    view: 'atlas',
+                    atlasMode: 'finder',
+                    month: String(month),
+                    tOpt: String(idealTemp),
+                    rainPref,
+                    windPref,
+                    region: regionFilter,
+                    twinCity: null, twinMonth: null, candMonth: null
+                });
+            }
+            emitWeatherEvent('weather_finder_search', { month: Number(month), ideal_temp: idealTemp, rain_pref: rainPref, wind_pref: windPref, region: regionFilter });
+        }
+
+        function renderTwinClimate(shouldSyncUrl = true) {
+            const container = document.getElementById('twin-results');
+            const refBanner = document.getElementById('twin-ref-banner');
+            if (!container || !climatologyCache?.cities) return;
+
+            const t = translations[currentLang] || translations.es;
+            const targetSlug = document.getElementById('twin-city-select')?.value || 'madrid';
+            const targetMonth = document.getElementById('twin-month-select')?.value || '5';
+            const candMonthVal = document.getElementById('twin-cand-month-select')?.value || '12';
+
+            const refCityObj = climatologyCache.cities[targetSlug];
+            const refM = refCityObj?.months?.[String(targetMonth)];
+            const metaMap = getCityMetaMapBySlug();
+            const refMeta = metaMap[targetSlug] || { name: targetSlug, country: '', query: targetSlug };
+
+            if (!refM) {
+                if (refBanner) refBanner.textContent = t.twinNoResults || 'Insufficient data.';
+                container.innerHTML = `<div class="w35-panel-card">${t.twinNoResults}</div>`;
+                return;
+            }
+
+            const refAmp = refM.amp != null ? Number(refM.amp) : Number((refM.tmax - refM.tmin).toFixed(1));
+            const refRainPct = refM.rain_pct != null ? Number(refM.rain_pct) : (100 * Number(refM.rain_days ?? 0) / Math.max(1, Number(refM.n_days ?? 30)));
+            const refHum = Number(refM.hum ?? 50);
+            const refWind = Number(refM.wind ?? 10);
+
+            if (refBanner) {
+                refBanner.innerHTML = `
+                    <strong>${t.twinRefProfilePrefix}</strong>
+                    <span>📍 ${refMeta.name} · ${getMonthLabel(targetMonth)}</span>
+                    <span>🌡️ ${Number(refM.tmean).toFixed(1)} °C (${Number(refM.tmin).toFixed(1)}..${Number(refM.tmax).toFixed(1)})</span>
+                    <span>📏 ${t.metricDiurnalAmp || 'Amp'}: ${refAmp.toFixed(1)} °C</span>
+                    <span>💧 ${refHum.toFixed(0)} %</span>
+                    <span>💨 ${refWind.toFixed(1)} km/h</span>
+                    <span>☔ ${refRainPct.toFixed(1)} %</span>
+                `;
+            }
+
+            const feats = ['tmean', 'amp', 'hum', 'wind', 'rain_pct'];
+            const weights = { tmean: 1.5, amp: 0.8, hum: 0.9, wind: 0.8, rain_pct: 1.0 };
+            const means = climatologyCache.feature_stats?.mean || {};
+            const stds = climatologyCache.feature_stats?.std || {};
+            const monthKeys = candMonthVal === 'any'
+                ? Array.from({ length: 12 }, (_, i) => String(i + 1))
+                : [String(candMonthVal)];
+
+            const refVec = { tmean: Number(refM.tmean), amp: refAmp, hum: refHum, wind: refWind, rain_pct: refRainPct };
+            const twins = [];
+
+            Object.entries(climatologyCache.cities).forEach(([slug, cObj]) => {
+                if (slug === targetSlug) return;
+                const candMeta = metaMap[slug] || { slug, name: slug, country: '', region: 'europe', query: slug };
+                monthKeys.forEach(mk => {
+                    const cm = cObj?.months?.[mk];
+                    if (!cm) return;
+                    const cAmp = cm.amp != null ? Number(cm.amp) : Number((cm.tmax - cm.tmin).toFixed(1));
+                    const cRainPct = cm.rain_pct != null ? Number(cm.rain_pct) : (100 * Number(cm.rain_days ?? 0) / Math.max(1, Number(cm.n_days ?? 30)));
+                    const candVec = { tmean: Number(cm.tmean), amp: cAmp, hum: Number(cm.hum ?? 50), wind: Number(cm.wind ?? 10), rain_pct: cRainPct };
+
+                    let wSq = 0;
+                    feats.forEach(f => {
+                        const mu = Number(means[f] ?? 0);
+                        const sd = Math.max(Number(stds[f] ?? 1), 1e-6);
+                        const diff = ((candVec[f] - mu) / sd) - ((refVec[f] - mu) / sd);
+                        wSq += weights[f] * diff * diff;
+                    });
+                    const dist = Math.sqrt(wSq / feats.length);
+                    const simPct = Math.max(0, Math.min(100, Math.round(100 * Math.exp(-0.55 * dist))));
+                    twins.push({
+                        slug,
+                        month: Number(mk),
+                        meta: candMeta,
+                        cm,
+                        candVec,
+                        dist,
+                        simPct,
+                        dTemp: candVec.tmean - refVec.tmean,
+                        dRain: candVec.rain_pct - refVec.rain_pct,
+                        dWind: candVec.wind - refVec.wind,
+                        dHum: candVec.hum - refVec.hum
+                    });
+                });
+            });
+
+            twins.sort((a, b) => a.dist - b.dist || a.slug.localeCompare(b.slug) || a.month - b.month);
+
+            container.innerHTML = '';
+            const topTwins = twins.slice(0, 15);
+            if (topTwins.length === 0) {
+                container.innerHTML = `<div class="w35-panel-card">${t.twinNoResults}</div>`;
+            } else {
+                const fmtDelta = (v, unit) => `${v >= 0 ? '+' : ''}${v.toFixed(1)}${unit}`;
+                topTwins.forEach((item, idx) => {
+                    const cls = item.simPct >= 80 ? 'w35-score-high' : (item.simPct >= 60 ? 'w35-score-mid' : 'w35-score-low');
+                    const queryArg = item.meta.query.replace(/'/g, "\\'");
+                    const dl = buildCityObservatoryDeepLink(item.meta.query);
+                    const card = document.createElement('article');
+                    card.className = 'w35-result-card';
+                    card.innerHTML = `
+                        <div class="w35-card-top">
+                            <div>
+                                <div class="w35-city-title">#${idx + 1} · ${item.meta.name} ${item.meta.country ? `<span style="opacity:0.65;font-size:12px;">(${item.meta.country})</span>` : ''}</div>
+                                <div class="w35-city-meta">🗓️ ${getMonthLabel(item.month)} · ${(item.meta.region || '').toUpperCase()}</div>
+                            </div>
+                            <span class="w35-score-badge ${cls}">${item.simPct}% ${t.twinSimilarityLabel || 'match'}</span>
+                        </div>
+                        <div class="w35-metrics-row">
+                            <div class="w35-metric-cell">
+                                <span class="w35-metric-lbl">${t.kpiMedia || 'Mean'}</span>
+                                <span class="w35-metric-val">${item.candVec.tmean.toFixed(1)} °C</span>
+                            </div>
+                            <div class="w35-metric-cell">
+                                <span class="w35-metric-lbl">${t.metricDiurnalAmp || 'Amp'}</span>
+                                <span class="w35-metric-val">${item.candVec.amp.toFixed(1)} °C</span>
+                            </div>
+                            <div class="w35-metric-cell">
+                                <span class="w35-metric-lbl">${t.metricRainDaysPct || 'Rain'}</span>
+                                <span class="w35-metric-val">${item.candVec.rain_pct.toFixed(0)} %</span>
+                            </div>
+                            <div class="w35-metric-cell">
+                                <span class="w35-metric-lbl">${t.metricWind || 'Wind'}</span>
+                                <span class="w35-metric-val">${item.candVec.wind.toFixed(1)} km/h</span>
+                            </div>
+                        </div>
+                        <div class="w35-deltas-row">
+                            <span class="w35-delta-chip">ΔT ${fmtDelta(item.dTemp, '°C')}</span>
+                            <span class="w35-delta-chip">Δ☔ ${fmtDelta(item.dRain, '%')}</span>
+                            <span class="w35-delta-chip">Δ💨 ${fmtDelta(item.dWind, ' km/h')}</span>
+                            <span class="w35-delta-chip">Δ💧 ${fmtDelta(item.dHum, '%')}</span>
+                        </div>
+                        <div class="w35-card-actions">
+                            <button type="button" class="w35-btn-obs" onclick="focusCityInObservatory('${queryArg}')">${t.btnAnswerCard || 'Answer Card →'}</button>
+                            <button type="button" class="w35-btn-copy" onclick="copyShareableDeepLink('${dl.replace(/'/g, "\\'")}', 'twin_city')">${t.btnCopyDeepLink || '🔗 Deep-link'}</button>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+
+            if (shouldSyncUrl && currentView === 'atlas') {
+                syncUrlParams({
+                    view: 'atlas',
+                    atlasMode: 'twin',
+                    twinCity: targetSlug,
+                    twinMonth: String(targetMonth),
+                    candMonth: String(candMonthVal),
+                    month: null, tOpt: null, rainPref: null, windPref: null, region: null
+                });
+            }
+            emitWeatherEvent('weather_twin_search', { ref_city: targetSlug, ref_month: Number(targetMonth), cand_month: candMonthVal });
+        }
+
         // --- Exportación CSV y JSON ---
         function exportData(format = 'csv') {
             const selectedValues = choicesInstance ? choicesInstance.getValue(true) : [];
@@ -4455,7 +5385,18 @@
                 preset: url.searchParams.get('preset'),
                 cities: url.searchParams.get('cities'),
                 metric: url.searchParams.get('metric'),
-                range: url.searchParams.get('range')
+                range: url.searchParams.get('range'),
+                open: url.searchParams.get('open'),
+                mine: url.searchParams.get('mine'),
+                atlasMode: url.searchParams.get('atlasMode'),
+                month: url.searchParams.get('month'),
+                tOpt: url.searchParams.get('tOpt'),
+                rainPref: url.searchParams.get('rainPref'),
+                windPref: url.searchParams.get('windPref'),
+                region: url.searchParams.get('region'),
+                twinCity: url.searchParams.get('twinCity'),
+                twinMonth: url.searchParams.get('twinMonth'),
+                candMonth: url.searchParams.get('candMonth')
             };
         }
 
@@ -4501,6 +5442,10 @@
                 choicesInstance.input.placeholder = translations[lang].choicesPlaceholder;
             }
 
+            if (climatologyCache) {
+                populateW35Selectors();
+            }
+
             syncUrlParams({ lang: lang });
         }
 
@@ -4509,7 +5454,7 @@
             translatePage(nextLang);
             updateDashboard();
             if (currentView === 'arena') renderArenaTable();
-            if (currentView === 'atlas') renderAtlasTable();
+            if (currentView === 'atlas') renderAtlasActivePane(false);
         }
 
         // --- Inicialización de la Aplicación ---
@@ -4654,11 +5599,12 @@
             let lang = urlParams.lang || localStorage.getItem('lang') || 'es';
             translatePage(lang);
 
-            // 3. Cargar Predicciones, Resumen Global e Índice de Derivados en paralelo
+            // 3. Cargar Predicciones, Resumen Global, Índice y Climatología en paralelo
             await Promise.all([
                 loadPredictions(),
                 loadGlobalSummary(),
                 loadDerivedIndex(),
+                ensureClimatologyLoaded(),
                 loadInsights(),
                 loadScorecard()
             ]);
@@ -4694,14 +5640,31 @@
             // 7. Aplicar Selección Inicial (URL o Preset por defecto)
             if (urlParams.cities) {
                 const cList = urlParams.cities.split(';').map(c => c.trim()).filter(Boolean);
-                choicesInstance.setChoiceByValue(cList);
+                selectCitiesInChoices(cList);
             } else if (urlParams.preset) {
                 applyPreset(urlParams.preset);
             } else {
                 applyPreset('spain');
             }
 
-            // 8. Seleccionar Vista Inicial
+            // 8. Restaurar parámetros W3.5 y seleccionar Vista Inicial
+            populateW35Selectors();
+            if (urlParams.month) { const el = document.getElementById('finder-month'); if (el) el.value = urlParams.month; }
+            if (urlParams.tOpt) {
+                const el = document.getElementById('finder-temp-ideal');
+                if (el) { el.value = urlParams.tOpt; const lbl = document.getElementById('finder-temp-val'); if (lbl) lbl.textContent = `${urlParams.tOpt} °C`; }
+            }
+            if (urlParams.rainPref) { const el = document.getElementById('finder-rain-pref'); if (el) el.value = urlParams.rainPref; }
+            if (urlParams.windPref) { const el = document.getElementById('finder-wind-pref'); if (el) el.value = urlParams.windPref; }
+            if (urlParams.region) { const el = document.getElementById('finder-region'); if (el) el.value = urlParams.region; }
+            if (urlParams.twinCity) { const el = document.getElementById('twin-city-select'); if (el) el.value = urlParams.twinCity; }
+            if (urlParams.twinMonth) { const el = document.getElementById('twin-month-select'); if (el) el.value = urlParams.twinMonth; }
+            if (urlParams.candMonth) { const el = document.getElementById('twin-cand-month-select'); if (el) el.value = urlParams.candMonth; }
+
+            if (urlParams.atlasMode && ['ranking', 'finder', 'twin'].includes(urlParams.atlasMode)) {
+                setAtlasMode(urlParams.atlasMode, { syncUrl: false });
+            }
+
             if (urlParams.view && ['observatory', 'arena', 'atlas'].includes(urlParams.view)) {
                 switchView(urlParams.view);
             }
@@ -4783,6 +5746,34 @@
                     currentAtlasRegion = pill.dataset.region;
                     renderAtlasTable();
                 });
+            });
+
+            // W3.5: Atlas sub-nav, Finder y Clima Gemelo listeners
+            document.querySelectorAll('#atlas-subnav .atlas-sub-btn').forEach(btn => {
+                btn.addEventListener('click', () => setAtlasMode(btn.dataset.atlasMode));
+            });
+            ['finder-month', 'finder-rain-pref', 'finder-wind-pref', 'finder-region'].forEach(id => {
+                document.getElementById(id)?.addEventListener('change', () => renderDestinationFinder(true));
+            });
+            document.getElementById('finder-temp-ideal')?.addEventListener('input', (e) => {
+                const valEl = document.getElementById('finder-temp-val');
+                if (valEl) valEl.textContent = `${e.target.value} °C`;
+                renderDestinationFinder(true);
+            });
+            document.getElementById('btn-finder-show-all')?.addEventListener('click', () => {
+                finderShowAllStations = !finderShowAllStations;
+                renderDestinationFinder(false);
+            });
+            document.getElementById('btn-share-finder')?.addEventListener('click', () => {
+                renderDestinationFinder(true);
+                copyShareableDeepLink(window.location.href, 'finder_query');
+            });
+            ['twin-city-select', 'twin-month-select', 'twin-cand-month-select'].forEach(id => {
+                document.getElementById(id)?.addEventListener('change', () => renderTwinClimate(true));
+            });
+            document.getElementById('btn-share-twin')?.addEventListener('click', () => {
+                renderTwinClimate(true);
+                copyShareableDeepLink(window.location.href, 'twin_query');
             });
 
             

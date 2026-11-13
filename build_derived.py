@@ -233,6 +233,10 @@ def aggregate_daily(df: pd.DataFrame) -> list[list[Any]]:
     return daily_rows
 
 
+CLIMATE_FEATURES = ("tmean", "amp", "hum", "wind", "rain_pct")
+TWIN_WEIGHTS = {"tmean": 1.5, "amp": 0.8, "hum": 0.9, "wind": 0.8, "rain_pct": 1.0}
+
+
 def build_climatology(daily_by_slug: dict[str, list[list[Any]]]) -> dict[str, Any]:
     """Calcula normales mensuales y coeficientes Fourier del día del año para cada estación."""
     now_iso = datetime.now(timezone.utc).isoformat()
@@ -252,7 +256,10 @@ def build_climatology(daily_by_slug: dict[str, list[list[Any]]]) -> dict[str, An
                 tmin_m = round(float(np.mean([r[1] for r in month_rows])), 1)
                 tmax_m = round(float(np.mean([r[2] for r in month_rows])), 1)
                 tmean_m = round(float(np.mean([r[3] for r in month_rows])), 1)
+                amp_vals = [float(r[4]) if r[4] is not None else max(0.0, float(r[2]) - float(r[1])) for r in month_rows]
+                amp_m = round(float(np.mean(amp_vals)), 1)
                 rain_days = sum(1 for r in month_rows if (r[8] or 0.0) > 0.1)
+                rain_pct = round(100.0 * rain_days / n_days, 1)
                 hum_m = float(np.mean([r[6] for r in month_rows]))
                 wind_m = float(np.mean([r[7] for r in month_rows]))
                 clouds_m = float(np.mean([r[9] for r in month_rows]))
@@ -261,7 +268,12 @@ def build_climatology(daily_by_slug: dict[str, list[list[Any]]]) -> dict[str, An
                     "tmin": tmin_m,
                     "tmax": tmax_m,
                     "tmean": tmean_m,
+                    "amp": amp_m,
+                    "hum": round(hum_m, 1),
+                    "wind": round(wind_m, 1),
+                    "clouds": round(clouds_m, 1),
                     "rain_days": int(rain_days),
+                    "rain_pct": rain_pct,
                     "comfort": int(comfort_m),
                     "n_days": int(n_days)
                 }
@@ -308,10 +320,137 @@ def build_climatology(daily_by_slug: dict[str, list[list[Any]]]) -> dict[str, An
             "baseline_days": len(rows)
         }
 
+    # Estadísticas globales por dimensión para estandarización z-score (W3.5 Clima Gemelo)
+    feature_vectors: dict[str, list[float]] = {k: [] for k in CLIMATE_FEATURES}
+    for c_data in cities_climatology.values():
+        for m_obj in c_data["months"].values():
+            if not m_obj:
+                continue
+            for feat in CLIMATE_FEATURES:
+                val = m_obj.get(feat)
+                if val is not None and math.isfinite(float(val)):
+                    feature_vectors[feat].append(float(val))
+
+    feature_stats = {
+        "features": list(CLIMATE_FEATURES),
+        "mean": {
+            feat: round(float(np.mean(feature_vectors[feat])), 3) if feature_vectors[feat] else 0.0
+            for feat in CLIMATE_FEATURES
+        },
+        "std": {
+            feat: max(0.001, round(float(np.std(feature_vectors[feat], ddof=0)), 3)) if feature_vectors[feat] else 1.0
+            for feat in CLIMATE_FEATURES
+        }
+    }
+
     return {
         "generated_at": now_iso,
+        "feature_stats": feature_stats,
         "cities": cities_climatology
     }
+
+
+def compute_custom_comfort_score(
+    month_data: dict[str, Any] | None,
+    ideal_temp: float = 22.0,
+    rain_pref: str = "low",
+    wind_pref: str = "calm",
+) -> int:
+    """Calcula el confort bioclimático personalizado (0..100) sobre normales mensuales medidas."""
+    if not month_data:
+        return 0
+    tmean = float(month_data.get("tmean", 0.0))
+    hum = float(month_data.get("hum", 50.0))
+    wind = float(month_data.get("wind", 10.0))
+    rain_pct_raw = month_data.get("rain_pct")
+    if rain_pct_raw is None:
+        n_days = max(1, int(month_data.get("n_days", 30) or 30))
+        rain_pct = 100.0 * float(month_data.get("rain_days", 0) or 0) / n_days
+    else:
+        rain_pct = float(rain_pct_raw)
+
+    score = 100.0
+    t_diff = abs(tmean - float(ideal_temp))
+    score -= min(55.0, (t_diff ** 1.25) * 3.2)
+
+    if rain_pref == "dry":
+        score -= min(30.0, max(0.0, rain_pct - 5.0) * 1.1)
+    elif rain_pref == "low":
+        score -= min(22.0, max(0.0, rain_pct - 15.0) * 0.75)
+    else:
+        score -= min(12.0, max(0.0, rain_pct - 35.0) * 0.4)
+
+    if wind_pref == "calm":
+        score -= min(25.0, max(0.0, wind - 12.0) * 1.4)
+    elif wind_pref == "breezy":
+        score -= min(18.0, max(0.0, wind - 22.0) * 0.9)
+    else:
+        score -= min(8.0, max(0.0, wind - 35.0) * 0.4)
+
+    if hum > 75.0:
+        score -= min(10.0, (hum - 75.0) * 0.4)
+    elif hum < 25.0:
+        score -= min(5.0, (25.0 - hum) * 0.3)
+
+    return max(0, min(100, int(round(score))))
+
+
+def compute_twin_climates(
+    climatology_data: dict[str, Any],
+    target_slug: str,
+    target_month: int,
+    candidate_month: int | None = None,
+    top_n: int = 10,
+) -> list[dict[str, Any]]:
+    """Encuentra ciudades/meses gemelos mediante distancia euclídea ponderada z-score."""
+    cities = climatology_data.get("cities", {})
+    ref_city = cities.get(target_slug)
+    if not ref_city:
+        return []
+    ref_m = ref_city.get("months", {}).get(str(int(target_month)))
+    if not ref_m:
+        return []
+
+    stats = climatology_data.get("feature_stats") or {}
+    means = stats.get("mean") or {}
+    stds = stats.get("std") or {}
+
+    results: list[dict[str, Any]] = []
+    month_keys = [str(int(candidate_month))] if candidate_month is not None else [str(m) for m in range(1, 13)]
+
+    for slug, c_obj in cities.items():
+        if slug == target_slug:
+            continue
+        months_map = c_obj.get("months", {})
+        for mk in month_keys:
+            cand_m = months_map.get(mk)
+            if not cand_m:
+                continue
+            weighted_sq = 0.0
+            for feat in CLIMATE_FEATURES:
+                mu = float(means.get(feat, 0.0))
+                sd = max(float(stds.get(feat, 1.0)), 1e-6)
+                z_ref = (float(ref_m.get(feat, 0.0)) - mu) / sd
+                z_cand = (float(cand_m.get(feat, 0.0)) - mu) / sd
+                weighted_sq += TWIN_WEIGHTS[feat] * ((z_cand - z_ref) ** 2)
+            dist = math.sqrt(weighted_sq / len(CLIMATE_FEATURES))
+            similarity = max(0, min(100, int(round(100.0 * math.exp(-0.55 * dist)))))
+            results.append({
+                "slug": slug,
+                "month": int(mk),
+                "distance": round(dist, 4),
+                "similarity_pct": similarity,
+                "deltas": {
+                    "tmean": round(float(cand_m.get("tmean", 0.0)) - float(ref_m.get("tmean", 0.0)), 1),
+                    "rain_pct": round(float(cand_m.get("rain_pct", 0.0)) - float(ref_m.get("rain_pct", 0.0)), 1),
+                    "wind": round(float(cand_m.get("wind", 0.0)) - float(ref_m.get("wind", 0.0)), 1),
+                    "hum": round(float(cand_m.get("hum", 0.0)) - float(ref_m.get("hum", 0.0)), 1),
+                },
+                "metrics": cand_m,
+            })
+
+    results.sort(key=lambda r: (r["distance"], r["slug"], r["month"]))
+    return results[:top_n]
 
 
 def compute_doy_baseline(rows: list[list[Any]], target_date: str) -> float | None:
