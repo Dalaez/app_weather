@@ -1,46 +1,60 @@
 {
+  "id": "./",
   "name": "Datalaria Weather Intelligence",
   "short_name": "Weather",
-  "start_url": "/apps/weather/?source=pwa",
-  "scope": "/apps/weather/",
+  "start_url": "./?source=pwa",
+  "scope": "./",
   "display": "standalone",
+  "orientation": "any",
   "background_color": "#0b0f17",
   "theme_color": "#0b0f17",
   "description": "Centro de Control Climático Global: 168 estaciones, estacionalidad armónica de Fourier, Model Arena y confort outdoor.",
   "icons": [
     {
-      "src": "/apps/weather/icon.svg",
+      "src": "icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
     },
     {
-      "src": "/apps/weather/icon-192.png",
+      "src": "icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "/apps/weather/icon-512.png",
+      "src": "icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "shortcuts": [
     {
       "name": "Eje Ibérico (España)",
-      "url": "/apps/weather/?preset=spain",
+      "url": "./?preset=spain",
       "description": "Previsión y confort en capitales españolas"
     },
     {
       "name": "Extremos del Planeta",
-      "url": "/apps/weather/?preset=extremes",
+      "url": "./?preset=extremes",
       "description": "Récords térmicos mundiales hoy"
     },
     {
       "name": "Mis Ciudades",
-      "url": "/apps/weather/?mine=1",
+      "url": "./?mine=1",
       "description": "Estaciones guardadas como favoritas"
     }
   ]

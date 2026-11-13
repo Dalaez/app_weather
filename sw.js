@@ -1,5 +1,5 @@
-// sw.js - Service Worker para Weather Intelligence v3.3.1 (INV-WEATHER-10)
-const CACHE_NAME = 'weather-v3.3.1';
+// sw.js - Service Worker para Weather Intelligence v3.3.2 (INV-WEATHER-10, INV-WEATHER-22)
+const CACHE_NAME = 'weather-v3.3.2';
 const SHELL_ASSETS = [
     './',
     'index.html',
@@ -8,6 +8,9 @@ const SHELL_ASSETS = [
     'icon.svg',
     'icon-192.png',
     'icon-512.png',
+    'icon-maskable-192.png',
+    'icon-maskable-512.png',
+    'apple-touch-icon.png',
     'datalaria_logo_transp.png'
 ];
 
@@ -16,7 +19,7 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
             return Promise.allSettled(
-                SHELL_ASSETS.map((asset) => cache.add(asset).catch(() => {}))
+                SHELL_ASSETS.map((asset) => cache.add(new Request(asset, { cache: 'reload' })).catch(() => {}))
             );
         }).then(() => self.skipWaiting())
     );
@@ -37,6 +40,12 @@ self.addEventListener('activate', (event) => {
     );
 });
 
+self.addEventListener('message', (event) => {
+    if (event.data && event.data.type === 'SKIP_WAITING') {
+        self.skipWaiting();
+    }
+});
+
 // 3. Fetch Handler con estrategias diferenciadas (INV-WEATHER-10)
 self.addEventListener('fetch', (event) => {
     const url = new URL(event.request.url);
@@ -49,25 +58,34 @@ self.addEventListener('fetch', (event) => {
         return; // Petición directa a red
     }
 
-    // A. Shell / Assets locales (Stale-While-Revalidate)
+    const scopePath = new URL(self.registration.scope).pathname;
+    const isAppShellNav = url.origin === self.location.origin && (
+        url.pathname === scopePath ||
+        url.pathname === scopePath + 'index.html' ||
+        url.pathname === '/' ||
+        url.pathname === '/apps/weather/'
+    );
+
+    // A. Shell / Navegación Start URL / Assets locales (Stale-While-Revalidate)
     if (
+        isAppShellNav ||
         url.pathname.endsWith('.html') ||
         url.pathname.endsWith('.svg') ||
         url.pathname.endsWith('.png') ||
         (url.pathname.endsWith('.json') && url.pathname.includes('manifest'))
     ) {
         event.respondWith(
-            caches.match(event.request).then((cached) => {
+            caches.match(event.request, { ignoreSearch: isAppShellNav || event.request.mode === 'navigate' }).then((cached) => {
                 const networkFetch = fetch(event.request).then((response) => {
                     if (response && response.status === 200) {
                         const clone = response.clone();
                         caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
                     }
                     return response;
-                }).catch(() => cached);
+                }).catch(() => cached || (event.request.mode === 'navigate' ? (caches.match('./') || caches.match('index.html')) : undefined));
 
                 return cached || networkFetch;
-            }).catch(() => fetch(event.request))
+            }).catch(() => caches.match('./') || caches.match('index.html') || fetch(event.request))
         );
         return;
     }
@@ -75,7 +93,7 @@ self.addEventListener('fetch', (event) => {
     // B. JSON de Datos (derived/**, global_summary, predicciones) -> Stale-While-Revalidate
     if (
         (url.pathname.endsWith('.json') || url.pathname.includes('/derived/')) &&
-        (url.hostname.includes('datalaria-app-weather.netlify.app') || url.pathname.includes('/apps/weather/'))
+        (url.origin === self.location.origin || url.hostname.includes('datalaria-app-weather.netlify.app') || url.pathname.includes('/apps/weather/'))
     ) {
         event.respondWith(
             caches.open(CACHE_NAME).then((cache) => {

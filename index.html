@@ -3,11 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Datalaria - Weather Intelligence v3.3 | Observatorio Climático & Laboratorio ML</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0b0f17">
-    <link rel="apple-touch-icon" href="icon-192.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Weather">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -101,6 +105,25 @@
 
         * {
             box-sizing: border-box;
+        }
+
+        html,
+        body {
+            max-width: 100%;
+            overflow-x: clip;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .view-panel,
+        .map-card,
+        .kpi-grid,
+        .super-card,
+        .arena-table-wrap,
+        .w35-panel-card {
+            min-width: 0;
         }
 
         body {
@@ -1723,6 +1746,16 @@
         .mobile-bottom-tabs {
             display: none;
         }
+        @media (max-width: 1160px) {
+            .header-brand {
+                min-width: 0;
+            }
+            #live-status-badge,
+            #freshness-badge {
+                display: none !important;
+            }
+        }
+
         @media (max-width: 768px) {
             .mobile-bottom-tabs {
                 display: flex;
@@ -1730,14 +1763,14 @@
                 bottom: 0;
                 left: 0;
                 right: 0;
-                height: 56px;
+                height: calc(56px + env(safe-area-inset-bottom, 0px));
                 background: rgba(11, 15, 23, 0.96);
                 backdrop-filter: blur(12px);
                 border-top: 1px solid var(--border-subtle);
                 z-index: 9999;
                 justify-content: space-around;
                 align-items: center;
-                padding-bottom: env(safe-area-inset-bottom);
+                padding-bottom: env(safe-area-inset-bottom, 0px);
             }
             body.light-mode .mobile-bottom-tabs {
                 background: rgba(248, 250, 252, 0.96);
@@ -1767,16 +1800,70 @@
                 font-size: 18px;
                 line-height: 1;
             }
+            .main-header {
+                height: 56px;
+                gap: 8px;
+                padding: 0 10px;
+                max-width: 100%;
+            }
             .main-header .view-switcher {
                 display: none !important;
             }
+            .header-brand {
+                min-width: 0 !important;
+                flex: 1 1 auto;
+                gap: 8px;
+                overflow: hidden;
+            }
+            .btn-back {
+                padding: 5px 8px;
+                font-size: 12px;
+                flex-shrink: 0;
+            }
+            .brand-title-wrap {
+                min-width: 0;
+                flex: 1 1 auto;
+                gap: 6px;
+                overflow: hidden;
+            }
+            .brand-logo {
+                height: 22px;
+                flex-shrink: 0;
+            }
+            .brand-title {
+                font-size: 14px;
+                min-width: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            .header-actions-group {
+                flex-shrink: 0;
+                gap: 6px;
+            }
+            .btn-icon-toggle {
+                width: 32px;
+                height: 32px;
+            }
+            .app-options-menu {
+                right: 0;
+                left: auto;
+                min-width: min(230px, calc(100vw - 20px));
+                max-width: calc(100vw - 20px);
+            }
             .app-shell {
-                padding-bottom: 72px;
+                padding: 0 10px calc(76px + env(safe-area-inset-bottom, 0px)) 10px;
             }
             .pwa-toast {
-                bottom: 72px;
-                right: 16px;
-                left: 16px;
+                bottom: calc(68px + env(safe-area-inset-bottom, 0px));
+                right: 12px;
+                left: 12px;
+                max-width: none;
+            }
+            #toast-container {
+                bottom: calc(68px + env(safe-area-inset-bottom, 0px));
+                right: 12px;
+                left: 12px;
                 max-width: none;
             }
             .controls-filters-row {
@@ -1790,9 +1877,39 @@
             .seg-group {
                 width: 100%;
             }
+            #city-select-container .choices__input,
+            #city-select-container .choices__input--cloned {
+                min-width: 110px !important;
+                max-width: 100%;
+            }
+            .search-box {
+                min-width: 0;
+                width: 100%;
+            }
+            .map-header {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            #map-container {
+                height: 340px;
+            }
             .card-mini-btn.card-remove-btn {
                 min-width: 30px;
                 min-height: 28px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .kpi-grid,
+            .w35-result-grid,
+            .arena-hero {
+                grid-template-columns: 1fr;
+            }
+            .contrib-bar-wrap {
+                flex-wrap: wrap;
+            }
+            .contrib-label {
+                width: 100%;
             }
         }
 
@@ -2421,7 +2538,7 @@
                 <span data-i18n-key="backToPortal">← Datalaria</span>
             </a>
             <div class="brand-title-wrap">
-                <img src="/apps/weather/datalaria_logo_transp.png" alt="Datalaria" class="brand-logo">
+                <img src="datalaria_logo_transp.png" alt="Datalaria" class="brand-logo">
                 <span class="brand-title" data-i18n-key="mainTitle">Weather Intelligence v3.3</span>
                 <span class="status-badge" id="live-status-badge" data-i18n-key="badgeStatus">🟢 168 Estaciones · +375 Días</span>
                 <span class="badge-freshness" id="freshness-badge">🕒 En vivo</span>
@@ -2458,7 +2575,7 @@
                     <i data-feather="file-text" style="width:14px;height:14px;"></i>
                     <span data-i18n-key="exportJSON">📦 Descargar JSON</span>
                 </button>
-                <button class="menu-item hidden" id="menu-opt-install-pwa">
+                <button class="menu-item" id="menu-opt-install-pwa">
                     <i data-feather="plus-circle" style="width:14px;height:14px;"></i>
                     <span data-i18n-key="menuInstall">Instalar App (PWA)</span>
                 </button>
@@ -3048,6 +3165,8 @@
                 'pwaToastInstall': 'Instalar',
                 'pwaToastDismiss': 'Ahora no',
                 'pwaIosGuide': 'En iOS: pulsa Compartir y luego "Añadir a pantalla de inicio"',
+                'pwaDesktopGuide': 'Usa el menú del navegador (⋮ o ⊕ en la barra de dirección) → "Instalar aplicación".',
+                'pwaAlreadyInstalled': 'Weather Intelligence ya está instalada en este dispositivo.',
                 'offlineNotice': 'Modo sin conexión — Mostrando últimos datos almacenados localmente.',
                 'favsTitle': 'Mis Estaciones Favoritas',
                 'favsEmpty': 'No has guardado favoritas. Pulsa la estrella ★ en cualquier ciudad para añadirla.',
@@ -3260,47 +3379,49 @@
                 'whySubtitle': 'Deterministic breakdown of thermal factors without black-box models',
                 'whySelectCity': 'Station:',
                 'legacyTableTitle': '📊 View full table of 168 stations',
-                'badgeFreshnessPrefix': '🕒 Hace ',
-                'badgeFreshnessSuffix': 'h',
-                'badgeFreshnessNow': '🟢 En vivo',
-                'menuTitle': 'Opciones',
-                'menuTheme': 'Cambiar Tema',
-                'menuInstall': 'Instalar App (PWA)',
-                'menuFavs': 'Mis Ciudades',
-                'tabHoy': 'Hoy',
-                'tabComparar': 'Comparar',
+                'badgeFreshnessPrefix': '🕒 ',
+                'badgeFreshnessSuffix': 'h ago',
+                'badgeFreshnessNow': '🟢 Live',
+                'menuTitle': 'Options',
+                'menuTheme': 'Switch Theme',
+                'menuInstall': 'Install App (PWA)',
+                'menuFavs': 'My Cities',
+                'tabHoy': 'Today',
+                'tabComparar': 'Compare',
                 'tabRanking': 'Ranking',
-                'tabIA': 'IA',
-                'accClickToExpand': '🔍 Ver evolución',
-                'accClickToCollapse': '▲ Plegar',
-                'accClickToMatrix': '🔍 Ver matriz',
-                'accClickToDetail': '🔍 Ver detalle',
-                'accAiTitle': 'Detalle y Pesos del Modelo IA (Fourier)',
-                'accEvolutionTitle': 'Evolución Histórica & Proyección',
-                'accAmplitudeTitle': 'Amplitud Térmica Diaria (Máx - Mín)',
-                'accSeasonalityTitle': 'Matriz de Perfil Estacional Mensual (°C)',
-                'notEnoughData': 'Disponible con más datos (≥ 7 días)',
-                'dataSufficiencyNotice': 'Se requieren más lecturas para calcular esta métrica.',
-                'anomalyWarm': 'Superior a la media',
-                'anomalyCold': 'Inferior a la media',
-                'anomalyNormal': 'En la media',
-                'nlWarmOptimal': 'Día excepcionalmente cálido para la época y condiciones excelentes para actividades al aire libre.',
-                'nlWarmCaution': 'Calor superior a lo normal; recomendamos precaución con la exposición solar prolongada.',
-                'nlColdOptimal': 'Ambiente fresco y seco por debajo de la media, ideal para paseos o deporte.',
-                'nlColdCaution': 'Frío notable por debajo de la media habitual; baja sensación de confort térmico.',
-                'nlNormal': 'Valores térmicos dentro de los rangos climatológicos normales para este período del año.',
-                'pwaToastTitle': 'Instalar Weather Cockpit',
-                'pwaToastDesc': 'Acceso rápido y funcionamiento offline desde tu pantalla de inicio.',
-                'pwaToastInstall': 'Instalar',
-                'pwaToastDismiss': 'Ahora no',
-                'pwaIosGuide': 'En iOS: pulsa Compartir y luego "Añadir a pantalla de inicio"',
-                'offlineNotice': 'Modo sin conexión — Mostrando últimos datos almacenados localmente.',
-                'favsTitle': 'Mis Estaciones Favoritas',
-                'favsEmpty': 'No has guardado favoritas. Pulsa la estrella ★ en cualquier ciudad para añadirla.',
-                'menuCsv': 'Exportar CSV',
-                'menuJson': 'Exportar JSON',
-                'menuSheet': 'Ficha Técnica',
-                'menuArticles': 'Serie de Artículos',
+                'tabIA': 'AI',
+                'accClickToExpand': '🔍 View evolution',
+                'accClickToCollapse': '▲ Collapse',
+                'accClickToMatrix': '🔍 View matrix',
+                'accClickToDetail': '🔍 View details',
+                'accAiTitle': 'AI Model Weights & Details (Fourier)',
+                'accEvolutionTitle': 'Historical Evolution & Forecast',
+                'accAmplitudeTitle': 'Daily Thermal Range (Max - Min)',
+                'accSeasonalityTitle': 'Monthly Seasonal Profile Matrix (°C)',
+                'notEnoughData': 'Available with more data (≥ 7 days)',
+                'dataSufficiencyNotice': 'More readings required to compute this metric.',
+                'anomalyWarm': 'Above average',
+                'anomalyCold': 'Below average',
+                'anomalyNormal': 'Near normal',
+                'nlWarmOptimal': 'Exceptionally warm day for the season and excellent conditions for outdoor activities.',
+                'nlWarmCaution': 'Warmer than usual; take care during prolonged sun exposure.',
+                'nlColdOptimal': 'Cool, dry conditions below seasonal average — great for walking or exercise.',
+                'nlColdCaution': 'Notable cold below seasonal norms; lower outdoor thermal comfort.',
+                'nlNormal': 'Temperatures within normal climatological ranges for this time of year.',
+                'pwaToastTitle': 'Install Weather Cockpit',
+                'pwaToastDesc': 'Quick launch and offline access right from your home screen.',
+                'pwaToastInstall': 'Install',
+                'pwaToastDismiss': 'Not now',
+                'pwaIosGuide': 'On iOS Safari: tap Share then "Add to Home Screen".',
+                'pwaDesktopGuide': 'Use your browser menu (⋮ or ⊕ in the address bar) → "Install app".',
+                'pwaAlreadyInstalled': 'Weather Intelligence is already installed on this device.',
+                'offlineNotice': 'Offline mode — Showing latest locally cached data.',
+                'favsTitle': 'My Favorite Stations',
+                'favsEmpty': 'No favorites saved yet. Tap ★ on any city card to pin it.',
+                'menuCsv': 'Export CSV',
+                'menuJson': 'Export JSON',
+                'menuSheet': 'Technical Sheet',
+                'menuArticles': 'Article Series',
                 'backToPortal': '← Datalaria',
                 'badgeStatus': '🟢 168 Stations · +375 Days',
                 'viewObservatory': '🌍 Observatory',
@@ -3500,8 +3621,8 @@
         // --- Configuración Global v3.0 (INV-WEATHER-7 Remote-First) ---
         const REMOTE_BASE = 'https://datalaria-app-weather.netlify.app/';
         const LOCAL_BASE = '/apps/weather/';
-        const CITIES_LIST_URL = '/apps/weather/ciudades.txt';
-        const DATA_FOLDER_URL = '/apps/weather/datos/';
+        const CITIES_LIST_URL = 'ciudades.txt';
+        const DATA_FOLDER_URL = 'datos/';
         const REMOTE_DATA_FALLBACK_URL = 'https://datalaria-app-weather.netlify.app/datos/';
         const MAP_DATA_URL = 'city_locations.json';
         const PREDICTIONS_URL = 'predicciones.json';
@@ -3722,8 +3843,8 @@
 
             if (remaining.length > 0) {
                 fitMapToSelected(remaining.map(t => t.split(',')[0].trim()));
-            } else if (map) {
-                map.flyTo([25, 0], 2, { duration: 0.7 });
+            } else {
+                safeFlyTo([25, 0], 2, { duration: 0.7 });
             }
 
             const t = translations[currentLang] || translations.es;
@@ -3749,7 +3870,7 @@
             updateCitySelectionMeta([]);
             syncChoiceChipAccents([]);
             await updateDashboard();
-            if (map) map.flyTo([25, 0], 2, { duration: 0.7 });
+            safeFlyTo([25, 0], 2, { duration: 0.7 });
 
             const t = translations[currentLang] || translations.es;
             showToast(`🧹 ${t.citiesCleared || 'Selección vaciada.'}`);
@@ -3936,8 +4057,9 @@
             }
         }
 
-        function showToast(message) {
+        function showToast(message, duration = 3000) {
             const container = document.getElementById('toast-container');
+            if (!container) return;
             const toast = document.createElement('div');
             toast.className = 'toast-msg';
             toast.textContent = message;
@@ -3946,7 +4068,7 @@
                 toast.style.opacity = '0';
                 toast.style.transition = 'opacity 0.3s ease';
                 setTimeout(() => toast.remove(), 300);
-            }, 3000);
+            }, duration);
         }
 
         // --- Definición de Métricas ---
@@ -4319,15 +4441,81 @@
             }
         }
 
+        let pendingMapViewport = null;
+
+        function isMapContainerReady() {
+            if (!map) return false;
+            const obsPanel = document.getElementById('view-observatory');
+            if (obsPanel && !obsPanel.classList.contains('active')) return false;
+            const container = map.getContainer ? map.getContainer() : null;
+            if (!container || !container.offsetParent) return false;
+            const size = map.getSize ? map.getSize() : { x: 0, y: 0 };
+            return Number.isFinite(size.x) && Number.isFinite(size.y) && size.x > 0 && size.y > 0;
+        }
+
+        function safeFlyToBounds(bounds, opts = {}) {
+            if (!map || !Array.isArray(bounds) || bounds.length === 0) return;
+            const validBounds = bounds.filter(pt =>
+                Array.isArray(pt) && pt.length === 2 && Number.isFinite(pt[0]) && Number.isFinite(pt[1])
+            );
+            if (validBounds.length === 0) return;
+
+            if (!isMapContainerReady()) {
+                pendingMapViewport = { type: 'bounds', bounds: validBounds, opts };
+                return;
+            }
+            pendingMapViewport = null;
+            if (typeof map.stop === 'function') map.stop();
+            try {
+                if (validBounds.length === 1) {
+                    map.setView(validBounds[0], Math.min(opts.maxZoom || 6, 5), { animate: false });
+                } else {
+                    map.fitBounds(validBounds, {
+                        padding: opts.padding || [50, 50],
+                        maxZoom: opts.maxZoom || 6,
+                        animate: true
+                    });
+                }
+            } catch (_) {}
+        }
+
+        function safeFlyTo(center, zoom, opts = {}) {
+            if (!map || !Array.isArray(center) || !Number.isFinite(center[0]) || !Number.isFinite(center[1]) || !Number.isFinite(zoom)) return;
+            if (!isMapContainerReady()) {
+                pendingMapViewport = { type: 'point', center, zoom, opts };
+                return;
+            }
+            pendingMapViewport = null;
+            if (typeof map.stop === 'function') map.stop();
+            try {
+                map.flyTo(center, zoom, opts);
+            } catch (_) {
+                try { map.setView(center, zoom, { animate: false }); } catch (__) {}
+            }
+        }
+
+        function flushPendingMapViewport() {
+            if (!map || !isMapContainerReady()) return;
+            if (typeof map.stop === 'function') map.stop();
+            const pending = pendingMapViewport;
+            pendingMapViewport = null;
+            if (pending) {
+                if (pending.type === 'bounds') safeFlyToBounds(pending.bounds, pending.opts);
+                else if (pending.type === 'point') safeFlyTo(pending.center, pending.zoom, pending.opts);
+            }
+        }
+
         function fitMapToSelected(cityNames) {
             if (!map || cityNames.length === 0) return;
             const bounds = [];
             cityNames.forEach(name => {
                 const loc = cityLocationsCache.find(l => l.ciudad === name);
-                if (loc) bounds.push([loc.lat, loc.lon]);
+                if (loc && Number.isFinite(Number(loc.lat)) && Number.isFinite(Number(loc.lon))) {
+                    bounds.push([Number(loc.lat), Number(loc.lon)]);
+                }
             });
             if (bounds.length > 0) {
-                map.flyToBounds(bounds, { padding: [50, 50], maxZoom: 6, duration: 1.2 });
+                safeFlyToBounds(bounds, { padding: [50, 50], maxZoom: 6, duration: 1.2 });
             }
         }
 
@@ -4400,7 +4588,27 @@
         }
 
         // --- Conmutación de las 3 Vistas ---
-        function switchView(viewId) {
+        function syncMobileBottomTabs(viewId, preferredTab = null) {
+            const buttons = document.querySelectorAll('.mobile-tab-btn');
+            if (!buttons.length) return;
+            let targetTab = preferredTab;
+            if (!targetTab) {
+                if (viewId === 'atlas') targetTab = 'ranking';
+                else if (viewId === 'arena') targetTab = 'ia';
+                else {
+                    const currentActive = document.querySelector('.mobile-tab-btn.active')?.dataset?.tab;
+                    targetTab = (currentActive === 'comparar') ? 'comparar' : 'hoy';
+                }
+            }
+            buttons.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.tab === targetTab);
+            });
+        }
+
+        function switchView(viewId, preferredTab = null) {
+            if (viewId !== 'observatory' && map && typeof map.stop === 'function') {
+                map.stop();
+            }
             currentView = viewId;
             document.querySelectorAll('.view-btn').forEach(b => {
                 b.classList.toggle('active', b.dataset.view === viewId);
@@ -4408,9 +4616,17 @@
             document.querySelectorAll('.view-panel').forEach(p => {
                 p.classList.toggle('active', p.id === `view-${viewId}`);
             });
+            syncMobileBottomTabs(viewId, preferredTab);
 
             if (viewId === 'observatory') {
-                if (map) setTimeout(() => map.invalidateSize(), 150);
+                if (map) {
+                    if (typeof map.stop === 'function') map.stop();
+                    setTimeout(() => {
+                        if (currentView !== 'observatory' || !map) return;
+                        map.invalidateSize({ animate: false });
+                        requestAnimationFrame(() => flushPendingMapViewport());
+                    }, 150);
+                }
                 if (myChart) myChart.resize();
                 if (myVariationChart) myVariationChart.resize();
             } else if (viewId === 'arena') {
@@ -6250,6 +6466,9 @@
                 choicesInstance.config.maxItemText = () => translations[lang].choicesMaxItems;
             }
             updateCitySelectionMeta();
+            if (typeof lastDataFreshnessIso !== 'undefined') {
+                updateFreshnessBadge(lastDataFreshnessIso);
+            }
 
             if (climatologyCache) {
                 populateW35Selectors();
@@ -6318,63 +6537,130 @@
                 }
             });
 
-            document.getElementById('menu-opt-install-pwa')?.addEventListener('click', () => {
+            document.getElementById('menu-opt-install-pwa')?.addEventListener('click', async () => {
                 menu.classList.remove('show');
-                if (deferredPrompt) deferredPrompt.prompt();
+                const t = translations[currentLang] || translations.es;
+                if (isStandaloneMode()) {
+                    showToast(t.pwaAlreadyInstalled || 'Weather Intelligence ya está instalada.', 4500);
+                    return;
+                }
+                const showManualGuide = () => {
+                    const isIos = /iphone|ipad|ipod/i.test(navigator.userAgent) ||
+                        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+                    showToast(
+                        isIos ? (t.pwaIosGuide || '') : (t.pwaDesktopGuide || ''),
+                        6000
+                    );
+                };
+                if (deferredPrompt) {
+                    try {
+                        await deferredPrompt.prompt();
+                        const choice = await deferredPrompt.userChoice;
+                        if (choice && choice.outcome === 'accepted') deferredPrompt = null;
+                    } catch (_) {
+                        showManualGuide();
+                    }
+                } else {
+                    showManualGuide();
+                }
             });
+        }
+
+        function isStandaloneMode() {
+            return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
         }
 
         function initMobileTabs() {
             document.querySelectorAll('.mobile-tab-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
-                    document.querySelectorAll('.mobile-tab-btn').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
                     const tab = btn.dataset.tab;
                     if (tab === 'hoy') {
-                        switchView('observatory');
+                        switchView('observatory', 'hoy');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
                     } else if (tab === 'comparar') {
-                        switchView('observatory');
+                        switchView('observatory', 'comparar');
+                        document.getElementById('controls-container')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     } else if (tab === 'ranking') {
-                        switchView('atlas');
+                        switchView('atlas', 'ranking');
                     } else if (tab === 'ia') {
-                        switchView('arena');
+                        switchView('arena', 'ia');
                     }
                 });
             });
+            syncMobileBottomTabs(currentView);
         }
 
         function registerPwaServiceWorker() {
+            const doRegisterSw = () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('[PWA] Service Worker registrado:', reg.scope))
+                    .catch(err => console.warn('[PWA] Error SW:', err));
+            };
             if ('serviceWorker' in navigator) {
-                window.addEventListener('load', () => {
-                    navigator.serviceWorker.register('sw.js')
-                        .then(reg => console.log('[PWA] Service Worker registrado:', reg.scope))
-                        .catch(err => console.warn('[PWA] Error SW:', err));
-                });
+                if (document.readyState !== 'loading') {
+                    doRegisterSw();
+                } else {
+                    window.addEventListener('load', doRegisterSw, { once: true });
+                }
+            }
+
+            const menuInstallBtn = document.getElementById('menu-opt-install-pwa');
+            if (menuInstallBtn && isStandaloneMode()) {
+                menuInstallBtn.classList.add('hidden');
             }
 
             window.addEventListener('beforeinstallprompt', (e) => {
                 e.preventDefault();
                 deferredPrompt = e;
-                const menuInstall = document.getElementById('menu-opt-install-pwa');
-                if (menuInstall) menuInstall.classList.remove('hidden');
+                if (menuInstallBtn && !isStandaloneMode()) menuInstallBtn.classList.remove('hidden');
 
                 let visits = parseInt(localStorage.getItem('weather_visits') || '0', 10) + 1;
                 localStorage.setItem('weather_visits', visits.toString());
 
                 const dismissed = localStorage.getItem('weather_install_dismissed');
-                if (visits >= 2 && !dismissed) {
+                if (visits >= 2 && !dismissed && !isStandaloneMode()) {
                     const toast = document.getElementById('pwa-install-toast');
                     if (toast) toast.classList.remove('hidden');
                 }
             });
 
-            document.getElementById('pwa-toast-install')?.addEventListener('click', () => {
-                if (deferredPrompt) deferredPrompt.prompt();
+            window.addEventListener('appinstalled', () => {
+                deferredPrompt = null;
+                document.getElementById('menu-opt-install-pwa')?.classList.add('hidden');
+                document.getElementById('pwa-install-toast')?.classList.add('hidden');
+                const t = translations[currentLang] || translations.es;
+                showToast(t.pwaAlreadyInstalled || 'Weather Intelligence ya está instalada.', 4500);
+            });
+
+            document.getElementById('pwa-toast-install')?.addEventListener('click', async () => {
+                const t = translations[currentLang] || translations.es;
+                if (deferredPrompt) {
+                    try {
+                        await deferredPrompt.prompt();
+                        const choice = await deferredPrompt.userChoice;
+                        if (choice && choice.outcome === 'accepted') deferredPrompt = null;
+                    } catch (_) {
+                        showToast(t.pwaDesktopGuide || '', 6000);
+                    }
+                } else {
+                    showToast(t.pwaDesktopGuide || '', 6000);
+                }
                 document.getElementById('pwa-install-toast')?.classList.add('hidden');
             });
             document.getElementById('pwa-toast-dismiss')?.addEventListener('click', () => {
                 localStorage.setItem('weather_install_dismissed', 'true');
                 document.getElementById('pwa-install-toast')?.classList.add('hidden');
+            });
+
+            let mapResizeTimer = null;
+            window.addEventListener('resize', () => {
+                if (mapResizeTimer) clearTimeout(mapResizeTimer);
+                mapResizeTimer = setTimeout(() => {
+                    if (isMapContainerReady()) {
+                        map.invalidateSize({ animate: false });
+                        flushPendingMapViewport();
+                    }
+                }, 180);
             });
 
             window.addEventListener('online', () => {
@@ -6404,9 +6690,12 @@
                 document.getElementById('dark-mode-icon').setAttribute('data-feather', 'sun');
             }
 
-            // 2. Idioma (URL -> localStorage -> default ES)
+            // 2. Idioma (URL -> localStorage -> default ES) y registro temprano PWA/UI
             let lang = urlParams.lang || localStorage.getItem('lang') || 'es';
             translatePage(lang);
+            initOptionsMenu();
+            initMobileTabs();
+            registerPwaServiceWorker();
 
             // 3. Cargar Predicciones, Resumen Global, Índice y Climatología en paralelo
             await Promise.all([
@@ -6624,9 +6913,6 @@
 
             
             initAccordions();
-            initOptionsMenu();
-            initMobileTabs();
-            registerPwaServiceWorker();
 
             document.getElementById('btn-favs-quick')?.addEventListener('click', () => {
                 const favs = getFavoriteCities();
