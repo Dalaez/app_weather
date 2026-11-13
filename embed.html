@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Datalaria Weather Intelligence — Widget</title>
+    <style>
+        :root {
+            --bg: #08101d;
+            --card: #0f1b2e;
+            --card-soft: rgba(255, 255, 255, 0.04);
+            --border: rgba(148, 163, 184, 0.22);
+            --text: #f1f5f9;
+            --muted: #94a3b8;
+            --accent: #38bdf8;
+            --warm: #f97316;
+            --cool: #60a5fa;
+            --ok: #34d399;
+        }
+        body.theme-light {
+            --bg: #f1f5f9;
+            --card: #ffffff;
+            --card-soft: #f8fafc;
+            --border: rgba(15, 23, 42, 0.12);
+            --text: #0f172a;
+            --muted: #475569;
+            --accent: #0284c7;
+            --warm: #ea580c;
+            --cool: #2563eb;
+            --ok: #059669;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body {
+            height: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+        }
+        .widget-wrap {
+            height: 100%;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 14px 16px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            gap: 10px;
+        }
+        .w-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .w-city {
+            font-size: 1.08rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+        }
+        .w-meta {
+            font-size: 0.74rem;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+        .w-temp-box {
+            text-align: right;
+            flex-shrink: 0;
+        }
+        .w-temp {
+            font-size: 1.65rem;
+            font-weight: 800;
+            line-height: 1;
+            color: var(--accent);
+        }
+        .w-cond {
+            font-size: 0.75rem;
+            color: var(--muted);
+            margin-top: 3px;
+        }
+        .w-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+        .w-pill {
+            font-size: 0.74rem;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 999px;
+            background: var(--card-soft);
+            border: 1px solid var(--border);
+        }
+        .w-pill.warm { color: var(--warm); border-color: rgba(249, 115, 22, 0.35); }
+        .w-pill.cool { color: var(--cool); border-color: rgba(96, 165, 250, 0.35); }
+        .w-pill.ok { color: var(--ok); border-color: rgba(52, 211, 153, 0.35); }
+        .w-mid {
+            display: grid;
+            grid-template-columns: 1fr 1.15fr;
+            gap: 10px;
+            align-items: center;
+        }
+        .w-spark-box {
+            background: var(--card-soft);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 6px 8px;
+        }
+        .w-spark-label {
+            font-size: 0.68rem;
+            color: var(--muted);
+            margin-bottom: 2px;
+        }
+        .w-spark-svg {
+            width: 100%;
+            height: 36px;
+            display: block;
+        }
+        .w-forecast {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+        }
+        .w-fday {
+            background: var(--card-soft);
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            padding: 5px 6px;
+            text-align: center;
+        }
+        .w-fday-lbl { font-size: 0.68rem; color: var(--muted); }
+        .w-fday-val { font-size: 0.8rem; font-weight: 700; margin-top: 2px; }
+        .w-foot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            border-top: 1px solid var(--border);
+            padding-top: 8px;
+            font-size: 0.72rem;
+        }
+        .w-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .w-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .w-link:hover { text-decoration: underline; }
+        .w-brand {
+            color: var(--muted);
+            font-size: 0.7rem;
+            text-decoration: none;
+        }
+        @media (max-width: 400px) {
+            .w-mid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <main class="widget-wrap" id="widget-root">
+        <div class="w-top">
+            <div>
+                <h1 class="w-city" id="w-city">Cargando...</h1>
+                <div class="w-meta" id="w-meta">Datalaria Weather Intelligence</div>
+            </div>
+            <div class="w-temp-box">
+                <div class="w-temp" id="w-temp">--°C</div>
+                <div class="w-cond" id="w-cond">--</div>
+            </div>
+        </div>
+
+        <div class="w-pills" id="w-pills"></div>
+
+        <div class="w-mid">
+            <div class="w-spark-box">
+                <div class="w-spark-label" id="w-spark-label">14d Tª media</div>
+                <svg class="w-spark-svg" id="w-spark-svg" viewBox="0 0 140 36" preserveAspectRatio="none" aria-hidden="true"></svg>
+            </div>
+            <div class="w-forecast" id="w-forecast"></div>
+        </div>
+
+        <footer class="w-foot">
+            <a class="w-brand" id="w-brand-link" href="https://datalaria.com/apps/weather/" target="_blank" rel="noopener">Datalaria Weather v3.3</a>
+            <div class="w-links">
+                <a class="w-link" id="w-link-climate" href="https://datalaria.com/es/apps/weather/clima/" target="_blank" rel="noopener">Clima histórico</a>
+                <a class="w-link" id="w-link-cockpit" href="https://datalaria.com/apps/weather/" target="_blank" rel="noopener">Abrir Cockpit →</a>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        (function () {
+            const REMOTE_BASE = 'https://datalaria-app-weather.netlify.app';
+            const SLUG_RE = /^[a-z0-9-]+$/;
+
+            const params = new URLSearchParams(window.location.search);
+            const rawCity = (params.get('city') || 'madrid').trim().toLowerCase();
+            const safeSlug = SLUG_RE.test(rawCity) ? rawCity : 'madrid';
+            const lang = params.get('lang') === 'en' ? 'en' : 'es';
+            const theme = params.get('theme') === 'light' ? 'light' : 'dark';
+
+            document.documentElement.lang = lang;
+            if (theme === 'light') {
+                document.body.classList.add('theme-light');
+            }
+
+            const I18N = {
+                es: {
+                    loading: 'Cargando datos...',
+                    notFound: 'Estación no encontrada en el catálogo.',
+                    vsNormal: 'vs normal',
+                    since: 'desde oct. 2025',
+                    comfort: 'Confort',
+                    spark14: '14 días · Tª media',
+                    climateLink: 'Clima histórico',
+                    cockpitLink: 'Abrir Cockpit →',
+                    humidity: 'Hum.',
+                    wind: 'Viento'
+                },
+                en: {
+                    loading: 'Loading station...',
+                    notFound: 'Station not found in catalog.',
+                    vsNormal: 'vs normal',
+                    since: 'since Oct 2025',
+                    comfort: 'Comfort',
+                    spark14: '14-day mean temp',
+                    climateLink: 'Climate data',
+                    cockpitLink: 'Open Cockpit →',
+                    humidity: 'Hum.',
+                    wind: 'Wind'
+                }
+            };
+            const t = I18N[lang];
+
+            document.getElementById('w-city').textContent = t.loading;
+            document.getElementById('w-spark-label').textContent = t.spark14;
+            document.getElementById('w-link-climate').textContent = t.climateLink;
+            document.getElementById('w-link-cockpit').textContent = t.cockpitLink;
+
+            function slugify(text) {
+                return String(text || '')
+                    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+                    .toLowerCase().trim()
+                    .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+            }
+
+            async function fetchJsonRemoteFirst(relPath) {
+                const candidates = [REMOTE_BASE + '/' + relPath, './' + relPath];
+                for (const url of candidates) {
+                    try {
+                        const res = await fetch(url, { cache: 'default' });
+                        if (res.ok) return await res.json();
+                    } catch (_) {}
+                }
+                return null;
+            }
+
+            function addPill(container, text, cls) {
+                const span = document.createElement('span');
+                span.className = 'w-pill' + (cls ? ' ' + cls : '');
+                span.textContent = text;
+                container.appendChild(span);
+            }
+
+            function drawSparkline(svgEl, values) {
+                while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
+                if (!Array.isArray(values) || values.length < 2) return;
+                const min = Math.min(...values);
+                const max = Math.max(...values);
+                const span = max - min || 1;
+                const w = 140;
+                const h = 36;
+                const pad = 4;
+                const pts = values.map((v, idx) => {
+                    const x = pad + (idx / (values.length - 1)) * (w - pad * 2);
+                    const y = h - pad - ((v - min) / span) * (h - pad * 2);
+                    return x.toFixed(1) + ',' + y.toFixed(1);
+                }).join(' ');
+                const poly = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+                poly.setAttribute('fill', 'none');
+                poly.setAttribute('stroke', 'currentColor');
+                poly.setAttribute('stroke-width', '2');
+                poly.setAttribute('stroke-linecap', 'round');
+                poly.setAttribute('stroke-linejoin', 'round');
+                poly.style.color = 'var(--accent)';
+                poly.setAttribute('points', pts);
+                svgEl.appendChild(poly);
+            }
+
+            function renderForecast(container, forecastList) {
+                while (container.firstChild) container.removeChild(container.firstChild);
+                const items = Array.isArray(forecastList) ? forecastList.slice(0, 3) : [];
+                items.forEach((f, idx) => {
+                    const box = document.createElement('div');
+                    box.className = 'w-fday';
+                    const lbl = document.createElement('div');
+                    lbl.className = 'w-fday-lbl';
+                    if (f.date) {
+                        const d = new Date(f.date + 'T12:00:00');
+                        lbl.textContent = !isNaN(d.getTime())
+                            ? d.toLocaleDateString(lang, { weekday: 'short' })
+                            : ('D+' + (idx + 1));
+                    } else {
+                        lbl.textContent = 'D+' + (idx + 1);
+                    }
+                    const val = document.createElement('div');
+                    val.className = 'w-fday-val';
+                    const tMax = typeof f.max === 'number' ? Math.round(f.max) : '--';
+                    const tMin = typeof f.min === 'number' ? Math.round(f.min) : '--';
+                    val.textContent = `${tMax}° / ${tMin}°`;
+                    box.appendChild(lbl);
+                    box.appendChild(val);
+                    container.appendChild(box);
+                });
+            }
+
+            async function init() {
+                const [indexData, summaryData, insightsData, predData] = await Promise.all([
+                    fetchJsonRemoteFirst('derived/index.json'),
+                    fetchJsonRemoteFirst('global_summary.json'),
+                    fetchJsonRemoteFirst('derived/insights.json'),
+                    fetchJsonRemoteFirst('predicciones.json')
+                ]);
+
+                const citiesMeta = Array.isArray(indexData?.cities) ? indexData.cities : [];
+                let meta = citiesMeta.find((c) => c.slug === safeSlug);
+                if (!meta && citiesMeta.length > 0) {
+                    meta = citiesMeta.find((c) => c.slug === 'madrid') || citiesMeta[0];
+                }
+
+                if (!meta) {
+                    document.getElementById('w-city').textContent = safeSlug;
+                    document.getElementById('w-meta').textContent = t.notFound;
+                    return;
+                }
+
+                const citySlug = meta.slug;
+                const cityName = meta.name || meta.city || citySlug;
+                const summaryCities = Array.isArray(summaryData?.cities) ? summaryData.cities : [];
+                const summaryRow = summaryCities.find((r) => slugify(r.ciudad || r.city) === citySlug) || null;
+                const insRow = insightsData?.cities ? insightsData.cities[citySlug] : null;
+                const predKey = Object.keys(predData || {}).find((k) => slugify(k) === citySlug);
+                const predRow = predKey ? predData[predKey] : null;
+
+                const countryCode = summaryRow?.country || meta.country || '';
+                document.getElementById('w-city').textContent = cityName + (countryCode ? ` (${countryCode})` : '');
+                const lastDt = summaryRow?.latest?.fecha_hora ? String(summaryRow.latest.fecha_hora).slice(0, 16).replace('T', ' ') : (meta.last_date || '');
+                document.getElementById('w-meta').textContent = `${meta.region || ''} · ${lastDt} · ${t.since}`;
+
+                const tempVal = typeof summaryRow?.latest?.temp === 'number' ? summaryRow.latest.temp.toFixed(1) : '--';
+                document.getElementById('w-temp').textContent = `${tempVal}°C`;
+                document.getElementById('w-cond').textContent = summaryRow?.latest?.description || 'OpenWeather + IA';
+
+                const pillsEl = document.getElementById('w-pills');
+                while (pillsEl.firstChild) pillsEl.removeChild(pillsEl.firstChild);
+                if (typeof insRow?.anomaly_c === 'number') {
+                    const sign = insRow.anomaly_c > 0 ? '+' : '';
+                    const cls = insRow.anomaly_c >= 1 ? 'warm' : (insRow.anomaly_c <= -1 ? 'cool' : '');
+                    const pctStr = typeof insRow.percentil === 'number' ? ` · p${insRow.percentil}` : '';
+                    addPill(pillsEl, `${sign}${insRow.anomaly_c.toFixed(1)} °C ${t.vsNormal}${pctStr}`, cls);
+                }
+                const comfortVal = summaryRow?.stats?.comfort_index;
+                if (typeof comfortVal === 'number') {
+                    addPill(pillsEl, `${t.comfort} ${Math.round(comfortVal)}/100`, 'ok');
+                }
+                if (typeof summaryRow?.latest?.humidity === 'number') {
+                    addPill(pillsEl, `${t.humidity} ${Math.round(summaryRow.latest.humidity)}%`, '');
+                }
+                if (typeof summaryRow?.latest?.wind_kmh === 'number') {
+                    addPill(pillsEl, `${t.wind} ${summaryRow.latest.wind_kmh.toFixed(1)} km/h`, '');
+                }
+
+                renderForecast(document.getElementById('w-forecast'), predRow?.pred_owm_5day || []);
+
+                const climateBase = lang === 'en'
+                    ? 'https://datalaria.com/en/apps/weather/climate/?city='
+                    : 'https://datalaria.com/es/apps/weather/clima/?city=';
+                document.getElementById('w-link-climate').href = climateBase + encodeURIComponent(citySlug);
+                document.getElementById('w-link-cockpit').href =
+                    `https://datalaria.com/apps/weather/?cities=${encodeURIComponent(cityName)}&lang=${lang}`;
+
+                if (citiesMeta.some((c) => c.slug === citySlug)) {
+                    const daily = await fetchJsonRemoteFirst(`derived/daily/${citySlug}.json`);
+                    const rows = Array.isArray(daily?.rows) ? daily.rows.slice(-14) : [];
+                    const vals = rows.map((r) => (Array.isArray(r) ? r[3] : null)).filter((v) => typeof v === 'number');
+                    drawSparkline(document.getElementById('w-spark-svg'), vals);
+                }
+            }
+
+            init();
+        })();
+    </script>
+</body>
+</html>

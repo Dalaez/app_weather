@@ -757,6 +757,329 @@ def build_scorecard(forecast_log_dir: Path,
     }
 
 
+def _city_deep_link(name: str, country: str, slug: str, lang: str = "es") -> str:
+    """Construye deep-link compartible al Cockpit o a la landing SEO intermedia."""
+    query = f"{name},{country}" if country else name
+    from urllib.parse import quote
+    return f"https://datalaria.com/apps/weather/?cities={quote(query)}&view=observatory&lang={lang}"
+
+
+def _format_weekly_scriba_snippets(
+    window: dict[str, Any],
+    hottest: list[dict[str, Any]],
+    coldest: list[dict[str, Any]],
+    wettest: list[dict[str, Any]],
+    pos_anom: dict[str, Any] | None,
+    neg_anom: dict[str, Any] | None,
+    comfort_leaders: list[dict[str, Any]],
+) -> dict[str, dict[str, Any]]:
+    """Genera copys deterministas ES/EN (coste 0€, sin LLM) listos para Datalaria Scriba."""
+    es_url = "https://datalaria.com/es/apps/weather/clima/"
+    en_url = "https://datalaria.com/en/apps/weather/climate/"
+
+    hot = hottest[0] if hottest else None
+    cold = coldest[0] if coldest else None
+    wet = wettest[0] if wettest else None
+    comf = comfort_leaders[0] if comfort_leaders else None
+
+    end_d = window.get("end_date", "")
+    iso_w = window.get("iso_week", "")
+
+    # Español
+    es_headline = f"Extremos climáticos del planeta ({iso_w}, cierre {end_d})"
+    es_parts = []
+    if hot:
+        es_parts.append(f"🔥 {hot['name']} ({hot['tmax_c']}°C)")
+    if cold:
+        es_parts.append(f"❄️ {cold['name']} ({cold['tmin_c']}°C)")
+    if pos_anom:
+        es_parts.append(f"📈 +{pos_anom['anomaly_c']}°C anom en {pos_anom['name']}")
+    if comf:
+        es_parts.append(f"🏃‍♂️ Top confort: {comf['name']} ({round(comf['comfort_avg'])}/100)")
+    es_summary_line = " · ".join(es_parts) if es_parts else "Resumen climático global de 168 estaciones."
+    es_x = f"🌍 Planeta esta semana ({iso_w}): {es_summary_line}. Datos reales 168 ciudades 👇 {es_url}"
+    if len(es_x) > 240:
+        es_x = f"🌍 {iso_w}: {hot['name'] if hot else ''} {hot['tmax_c'] if hot else ''}°C vs {cold['name'] if cold else ''} {cold['tmin_c'] if cold else ''}°C. 168 ciudades medidas 👇 {es_url}"[:240]
+
+    es_bullets = []
+    if hot:
+        es_bullets.append(f"Máxima térmica 7D: {hot['name']} ({hot['country']}) alcanzó {hot['tmax_c']} °C el {hot['date']}.")
+    if cold:
+        es_bullets.append(f"Mínima térmica 7D: {cold['name']} ({cold['country']}) bajó a {cold['tmin_c']} °C el {cold['date']}.")
+    if wet:
+        es_bullets.append(f"Mayor lluvia acumulada 7D: {wet['name']} ({wet['rain_7d_mm']} mm en {wet['rainy_days']} días).")
+    if pos_anom:
+        es_bullets.append(f"Mayor anomalía cálida (desde oct. 2025): {pos_anom['name']} con +{pos_anom['anomaly_c']} °C sobre su normal.")
+    if comf:
+        es_bullets.append(f"Líder de confort outdoor 7D: {comf['name']} ({round(comf['comfort_avg'])}/100).")
+
+    es_newsletter = (
+        f"Pulso semanal de Weather Intelligence ({window.get('start_date')} → {end_d}): "
+        + " ".join(es_bullets[:3])
+        + f" Explora tu ciudad en {es_url}"
+    ).strip()
+
+    # English
+    en_headline = f"Global Climate Extremes ({iso_w}, ending {end_d})"
+    en_parts = []
+    if hot:
+        en_parts.append(f"🔥 {hot['name']} ({hot['tmax_c']}°C)")
+    if cold:
+        en_parts.append(f"❄️ {cold['name']} ({cold['tmin_c']}°C)")
+    if pos_anom:
+        en_parts.append(f"📈 +{pos_anom['anomaly_c']}°C anom in {pos_anom['name']}")
+    if comf:
+        en_parts.append(f"🏃‍♂️ Top comfort: {comf['name']} ({round(comf['comfort_avg'])}/100)")
+    en_summary_line = " · ".join(en_parts) if en_parts else "Weekly climate snapshot across 168 global stations."
+    en_x = f"🌍 This week on Earth ({iso_w}): {en_summary_line}. Live 168-city data 👇 {en_url}"
+    if len(en_x) > 240:
+        en_x = f"🌍 {iso_w}: {hot['name'] if hot else ''} {hot['tmax_c'] if hot else ''}°C vs {cold['name'] if cold else ''} {cold['tmin_c'] if cold else ''}°C. 168 measured stations 👇 {en_url}"[:240]
+
+    en_bullets = []
+    if hot:
+        en_bullets.append(f"7D Highest max: {hot['name']} ({hot['country']}) hit {hot['tmax_c']} °C on {hot['date']}.")
+    if cold:
+        en_bullets.append(f"7D Lowest min: {cold['name']} ({cold['country']}) dropped to {cold['tmin_c']} °C on {cold['date']}.")
+    if wet:
+        en_bullets.append(f"7D Highest rainfall: {wet['name']} ({wet['rain_7d_mm']} mm across {wet['rainy_days']} days).")
+    if pos_anom:
+        en_bullets.append(f"Top warm anomaly (since Oct 2025): {pos_anom['name']} at +{pos_anom['anomaly_c']} °C vs baseline.")
+    if comf:
+        en_bullets.append(f"7D Outdoor comfort leader: {comf['name']} ({round(comf['comfort_avg'])}/100).")
+
+    en_newsletter = (
+        f"Weather Intelligence weekly pulse ({window.get('start_date')} → {end_d}): "
+        + " ".join(en_bullets[:3])
+        + f" Explore any city at {en_url}"
+    ).strip()
+
+    return {
+        "es": {
+            "headline": es_headline,
+            "x_post": es_x,
+            "linkedin_bullets": es_bullets,
+            "newsletter_box": es_newsletter,
+        },
+        "en": {
+            "headline": en_headline,
+            "x_post": en_x,
+            "linkedin_bullets": en_bullets,
+            "newsletter_box": en_newsletter,
+        },
+    }
+
+
+def build_weekly_summary(
+    daily_by_slug: dict[str, list[list[Any]]],
+    anomalies_by_slug: dict[str, list[float | None]] | None = None,
+    scorecard: dict[str, Any] | None = None,
+    slug_to_meta: dict[str, dict[str, Any]] | None = None,
+    days: int = 7,
+) -> dict[str, Any]:
+    """Genera derived/weekly_extremes.json sobre los últimos N días reales medidos (INV-WEATHER-19)."""
+    now_iso = datetime.now(timezone.utc).isoformat()
+    meta_map = slug_to_meta or {}
+    anom_map = anomalies_by_slug or {}
+
+    all_last_dates: list[str] = []
+    for rows in daily_by_slug.values():
+        if rows:
+            all_last_dates.append(str(rows[-1][0]))
+
+    if all_last_dates:
+        end_date = max(all_last_dates)
+    else:
+        end_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+    end_dt = datetime.strptime(end_date, "%Y-%m-%d")
+    start_dt = end_dt - timedelta(days=max(1, days) - 1)
+    start_date = start_dt.strftime("%Y-%m-%d")
+    iso_year, iso_week, _ = end_dt.isocalendar()
+    window = {
+        "start_date": start_date,
+        "end_date": end_date,
+        "iso_week": f"{iso_year}-W{iso_week:02d}",
+        "days": days,
+    }
+
+    hottest_list: list[dict[str, Any]] = []
+    coldest_list: list[dict[str, Any]] = []
+    wettest_list: list[dict[str, Any]] = []
+    pos_anom_list: list[dict[str, Any]] = []
+    neg_anom_list: list[dict[str, Any]] = []
+    comfort_list: list[dict[str, Any]] = []
+
+    for slug, rows in daily_by_slug.items():
+        if not rows:
+            continue
+        meta = meta_map.get(slug, {})
+        name = meta.get("name", slug.replace("-", " ").title())
+        country = meta.get("country", "")
+        region = meta.get("region", "europe")
+        anoms = anom_map.get(slug, [])
+
+        win_indices = [
+            i for i, r in enumerate(rows)
+            if start_date <= str(r[0]) <= end_date
+        ]
+        if not win_indices:
+            continue
+
+        max_row = max((rows[i] for i in win_indices if rows[i][2] is not None), key=lambda r: float(r[2]), default=None)
+        if max_row is not None:
+            hottest_list.append({
+                "slug": slug,
+                "name": name,
+                "country": country,
+                "region": region,
+                "tmax_c": round(float(max_row[2]), 1),
+                "tmean_c": round(float(max_row[3]), 1),
+                "date": str(max_row[0]),
+                "deep_link": _city_deep_link(name, country, slug, "es"),
+            })
+
+        min_row = min((rows[i] for i in win_indices if rows[i][1] is not None), key=lambda r: float(r[1]), default=None)
+        if min_row is not None:
+            coldest_list.append({
+                "slug": slug,
+                "name": name,
+                "country": country,
+                "region": region,
+                "tmin_c": round(float(min_row[1]), 1),
+                "tmean_c": round(float(min_row[3]), 1),
+                "date": str(min_row[0]),
+                "deep_link": _city_deep_link(name, country, slug, "es"),
+            })
+
+        total_rain = 0.0
+        rainy_days = 0
+        comfort_scores: list[int] = []
+        tmean_vals: list[float] = []
+
+        for idx in win_indices:
+            r = rows[idx]
+            rain_v = float(r[8]) if len(r) > 8 and r[8] is not None else 0.0
+            total_rain += rain_v
+            if rain_v > 0.1:
+                rainy_days += 1
+
+            tmean_v = float(r[3])
+            feels_v = float(r[5]) if len(r) > 5 and r[5] is not None else tmean_v
+            hum_v = float(r[6]) if len(r) > 6 and r[6] is not None else 50.0
+            wind_v = float(r[7]) if len(r) > 7 and r[7] is not None else 10.0
+            clouds_v = float(r[9]) if len(r) > 9 and r[9] is not None else 20.0
+            comfort_scores.append(
+                compute_comfort_index(tmean_v, feels_v, hum_v, wind_v, clouds_v, 10000.0, rain_v, 0.0)
+            )
+            tmean_vals.append(tmean_v)
+
+            if idx < len(anoms) and anoms[idx] is not None:
+                av = float(anoms[idx])
+                entry = {
+                    "slug": slug,
+                    "name": name,
+                    "country": country,
+                    "region": region,
+                    "anomaly_c": round(av, 1),
+                    "tmean_c": round(tmean_v, 1),
+                    "date": str(r[0]),
+                    "deep_link": _city_deep_link(name, country, slug, "es"),
+                }
+                if av >= 0:
+                    pos_anom_list.append(entry)
+                else:
+                    neg_anom_list.append(entry)
+
+        if total_rain > 0.0:
+            wettest_list.append({
+                "slug": slug,
+                "name": name,
+                "country": country,
+                "region": region,
+                "rain_7d_mm": round(total_rain, 1),
+                "rainy_days": rainy_days,
+                "deep_link": _city_deep_link(name, country, slug, "es"),
+            })
+
+        if comfort_scores:
+            comfort_list.append({
+                "slug": slug,
+                "name": name,
+                "country": country,
+                "region": region,
+                "comfort_avg": round(float(np.mean(comfort_scores)), 1),
+                "tmean_avg": round(float(np.mean(tmean_vals)), 1),
+                "days_measured": len(comfort_scores),
+                "deep_link": _city_deep_link(name, country, slug, "es"),
+            })
+
+    hottest = sorted(hottest_list, key=lambda x: (-x["tmax_c"], x["slug"]))[:3]
+    coldest = sorted(coldest_list, key=lambda x: (x["tmin_c"], x["slug"]))[:3]
+    wettest = sorted(wettest_list, key=lambda x: (-x["rain_7d_mm"], -x["rainy_days"], x["slug"]))[:3]
+
+    pos_sorted = sorted(pos_anom_list, key=lambda x: (-x["anomaly_c"], x["slug"]))
+    neg_sorted = sorted(neg_anom_list, key=lambda x: (x["anomaly_c"], x["slug"]))
+    biggest_pos = pos_sorted[0] if pos_sorted else None
+    biggest_neg = neg_sorted[0] if neg_sorted else None
+    comfort_leaders = sorted(comfort_list, key=lambda x: (-x["comfort_avg"], -x["days_measured"], x["slug"]))[:3]
+
+    sc = scorecard or {}
+    scorecard_snapshot = {
+        "status": sc.get("status", "calibrating"),
+        "min_samples_required": sc.get("min_samples_required", 7),
+        "total_audited_pairs": sc.get("total_audited_pairs", 0),
+        "live_horizons": sc.get("live_horizons", {}),
+        "weekly_wins": sc.get("weekly_wins", {"ia": 0, "owm": 0, "draws": 0, "total_audited": 0}),
+        "retrospective_ia": sc.get("retrospective_ia", {}),
+    }
+
+    snippets = _format_weekly_scriba_snippets(
+        window=window,
+        hottest=hottest,
+        coldest=coldest,
+        wettest=wettest,
+        pos_anom=biggest_pos,
+        neg_anom=biggest_neg,
+        comfort_leaders=comfort_leaders,
+    )
+
+    return {
+        "generated_at": now_iso,
+        "since": "2025-10-27",
+        "cities_evaluated": len(daily_by_slug),
+        "window": window,
+        "hottest": hottest,
+        "coldest": coldest,
+        "wettest": wettest,
+        "biggest_positive_anomaly": biggest_pos,
+        "biggest_negative_anomaly": biggest_neg,
+        "comfort_leaders": comfort_leaders,
+        "scorecard_snapshot": scorecard_snapshot,
+        "scriba_ready_snippets": snippets,
+    }
+
+
+def build_cities_catalog(catalog: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Genera el catálogo compacto SSR para Hugo (data/weather/cities_catalog.json)."""
+    cleaned: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for entry in catalog:
+        slug = entry.get("slug") or slugify(entry.get("name", ""))
+        if not slug or slug in seen:
+            continue
+        seen.add(slug)
+        cleaned.append({
+            "slug": slug,
+            "name": entry.get("name", slug),
+            "country": entry.get("country", ""),
+            "region": entry.get("region", "europe"),
+            "lat": round(float(entry.get("lat", 0.0)), 4),
+            "lon": round(float(entry.get("lon", 0.0)), 4),
+        })
+    cleaned.sort(key=lambda x: (x["region"], x["slug"]))
+    return cleaned
+
+
 def append_forecast_log(predicciones: dict[str, Any], month_file: Path) -> int:
     """Añade o actualiza (upsert idempotente) pronósticos en el CSV mensual según spec §4.8."""
     month_file.parent.mkdir(parents=True, exist_ok=True)
@@ -819,8 +1142,9 @@ def process_derived_pipeline(source_dir: Path, out_dir: Path,
                              ciudades_txt: Path,
                              cities_filter: list[str] | None = None,
                              with_month_log: bool = False,
-                             predicciones_path: Path | None = None) -> dict[str, Any]:
-    """Ejecuta el pipeline completo de derivación produciendo daily/, climatology.json, index.json, insights.json y scorecard.json."""
+                             predicciones_path: Path | None = None,
+                             hugo_catalog_path: Path | None = None) -> dict[str, Any]:
+    """Ejecuta el pipeline completo de derivación produciendo daily/, climatology.json, index.json, insights.json, scorecard.json y weekly_extremes.json."""
     out_dir.mkdir(parents=True, exist_ok=True)
     daily_out_dir = out_dir / "daily"
     daily_out_dir.mkdir(parents=True, exist_ok=True)
@@ -947,24 +1271,32 @@ def process_derived_pipeline(source_dir: Path, out_dir: Path,
     with open(scorecard_file, "w", encoding="utf-8") as f:
         json.dump(scorecard, f, separators=(",", ":"), ensure_ascii=False)
 
-    # Opcional: forecast_log
-    log_appended = 0
-    if with_month_log:
-        pred_p = predicciones_path or (source_dir.parent / "predicciones.json")
-        if pred_p.exists():
-            try:
-                with open(pred_p, "r", encoding="utf-8") as pf:
-                    preds = json.load(pf)
-                month_key = datetime.now(timezone.utc).strftime("%Y-%m")
-                month_file = out_dir / "forecast_log" / f"{month_key}.csv"
-                log_appended = append_forecast_log(preds, month_file)
-            except Exception as pe:
-                print(f"[build_derived] Advertencia forecast log: {pe}", file=sys.stderr)
+    # 5. Resumen semanal automático para Scriba (W3.6)
+    weekly_summary = build_weekly_summary(
+        daily_by_slug=daily_by_slug,
+        anomalies_by_slug=anomalies_by_slug,
+        scorecard=scorecard,
+        slug_to_meta=slug_to_meta,
+        days=7,
+    )
+    weekly_file = out_dir / "weekly_extremes.json"
+    with open(weekly_file, "w", encoding="utf-8") as f:
+        json.dump(weekly_summary, f, separators=(",", ":"), ensure_ascii=False)
+
+    # 6. Catálogo estático compacto para Hugo SEO Landing Intermedia (opcional vía --hugo-catalog)
+    hugo_catalog_count = 0
+    if hugo_catalog_path is not None and catalog:
+        hugo_catalog_path.parent.mkdir(parents=True, exist_ok=True)
+        catalog_rows = build_cities_catalog(catalog)
+        with open(hugo_catalog_path, "w", encoding="utf-8") as f:
+            json.dump(catalog_rows, f, separators=(",", ":"), ensure_ascii=False)
+        hugo_catalog_count = len(catalog_rows)
 
     return {
         "cities_processed": len(index_cities),
         "climatology_cities": len(climatology.get("cities", {})),
-        "log_appended": log_appended
+        "log_appended": log_appended,
+        "hugo_catalog_count": hugo_catalog_count,
     }
 
 
@@ -976,6 +1308,7 @@ def main() -> int:
     parser.add_argument("--cities", type=str, default=None, help="Lista separada por comas de slugs o nombres a procesar.")
     parser.add_argument("--month-log", action="store_true", help="Actualiza el log mensual de acierto predictivo.")
     parser.add_argument("--predicciones", type=str, default=None, help="Ruta a predicciones.json para forecast log.")
+    parser.add_argument("--hugo-catalog", type=str, default=None, help="Ruta destino para exportar cities_catalog.json hacia Hugo data/.")
     args = parser.parse_args()
 
     source_dir = Path(args.source)
@@ -983,6 +1316,7 @@ def main() -> int:
     ciudades_txt = Path(args.ciudades)
     cities_filter = [c.strip() for c in args.cities.split(",")] if args.cities else None
     pred_path = Path(args.predicciones) if args.predicciones else None
+    hugo_catalog_path = Path(args.hugo_catalog) if args.hugo_catalog else None
 
     if not source_dir.exists():
         print(f"Error: No existe el directorio de origen {source_dir}", file=sys.stderr)
@@ -994,7 +1328,8 @@ def main() -> int:
         ciudades_txt=ciudades_txt,
         cities_filter=cities_filter,
         with_month_log=args.month_log,
-        predicciones_path=pred_path
+        predicciones_path=pred_path,
+        hugo_catalog_path=hugo_catalog_path,
     )
     print(f"✅ Data Truth Pipeline completado: {res['cities_processed']} ciudades compactadas en {out_dir}")
     return 0

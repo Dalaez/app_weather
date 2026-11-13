@@ -9,3 +9,8 @@
 /datos/*
   Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=1800
+
+/embed.html
+  Access-Control-Allow-Origin: *
+  Content-Security-Policy: frame-ancestors *;
+  Cache-Control: public, max-age=1800

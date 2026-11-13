@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datalaria - Weather Intelligence v3.2 | Observatorio Climático & Laboratorio ML</title>
+    <title>Datalaria - Weather Intelligence v3.3 | Observatorio Climático & Laboratorio ML</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0b0f17">
     <link rel="apple-touch-icon" href="icon-192.png">
@@ -12,7 +12,7 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://datalaria.com/apps/weather/">
-    <meta property="og:title" content="Weather Intelligence v3.2 | Datalaria">
+    <meta property="og:title" content="Weather Intelligence v3.3 | Datalaria">
     <meta property="og:description"
         content="Centro de Control Climático Global: 168 estaciones, +375 días de datos continuos, estacionalidad de Fourier, walk-forward backtesting IA vs. OpenWeatherMap y Confort Outdoor.">
     <meta property="og:image" content="https://datalaria.com/apps/weather/cover.png">
@@ -24,7 +24,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@datalaria">
-    <meta name="twitter:title" content="Weather Intelligence v3.2 | Datalaria">
+    <meta name="twitter:title" content="Weather Intelligence v3.3 | Datalaria">
     <meta name="twitter:description"
         content="Centro de Control Climático Global: 168 estaciones, estacionalidad armónica de Fourier, backtesting IA vs. OWM e índice de confort.">
     <meta name="twitter:image" content="https://datalaria.com/apps/weather/cover.png">
@@ -2034,6 +2034,132 @@
         }
         .w35-btn-copy:hover { border-color: var(--accent-primary); color: var(--accent-primary); }
 
+        /* --- W3.6: Card Share/Embed Actions & Embed Modal --- */
+        .card-top-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 6px;
+        }
+        .card-actions-inline {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .card-mini-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 24px;
+            padding: 0 7px;
+            border-radius: 6px;
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-elevated);
+            color: var(--text-secondary);
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.16s ease;
+        }
+        .card-mini-btn:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+        .w36-modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(2, 6, 23, 0.74);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+        .w36-modal-backdrop.hidden { display: none !important; }
+        .w36-modal {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            max-width: 680px;
+            width: 100%;
+            max-height: 92vh;
+            overflow-y: auto;
+            padding: 20px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+            color: var(--text-primary);
+        }
+        .w36-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .w36-modal-title {
+            font-family: var(--font-display);
+            font-size: 17px;
+            font-weight: 700;
+            margin: 0;
+        }
+        .w36-modal-controls {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .w36-modal-controls label {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .w36-modal-controls select {
+            width: 100%;
+            background: var(--bg-elevated);
+            color: var(--text-primary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            padding: 7px 10px;
+            font-size: 13px;
+        }
+        .w36-embed-preview {
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin-bottom: 14px;
+            background: var(--bg-canvas);
+        }
+        .w36-embed-preview iframe {
+            width: 100%;
+            height: 255px;
+            border: 0;
+            display: block;
+        }
+        .w36-code-textarea {
+            width: 100%;
+            min-height: 92px;
+            background: var(--bg-canvas);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            padding: 10px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            resize: vertical;
+            margin-bottom: 10px;
+        }
+        .w36-modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
     </style>
 </head>
 
@@ -2060,7 +2186,7 @@
             </a>
             <div class="brand-title-wrap">
                 <img src="/apps/weather/datalaria_logo_transp.png" alt="Datalaria" class="brand-logo">
-                <span class="brand-title" data-i18n-key="mainTitle">Weather Intelligence v3.2</span>
+                <span class="brand-title" data-i18n-key="mainTitle">Weather Intelligence v3.3</span>
                 <span class="status-badge" id="live-status-badge" data-i18n-key="badgeStatus">🟢 168 Estaciones · +375 Días</span>
                 <span class="badge-freshness" id="freshness-badge">🕒 En vivo</span>
             </div>
@@ -2101,6 +2227,10 @@
                     <span data-i18n-key="menuInstall">Instalar App (PWA)</span>
                 </button>
                 <div style="height:1px; background:var(--border-subtle); margin:4px 0;"></div>
+                <a id="menu-city-explorer-link" href="/es/apps/weather/clima/" class="menu-item" target="_blank" rel="noopener">
+                    <i data-feather="globe" style="width:14px;height:14px;"></i>
+                    <span data-i18n-key="menuCityExplorer">🌐 Directorio 168 Ciudades</span>
+                </a>
                 <a id="app-sheet-link" href="/es/apps/weather/" class="menu-item" target="_blank" rel="noopener">
                     <i data-feather="file-text" style="width:14px;height:14px;"></i>
                     <span data-i18n-key="appSheetLink">Ficha Técnica</span>
@@ -2607,7 +2737,7 @@
             <div class="plg-content">
                 <h3 class="plg-title" data-i18n-key="plgTitle">Explota la Inteligencia Climática y los Modelos Cuantitativos</h3>
                 <p class="plg-desc" data-i18n-key="plgDesc">
-                    Weather Intelligence v3.2 combina ingestión serverless 3x/día, estacionalidad cíclica de Fourier, buscador bioclimático y arquitectura de datos de coste cero.
+                    Weather Intelligence v3.3 combina ingestión serverless 3x/día, estacionalidad cíclica de Fourier, buscador bioclimático, widgets embebibles y tarjetas compartibles.
                 </p>
             </div>
             <div class="plg-actions">
@@ -2627,7 +2757,7 @@
         // --- Diccionario de Traducciones con 100% Paridad ES/EN (INV-WEATHER-5) ---
         const translations = {
             'es': {
-                'mainTitle': 'Weather Intelligence v3.2',
+                'mainTitle': 'Weather Intelligence v3.3',
                 'stripesTitle': 'Calendario Térmico (Warming Stripes)',
                 'stripesSubtitle': 'Anomalía térmica diurna respecto a la línea base ±7 días del año · Rojo: cálido, Azul: frío',
                 'stripesBadge': '365 días',
@@ -2806,7 +2936,7 @@
                 'colHumWind': 'Humedad / Viento',
                 'colComfort': 'Confort Outdoor',
                 'plgTitle': 'Explota la Inteligencia Climática y los Modelos Cuantitativos',
-                'plgDesc': 'Weather Intelligence v3.2 combina ingestión serverless 3x/día, estacionalidad cíclica de Fourier, buscador bioclimático y arquitectura de datos de coste cero.',
+                'plgDesc': 'Weather Intelligence v3.3 combina ingestión serverless 3x/día, estacionalidad cíclica de Fourier, buscador bioclimático, widgets embebibles y tarjetas compartibles.',
                 'plgBtnTechSheet': 'Ver Ficha Técnica',
                 'plgBtnKits': 'Explorar Kits B2B en Recursos',
                 'exportSuccess': 'Datos exportados correctamente.',
@@ -2851,10 +2981,21 @@
                 'metricDiurnalAmp': 'Amplitud',
                 'month1': 'Enero', 'month2': 'Febrero', 'month3': 'Marzo', 'month4': 'Abril',
                 'month5': 'Mayo', 'month6': 'Junio', 'month7': 'Julio', 'month8': 'Agosto',
-                'month9': 'Septiembre', 'month10': 'Octubre', 'month11': 'Noviembre', 'month12': 'Diciembre'
+                'month9': 'Septiembre', 'month10': 'Octubre', 'month11': 'Noviembre', 'month12': 'Diciembre',
+                'menuCityExplorer': '🌐 Directorio 168 Ciudades',
+                'btnShareCard': 'Compartir tarjeta PNG',
+                'btnEmbedCard': 'Embeber widget',
+                'btnExploreCity': 'Ficha climática de la ciudad',
+                'shareCardGeneratedToast': '📸 Tarjeta PNG generada y deep-link copiado.',
+                'embedModalTitle': 'Embeber Widget de Ciudad',
+                'embedThemeLabel': 'Tema del widget',
+                'embedLangLabel': 'Idioma',
+                'embedCopyBtn': '📋 Copiar código HTML',
+                'embedCopiedToast': '📋 Código HTML embebible copiado al portapapeles.',
+                'embedCloseBtn': 'Cerrar'
             },
             'en': {
-                'mainTitle': 'Weather Intelligence v3.2',
+                'mainTitle': 'Weather Intelligence v3.3',
                 'stripesTitle': 'Thermal Calendar (Warming Stripes)',
                 'stripesSubtitle': 'Daily thermal anomaly vs. ±7-day baseline of the year · Red: warm, Blue: cold',
                 'stripesBadge': '365 days',
@@ -3033,7 +3174,7 @@
                 'colHumWind': 'Humidity / Wind',
                 'colComfort': 'Outdoor Comfort',
                 'plgTitle': 'Harness Climate Intelligence and Quantitative Models',
-                'plgDesc': 'Weather Intelligence v3.2 combines 3x/day serverless ingestion, cyclic Fourier seasonality, a bioclimatic destination finder, and zero-cost architecture.',
+                'plgDesc': 'Weather Intelligence v3.3 combines 3x/day serverless ingestion, cyclic Fourier seasonality, a bioclimatic destination finder, embeddable widgets, and shareable PNG cards.',
                 'plgBtnTechSheet': 'View Technical Sheet',
                 'plgBtnKits': 'Explore B2B Kits in Resources',
                 'exportSuccess': 'Data exported successfully.',
@@ -3078,7 +3219,18 @@
                 'metricDiurnalAmp': 'Range',
                 'month1': 'January', 'month2': 'February', 'month3': 'March', 'month4': 'April',
                 'month5': 'May', 'month6': 'June', 'month7': 'July', 'month8': 'August',
-                'month9': 'September', 'month10': 'October', 'month11': 'November', 'month12': 'December'
+                'month9': 'September', 'month10': 'October', 'month11': 'November', 'month12': 'December',
+                'menuCityExplorer': '🌐 168-City Explorer',
+                'btnShareCard': 'Share PNG Card',
+                'btnEmbedCard': 'Embed widget',
+                'btnExploreCity': 'City climate sheet',
+                'shareCardGeneratedToast': '📸 PNG card generated & deep-link copied.',
+                'embedModalTitle': 'Embed City Widget',
+                'embedThemeLabel': 'Widget theme',
+                'embedLangLabel': 'Language',
+                'embedCopyBtn': '📋 Copy HTML snippet',
+                'embedCopiedToast': '📋 Embed HTML snippet copied to clipboard.',
+                'embedCloseBtn': 'Close'
             }
         };
 
@@ -3110,6 +3262,11 @@
         const TECH_SHEET_LINKS = {
             'es': '/es/apps/weather/',
             'en': '/en/apps/weather/'
+        };
+
+        const CITY_EXPLORER_LINKS = {
+            'es': '/es/apps/weather/clima/',
+            'en': '/en/apps/weather/climate/'
         };
 
         const PORTAL_LINKS = {
@@ -4025,14 +4182,24 @@
                 const iaPred = predData?.pred_ia;
                 const modelMetrics = predData?.model_metrics;
 
+                const cardSlug = slugifyJS(ciudad);
+                const seoCityHref = `${CITY_EXPLORER_LINKS[currentLang] || CITY_EXPLORER_LINKS['es']}?city=${encodeURIComponent(cardSlug)}`;
+
                 card.innerHTML = `
                     <div class="card-top">
                         <div>
                             <h4 class="card-city">${ciudad} ${favBtnHtml}</h4>
                             <span class="card-time">${latest.fecha_hora.toLocaleString(currentLang, { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</span>
                         </div>
-                        <div class="comfort-badge ${comfortClass}" title="${translations[currentLang].comfortLabel}">
-                            🏃‍♂️ <span>${comfortIdx}/100</span> · ${comfortText}
+                        <div class="card-top-right">
+                            <div class="comfort-badge ${comfortClass}" title="${translations[currentLang].comfortLabel}">
+                                🏃‍♂️ <span>${comfortIdx}/100</span> · ${comfortText}
+                            </div>
+                            <div class="card-actions-inline">
+                                <button type="button" class="card-mini-btn card-share-png-btn" title="${translations[currentLang].btnShareCard}" aria-label="${translations[currentLang].btnShareCard}">📸</button>
+                                <button type="button" class="card-mini-btn card-embed-btn" title="${translations[currentLang].btnEmbedCard}" aria-label="${translations[currentLang].btnEmbedCard}">&lt;/&gt;</button>
+                                <a class="card-mini-btn card-seo-link" href="${seoCityHref}" target="_blank" rel="noopener" title="${translations[currentLang].btnExploreCity}" aria-label="${translations[currentLang].btnExploreCity}">🌐</a>
+                            </div>
                         </div>
                     </div>
 
@@ -4119,6 +4286,26 @@
                 card.querySelector('.card-fav-btn')?.addEventListener('click', (e) => {
                     e.stopPropagation();
                     toggleFavoriteCity(ciudad);
+                });
+
+                card.querySelector('.card-share-png-btn')?.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    shareCityCardPNG({
+                        ciudad,
+                        fullVal,
+                        slug: cardSlug,
+                        latest,
+                        anomaly,
+                        comfortIdx,
+                        comfortText,
+                        ins: insightsCache?.cities?.[cardSlug] || null,
+                        records: data?.records || []
+                    });
+                });
+
+                card.querySelector('.card-embed-btn')?.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    openEmbedModal(ciudad, cardSlug);
                 });
 
                 const elVal = document.getElementById(valId);
@@ -4896,6 +5083,224 @@
             return url.toString();
         }
 
+        function shareCityCardPNG(opts) {
+            const { ciudad, fullVal, slug, latest, anomaly, comfortIdx, comfortText, ins, records } = opts || {};
+            if (!ciudad || !latest) return;
+
+            const t = translations[currentLang] || translations.es;
+            const deepLink = `https://datalaria.com/apps/weather/?cities=${encodeURIComponent(fullVal || ciudad)}&view=observatory&lang=${currentLang}`;
+            const canvas = document.createElement('canvas');
+            canvas.width = 1200;
+            canvas.height = 630;
+            const ctx = canvas.getContext('2d');
+            if (!ctx) return;
+
+            // Fondo gradiente nocturno Datalaria
+            const grad = ctx.createLinearGradient(0, 0, 1200, 630);
+            grad.addColorStop(0, '#070b14');
+            grad.addColorStop(0.55, '#0f172a');
+            grad.addColorStop(1, '#10243e');
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, 1200, 630);
+
+            // Barra superior accent
+            const barGrad = ctx.createLinearGradient(0, 0, 1200, 0);
+            barGrad.addColorStop(0, '#0ea5e9');
+            barGrad.addColorStop(1, '#8b5cf6');
+            ctx.fillStyle = barGrad;
+            ctx.fillRect(0, 0, 1200, 8);
+
+            // Marco tarjeta interior
+            ctx.fillStyle = 'rgba(17, 24, 39, 0.84)';
+            ctx.strokeStyle = 'rgba(148, 163, 184, 0.28)';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            if (ctx.roundRect) {
+                ctx.roundRect(48, 44, 1104, 542, 24);
+            } else {
+                ctx.rect(48, 44, 1104, 542);
+            }
+            ctx.fill();
+            ctx.stroke();
+
+            // Cabecera marca y fecha
+            ctx.fillStyle = '#38bdf8';
+            ctx.font = 'bold 22px Inter, system-ui, sans-serif';
+            ctx.fillText('DATALARIA · WEATHER INTELLIGENCE v3.3', 88, 102);
+
+            const dateStr = ins?.date || (latest.fecha_hora ? latest.fecha_hora.toISOString().slice(0, 10) : new Date().toISOString().slice(0, 10));
+            const sinceNote = currentLang === 'en' ? 'measured since Oct 2025' : 'medido desde oct. 2025';
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = '18px "JetBrains Mono", monospace, sans-serif';
+            ctx.textAlign = 'right';
+            ctx.fillText(`${dateStr} · ${sinceNote}`, 1112, 102);
+            ctx.textAlign = 'left';
+
+            // Ciudad
+            ctx.fillStyle = '#f8fafc';
+            ctx.font = '800 58px Outfit, Inter, system-ui, sans-serif';
+            ctx.fillText(String(ciudad), 88, 184);
+
+            // Temperatura KPI principal
+            const tempStr = `${Number(latest.temp_c).toFixed(1)} °C`;
+            ctx.fillStyle = '#38bdf8';
+            ctx.font = '800 96px Outfit, Inter, system-ui, sans-serif';
+            ctx.fillText(tempStr, 88, 306);
+
+            // Anomalia ("Es normal?") + Confort
+            const anomNum = typeof ins?.anomaly_c === 'number' ? ins.anomaly_c : Number(anomaly || 0);
+            const anomSign = anomNum >= 0 ? '+' : '';
+            const pctStr = typeof ins?.percentil === 'number' ? ` · p${ins.percentil}` : '';
+            const anomLabel = currentLang === 'en'
+                ? `${anomSign}${anomNum.toFixed(1)} °C vs normal${pctStr}`
+                : `${anomSign}${anomNum.toFixed(1)} °C sobre lo normal${pctStr}`;
+
+            ctx.fillStyle = anomNum >= 1 ? 'rgba(249, 115, 22, 0.2)' : (anomNum <= -1 ? 'rgba(56, 189, 248, 0.2)' : 'rgba(16, 185, 129, 0.2)');
+            ctx.fillRect(88, 344, 520, 48);
+            ctx.fillStyle = anomNum >= 1 ? '#fb923c' : (anomNum <= -1 ? '#7dd3fc' : '#34d399');
+            ctx.font = 'bold 24px Inter, system-ui, sans-serif';
+            ctx.fillText(anomLabel, 106, 376);
+
+            const comfStr = `${currentLang === 'en' ? 'Outdoor Comfort' : 'Confort Outdoor'}: ${comfortIdx}/100 (${comfortText})`;
+            ctx.fillStyle = 'rgba(139, 92, 246, 0.22)';
+            ctx.fillRect(88, 408, 520, 46);
+            ctx.fillStyle = '#c4b5fd';
+            ctx.font = 'bold 22px Inter, system-ui, sans-serif';
+            ctx.fillText(comfStr, 106, 439);
+
+            // Sparkline vectorial 14 dias a la derecha
+            const sparkX = 650, sparkY = 210, sparkW = 440, sparkH = 220;
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.03)';
+            ctx.strokeStyle = 'rgba(148, 163, 184, 0.2)';
+            ctx.lineWidth = 1.5;
+            ctx.fillRect(sparkX, sparkY, sparkW, sparkH);
+            ctx.strokeRect(sparkX, sparkY, sparkW, sparkH);
+
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = '16px Inter, system-ui, sans-serif';
+            ctx.fillText(currentLang === 'en' ? 'Recent Thermal Trend' : 'Tendencia Térmica Reciente', sparkX + 16, sparkY + 28);
+
+            const pts = Array.isArray(records)
+                ? records.slice(-42).map(r => Number(r.temp_c)).filter(v => !isNaN(v))
+                : [];
+            if (pts.length >= 2) {
+                const minT = Math.min(...pts);
+                const maxT = Math.max(...pts);
+                const spanT = (maxT - minT) || 1;
+                ctx.beginPath();
+                pts.forEach((v, idx) => {
+                    const px = sparkX + 20 + (idx / (pts.length - 1)) * (sparkW - 40);
+                    const py = (sparkY + sparkH - 26) - ((v - minT) / spanT) * (sparkH - 76);
+                    if (idx === 0) ctx.moveTo(px, py);
+                    else ctx.lineTo(px, py);
+                });
+                ctx.strokeStyle = '#38bdf8';
+                ctx.lineWidth = 4;
+                ctx.lineJoin = 'round';
+                ctx.lineCap = 'round';
+                ctx.stroke();
+
+                ctx.fillStyle = '#cbd5e1';
+                ctx.font = '15px "JetBrains Mono", monospace, sans-serif';
+                ctx.fillText(`Min ${minT.toFixed(1)}°C  ·  Max ${maxT.toFixed(1)}°C`, sparkX + 16, sparkY + sparkH - 10);
+            }
+
+            // Footer deep-link
+            ctx.fillStyle = '#64748b';
+            ctx.fillRect(88, 498, 1024, 1);
+            ctx.fillStyle = '#e2e8f0';
+            ctx.font = '18px "JetBrains Mono", monospace, sans-serif';
+            ctx.fillText(`datalaria.com/apps/weather/?cities=${encodeURIComponent(ciudad)}`, 88, 540);
+            ctx.fillStyle = '#94a3b8';
+            ctx.textAlign = 'right';
+            ctx.fillText('168 Stations · OpenWeather + Fourier AI', 1112, 540);
+            ctx.textAlign = 'left';
+
+            const fileSlug = slug || slugifyJS(ciudad);
+            const filename = `weather-${fileSlug}-${dateStr}.png`;
+            canvas.toBlob(async (blob) => {
+                if (!blob) return;
+                try {
+                    const file = new File([blob], filename, { type: 'image/png' });
+                    if (navigator.canShare && navigator.canShare({ files: [file] }) && navigator.share) {
+                        await navigator.share({ files: [file], title: `${ciudad} — Weather Intelligence v3.3`, url: deepLink });
+                        emitWeatherEvent('weather_share_card_png', { city: fileSlug, method: 'web_share' });
+                        return;
+                    }
+                } catch (err) {
+                    if (err && err.name === 'AbortError') return;
+                }
+
+                const blobUrl = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = blobUrl;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                setTimeout(() => URL.revokeObjectURL(blobUrl), 2000);
+
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(deepLink).catch(() => fallbackCopyText(deepLink));
+                } else {
+                    fallbackCopyText(deepLink);
+                }
+                showToast(t.shareCardGeneratedToast || '📸 PNG generated.');
+                emitWeatherEvent('weather_share_card_png', { city: fileSlug, method: 'download' });
+            }, 'image/png');
+        }
+
+        let currentEmbedModalCity = { name: 'Madrid', slug: 'madrid' };
+
+        function updateEmbedModalSnippet() {
+            const theme = document.getElementById('w36-embed-theme')?.value || 'dark';
+            const lang = document.getElementById('w36-embed-lang')?.value || currentLang || 'es';
+            const slug = currentEmbedModalCity.slug || 'madrid';
+            const cityName = currentEmbedModalCity.name || slug;
+            const prodSrc = `https://datalaria.com/apps/weather/embed.html?city=${encodeURIComponent(slug)}&theme=${encodeURIComponent(theme)}&lang=${encodeURIComponent(lang)}`;
+            const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+            const previewSrc = isLocal
+                ? `embed.html?city=${encodeURIComponent(slug)}&theme=${encodeURIComponent(theme)}&lang=${encodeURIComponent(lang)}`
+                : prodSrc;
+
+            const iframeEl = document.getElementById('w36-embed-iframe');
+            if (iframeEl) iframeEl.src = previewSrc;
+
+            const seoHref = lang === 'en'
+                ? `https://datalaria.com/en/apps/weather/climate/?city=${encodeURIComponent(slug)}`
+                : `https://datalaria.com/es/apps/weather/clima/?city=${encodeURIComponent(slug)}`;
+            const attrText = lang === 'en'
+                ? `${cityName} Climate & AI Forecast — Datalaria Weather Intelligence`
+                : `Clima y predicción IA de ${cityName} — Datalaria Weather Intelligence`;
+
+            const snippet = `<iframe src="${prodSrc}" width="100%" height="260" style="border:0;border-radius:14px;overflow:hidden;" loading="lazy" title="${cityName} Weather Widget"></iframe>\n<p style="font-size:12px;margin:4px 0 0;"><a href="${seoHref}" target="_blank" rel="noopener">${attrText}</a></p>`;
+            const codeEl = document.getElementById('w36-embed-code');
+            if (codeEl) codeEl.value = snippet;
+        }
+
+        function openEmbedModal(cityName, slug) {
+            currentEmbedModalCity = { name: cityName, slug: slug || slugifyJS(cityName) };
+            const backdrop = document.getElementById('w36-embed-modal');
+            const titleEl = document.getElementById('w36-modal-title');
+            const t = translations[currentLang] || translations.es;
+            if (titleEl) titleEl.textContent = `${t.embedModalTitle || 'Embed Widget'} · ${cityName}`;
+
+            const themeSel = document.getElementById('w36-embed-theme');
+            const langSel = document.getElementById('w36-embed-lang');
+            if (themeSel) themeSel.value = document.body.classList.contains('light-mode') ? 'light' : 'dark';
+            if (langSel) langSel.value = currentLang === 'en' ? 'en' : 'es';
+
+            updateEmbedModalSnippet();
+            if (backdrop) backdrop.classList.remove('hidden');
+        }
+
+        function closeEmbedModal() {
+            const backdrop = document.getElementById('w36-embed-modal');
+            if (backdrop) backdrop.classList.add('hidden');
+            const iframeEl = document.getElementById('w36-embed-iframe');
+            if (iframeEl) iframeEl.removeAttribute('src');
+        }
+
         function focusCityInObservatory(cityQueryOrName) {
             const resolved = resolveChoiceValuesForCities([cityQueryOrName]);
             const targetVal = resolved[0] || cityQueryOrName;
@@ -5424,6 +5829,8 @@
             document.getElementById('language-toggle').textContent = lang === 'es' ? 'EN' : 'ES';
             document.getElementById('how-to-link').href = BLOG_LINKS[lang] || BLOG_LINKS['es'];
             document.getElementById('app-sheet-link').href = TECH_SHEET_LINKS[lang] || TECH_SHEET_LINKS['es'];
+            const cityExpEl = document.getElementById('menu-city-explorer-link');
+            if (cityExpEl) cityExpEl.href = CITY_EXPLORER_LINKS[lang] || CITY_EXPLORER_LINKS['es'];
             document.getElementById('back-to-portal').href = PORTAL_LINKS[lang] || PORTAL_LINKS['es'];
             document.getElementById('plg-tech-link').href = TECH_SHEET_LINKS[lang] || TECH_SHEET_LINKS['es'];
             document.getElementById('plg-kits-link').href = RECURSOS_LINKS[lang] || RECURSOS_LINKS['es'];
@@ -5776,6 +6183,38 @@
                 copyShareableDeepLink(window.location.href, 'twin_query');
             });
 
+            // W3.6: Embed modal listeners
+            document.getElementById('w36-embed-theme')?.addEventListener('change', updateEmbedModalSnippet);
+            document.getElementById('w36-embed-lang')?.addEventListener('change', updateEmbedModalSnippet);
+            document.getElementById('w36-modal-close')?.addEventListener('click', closeEmbedModal);
+            document.getElementById('w36-modal-close-btn')?.addEventListener('click', closeEmbedModal);
+            document.getElementById('w36-embed-modal')?.addEventListener('click', (e) => {
+                if (e.target && e.target.id === 'w36-embed-modal') closeEmbedModal();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeEmbedModal();
+            });
+            document.getElementById('w36-embed-copy')?.addEventListener('click', () => {
+                const codeEl = document.getElementById('w36-embed-code');
+                const t = translations[currentLang] || translations.es;
+                const txt = codeEl ? codeEl.value : '';
+                if (!txt) return;
+                const done = () => {
+                    showToast(t.embedCopiedToast || '📋 Embed HTML copied.');
+                    emitWeatherEvent('weather_embed_copy', {
+                        city: currentEmbedModalCity.slug,
+                        theme: document.getElementById('w36-embed-theme')?.value || 'dark',
+                        lang: document.getElementById('w36-embed-lang')?.value || currentLang
+                    });
+                };
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(txt).then(done).catch(() => { fallbackCopyText(txt); done(); });
+                } else {
+                    fallbackCopyText(txt);
+                    done();
+                }
+            });
+
             
             initAccordions();
             initOptionsMenu();
@@ -5829,6 +6268,40 @@
             <span class="tab-label" data-i18n-key="tabIA">IA</span>
         </button>
     </nav>
+
+    <!-- Modal Embed Widget W3.6 -->
+    <div id="w36-embed-modal" class="w36-modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="w36-modal-title">
+        <div class="w36-modal">
+            <div class="w36-modal-header">
+                <h3 class="w36-modal-title" id="w36-modal-title" data-i18n-key="embedModalTitle">Embeber Widget de Ciudad</h3>
+                <button type="button" id="w36-modal-close" class="card-mini-btn" aria-label="Close">✕</button>
+            </div>
+            <div class="w36-modal-controls">
+                <div>
+                    <label for="w36-embed-theme" data-i18n-key="embedThemeLabel">Tema del widget</label>
+                    <select id="w36-embed-theme">
+                        <option value="dark">Dark</option>
+                        <option value="light">Light</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="w36-embed-lang" data-i18n-key="embedLangLabel">Idioma</label>
+                    <select id="w36-embed-lang">
+                        <option value="es">Español (ES)</option>
+                        <option value="en">English (EN)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="w36-embed-preview">
+                <iframe id="w36-embed-iframe" title="Weather Widget Preview" loading="lazy"></iframe>
+            </div>
+            <textarea id="w36-embed-code" class="w36-code-textarea" readonly></textarea>
+            <div class="w36-modal-footer">
+                <button type="button" id="w36-modal-close-btn" class="w35-btn-copy" data-i18n-key="embedCloseBtn">Cerrar</button>
+                <button type="button" id="w36-embed-copy" class="w35-btn-obs" data-i18n-key="embedCopyBtn">📋 Copiar código HTML</button>
+            </div>
+        </div>
+    </div>
 
     <!-- PWA Install Toast (W3.3) -->
     <div id="pwa-install-toast" class="pwa-toast hidden">
