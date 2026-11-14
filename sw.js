@@ -1,5 +1,5 @@
-// sw.js - Service Worker para Weather Intelligence v3.3.2 (INV-WEATHER-10, INV-WEATHER-22)
-const CACHE_NAME = 'weather-v3.3.2';
+// sw.js - Service Worker para Weather Intelligence v3.3.3 (INV-WEATHER-10, INV-WEATHER-22)
+const CACHE_NAME = 'weather-v3.3.3';
 const SHELL_ASSETS = [
     './',
     'index.html',
@@ -66,26 +66,49 @@ self.addEventListener('fetch', (event) => {
         url.pathname === '/apps/weather/'
     );
 
-    // A. Shell / Navegación Start URL / Assets locales (Stale-While-Revalidate)
+    // A1. Navegación HTML / App Shell -> Network-First con Fallback Offline a Caché
+    // (Garantiza recibir la última UI al instante cuando hay red sin quedarse anclado en versiones previas)
+    if (isAppShellNav || event.request.mode === 'navigate' || url.pathname.endsWith('.html')) {
+        event.respondWith(
+            fetch(event.request).then((response) => {
+                if (response && response.status === 200) {
+                    const cacheCopy = response.clone();
+                    caches.open(CACHE_NAME).then((cache) => {
+                        cache.put(event.request, cacheCopy.clone()).catch(() => {});
+                        if (isAppShellNav || event.request.mode === 'navigate') {
+                            cache.put('./', cacheCopy.clone()).catch(() => {});
+                            cache.put('index.html', cacheCopy).catch(() => {});
+                        }
+                    });
+                }
+                return response;
+            }).catch(() => {
+                return caches.match(event.request, { ignoreSearch: true }).then((cached) => {
+                    return cached || caches.match('./') || caches.match('index.html');
+                });
+            })
+        );
+        return;
+    }
+
+    // A2. Iconos y manifiesto -> Stale-While-Revalidate
     if (
-        isAppShellNav ||
-        url.pathname.endsWith('.html') ||
         url.pathname.endsWith('.svg') ||
         url.pathname.endsWith('.png') ||
         (url.pathname.endsWith('.json') && url.pathname.includes('manifest'))
     ) {
         event.respondWith(
-            caches.match(event.request, { ignoreSearch: isAppShellNav || event.request.mode === 'navigate' }).then((cached) => {
+            caches.match(event.request).then((cached) => {
                 const networkFetch = fetch(event.request).then((response) => {
                     if (response && response.status === 200) {
                         const clone = response.clone();
                         caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
                     }
                     return response;
-                }).catch(() => cached || (event.request.mode === 'navigate' ? (caches.match('./') || caches.match('index.html')) : undefined));
+                }).catch(() => cached);
 
                 return cached || networkFetch;
-            }).catch(() => caches.match('./') || caches.match('index.html') || fetch(event.request))
+            }).catch(() => fetch(event.request))
         );
         return;
     }

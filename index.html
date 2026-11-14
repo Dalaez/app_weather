@@ -4,6 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <script>
+        if (window.location.pathname === '/apps/weather') {
+            window.history.replaceState(null, '', '/apps/weather/' + window.location.search + window.location.hash);
+        }
+    </script>
     <title>Datalaria - Weather Intelligence v3.3 | Observatorio Climático & Laboratorio ML</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0b0f17">
@@ -3674,10 +3679,9 @@
             const timeoutMs = options.timeoutMs || 6000;
             const cleanPath = path.startsWith('/') ? path.slice(1) : path;
             const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:';
+            const isDailyDerived = cleanPath.startsWith('derived/daily/');
 
-            if (isLocal) {
-                // En localhost: peticion directa a LOCAL_BASE sin golpear REMOTE_BASE (evita CORS y 404 remotos)
-                const url = LOCAL_BASE + cleanPath + (cleanPath.includes('?') ? '&' : '?') + 't=' + Date.now();
+            const fetchJson = async (url, sourceLabel) => {
                 try {
                     const controller = new AbortController();
                     const timer = setTimeout(() => controller.abort(), timeoutMs);
@@ -3685,30 +3689,33 @@
                     clearTimeout(timer);
                     if (res.ok) {
                         const data = await res.json();
-                        return { data, source: 'local' };
+                        return { data, source: sourceLabel };
                     }
                 } catch (err) {
                     // Silencioso
                 }
-                return { data: null, source: 'none' };
+                return null;
+            };
+
+            if (isLocal) {
+                if (isDailyDerived) {
+                    // INV-WEATHER-6: static/apps/weather no aloja derived/daily/*.json; ir directo a Netlify CORS sin provocar 404 en localhost
+                    const remoteResult = await fetchJson(REMOTE_BASE + cleanPath, 'remote');
+                    return remoteResult || { data: null, source: 'none' };
+                }
+                const sep = cleanPath.includes('?') ? '&' : '?';
+                const localUrl = LOCAL_BASE + cleanPath + sep + 't=' + Date.now();
+                const localResult = await fetchJson(localUrl, 'local');
+                if (localResult) return localResult;
+
+                const remoteFallback = await fetchJson(REMOTE_BASE + cleanPath, 'remote');
+                return remoteFallback || { data: null, source: 'none' };
             }
 
             // En producción: una única petición directa contra LOCAL_BASE + cleanPath
             // (aprovecha la CDN y el proxy /apps/weather/* -> Netlify sin duplicar peticiones 404)
-            const prodUrl = LOCAL_BASE + cleanPath;
-            try {
-                const controller = new AbortController();
-                const timer = setTimeout(() => controller.abort(), timeoutMs);
-                const res = await fetch(prodUrl, { signal: controller.signal });
-                clearTimeout(timer);
-                if (res.ok) {
-                    const data = await res.json();
-                    return { data, source: 'local' };
-                }
-            } catch (err) {
-                // Silencioso
-            }
-            return { data: null, source: 'none' };
+            const prodResult = await fetchJson(LOCAL_BASE + cleanPath, 'local');
+            return prodResult || { data: null, source: 'none' };
         }
 
         function slugifyJS(name) {
@@ -6591,16 +6598,39 @@
         }
 
         function registerPwaServiceWorker() {
-            const doRegisterSw = () => {
-                navigator.serviceWorker.register('sw.js')
-                    .then(reg => console.log('[PWA] Service Worker registrado:', reg.scope))
-                    .catch(err => console.warn('[PWA] Error SW:', err));
-            };
+            const isLocalDev = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+                && !new URLSearchParams(window.location.search).has('pwa_test');
+
             if ('serviceWorker' in navigator) {
-                if (document.readyState !== 'loading') {
-                    doRegisterSw();
+                if (isLocalDev) {
+                    const hadController = Boolean(navigator.serviceWorker.controller);
+                    Promise.all([
+                        navigator.serviceWorker.getRegistrations()
+                            .then(regs => Promise.all(regs.map(r => r.unregister())))
+                            .catch(() => {}),
+                        ('caches' in window ? caches.keys().then(keys =>
+                            Promise.all(keys.filter(k => k.startsWith('weather-')).map(k => caches.delete(k)))
+                        ).catch(() => {}) : Promise.resolve())
+                    ]).then(() => {
+                        if (hadController && !sessionStorage.getItem('weather_sw_purged_v333')) {
+                            sessionStorage.setItem('weather_sw_purged_v333', '1');
+                            window.location.reload();
+                        }
+                    });
                 } else {
-                    window.addEventListener('load', doRegisterSw, { once: true });
+                    const doRegisterSw = () => {
+                        navigator.serviceWorker.register('sw.js')
+                            .then(reg => {
+                                console.log('[PWA] Service Worker registrado:', reg.scope);
+                                reg.update().catch(() => {});
+                            })
+                            .catch(err => console.warn('[PWA] Error SW:', err));
+                    };
+                    if (document.readyState !== 'loading') {
+                        doRegisterSw();
+                    } else {
+                        window.addEventListener('load', doRegisterSw, { once: true });
+                    }
                 }
             }
 
