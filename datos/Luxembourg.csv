@@ -1173,3 +1173,4 @@ fecha_hora,ciudad,temperatura_c,sensacion_c,temp_min_c,temp_max_c,humedad_porc,v
 2026-11-17T04:27:58.550846,Luxembourg,8.95,6.43,8.53,9.78,96,16.668,lluvia y llovizna,49.6116,6.1319,100,4000,3.45,0.0
 2026-11-17T15:46:18.986271,Luxembourg,13.12,12.5,12.36,13.53,77,29.628000000000004,algo de nubes,49.6116,6.1319,20,10000,0.0,0.0
 2026-11-18T03:34:48.767682,Luxembourg,9.48,5.57,8.54,10.1,87,35.172,chubasco de ligera intensidad,49.6116,6.1319,75,10000,1.15,0.0
+2026-11-18T15:26:36.367351,Luxembourg,7.94,4.57,7.53,8.86,91,22.212,nubes dispersas,49.6116,6.1319,40,10000,0.0,0.0
